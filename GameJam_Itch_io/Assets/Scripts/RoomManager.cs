@@ -11,8 +11,12 @@ public class RoomManager : MonoBehaviour
     int roomAmount;
     int maxRoomAmount = 2;
 
+    CameraMovement cam;
+
     void Start()
     {
+        cam = FindAnyObjectByType<CameraMovement>();
+
         GameObject startRoom = Instantiate(roomObject);
         rooms.Add(startRoom);
         lastRoom = roomObject;
@@ -26,6 +30,7 @@ public class RoomManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             GenerateRoom();
+            cam.GoToNewRoom();
         }
     }
 
