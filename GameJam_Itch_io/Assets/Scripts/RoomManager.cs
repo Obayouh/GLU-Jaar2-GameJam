@@ -13,7 +13,8 @@ public class RoomManager : MonoBehaviour
 
     void Start()
     {
-        Instantiate(roomObject);
+        GameObject startRoom = Instantiate(roomObject);
+        rooms.Add(startRoom);
         lastRoom = roomObject;
         roomAmount++;
 
