@@ -184,7 +184,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 10
+  field of view: 90
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -273,6 +273,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c12b518a597451409eee8a51e68239c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startShaking: 0
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.063754044
+      outSlope: 0.063754044
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.21253878
+      value: 0.013550207
+      inSlope: 0.023273293
+      outSlope: 0.023273293
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.017207459
+      outSlope: -0.017207459
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  duration: 1
 --- !u!1 &723511125
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,6 +356,7 @@ MonoBehaviour:
     type: 3}
   rooms:
   - {fileID: 0}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!1 &1352612927
 GameObject:
   m_ObjectHideFlags: 0

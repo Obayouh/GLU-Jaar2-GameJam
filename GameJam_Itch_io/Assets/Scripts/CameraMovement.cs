@@ -8,9 +8,14 @@ public class CameraMovement : MonoBehaviour
     public AnimationCurve curve;
     public float duration = 1f;
 
+    public bool moveCam;
+    Vector3 targetPosition;
+    Vector3 direction;
+    public float moveSpeed = 2f;
+
     void Start()
     {
-        
+        targetPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 12f);
     }
 
     void Update()
@@ -19,6 +24,11 @@ public class CameraMovement : MonoBehaviour
         {
             startShaking = false;
             StartCoroutine(Shaking());
+        }
+
+        if (moveCam)
+        {
+            GoToNewRoom();
         }
     }
 
@@ -40,6 +50,15 @@ public class CameraMovement : MonoBehaviour
 
     public void GoToNewRoom()
     {
-        transform.Translate(Vector3.forward);
+        Vector3 startPosition = transform.position;
+        direction = targetPosition - startPosition;
+        direction.Normalize();
+        transform.position += direction * moveSpeed * Time.deltaTime;
+
+        if (transform.position == targetPosition)
+        {
+            moveCam = false;
+            targetPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 12f);
+        }
     }
 }

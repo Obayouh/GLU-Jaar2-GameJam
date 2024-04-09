@@ -11,6 +11,8 @@ public class RoomManager : MonoBehaviour
     int roomAmount;
     int maxRoomAmount = 2;
 
+    public Vector3 offset;
+
     CameraMovement cam;
 
     void Start()
@@ -30,13 +32,13 @@ public class RoomManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             GenerateRoom();
-            cam.GoToNewRoom();
+            cam.moveCam = true;
         }
     }
 
     private void GenerateRoom()
     {
-        GameObject newRoom = Instantiate(roomObject, (new Vector3(lastRoom.transform.position.x, lastRoom.transform.position.y, lastRoom.transform.position.z) + Vector3.forward), Quaternion.identity);
+        GameObject newRoom = Instantiate(roomObject, (new Vector3(lastRoom.transform.position.x, lastRoom.transform.position.y, lastRoom.transform.position.z) + offset), Quaternion.identity);
         rooms.Add(newRoom);
         lastRoom = newRoom;
         roomAmount++;
