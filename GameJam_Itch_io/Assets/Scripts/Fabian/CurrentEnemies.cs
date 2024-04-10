@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class CurrentEnemies : MonoBehaviour
 {
-    public List<GameObject> _spawnedEnemies = new List<GameObject>();
+    public List<GameObject> _spawnedEnemies = new();
 
-    void Start()
-    {
-
-    }
-
-    void Update()
-    {
-        
-    }
+    public List<GameObject> _SpawnSpots = new();
 }
