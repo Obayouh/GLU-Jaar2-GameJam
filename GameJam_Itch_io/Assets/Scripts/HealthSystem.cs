@@ -25,6 +25,7 @@ public class HealthSystem : MonoBehaviour
 
     private void Kill()
     {
+        // Code om de enemy uit een lijst te halen
         Destroy(gameObject);
     }
 }
