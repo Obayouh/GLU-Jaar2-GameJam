@@ -280,17 +280,17 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.063754044
-      outSlope: 0.063754044
+      inSlope: 0.42364836
+      outSlope: 0.42364836
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.21253878
-      value: 0.013550207
-      inSlope: 0.023273293
-      outSlope: 0.023273293
+      time: 0.15746981
+      value: 0.06671183
+      inSlope: 0.172234
+      outSlope: 0.172234
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -298,8 +298,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.017207459
-      outSlope: -0.017207459
+      inSlope: -0.079180345
+      outSlope: -0.079180345
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -307,9 +307,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  duration: 1
-  moveCam: 0
-  moveSpeed: 5
+  durationShaking: 1
+  moveSpeed: 6
+  durationMoving: 2
 --- !u!1 &723511125
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,6 +320,7 @@ GameObject:
   m_Component:
   - component: {fileID: 723511126}
   - component: {fileID: 723511127}
+  - component: {fileID: 723511128}
   m_Layer: 0
   m_Name: RoomManager
   m_TagString: Untagged
@@ -356,9 +357,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomObject: {fileID: 2258818565393809201, guid: fa3c5620244e7fd499b01900fbb1c933,
     type: 3}
-  rooms:
-  - {fileID: 0}
+  rooms: []
   offset: {x: 0, y: 0, z: 12}
+  canAddNewRoom: 1
+--- !u!114 &723511128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 723511125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd4945af1ffab15458ad3de90cbbe81b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1352612927
 GameObject:
   m_ObjectHideFlags: 0
