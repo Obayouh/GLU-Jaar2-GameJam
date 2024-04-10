@@ -5,7 +5,17 @@ using UnityEngine;
 public abstract class AbCards : MonoBehaviour
 {
     [SerializeField, Range(0, 20)] protected int damage;
-    [SerializeField, Min(1)] protected int cost;
+    [SerializeField, Min(0)] protected int cost;
+
+    public virtual void Start()
+    {
+        
+    }
+
+    public virtual void Update()
+    {
+        
+    }
     public virtual void SetCardStats()
     {
 
