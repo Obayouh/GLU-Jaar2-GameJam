@@ -166,7 +166,7 @@ Transform:
   m_GameObject: {fileID: 6790881737718223184}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -3, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -284,7 +284,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e584c60b4f6e7684bbb185c8e71052ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _turnManager: {fileID: 0}
   _player: {fileID: 0}
   _shootPoint: {fileID: 8427600095998171947}
   _prefabSpell: {fileID: 1474410947536527643, guid: 39ce446d5466cad4597e0bc7855d5d0a,

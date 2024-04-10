@@ -4,28 +4,29 @@ using UnityEngine;
 
 public class Enemy_Behavior : MonoBehaviour
 {
-    [SerializeField] private GameObject _player;
 
     [SerializeField] private Transform _shootPoint;
     [SerializeField] private GameObject _prefabSpell;
 
+    private GameObject _player;
     private TurnManager _turnManager;
-    private CurrentEnemies _currentEnemies;
-    private int _indexPosition;
+    private SpawnSlot _spawnSlot;
     private float _countdown;
     private float _resetTimer = 1.5f;
 
     void Start()
     {
-        _currentEnemies = GetComponentInParent<CurrentEnemies>();
+        _player = FindObjectOfType<PlayerHealth>().gameObject;
         _turnManager = FindObjectOfType<TurnManager>();
+        _spawnSlot = GetComponentInParent<SpawnSlot>();
         _countdown = _resetTimer;
-        _indexPosition = _currentEnemies._spawnedEnemies.FindIndex(c => c.name.Equals(this.gameObject.name));
     }
 
     void Update()
     {
-        if (_turnManager.FirstEnemyGo && _indexPosition == 0)
+        Transform parentPos = _spawnSlot.transform;
+
+        if (_turnManager.FirstEnemyGo && parentPos.position.x == -3)
         {
             StartCountdown();
             if (_countdown <= 0f)
@@ -37,7 +38,7 @@ public class Enemy_Behavior : MonoBehaviour
             }
         }
 
-        if (_turnManager.SecondEnemyGo && _indexPosition == 1)
+        if (_turnManager.SecondEnemyGo && parentPos.position.x == 0)
         {
             StartCountdown();
             if (_countdown <= 0f)
@@ -49,7 +50,7 @@ public class Enemy_Behavior : MonoBehaviour
             }
         }
 
-        if (_turnManager.LastEnemyGo && _indexPosition == 2)
+        if (_turnManager.LastEnemyGo && parentPos.position.x == 3)
         {
             StartCountdown();
             if (_countdown <= 0f)

@@ -15,7 +15,9 @@ public class Attack_Behavior : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Destroy(gameObject);
+            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+            playerHealth.TakeDamage(Random.Range(2, 8));
+            Destroy(this.gameObject);
         }
     }
 }
