@@ -16,7 +16,7 @@ public class Enemy_Behavior : MonoBehaviour
 
     void Start()
     {
-        _player = FindObjectOfType<PlayerHealth>().gameObject;
+        _player = FindObjectOfType<PlayerStats>().gameObject;
         _turnManager = FindObjectOfType<TurnManager>();
         _spawnSlot = GetComponentInParent<SpawnSlot>();
         _countdown = _resetTimer;
