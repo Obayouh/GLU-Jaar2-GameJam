@@ -15,6 +15,8 @@ public class RoomManager : MonoBehaviour
 
     public bool canAddNewRoom = true;
 
+    public int score;
+
     CameraMovement cam;
 
     void Start()
@@ -34,6 +36,7 @@ public class RoomManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && canAddNewRoom)
         {
+            score++;
             canAddNewRoom = false;
             cam.GoToNewRoom();
             GenerateRoom();

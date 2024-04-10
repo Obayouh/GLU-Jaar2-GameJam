@@ -6,6 +6,7 @@ public class CameraMovement : MonoBehaviour
 {
     [Header("CameraShaking")]
     public bool startShaking;
+    public bool gameOver;
     public AnimationCurve curve;
     public float durationShaking = 1f;
 
@@ -25,6 +26,10 @@ public class CameraMovement : MonoBehaviour
         if (startShaking)
         {
             startShaking = false;
+            StartCoroutine(Shaking());
+        }
+        else if (gameOver)
+        {
             StartCoroutine(Shaking());
         }
     }
