@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 8772758807097802018}
   - component: {fileID: 2835190684055843251}
   - component: {fileID: 6365408168652032068}
+  - component: {fileID: 4735855639834812917}
   - component: {fileID: 7319406978991348854}
   m_Layer: 0
   m_Name: Enemy_Warrior
@@ -139,6 +140,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &4735855639834812917
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4005114963543809676}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &7319406978991348854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,7 +179,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e584c60b4f6e7684bbb185c8e71052ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _turnManager: {fileID: 0}
   _player: {fileID: 0}
   _shootPoint: {fileID: 6088589631650108110}
   _prefabSpell: {fileID: 8586410213156196396, guid: c6818670fc9210f4590cb1da8cb531e5,
