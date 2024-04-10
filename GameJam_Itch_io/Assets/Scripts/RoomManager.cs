@@ -13,11 +13,14 @@ public class RoomManager : MonoBehaviour
 
     public Vector3 offset;
 
+    public bool canAddNewRoom = true;
+
     CameraMovement cam;
 
     void Start()
     {
         cam = FindAnyObjectByType<CameraMovement>();
+        canAddNewRoom = true;
 
         GameObject startRoom = Instantiate(roomObject);
         rooms.Add(startRoom);
@@ -29,10 +32,12 @@ public class RoomManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && canAddNewRoom)
         {
+            canAddNewRoom = false;
+            cam.GoToNewRoom();
+            lastRoom.GetComponent<Room>().open = true;
             GenerateRoom();
-            cam.moveCam = true;
         }
     }
 

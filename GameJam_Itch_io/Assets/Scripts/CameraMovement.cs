@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
+    [Header("CameraShaking")]
     public bool startShaking;
     public AnimationCurve curve;
-    public float duration = 1f;
+    public float durationShaking = 1f;
 
-    public bool moveCam;
+    [Header("Move")]
     Vector3 targetPosition;
     Vector3 direction;
     public float moveSpeed = 2f;
+    public float durationMoving;
 
     void Start()
     {
@@ -25,11 +27,6 @@ public class CameraMovement : MonoBehaviour
             startShaking = false;
             StartCoroutine(Shaking());
         }
-
-        if (moveCam)
-        {
-            GoToNewRoom();
-        }
     }
 
     IEnumerator Shaking()
@@ -37,10 +34,10 @@ public class CameraMovement : MonoBehaviour
         Vector3 startPostition = transform.position;
         float elapsedTime = 0f;
 
-        while (elapsedTime < duration)
+        while (elapsedTime < durationShaking)
         {
             elapsedTime += Time.deltaTime;
-            float strength = curve.Evaluate(elapsedTime / duration);
+            float strength = curve.Evaluate(elapsedTime / durationShaking);
             transform.position = startPostition + Random.insideUnitSphere * strength;
             yield return null;
         }
@@ -50,15 +47,25 @@ public class CameraMovement : MonoBehaviour
 
     public void GoToNewRoom()
     {
-        Vector3 startPosition = transform.position;
-        direction = targetPosition - startPosition;
-        direction.Normalize();
-        transform.position += direction * moveSpeed * Time.deltaTime;
+        StartCoroutine(MoveCam());
+    }
 
-        if (transform.position == targetPosition)
+    IEnumerator MoveCam()
+    {
+        float elapsedTime = 0f;
+        yield return new WaitForSeconds(1f);
+
+        while (elapsedTime < durationMoving)
         {
-            moveCam = false;
-            targetPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 12f);
+            elapsedTime += Time.deltaTime;
+            transform.position += Vector3.forward * moveSpeed * Time.deltaTime;
+            yield return null;
+        }
+
+        if (elapsedTime >= durationMoving)
+        {
+            RoomManager roomManager = FindAnyObjectByType<RoomManager>();
+            roomManager.canAddNewRoom = true;
         }
     }
 }
