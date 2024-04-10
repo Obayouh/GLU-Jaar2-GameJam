@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
-    public GameObject roomObject;
+    public GameObject[] roomObjects;
     GameObject lastRoom;
     public List<GameObject> rooms = new List<GameObject>();
 
@@ -24,7 +24,7 @@ public class RoomManager : MonoBehaviour
         cam = FindAnyObjectByType<CameraMovement>();
         canAddNewRoom = true;
 
-        GameObject startRoom = Instantiate(roomObject);
+        GameObject startRoom = Instantiate(roomObjects[0]);
         rooms.Add(startRoom);
         roomAmount++;
         lastRoom = startRoom;
@@ -46,7 +46,8 @@ public class RoomManager : MonoBehaviour
     private void GenerateRoom()
     {
         lastRoom.GetComponent<Room>().open = true;
-        GameObject newRoom = Instantiate(roomObject, (new Vector3(lastRoom.transform.position.x, lastRoom.transform.position.y, lastRoom.transform.position.z) + offset), Quaternion.identity);
+        int room = Random.Range(0, roomObjects.Length);
+        GameObject newRoom = Instantiate(roomObjects[room], (new Vector3(lastRoom.transform.position.x, lastRoom.transform.position.y, lastRoom.transform.position.z) + offset), Quaternion.identity);
         rooms.Add(newRoom);
         lastRoom = newRoom;
         roomAmount++;

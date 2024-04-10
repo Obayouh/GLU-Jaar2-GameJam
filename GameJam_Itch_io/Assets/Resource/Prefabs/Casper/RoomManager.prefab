@@ -44,8 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49e701a4555717749b45c9bd044472b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomObject: {fileID: 2258818565393809201, guid: fa3c5620244e7fd499b01900fbb1c933,
-    type: 3}
+  roomObjects:
+  - {fileID: 2258818565393809201, guid: fa3c5620244e7fd499b01900fbb1c933, type: 3}
+  - {fileID: 8714470451411371263, guid: d32288c58a9f08e46acc3fb892dbda09, type: 3}
+  - {fileID: 1994530906989005915, guid: a88142d2a25e8e44d9f61acc417dbdfe, type: 3}
+  - {fileID: 699634507907666764, guid: d2af31f24b888b146b3a7b0447d55eef, type: 3}
   rooms: []
   offset: {x: 0, y: 0, z: 12}
   canAddNewRoom: 1
+  score: 0
