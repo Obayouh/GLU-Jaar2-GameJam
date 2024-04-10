@@ -8,7 +8,6 @@ public class ClickManager : MonoBehaviour
     RaycastHit hit;
     public Transform currentHitTransform;
     public Vector3 hitPosition;
-    //public Vector3 currentHitVector;
     private void Start()
     {
         currentCoroutine = null;
@@ -19,13 +18,11 @@ public class ClickManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            //Shoot();
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, 100.0f))
             {
                 currentHitTransform = hit.transform;
                 hitPosition = currentHitTransform.position;
-                //currentHitVector = hit.transform.position;
 
                 if(currentCoroutine == null)
                 {
@@ -47,14 +44,4 @@ public class ClickManager : MonoBehaviour
         }
         currentCoroutine = null;
     }
-
-    //public string ReturnRaycastTransformTag()
-    //{
-    //    return currentHitTransform.tag;
-    //}
-
-    //public Vector3 ReturnRaycastHitVector()
-    //{
-    //    return currentHitTransform.position;
-    //}
 }

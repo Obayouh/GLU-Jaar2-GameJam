@@ -5,8 +5,8 @@ using TMPro;
 
 public class CardStats : AbCards
 {
-    public TextMeshPro damageText;
-    public TextMeshPro costText;
+    private TextMeshPro damageText;
+    private TextMeshPro costText;
     public override void Start()
     {
         base.Start();
@@ -35,7 +35,9 @@ public class CardStats : AbCards
     {
         base.Update();
     }
-
+    /// <summary>
+    /// Randomizes card damage and cost to use on creation
+    /// </summary>
      public override void SetCardStats()
     {
         base.SetCardStats();

@@ -14,15 +14,6 @@ public class TestCardProjectile : MonoBehaviour
 
     private void MoveProjectile()
     {
-        //// Calculate the next position of the projectile using raycast
-        //RaycastHit hit;
-        //if (Physics.Raycast(transform.position, transform.forward, out hit, speed * Time.deltaTime, collisionMask))
-        //{
-        //    // If the raycast hits something, destroy the projectile
-        //    Destroy(gameObject);
-        //    return;
-        //}
-
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 }
