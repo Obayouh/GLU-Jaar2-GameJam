@@ -40,7 +40,7 @@ public class PlayerStats : MonoBehaviour
     public void AddScore(int amount)
     {
         score += amount;
-        scoreText.text = score.ToString();
+        scoreText.text = "Rooms cleared: " + score.ToString();
         Animator anim = scoreText.GetComponent<Animator>();
         anim.SetBool("PlayAnim", true);
         StartCoroutine(Stop());
