@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fire Cards
   m_EditorClassIdentifier: 
   EveryCard:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 3513218801699399861, guid: 189e18137ddae93469fb834d2b750377, type: 3}
+  - {fileID: 3513218801699399861, guid: 189e18137ddae93469fb834d2b750377, type: 3}
+  - {fileID: 3513218801699399861, guid: 189e18137ddae93469fb834d2b750377, type: 3}
+  - {fileID: 3513218801699399861, guid: 189e18137ddae93469fb834d2b750377, type: 3}

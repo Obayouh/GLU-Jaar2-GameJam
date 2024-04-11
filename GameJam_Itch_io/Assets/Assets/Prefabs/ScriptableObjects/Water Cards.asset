@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Water Cards
   m_EditorClassIdentifier: 
   EveryCard:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 4760951548363589690, guid: 37a26a7ccec0e7f4687fc99b0929ae2e, type: 3}
+  - {fileID: 4760951548363589690, guid: 37a26a7ccec0e7f4687fc99b0929ae2e, type: 3}
+  - {fileID: 4760951548363589690, guid: 37a26a7ccec0e7f4687fc99b0929ae2e, type: 3}
+  - {fileID: 4760951548363589690, guid: 37a26a7ccec0e7f4687fc99b0929ae2e, type: 3}

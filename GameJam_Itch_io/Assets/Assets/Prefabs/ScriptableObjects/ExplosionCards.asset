@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ExplosionCards
   m_EditorClassIdentifier: 
   EveryCard:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 9135174186864729803, guid: c6ad767ebcf35154bbdd073337ea6f78, type: 3}
+  - {fileID: 9135174186864729803, guid: c6ad767ebcf35154bbdd073337ea6f78, type: 3}
+  - {fileID: 9135174186864729803, guid: c6ad767ebcf35154bbdd073337ea6f78, type: 3}
+  - {fileID: 9135174186864729803, guid: c6ad767ebcf35154bbdd073337ea6f78, type: 3}
