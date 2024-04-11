@@ -497,6 +497,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3811977143599701672, guid: 18dc60fb367c47547b5febd044126417,
+        type: 3}
+      propertyPath: Portal
+      value: 
+      objectReference: {fileID: 7161646253237861617}
     - target: {fileID: 6515974313701221377, guid: 18dc60fb367c47547b5febd044126417,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1924,6 +1929,12 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!1 &7161646253237861617 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6523695612427012889, guid: 18dc60fb367c47547b5febd044126417,
+    type: 3}
+  m_PrefabInstance: {fileID: 777963859}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

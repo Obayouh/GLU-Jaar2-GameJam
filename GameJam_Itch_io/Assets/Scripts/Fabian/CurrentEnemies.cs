@@ -12,10 +12,13 @@ public class CurrentEnemies : MonoBehaviour
 
     public bool SlotsEmpty = false;
 
+    public GameObject Portal;
+
     private List<SpawnSlot> _allSlots = new();
 
     private void Start()
     {
+        Portal.SetActive(true);
         StartCoroutine(SpawnEnenmies());
         _allSlots.Add(SpawnSpots[0].GetComponent<SpawnSlot>());
         _allSlots.Add(SpawnSpots[1].GetComponent<SpawnSlot>());
@@ -24,18 +27,6 @@ public class CurrentEnemies : MonoBehaviour
 
     private void Update()
     {
-        //foreach (GameObject slot in SpawnSpots)
-        //{
-        //    SpawnSlot spawnSlot = slot.GetComponent<SpawnSlot>();
-        //    if (spawnSlot.HasChild == false)
-        //    {
-        //        GameObject pickEnemy = AllEnemies.AllEnemies[Random.Range(0, AllEnemies.AllEnemies.Count)];
-        //        SpawnedEnemies.Add(pickEnemy);
-        //        Instantiate(pickEnemy, slot.transform);
-        //        spawnSlot.HasChild = true;
-        //    }
-        //}
-
         for (int i = 0; i < _allSlots.Count; i++)
         {
             if (_allSlots[i].HasChild == false)
