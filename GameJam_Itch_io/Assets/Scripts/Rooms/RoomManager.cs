@@ -19,6 +19,8 @@ public class RoomManager : MonoBehaviour
 
     CameraMovement cam;
 
+    [SerializeField] private CurrentEnemies currentEnemies;
+
     void Start()
     {
         cam = FindAnyObjectByType<CameraMovement>();
@@ -34,12 +36,25 @@ public class RoomManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && canAddNewRoom)
+        //if (Input.GetKeyDown(KeyCode.E) && canAddNewRoom)
+        //{
+        //    score++;
+        //    canAddNewRoom = false;
+        //    cam.GoToNewRoom();
+        //    GenerateRoom();
+        //}
+
+        if (currentEnemies.SlotsEmpty && canAddNewRoom)
         {
             score++;
             canAddNewRoom = false;
+            currentEnemies.SpawnedEnemies.Clear();
+            currentEnemies.gameObject.transform.position = new Vector3(currentEnemies.gameObject.transform.position.x,
+                currentEnemies.gameObject.transform.position.y, currentEnemies.gameObject.transform.position.z + 12);
             cam.GoToNewRoom();
+            StartCoroutine(currentEnemies.SpawnEnenmies());
             GenerateRoom();
+            currentEnemies.SlotsEmpty = false;
         }
     }
 
@@ -47,7 +62,8 @@ public class RoomManager : MonoBehaviour
     {
         lastRoom.GetComponent<Room>().open = true;
         int room = Random.Range(0, roomObjects.Length);
-        GameObject newRoom = Instantiate(roomObjects[room], (new Vector3(lastRoom.transform.position.x, lastRoom.transform.position.y, lastRoom.transform.position.z) + offset), Quaternion.identity);
+        GameObject newRoom = Instantiate(roomObjects[room], 
+            (new Vector3(lastRoom.transform.position.x, lastRoom.transform.position.y, lastRoom.transform.position.z) + offset), Quaternion.identity);
         rooms.Add(newRoom);
         lastRoom = newRoom;
         roomAmount++;

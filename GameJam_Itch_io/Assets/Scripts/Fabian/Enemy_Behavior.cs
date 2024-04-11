@@ -61,6 +61,12 @@ public class Enemy_Behavior : MonoBehaviour
                 _turnManager.PlayersTurn = true;
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            _spawnSlot.HasChild = false;
+            Destroy(gameObject);
+        }
     }
 
     private void StartCountdown()
