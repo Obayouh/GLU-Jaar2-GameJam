@@ -20,6 +20,7 @@ public class RoomManager : MonoBehaviour
     CameraMovement cam;
 
     [SerializeField] private CurrentEnemies currentEnemies;
+    [SerializeField] private PlayerStats playerStats;
 
     void Start()
     {
@@ -46,7 +47,7 @@ public class RoomManager : MonoBehaviour
 
         if (currentEnemies.SlotsEmpty && canAddNewRoom)
         {
-            score++;
+            playerStats.AddScore(1);
             canAddNewRoom = false;
             currentEnemies.SpawnedEnemies.Clear();
             currentEnemies.gameObject.transform.position = new Vector3(currentEnemies.gameObject.transform.position.x,
@@ -77,7 +78,7 @@ public class RoomManager : MonoBehaviour
     private void RemoveRoom()
     {
         roomAmount--;
-        Destroy(rooms[0].gameObject);
+        Destroy(rooms[0]);
         rooms.RemoveAt(0);
     }
 }
