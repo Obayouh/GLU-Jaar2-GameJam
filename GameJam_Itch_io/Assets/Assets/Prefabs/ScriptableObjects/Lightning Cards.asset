@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Lightning Cards
   m_EditorClassIdentifier: 
   EveryCard:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 5037045838545631640, guid: 53f8c23924eb1614c8f55ed265436f79, type: 3}
+  - {fileID: 5037045838545631640, guid: 53f8c23924eb1614c8f55ed265436f79, type: 3}
+  - {fileID: 5037045838545631640, guid: 53f8c23924eb1614c8f55ed265436f79, type: 3}
+  - {fileID: 5037045838545631640, guid: 53f8c23924eb1614c8f55ed265436f79, type: 3}

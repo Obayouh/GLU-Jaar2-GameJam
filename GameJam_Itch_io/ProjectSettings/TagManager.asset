@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - PlayerCard
   - Door
+  - DamageText
+  - CostText
   layers:
   - Default
   - TransparentFX
