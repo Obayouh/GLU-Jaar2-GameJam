@@ -19,9 +19,4 @@ public class CardManager : MonoBehaviour
             spawnedCards.Add(card);
         }
     }
-
-    void Update()
-    {
-        
-    }
 }
