@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shootPoint: {fileID: 8427600095998171947}
-  _prefabSpell: {fileID: 1474410947536527643, guid: 39ce446d5466cad4597e0bc7855d5d0a,
+  _prefabSpell: {fileID: 8586410213156196396, guid: c6818670fc9210f4590cb1da8cb531e5,
     type: 3}
 --- !u!1001 &938948100580905842
 PrefabInstance:
