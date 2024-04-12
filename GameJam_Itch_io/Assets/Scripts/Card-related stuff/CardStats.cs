@@ -10,15 +10,13 @@ public class CardStats : AbCards
     public override void Start()
     {
         base.Start();
-
-
         //loop through card
-        foreach(Transform t in transform)
+        foreach (Transform t in transform)
         {
             //loop through text components
-            foreach(Transform t2 in t)
+            foreach (Transform t2 in t)
             {
-                if(t2.name == "DamageText")
+                if (t2.name == "DamageText")
                 {
                     damageText = t2.GetComponent<TextMeshPro>();
                 }
@@ -38,12 +36,22 @@ public class CardStats : AbCards
     /// <summary>
     /// Randomizes card damage and cost to use on creation
     /// </summary>
-     public override void SetCardStats()
+    public override void SetCardStats()
     {
         base.SetCardStats();
         damage = Random.Range(1, 9);
         cost = Random.Range(1, 5);
         damageText.SetText(damage.ToString());
         costText.SetText(cost.ToString());
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            HealthSystem enemyHealth = collision.gameObject.GetComponent<HealthSystem>();
+            enemyHealth.TakeDamage(damage);
+            Destroy(this.gameObject);
+        }
     }
 }
