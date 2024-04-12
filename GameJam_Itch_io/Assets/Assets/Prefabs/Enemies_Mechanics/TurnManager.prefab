@@ -44,8 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9297fb2a862fafe46b019969cca53a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayersTurn: 0
-  EnemiesTurn: 1
+  PlayersTurn: 1
+  EnemiesTurn: 0
   FirstEnemyGo: 0
   SecondEnemyGo: 0
   LastEnemyGo: 0
+  AddNewCards: 0
+  cardManager: {fileID: 0}

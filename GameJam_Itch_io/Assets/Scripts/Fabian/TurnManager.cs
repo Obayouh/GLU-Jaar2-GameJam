@@ -11,11 +11,9 @@ public class TurnManager : MonoBehaviour
     public bool SecondEnemyGo;
     public bool LastEnemyGo;
 
-    void Start()
-    {
-        PlayersTurn = false; 
-        EnemiesTurn = true;
-    }
+    public bool AddNewCards;
+
+    [SerializeField] private CardManager cardManager;
 
     void Update()
     {
@@ -23,6 +21,12 @@ public class TurnManager : MonoBehaviour
         {
             FirstEnemyGo = true;
             EnemiesTurn = false;
+        }
+
+        if (PlayersTurn && AddNewCards)
+        {
+            cardManager.AddCards();
+            AddNewCards = false;
         }
     }
 }

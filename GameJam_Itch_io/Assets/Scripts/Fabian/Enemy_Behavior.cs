@@ -58,6 +58,7 @@ public class Enemy_Behavior : MonoBehaviour
                 Instantiate(_prefabSpell, _shootPoint.position, _shootPoint.rotation);
                 _countdown = _resetTimer;
                 _turnManager.LastEnemyGo = false;
+                _turnManager.AddNewCards = true;
                 _turnManager.PlayersTurn = true;
             }
         }
