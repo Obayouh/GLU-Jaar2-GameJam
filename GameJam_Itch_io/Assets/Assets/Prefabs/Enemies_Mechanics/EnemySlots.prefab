@@ -286,4 +286,4 @@ MonoBehaviour:
   - {fileID: 1029619685814661543}
   AllEnemies: {fileID: 11400000, guid: 5266b0ba5760d22459ed7b64d53ab789, type: 2}
   SlotsEmpty: 0
-  Portal: {fileID: 0}
+  Portal: {fileID: 7161646252163950317, guid: 410e83eb1fa31194da4658b422f2406c, type: 3}
