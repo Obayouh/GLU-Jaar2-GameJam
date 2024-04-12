@@ -1,5 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class ClickManager : MonoBehaviour
@@ -8,6 +11,9 @@ public class ClickManager : MonoBehaviour
     RaycastHit hit;
     public Transform currentHitTransform;
     public Vector3 hitPosition;
+    Transform previousHit;
+    GameObject selectedCard;
+
     private void Start()
     {
         currentCoroutine = null;
@@ -22,9 +28,17 @@ public class ClickManager : MonoBehaviour
             currentHitTransform = hit.transform;
             hitPosition = currentHitTransform.position;
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && selectedCard != null)
             {
+                // Code voor de selected card te activeren. Je moet ook iets hebben voor de enemy te selecteren.
+            }
 
+            if (previousHit != null)
+            {
+                if (previousHit != hit.transform && previousHit.CompareTag("PlayerCard"))
+                {
+                    previousHit.GetComponentInParent<Animator>().SetBool("isSelected", false);
+                }
             }
 
             if (currentCoroutine == null)
@@ -37,6 +51,8 @@ public class ClickManager : MonoBehaviour
     }
     IEnumerator ScaleMe(Transform objTr)
     {
+        previousHit = objTr;
+
         if (objTr.CompareTag("Enemy"))
         {
             objTr.localScale *= 1.2f;
@@ -45,8 +61,14 @@ public class ClickManager : MonoBehaviour
         }
         else if (objTr.CompareTag("PlayerCard"))
         {
-
+            objTr.gameObject.GetComponentInParent<Animator>().SetBool("isSelected", true);
+            selectedCard = objTr.gameObject;
         }
         currentCoroutine = null;
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+
     }
 }
