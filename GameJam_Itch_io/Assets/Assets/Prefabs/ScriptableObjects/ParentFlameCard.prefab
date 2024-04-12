@@ -182,6 +182,8 @@ GameObject:
   - component: {fileID: 4436516837453695840}
   - component: {fileID: 881074127363799483}
   - component: {fileID: 5991756050565063715}
+  - component: {fileID: 7707656947956847631}
+  - component: {fileID: 2405460560187032908}
   m_Layer: 0
   m_Name: ParentFlameCard
   m_TagString: PlayerCard
@@ -235,6 +237,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   cost: 0
+--- !u!65 &7707656947956847631
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3513218801699399861}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.23, z: 0.01}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &2405460560187032908
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3513218801699399861}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &6804649543028840759
 GameObject:
   m_ObjectHideFlags: 0

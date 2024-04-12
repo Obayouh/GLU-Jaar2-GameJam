@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d347cec943183f4fbbc6ea9dd5e7c19, type: 3}
   m_Name: Rock Cards
   m_EditorClassIdentifier: 
-  EveryCard: []
+  EveryCard:
+  - {fileID: 7787204045916663752, guid: 499572d423babc540b4e6d587f6dd898, type: 3}
+  - {fileID: 7787204045916663752, guid: 499572d423babc540b4e6d587f6dd898, type: 3}
+  - {fileID: 7787204045916663752, guid: 499572d423babc540b4e6d587f6dd898, type: 3}
+  - {fileID: 7787204045916663752, guid: 499572d423babc540b4e6d587f6dd898, type: 3}
