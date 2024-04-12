@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 8736435602505635548}
   - component: {fileID: 6719110151135317832}
   - component: {fileID: 5547373872100183568}
+  - component: {fileID: 9201465050933224174}
   m_Layer: 0
   m_Name: Enemy_Beast
   m_TagString: Enemy
@@ -130,6 +131,20 @@ MonoBehaviour:
   _shootPoint: {fileID: 8427600095998171947}
   _prefabSpell: {fileID: 8586410213156196396, guid: c6818670fc9210f4590cb1da8cb531e5,
     type: 3}
+--- !u!114 &9201465050933224174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6790881737718223184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1e326a74c6b31043a3a05714fad54c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  currentHealth: 0
 --- !u!1001 &938948100580905842
 PrefabInstance:
   m_ObjectHideFlags: 0
