@@ -27,12 +27,17 @@ public class CurrentEnemies : MonoBehaviour
 
     private void Update()
     {
-        for (int i = 0; i < _allSlots.Count; i++)
+        //for (int i = 0; i < _allSlots.Count; i++)
+        //{
+        //    if (_allSlots[i].HasChild == false)
+        //    {
+        //        SlotsEmpty = true;
+        //    }
+        //}
+
+        if (SpawnedEnemies.Count == 0)
         {
-            if (_allSlots[i].HasChild == false)
-            {
-                SlotsEmpty = true;
-            }
+            SlotsEmpty = true;
         }
     }
 
@@ -44,11 +49,16 @@ public class CurrentEnemies : MonoBehaviour
             if (spawnSlot.HasChild == false)
             {
                 GameObject pickEnemy = AllEnemies.AllEnemies[Random.Range(0, AllEnemies.AllEnemies.Count)];
-                SpawnedEnemies.Add(pickEnemy);
-                Instantiate(pickEnemy, slot.transform);
+                GameObject newEnemy = Instantiate(pickEnemy, slot.transform);
+                SpawnedEnemies.Add(newEnemy);
                 spawnSlot.HasChild = true;
             }
         }
         yield return new WaitForSeconds(0.1f);
+    }
+
+    public void RemoveEnemy(GameObject enemy)
+    {
+        SpawnedEnemies.Remove(enemy);
     }
 }

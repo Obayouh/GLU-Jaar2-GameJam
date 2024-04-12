@@ -6,12 +6,14 @@ using UnityEngine;
 
 public class PlayerTestAttackElgin : MonoBehaviour
 {
-    [SerializeField] private Transform firingPoint;
-    [SerializeField] private GameObject InstantiatedCard;
+    //[SerializeField] private Transform firingPoint;
+    private PlayerStats playerStats;
     private ClickManager clickManagerScript;
+    private TestCardProjectile projectileScript; 
 
     private void Start()
     {
+        playerStats = GetComponent<PlayerStats>();
         clickManagerScript = FindObjectOfType<ClickManager>();
     }
 
@@ -19,15 +21,12 @@ public class PlayerTestAttackElgin : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (clickManagerScript.currentHitTransform.CompareTag("Enemy"))
-            {
-                Shoot();
-            }
+            ThrowCard();
         }
 
     }
 
-    void Shoot()
+    public void ThrowCard()
     {
         //    Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         //    RaycastHit hit;
@@ -37,11 +36,9 @@ public class PlayerTestAttackElgin : MonoBehaviour
         //        Vector3 targetPoint = hit.point;
         //        Vector3 direction = targetPoint - transform.position;
         //        direction.Normalize();
-
-        GameObject projectile = Instantiate(InstantiatedCard, firingPoint.position, Quaternion.identity);
-        projectile.transform.LookAt(clickManagerScript.currentHitTransform);
-        Debug.Log(clickManagerScript.currentHitTransform.position);
         
+        //Debug.Log(clickManagerScript.currentHitTransform.position);
+
 
     }
 }

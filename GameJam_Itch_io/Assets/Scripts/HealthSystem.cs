@@ -5,15 +5,17 @@ using UnityEngine;
 
 public class HealthSystem : MonoBehaviour
 {
-    public float maxHealth = 100f;
-    public float currentHealth;
+    public int maxHealth = 100;
+    public int currentHealth;
+    private CurrentEnemies currentEnemies;
 
     void Start()
     {
         currentHealth = maxHealth;
+        currentEnemies = FindObjectOfType<CurrentEnemies>();
     }
 
-    public void TakeDamage(float amount)
+    public void TakeDamage(int amount)
     {
         currentHealth -= amount;
 
@@ -25,7 +27,7 @@ public class HealthSystem : MonoBehaviour
 
     private void Kill()
     {
-        // Code om de enemy uit een lijst te halen
+        currentEnemies.RemoveEnemy(this.gameObject);
         Destroy(gameObject);
     }
 }

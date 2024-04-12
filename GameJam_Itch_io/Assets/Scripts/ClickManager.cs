@@ -13,6 +13,10 @@ public class ClickManager : MonoBehaviour
     public Vector3 hitPosition;
     Transform previousHit;
     GameObject selectedCard;
+    private GameObject selectedEnemy;
+
+    private CardStats cardStats;
+    private PlayerStats playerStats;
 
     private void Start()
     {
@@ -28,9 +32,22 @@ public class ClickManager : MonoBehaviour
             currentHitTransform = hit.transform;
             hitPosition = currentHitTransform.position;
 
-            if (Input.GetMouseButtonDown(0) && selectedCard != null)
+            if (Input.GetMouseButtonDown(0) && selectedCard == null && hit.transform.CompareTag("PlayerCard"))
             {
-                // Code voor de selected card te activeren. Je moet ook iets hebben voor de enemy te selecteren.
+                //If card is too costly, do nothing
+                cardStats = GetComponent<CardStats>();
+                //playerStats.CheckIfUsable();
+                selectedCard = hit.transform.gameObject;
+            }
+
+            if (Input.GetMouseButtonDown(0) && selectedCard != null && selectedEnemy == null)
+            {
+                if (hit.transform.CompareTag("Enemy"))
+                {
+                    selectedEnemy = hit.transform.gameObject;
+                    StartCoroutine(ThrowCard());
+                }
+
             }
 
             if (previousHit != null)
@@ -53,13 +70,13 @@ public class ClickManager : MonoBehaviour
     {
         previousHit = objTr;
 
-        if (objTr.CompareTag("Enemy"))
-        {
-            objTr.localScale *= 1.2f;
-            yield return new WaitForSeconds(0.5f);
-            objTr.localScale /= 1.2f;
-        }
-        else if (objTr.CompareTag("PlayerCard"))
+        //if (objTr.CompareTag("Enemy"))
+        //{
+        //    objTr.localScale *= 1.2f;
+        yield return new WaitForSeconds(0.01f);
+        //    objTr.localScale /= 1.2f;
+        //}
+        if (objTr.CompareTag("PlayerCard"))
         {
             objTr.gameObject.GetComponentInParent<Animator>().SetBool("isSelected", true);
             selectedCard = objTr.gameObject;
@@ -67,8 +84,21 @@ public class ClickManager : MonoBehaviour
         currentCoroutine = null;
     }
 
-    private void OnCollisionExit(Collision collision)
-    {
+    //public GameObject ReturnEnemy()
+    //{
+    //    return selectedEnemy;
+    //}
 
+    //public GameObject ReturnSelectedCard()
+    //{
+    //    return selectedCard;
+    //}
+
+    IEnumerator ThrowCard()
+    {
+        HealthSystem enemyHealth = selectedEnemy.GetComponent<HealthSystem>();
+        yield return new WaitForSeconds(1f);
+        enemyHealth.TakeDamage(20);
+        Destroy(selectedCard);
     }
 }

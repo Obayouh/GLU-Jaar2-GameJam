@@ -54,4 +54,14 @@ public class CardStats : AbCards
             Destroy(this.gameObject);
         }
     }
+
+    public int ReturnCost()
+    {
+        return cost;
+    }
+
+    public int ReturnDamage()
+    {
+        return damage;
+    }
 }

@@ -47,7 +47,7 @@ public class RoomManager : MonoBehaviour
 
         if (currentEnemies.SlotsEmpty && canAddNewRoom)
         {
-            playerStats.AddScore(1);
+            //playerStats.AddScore(1);
             canAddNewRoom = false;
             currentEnemies.SpawnedEnemies.Clear();
             currentEnemies.gameObject.transform.position = new Vector3(currentEnemies.gameObject.transform.position.x,
