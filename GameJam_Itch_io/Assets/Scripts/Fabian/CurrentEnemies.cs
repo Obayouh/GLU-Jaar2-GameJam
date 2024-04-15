@@ -46,11 +46,12 @@ public class CurrentEnemies : MonoBehaviour
         foreach (GameObject slot in SpawnSpots)
         {
             SpawnSlot spawnSlot = slot.GetComponent<SpawnSlot>();
-            if (spawnSlot.HasChild == false)
+            if (SlotsEmpty == true)
             {
                 GameObject pickEnemy = AllEnemies.AllEnemies[Random.Range(0, AllEnemies.AllEnemies.Count)];
                 GameObject newEnemy = Instantiate(pickEnemy, slot.transform);
                 SpawnedEnemies.Add(newEnemy);
+                SlotsEmpty = false; 
                 spawnSlot.HasChild = true;
             }
         }
