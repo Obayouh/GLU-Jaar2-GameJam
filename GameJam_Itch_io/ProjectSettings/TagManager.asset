@@ -3,12 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
+  - PlayerCard
+  - Door
+  - DamageText
+  - CostText
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - EnemyLayer
   - Water
   - UI
   - 
@@ -25,7 +30,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - PostProcessing
   - 
   - 
   - 

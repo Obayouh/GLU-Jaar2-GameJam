@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/Casper/StartScreen.unity
+    guid: c1be3f4340317064fb16cb8ebfef637f
+  - enabled: 1
+    path: Assets/Scenes/MainGame.unity
+    guid: 577d1c5dd2907354c854f70191cee60b
   m_configObjects: {}
