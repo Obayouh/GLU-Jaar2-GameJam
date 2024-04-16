@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -3044022219743752695}
   - component: {fileID: 162705079046065178}
   m_Layer: 0
-  m_Name: Skibidi Slicers
+  m_Name: Slice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
