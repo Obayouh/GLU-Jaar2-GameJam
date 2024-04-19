@@ -27,7 +27,7 @@ public class ClickManager : MonoBehaviour
     void Update()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hit, 100.0f))
+        if (Physics.Raycast(ray, out hit, 400.0f))
         {
             currentHitTransform = hit.transform;
             hitPosition = currentHitTransform.position;
