@@ -15,7 +15,6 @@ public class ClickManagerPrime : MonoBehaviour
     private GameObject selectedEnemy;
 
     private CardStats cardStats;
-    private HealthSystem enemyHealth;
 
     private int StoreCardDamage;
 
@@ -57,12 +56,13 @@ public class ClickManagerPrime : MonoBehaviour
                 //Debug.Log(selectedCard);
             }
 
-            //Select enemy to attack if not already defined
+            //Select enemy to attack if not already defined and then empty card and enemy selections
             if (Input.GetMouseButtonDown(0) && selectedEnemy == null && selectedCard != null && hit.transform.CompareTag("Enemy"))
             {
 
                 selectedEnemy = hit.transform.gameObject;
-                selectedEnemy.GetComponent<HealthSystem>().TakeDamage(StoreCardDamage);
+                selectedEnemy.GetComponent<HealthSystem>().TakeDamage(cardStats.ReturnDamage());
+                //Logic needs to be added here that either turns the card off or deletes it after use
                 selectedCard = null;
                 selectedEnemy = null;
             }
