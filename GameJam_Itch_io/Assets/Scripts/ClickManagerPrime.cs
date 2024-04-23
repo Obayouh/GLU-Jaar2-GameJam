@@ -11,8 +11,11 @@ public class ClickManagerPrime : MonoBehaviour
     [SerializeField] private Material outlineMaterial;
     private string outlineMaterialInstanceName;
 
-    public GameObject selectedCard;
+    private GameObject selectedCard;
     private GameObject selectedEnemy;
+
+    private CardStats cardStats;
+    private HealthSystem enemyHealth;
 
     void Start()
     {
@@ -43,13 +46,27 @@ public class ClickManagerPrime : MonoBehaviour
             // Store the current hit target as the previous hit target
             previousHit = currentHitTransform;
 
+            //select playercard to use if not already defined
             if (Input.GetMouseButtonDown(0) && selectedCard == null && hit.transform.CompareTag("PlayerCard"))
             {
-                //If card is too costly, do nothing
-                //cardStats = GetComponent<CardStats>();
-                //playerStats.CheckIfUsable();
+                cardStats = GetComponent<CardStats>();
                 selectedCard = hit.transform.gameObject;
                 //Debug.Log(selectedCard);
+            }
+
+            //Select enemy to attack if not already defined
+            if (Input.GetMouseButtonDown(0) && selectedEnemy == null && hit.transform.CompareTag("Enemy"))
+            {
+
+                selectedEnemy = hit.transform.gameObject;
+                enemyHealth = selectedEnemy.GetComponent<HealthSystem>();
+            }
+            
+            //Attack enemy with selected card
+            if (Input.GetMouseButtonDown(0) && selectedEnemy != null && selectedCard != null)
+            {
+                //Attack function called here
+                //enemyHealth.TakeDamage();
             }
         }
         else
