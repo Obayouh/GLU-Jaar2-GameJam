@@ -49,7 +49,6 @@ public class ClickManagerPrime : MonoBehaviour
             {
                 selectedCard = hit.transform.gameObject;
                 cardStats = selectedCard.GetComponent<CardStats>();
-                StoreCardDamage = cardStats.ReturnDamage();
                 //Debug.Log(selectedCard);
             }
 
