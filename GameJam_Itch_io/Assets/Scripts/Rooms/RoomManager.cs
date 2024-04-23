@@ -52,7 +52,6 @@ public class RoomManager : MonoBehaviour
             currentEnemies.SpawnedEnemies.Clear();
             currentEnemies.gameObject.transform.position = new Vector3(currentEnemies.gameObject.transform.position.x,
                 currentEnemies.gameObject.transform.position.y, currentEnemies.gameObject.transform.position.z + 12);
-            cam.GoToNewRoom();
             currentEnemies.Portal.SetActive(true);
             StartCoroutine(currentEnemies.SpawnEnenmies());
             GenerateRoom();
