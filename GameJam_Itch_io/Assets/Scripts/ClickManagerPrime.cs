@@ -17,6 +17,8 @@ public class ClickManagerPrime : MonoBehaviour
     private CardStats cardStats;
     private HealthSystem enemyHealth;
 
+    private int StoreCardDamage;
+
     void Start()
     {
         currentHitTransform = null;
@@ -49,24 +51,20 @@ public class ClickManagerPrime : MonoBehaviour
             //select playercard to use if not already defined
             if (Input.GetMouseButtonDown(0) && selectedCard == null && hit.transform.CompareTag("PlayerCard"))
             {
-                cardStats = GetComponent<CardStats>();
                 selectedCard = hit.transform.gameObject;
+                cardStats = selectedCard.GetComponent<CardStats>();
+                StoreCardDamage = cardStats.ReturnDamage();
                 //Debug.Log(selectedCard);
             }
 
             //Select enemy to attack if not already defined
-            if (Input.GetMouseButtonDown(0) && selectedEnemy == null && hit.transform.CompareTag("Enemy"))
+            if (Input.GetMouseButtonDown(0) && selectedEnemy == null && && selectedCard != null && hit.transform.CompareTag("Enemy"))
             {
 
                 selectedEnemy = hit.transform.gameObject;
-                enemyHealth = selectedEnemy.GetComponent<HealthSystem>();
-            }
-            
-            //Attack enemy with selected card
-            if (Input.GetMouseButtonDown(0) && selectedEnemy != null && selectedCard != null)
-            {
-                //Attack function called here
-                //enemyHealth.TakeDamage();
+                selectedEnemy.GetComponent<HealthSystem>().TakeDamage(StoreCardDamage);
+                selectedCard = null;
+                selectedEnemy = null;
             }
         }
         else
