@@ -15,9 +15,6 @@ public class ClickManagerPrime : MonoBehaviour
     private GameObject selectedEnemy;
 
     private CardStats cardStats;
-
-    private int StoreCardDamage;
-
     void Start()
     {
         currentHitTransform = null;
