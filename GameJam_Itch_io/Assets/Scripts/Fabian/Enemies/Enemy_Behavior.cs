@@ -59,7 +59,7 @@ public class Enemy_Behavior : MonoBehaviour
                 _countdown = _resetTimer;
                 _turnManager.LastEnemyGo = false;
                 _turnManager.AddNewCards = true;
-                _turnManager.PlayersTurn = true;
+                _turnManager.state = TurnState.PlayerTurn;
             }
         }
 

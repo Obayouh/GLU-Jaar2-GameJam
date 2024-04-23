@@ -2,10 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum TurnState
+{
+    PlayerTurn,
+    Waiting,
+    EnemyTurn
+}
+
 public class TurnManager : MonoBehaviour
 {
-    public bool PlayersTurn = true;
-    public bool EnemiesTurn = false;
+    public TurnState state;
 
     public bool FirstEnemyGo;
     public bool SecondEnemyGo;
@@ -17,13 +23,12 @@ public class TurnManager : MonoBehaviour
 
     void Update()
     {
-        if (EnemiesTurn == true)
+        if (state == TurnState.EnemyTurn)
         {
             FirstEnemyGo = true;
-            EnemiesTurn = false;
         }
 
-        if (PlayersTurn && AddNewCards)
+        if (state == TurnState.PlayerTurn && AddNewCards)
         {
             cardManager.AddCards();
             AddNewCards = false;

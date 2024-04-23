@@ -24,7 +24,7 @@ public class CardManager : MonoBehaviour
             spawnedCards.Add(card);
         }
 
-        Instantiate(handPrefab, handPositions[0]);
+        Instantiate(handPrefab, handPositions[3]);
     }
 
     public void RemoveCard(GameObject card)
