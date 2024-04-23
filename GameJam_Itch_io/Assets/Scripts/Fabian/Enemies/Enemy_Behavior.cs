@@ -12,7 +12,7 @@ public class Enemy_Behavior : MonoBehaviour
     private TurnManager _turnManager;
     private SpawnSlot _spawnSlot;
     private float _countdown;
-    private float _resetTimer = 1.5f;
+    private float _resetTimer = 2f;
 
     void Start()
     {
