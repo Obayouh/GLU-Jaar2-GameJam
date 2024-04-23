@@ -58,7 +58,7 @@ public class ClickManagerPrime : MonoBehaviour
             }
 
             //Select enemy to attack if not already defined
-            if (Input.GetMouseButtonDown(0) && selectedEnemy == null && && selectedCard != null && hit.transform.CompareTag("Enemy"))
+            if (Input.GetMouseButtonDown(0) && selectedEnemy == null && selectedCard != null && hit.transform.CompareTag("Enemy"))
             {
 
                 selectedEnemy = hit.transform.gameObject;
