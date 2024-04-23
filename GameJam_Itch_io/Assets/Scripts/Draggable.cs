@@ -11,8 +11,6 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public enum Slot { Enemy};
     public Slot typeOfItem = Slot.Enemy;
 
-    GameObject placeHolder = null;
-
     public void OnBeginDrag(PointerEventData eventData)
     {
         parentToReturnTo = transform.parent;

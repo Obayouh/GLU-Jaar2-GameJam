@@ -299,6 +299,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  currentCost: 0
+  totalCost: 8
   score: 0
   scoreText: {fileID: 0}
   gameOverScreen: {fileID: 0}
@@ -350,8 +352,10 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   durationShaking: 1
-  moveSpeed: 6
-  durationMoving: 2
+  cameraFollower: {fileID: 0}
+  endPos: {x: 0, y: 0, z: 0}
+  speed: 0
+  switchView: 0
 --- !u!114 &2788561041655383809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,17 +368,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c80a1d1f216b4fa47936f86efa5598a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cards:
-  - {fileID: 9135174186864729803, guid: c6ad767ebcf35154bbdd073337ea6f78, type: 3}
-  - {fileID: 3513218801699399861, guid: 189e18137ddae93469fb834d2b750377, type: 3}
-  - {fileID: 5037045838545631640, guid: 53f8c23924eb1614c8f55ed265436f79, type: 3}
-  - {fileID: 4760951548363589690, guid: 37a26a7ccec0e7f4687fc99b0929ae2e, type: 3}
+  cardPrefabs: []
   spawnedCards: []
   cardPositions:
   - {fileID: 7584711746498967684}
   - {fileID: 6973649322243976216}
   - {fileID: 5315604299370068734}
   - {fileID: 178299114160837282}
+  handPrefab: {fileID: 0}
+  handPositions: []
+  currentCard: {fileID: 0}
 --- !u!135 &5664893693103337123
 SphereCollider:
   m_ObjectHideFlags: 0

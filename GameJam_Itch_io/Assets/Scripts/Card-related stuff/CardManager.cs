@@ -7,6 +7,8 @@ public class CardManager : MonoBehaviour
     public GameObject[] cardPrefabs;
     public List<GameObject> spawnedCards = new List<GameObject>();
     public Transform[] cardPositions;
+    public GameObject handPrefab;
+    public Transform[] handPositions;
 
     int maxAmountOfCards = 4;
 
@@ -21,14 +23,8 @@ public class CardManager : MonoBehaviour
             GameObject card = Instantiate(cardPrefabs[rdm], cardPositions[i]);
             spawnedCards.Add(card);
         }
-        SelectedCard(spawnedCards[1]);
 
-        Invoke("SwitchCard", 5f);
-    }
-
-    public void SwitchCard()
-    {
-        SelectedCard(spawnedCards[2]);
+        Instantiate(handPrefab, handPositions[0]);
     }
 
     public void RemoveCard(GameObject card)
@@ -55,8 +51,6 @@ public class CardManager : MonoBehaviour
 
     public void SelectedCard(GameObject card)
     {
-        Debug.Log("test");
-
         if (currentCard == null)
         {
             currentCard = card;
@@ -70,6 +64,5 @@ public class CardManager : MonoBehaviour
         currentCard = card;
 
         startPos = card.transform.position;
-        card.transform.position += new Vector3(card.transform.position.x, card.transform.position.y, 1);
     }
 }
