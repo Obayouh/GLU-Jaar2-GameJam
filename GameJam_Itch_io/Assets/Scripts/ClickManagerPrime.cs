@@ -15,7 +15,6 @@ public class ClickManagerPrime : MonoBehaviour
     private GameObject selectedEnemy;
 
     private CardStats cardStats;
-    private TurnState turnState;
 
     void Start()
     {
@@ -51,6 +50,8 @@ public class ClickManagerPrime : MonoBehaviour
             {
                 selectedCard = hit.transform.gameObject;
                 cardStats = selectedCard.GetComponent<CardStats>();
+                CardManager cardManager = FindObjectOfType<CardManager>();
+                cardManager.SelectedCard(selectedCard);
                 //Debug.Log(selectedCard);
             }
 

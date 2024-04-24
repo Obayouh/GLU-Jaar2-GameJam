@@ -13,10 +13,14 @@ public class CardManager : MonoBehaviour
     int maxAmountOfCards = 4;
 
     public GameObject currentCard;
-    Vector3 startPos;
+    public Transform hand;
+
+    TurnManager turnManager;
 
     void Start()
     {
+        turnManager = FindObjectOfType<TurnManager>();
+
         for (int i = 0; i < maxAmountOfCards; i++)
         {
             int rdm = Random.Range(0, cardPrefabs.Length);
@@ -49,20 +53,14 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    public void SelectedCard(GameObject card)
+    public void SelectedCard(GameObject chosenCard)
     {
-        if (currentCard == null)
-        {
-            currentCard = card;
-        }
-
-        if (currentCard != card)
-        {
-            currentCard.transform.position = startPos;
-        }
-
-        currentCard = card;
-
-        startPos = card.transform.position;
+        turnManager.ChangeState(TurnState.Attack);
+        ScaleOnHover soh = chosenCard.GetComponent<ScaleOnHover>();
+        Destroy(soh);
+        GameObject card = chosenCard.transform.parent.gameObject;
+        card.transform.parent = hand;
+        card.transform.position = hand.position;
+        card.transform.rotation = hand.rotation;
     }
 }

@@ -37,7 +37,6 @@ public class TurnManager : MonoBehaviour
     private void StartPlayerTurn()
     {
         ChangeState(TurnState.PickCard);
-        endTurnButton.SetActive(true);
         if (AddNewCards)
         {
             cardManager.AddCards();
@@ -61,5 +60,13 @@ public class TurnManager : MonoBehaviour
         state = newState;
         CameraMovement cam = FindAnyObjectByType<CameraMovement>();
         cam.CheckState();
+        if (state == TurnState.PickCard)
+        {
+            endTurnButton.SetActive(true);
+        }
+        else
+        {
+            endTurnButton.SetActive(false);
+        }
     }
 }

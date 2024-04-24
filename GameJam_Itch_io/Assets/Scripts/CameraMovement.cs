@@ -57,9 +57,8 @@ public class CameraMovement : MonoBehaviour
             switchView = true;
             turnManager.ChangeState(TurnState.Attack);
         }
-        else if (turnManager.state == TurnState.EnemyTurn)
+        else
         {
-            Debug.Log("test");
             if (cameraFollower.position != startPos)
             {
                 switchView = true;
