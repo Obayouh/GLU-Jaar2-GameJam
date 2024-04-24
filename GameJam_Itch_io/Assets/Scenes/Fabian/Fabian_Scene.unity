@@ -771,11 +771,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3811977143599701672, guid: 18dc60fb367c47547b5febd044126417,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6515974313701221377, guid: 18dc60fb367c47547b5febd044126417,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -834,57 +829,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6864289399365567595, guid: 18dc60fb367c47547b5febd044126417,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4886875121805353712}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18dc60fb367c47547b5febd044126417, type: 3}
---- !u!1 &4886875121805353708 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6864289399365567595, guid: 18dc60fb367c47547b5febd044126417,
-    type: 3}
-  m_PrefabInstance: {fileID: 4886875121805353707}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4886875121805353709 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1029619685814661543, guid: 18dc60fb367c47547b5febd044126417,
-    type: 3}
-  m_PrefabInstance: {fileID: 4886875121805353707}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4886875121805353710 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6116010915453642917, guid: 18dc60fb367c47547b5febd044126417,
-    type: 3}
-  m_PrefabInstance: {fileID: 4886875121805353707}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4886875121805353711 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4708444400582684219, guid: 18dc60fb367c47547b5febd044126417,
-    type: 3}
-  m_PrefabInstance: {fileID: 4886875121805353707}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4886875121805353712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4886875121805353708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f121bab8112cce4485b1a4193b9b8dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AllSpawnPoints:
-  - {fileID: 4886875121805353711}
-  - {fileID: 4886875121805353710}
-  - {fileID: 4886875121805353709}
-  CurrentSpawnedEnemies: []
-  Enemies: {fileID: 11400000, guid: 5266b0ba5760d22459ed7b64d53ab789, type: 2}
-  FirstSpawnPointPos: 0
-  SecondSpawnPointPos: 0
-  ThirdSpawnPointPos: 0
 --- !u!1001 &7090163237076395788
 PrefabInstance:
   m_ObjectHideFlags: 0
