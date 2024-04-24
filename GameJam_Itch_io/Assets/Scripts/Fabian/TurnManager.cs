@@ -1,11 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public enum TurnState
 {
-    PlayerTurn,
+    PickCard,
     Waiting,
+    Attack,
     EnemyTurn
 }
 
@@ -19,19 +21,45 @@ public class TurnManager : MonoBehaviour
 
     public bool AddNewCards;
 
-    [SerializeField] private CardManager cardManager;
+    public GameObject endTurnButton;
 
-    void Update()
+    private CardManager cardManager;
+    private ClickManagerPrime clickMananger;
+
+    private void Start()
     {
-        if (state == TurnState.EnemyTurn)
-        {
-            FirstEnemyGo = true;
-        }
+        cardManager = FindObjectOfType<CardManager>();
+        clickMananger = FindObjectOfType<ClickManagerPrime>();
 
-        if (state == TurnState.PlayerTurn && AddNewCards)
+        StartPlayerTurn();
+    }
+
+    private void StartPlayerTurn()
+    {
+        ChangeState(TurnState.PickCard);
+        endTurnButton.SetActive(true);
+        if (AddNewCards)
         {
             cardManager.AddCards();
             AddNewCards = false;
         }
+    }
+
+    private void StartEnemyTurn()
+    {
+        ChangeState(TurnState.EnemyTurn);
+        FirstEnemyGo = true;
+    }
+
+    public void EndTurn()
+    {
+        StartEnemyTurn();
+    }
+
+    public void ChangeState(TurnState newState)
+    {
+        state = newState;
+        CameraMovement cam = FindAnyObjectByType<CameraMovement>();
+        cam.CheckState();
     }
 }

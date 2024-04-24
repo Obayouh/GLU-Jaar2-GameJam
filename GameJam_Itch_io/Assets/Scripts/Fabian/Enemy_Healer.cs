@@ -129,7 +129,7 @@ public class Enemy_Healer : Ab_Enemy
                 _countdown = _resetTimer;
                 _turnManager.LastEnemyGo = false;
                 _turnManager.AddNewCards = true;
-                _turnManager.state = TurnState.PlayerTurn;
+                _turnManager.ChangeState(TurnState.PickCard);
             }
         }
     }

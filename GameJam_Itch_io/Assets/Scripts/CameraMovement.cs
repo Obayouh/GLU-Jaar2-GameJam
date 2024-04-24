@@ -20,6 +20,7 @@ public class CameraMovement : MonoBehaviour
 
     public bool switchView;
 
+    TurnManager turnManager;
     CinemachineVirtualCamera cam;
 
     void Start()
@@ -27,13 +28,15 @@ public class CameraMovement : MonoBehaviour
         cam = GetComponentInChildren<CinemachineVirtualCamera>();
         cam.LookAt = cameraFollower;
 
+        turnManager = FindAnyObjectByType<TurnManager>();
+
         startPos = cameraFollower.position;
         targetPos = endPos;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && turnManager.state == TurnState.PickCard)
         {
             switchView = true;
         }
@@ -41,6 +44,27 @@ public class CameraMovement : MonoBehaviour
         if (switchView)
         {
             SwitchView();
+        }
+    }
+
+    public void CheckState()
+    {
+        if (turnManager == null)
+            return;
+
+        if (turnManager.state == TurnState.Waiting)
+        {
+            switchView = true;
+            turnManager.ChangeState(TurnState.Attack);
+        }
+        else if (turnManager.state == TurnState.EnemyTurn)
+        {
+            Debug.Log("test");
+            if (cameraFollower.position != startPos)
+            {
+                switchView = true;
+                targetPos = startPos;
+            }
         }
     }
 

@@ -15,6 +15,8 @@ public class ClickManagerPrime : MonoBehaviour
     private GameObject selectedEnemy;
 
     private CardStats cardStats;
+    private TurnState turnState;
+
     void Start()
     {
         currentHitTransform = null;
@@ -127,6 +129,18 @@ public class ClickManagerPrime : MonoBehaviour
                 }
                 renderer.materials = materials.ToArray();
             }
+        }
+    }
+
+    public GameObject ReturnPlayerCard()
+    {
+        if (selectedCard != null)
+        {
+            return selectedCard;
+        }
+        else
+        {
+            return null;
         }
     }
 }
