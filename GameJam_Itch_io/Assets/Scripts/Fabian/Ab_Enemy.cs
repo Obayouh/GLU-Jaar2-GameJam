@@ -16,6 +16,23 @@ public abstract class Ab_Enemy : MonoBehaviour
 
     public Element Elements;
 
+    private GameObject _player;
+    private TurnManager _turnManager;
+    private SpawnSlot _spawnSlot;
+    private HealthSystem _healthSystem;
+    private SpawnEnemies _spawnEnemies;
+
+    private float _maxHealth;
+
+    public virtual void FindAll()
+    {
+        _player = FindObjectOfType<PlayerStats>().gameObject;
+        _turnManager = FindObjectOfType<TurnManager>();
+        _spawnSlot = GetComponentInParent<SpawnSlot>();
+        _healthSystem = GetComponent<HealthSystem>();
+        _spawnEnemies = FindObjectOfType<SpawnEnemies>();
+    }
+
     /// <summary>
     /// At the start of the battle play animation
     /// </summary>
@@ -29,10 +46,22 @@ public abstract class Ab_Enemy : MonoBehaviour
     /// <summary>
     /// Give specifics on when to do an action
     /// </summary>
-    public virtual void TurnToAct() { }
+    //public virtual void TurnToAct() { }
 
     /// <summary>
     /// Give out an reward to the player, currency for instance
     /// </summary>
-    public virtual void Reward() { }
+    //public virtual void Reward() { }
+
+    public virtual void BeginCountdown(Transform transform, float countdown) 
+    {
+        this.transform.LookAt(transform);
+        countdown -= Time.deltaTime;
+    }
+
+    public virtual void GetUseAbiltyRange(HealthSystem currentHP, float halfHP)
+    {
+        _maxHealth = currentHP.CurrentHealth;
+        halfHP = _maxHealth * 50 / 100;
+    }
 }

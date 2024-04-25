@@ -13,9 +13,5 @@ MonoBehaviour:
   m_Name: TypesOfEnemies
   m_EditorClassIdentifier: 
   AllEnemies:
-  - {fileID: 6790881737718223184, guid: 2bf9aa572204ecf40b0db49ca40bb98a, type: 3}
-  - {fileID: 4005114963543809676, guid: e7f1a8b4457e41e43bcd8b9509df3e8d, type: 3}
-  - {fileID: 6790881737718223184, guid: 77b2fd5348e3165478ac4e9706b1a5ab, type: 3}
-  - {fileID: 6790881737718223184, guid: e756af56375478f419430cb9fa9de5df, type: 3}
-  - {fileID: 6790881737718223184, guid: f082491965af1cd479480e02ae3c4bb5, type: 3}
   - {fileID: 7587874996716114024, guid: a04602b5330eb414f9c4051c07a8af76, type: 3}
+  - {fileID: 7587874996716114024, guid: 37c86724c4d29e543a318bc99f270cfd, type: 3}
