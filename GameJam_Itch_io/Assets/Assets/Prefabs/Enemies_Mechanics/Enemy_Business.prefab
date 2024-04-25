@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 6719110151135317832}
   - component: {fileID: 5547373872100183568}
   - component: {fileID: 8576733852791497495}
+  - component: {fileID: 8724746500497642630}
   m_Layer: 0
   m_Name: Enemy_Business
   m_TagString: Enemy
@@ -145,6 +146,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 10
   maxHealth: 10
+--- !u!114 &8724746500497642630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6790881737718223184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dd1b2257789294468d237c7951a6225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5493318112392316398
 PrefabInstance:
   m_ObjectHideFlags: 0

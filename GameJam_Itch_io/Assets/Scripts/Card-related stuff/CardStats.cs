@@ -50,9 +50,8 @@ public class CardStats : AbCards
         return cost;
     }
 
-    public int ReturnDamage()
+    public float ReturnDamage()
     {
-        
         return damage;
     }
 }

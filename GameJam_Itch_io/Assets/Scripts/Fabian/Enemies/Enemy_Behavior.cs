@@ -59,7 +59,8 @@ public class Enemy_Behavior : MonoBehaviour
                 _countdown = _resetTimer;
                 _turnManager.LastEnemyGo = false;
                 _turnManager.AddNewCards = true;
-                _turnManager.ChangeState(TurnState.PickCard);
+                Debug.Log("test");
+                _turnManager.ChangeState(TurnState.PlayerTurn);
             }
         }
 

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public enum TurnState
 {
+    PlayerTurn,
     PickCard,
     Waiting,
     Attack,
@@ -63,6 +64,11 @@ public class TurnManager : MonoBehaviour
         if (state == TurnState.PickCard)
         {
             endTurnButton.SetActive(true);
+        }
+        else if (state == TurnState.PlayerTurn)
+        {
+            AddNewCards = false;
+            StartPlayerTurn();
         }
         else
         {

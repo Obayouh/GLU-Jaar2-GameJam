@@ -15,9 +15,12 @@ public class ClickManagerPrime : MonoBehaviour
     private GameObject selectedEnemy;
 
     private CardStats cardStats;
+    private CardManager cardManager;
 
     void Start()
     {
+        cardManager = FindObjectOfType<CardManager>();
+
         currentHitTransform = null;
         selectedCard = null;
         outlineMaterialInstanceName = outlineMaterial.name + " (Instance)";
@@ -49,8 +52,7 @@ public class ClickManagerPrime : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && selectedCard == null && hit.transform.CompareTag("PlayerCard"))
             {
                 selectedCard = hit.transform.gameObject;
-                cardStats = selectedCard.GetComponent<CardStats>();
-                CardManager cardManager = FindObjectOfType<CardManager>();
+                cardStats = selectedCard.GetComponentInParent<CardStats>();
                 cardManager.SelectedCard(selectedCard);
                 //Debug.Log(selectedCard);
             }
@@ -58,10 +60,12 @@ public class ClickManagerPrime : MonoBehaviour
             //Select enemy to attack if not already defined and then empty card and enemy selections
             if (Input.GetMouseButtonDown(0) && selectedEnemy == null && selectedCard != null && hit.transform.CompareTag("Enemy"))
             {
-
                 selectedEnemy = hit.transform.gameObject;
-                selectedEnemy.GetComponent<HealthSystem>().TakeDamage(cardStats.ReturnDamage());
-                //Logic needs to be added here that either turns the card off or deletes it after use
+                HealthSystem hs = selectedEnemy.GetComponent<HealthSystem>();
+                hs.TakeDamage(cardStats.ReturnDamage());
+                cardManager.RemoveCard(selectedCard.transform.parent.gameObject);
+                TurnManager turnMananger = FindObjectOfType<TurnManager>();
+                turnMananger.ChangeState(TurnState.PickCard);
                 selectedCard = null;
                 selectedEnemy = null;
             }

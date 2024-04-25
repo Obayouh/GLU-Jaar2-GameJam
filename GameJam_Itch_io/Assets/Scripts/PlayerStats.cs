@@ -28,22 +28,12 @@ public class PlayerStats : MonoBehaviour
 
         currentHealth = maxHealth;
 
-        gameOverScreen.SetActive(false);
-
         currentCost = totalCost;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            TakeDamage(10);
-        }
 
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            AddScore(100);
-        }
     }
 
     public void AddScore(int amount)
