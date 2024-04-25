@@ -24,6 +24,18 @@ public class Enemy_Behavior : MonoBehaviour
 
     void Update()
     {
+
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            _spawnSlot.HasChild = false;
+            Destroy(gameObject);
+        }
+    }
+
+    private IEnumerator EnemyTurn()
+    {
+        yield return new WaitForSeconds(2f);
         Transform parentPos = _spawnSlot.transform;
 
         if (_turnManager.FirstEnemyGo && parentPos.position.x == -3)
@@ -61,12 +73,6 @@ public class Enemy_Behavior : MonoBehaviour
                 _turnManager.AddNewCards = true;
                 _turnManager.ChangeState(TurnState.PlayerTurn);
             }
-        }
-
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            _spawnSlot.HasChild = false;
-            Destroy(gameObject);
         }
     }
 

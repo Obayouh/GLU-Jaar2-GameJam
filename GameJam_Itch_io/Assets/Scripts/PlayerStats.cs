@@ -31,11 +31,6 @@ public class PlayerStats : MonoBehaviour
         currentCost = totalCost;
     }
 
-    void Update()
-    {
-
-    }
-
     public void AddScore(int amount)
     {
         score += amount;

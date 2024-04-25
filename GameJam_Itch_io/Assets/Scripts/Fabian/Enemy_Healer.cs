@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Enemy_Healer : Ab_Enemy
 {
@@ -53,14 +54,15 @@ public class Enemy_Healer : Ab_Enemy
         Invoke(nameof(GetHealthBack), 0.26f);
     }
 
+
     void Update()
     {
         Transform parentPos = _spawnSlot.transform;
 
-        if (_turnManager.FirstEnemyGo && parentPos.position.x == _spawnEnemies.FirstSpawnPointPos)
+        if (_turnManager.FirstEnemyGo && parentPos.position == _spawnEnemies.spawnPoints[0].transform.position)
         {
-            SecondEnemyHealth = _spawnEnemies.CurrentSpawnedEnemies[1].GetComponent<HealthSystem>();
-            ThirdEnemyHealth = _spawnEnemies.CurrentSpawnedEnemies[2].GetComponent<HealthSystem>();
+            SecondEnemyHealth = _spawnEnemies.spawnedEnemies[1].GetComponent<HealthSystem>();
+            ThirdEnemyHealth = _spawnEnemies.spawnedEnemies[2].GetComponent<HealthSystem>();
 
             if (SecondEnemyHealth.CurrentHealth < HealOtherRange && ThirdEnemyHealth.CurrentHealth > HealOtherRange)
             {
@@ -82,10 +84,10 @@ public class Enemy_Healer : Ab_Enemy
             }
         }
 
-        if (_turnManager.SecondEnemyGo && parentPos.position.x == _spawnEnemies.SecondSpawnPointPos)
+        if (_turnManager.SecondEnemyGo && parentPos.position == _spawnEnemies.spawnPoints[1].transform.position)
         {
-            FirstEnemyHealth = _spawnEnemies.CurrentSpawnedEnemies[0].GetComponent<HealthSystem>();
-            ThirdEnemyHealth = _spawnEnemies.CurrentSpawnedEnemies[2].GetComponent<HealthSystem>();
+            FirstEnemyHealth = _spawnEnemies.spawnedEnemies[0].GetComponent<HealthSystem>();
+            ThirdEnemyHealth = _spawnEnemies.spawnedEnemies[2].GetComponent<HealthSystem>();
 
             if (FirstEnemyHealth.CurrentHealth < HealOtherRange && ThirdEnemyHealth.CurrentHealth > HealOtherRange)
             {
@@ -107,10 +109,10 @@ public class Enemy_Healer : Ab_Enemy
             }
         }
 
-        if (_turnManager.LastEnemyGo && parentPos.position.x == _spawnEnemies.ThirdSpawnPointPos)
+        if (_turnManager.LastEnemyGo && parentPos.position == _spawnEnemies.spawnPoints[2].transform.position)
         {
-            FirstEnemyHealth = _spawnEnemies.CurrentSpawnedEnemies[0].GetComponent<HealthSystem>();
-            SecondEnemyHealth = _spawnEnemies.CurrentSpawnedEnemies[1].GetComponent<HealthSystem>();
+            FirstEnemyHealth = _spawnEnemies.spawnedEnemies[0].GetComponent<HealthSystem>();
+            SecondEnemyHealth = _spawnEnemies.spawnedEnemies[1].GetComponent<HealthSystem>();
 
             if (FirstEnemyHealth.CurrentHealth < HealOtherRange && SecondEnemyHealth.CurrentHealth > HealOtherRange)
             {

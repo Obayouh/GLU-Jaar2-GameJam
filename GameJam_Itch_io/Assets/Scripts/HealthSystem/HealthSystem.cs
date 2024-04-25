@@ -18,6 +18,7 @@ public class HealthSystem : Ab_HealthManager
     public override void Kill()
     {
         //Put logic for playing death animation and anything else deemed necessary here
-        Destroy(gameObject);
+        SpawnEnemies spawnEnemies = FindObjectOfType<SpawnEnemies>();
+        spawnEnemies.RemoveEnemy(this.gameObject);
     }
 }

@@ -279,12 +279,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f121bab8112cce4485b1a4193b9b8dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AllSpawnPoints:
+  spawnPoints:
   - {fileID: 4708444400582684219}
   - {fileID: 6116010915453642917}
   - {fileID: 1029619685814661543}
-  CurrentSpawnedEnemies: []
+  spawnedEnemies: []
   Enemies: {fileID: 11400000, guid: 5266b0ba5760d22459ed7b64d53ab789, type: 2}
-  FirstSpawnPointPos: 0
-  SecondSpawnPointPos: 0
-  ThirdSpawnPointPos: 0
