@@ -6,7 +6,6 @@ using Cinemachine;
 public class CameraMovement : MonoBehaviour
 {
     [Header("CameraShaking")]
-    public bool startShaking;
     public bool gameOver;
     public AnimationCurve curve;
     public float durationShaking = 1f;
@@ -32,6 +31,7 @@ public class CameraMovement : MonoBehaviour
 
         startPos = cameraFollower.position;
         targetPos = endPos;
+
     }
 
     void Update()
@@ -80,6 +80,11 @@ public class CameraMovement : MonoBehaviour
             targetPos = startPos;
             switchView = false;
         }
+    }
+
+    public void StartShaking()
+    {
+        StartCoroutine(Shaking());
     }
 
     IEnumerator Shaking()

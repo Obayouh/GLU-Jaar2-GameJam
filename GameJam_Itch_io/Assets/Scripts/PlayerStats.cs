@@ -56,7 +56,7 @@ public class PlayerStats : MonoBehaviour
     {
         currentHealth -= amount;
 
-        cam.startShaking = true;
+        cam.StartShaking();
 
         if (currentHealth <= 0)
         {

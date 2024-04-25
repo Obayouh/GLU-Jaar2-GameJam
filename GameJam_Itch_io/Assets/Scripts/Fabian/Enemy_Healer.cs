@@ -128,9 +128,7 @@ public class Enemy_Healer : Ab_Enemy
                 SwitchState();
                 _countdown = _resetTimer;
                 _turnManager.LastEnemyGo = false;
-                Debug.Log("testical");
-                //_turnManager.AddNewCards = true;
-                //_turnManager.ChangeState(TurnState.PickCard);
+                _turnManager.ChangeState(TurnState.PlayerTurn);
             }
         }
     }

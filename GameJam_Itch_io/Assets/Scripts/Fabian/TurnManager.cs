@@ -32,11 +32,12 @@ public class TurnManager : MonoBehaviour
         cardManager = FindObjectOfType<CardManager>();
         clickMananger = FindObjectOfType<ClickManagerPrime>();
 
-        StartPlayerTurn();
+        StartCoroutine(StartPlayerTurn(1f));
     }
 
-    private void StartPlayerTurn()
+    private IEnumerator StartPlayerTurn(float amount)
     {
+        yield return new WaitForSeconds(amount);
         ChangeState(TurnState.PickCard);
         if (AddNewCards)
         {
@@ -67,8 +68,8 @@ public class TurnManager : MonoBehaviour
         }
         else if (state == TurnState.PlayerTurn)
         {
-            AddNewCards = false;
-            StartPlayerTurn();
+            AddNewCards = true;
+            StartCoroutine(StartPlayerTurn(2f));
         }
         else
         {

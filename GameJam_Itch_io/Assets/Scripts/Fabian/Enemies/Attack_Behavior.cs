@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Attack_Behavior : MonoBehaviour
 {
-    private float _speed = 5;
+    private float _speed = 10;
 
     void Update()
     {
         transform.Translate(_speed * Time.deltaTime * Vector3.forward);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
