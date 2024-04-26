@@ -46,7 +46,7 @@ public class Enemy_Warrior : Ab_Enemy
     {
         Transform parentPos = _spawnSlot.transform;
 
-        if (_turnManager.FirstEnemyGo && parentPos.position.x == _spawnEnemies.FirstSpawnPointPos)
+        if (_turnManager.FirstEnemyGo /*&& parentPos.position.x == _spawnEnemies.FirstSpawnPointPos*/)
         {
 
             BeginCountdown(_player.transform, _countdown);
