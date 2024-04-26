@@ -30,24 +30,20 @@ public class Enemy_Warrior : Ab_Enemy
         //Invoke(GetUseAbiltyRange(_healthSystem, HalfHealth), 0.25f);
     }
 
-    void Update()
+    public override void OnAction()
     {
-        Transform parentPos = _spawnSlot.transform;
+        base.OnAction();
 
-        if (_turnManager.FirstEnemyGo /*&& parentPos.position.x == _spawnEnemies.FirstSpawnPointPos*/)
+        BeginCountdown(_player.transform, _countdown);
+        if (_countdown <= 0f)
         {
-
-            BeginCountdown(_player.transform, _countdown);
-            if (_countdown <= 0f)
-            {
-                SwitchState();
-                _countdown = _resetTimer;
-                _turnManager.FirstEnemyGo = false;
-                _turnManager.SecondEnemyGo = true;
-            }
+            SwitchState();
+            _countdown = _resetTimer;
+TurnManager turnManager = FindFirstObjectByType<TurnManager>();
+            turnManager.ChangeState(TurnState.PlayerTurn);
         }
     }
-
+    
     public override void BeginCountdown(Transform transform, float countdown)
     {
         base.BeginCountdown(transform, countdown);

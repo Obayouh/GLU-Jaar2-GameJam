@@ -81,7 +81,6 @@ public class Enemy_Healer : Ab_Enemy
         {
             SwitchState();
             _countdown = _resetTimer;
-
         }
     }
 
