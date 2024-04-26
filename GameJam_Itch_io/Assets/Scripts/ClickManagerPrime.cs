@@ -12,11 +12,30 @@ public class ClickManagerPrime : MonoBehaviour
     private GameObject selectedEnemy;
 
     private CardStats cardStats;
-    private CardManager cardManager;
+    [SerializeField] private PlayerStats playerStats;
+
+    [SerializeField] private CardManager cardManager;
+    [SerializeField] private TurnManager turnManager;
 
     void Start()
     {
-        cardManager = FindObjectOfType<CardManager>();
+        if (cardManager == null)
+        {
+            Debug.Log("Fill in the CardManager field in the ClickManager next time!");
+            cardManager = FindFirstObjectByType<CardManager>();
+        }
+
+        if (turnManager == null)
+        {
+            Debug.Log("Fill in the TurnManager field in the ClickManager next time!");
+            turnManager = FindFirstObjectByType<TurnManager>();
+        }
+
+        if (playerStats == null)
+        {
+            Debug.Log("Fill in the PlayerStats field in the ClickManager next time!");
+            playerStats = FindFirstObjectByType<PlayerStats>();
+        }
 
         currentHitTransform = null;
         selectedCard = null;
@@ -47,21 +66,23 @@ public class ClickManagerPrime : MonoBehaviour
             {
                 selectedCard = hit.transform.gameObject;
                 cardStats = selectedCard.GetComponentInParent<CardStats>();
-                cardManager.SelectedCard(selectedCard);
+
+                //Check if player has enough mana
+                if (playerStats.ReturnPlayerMana() < cardStats.ReturnCost())
+                {
+                    Debug.Log("Not Enough Mana");
+                }
+                else
+                {
+                    cardManager.SelectedCard(selectedCard);
+                }
                 //Debug.Log(selectedCard);
             }
 
             //Select enemy to attack if not already defined and then empty card and enemy selections
             if (Input.GetMouseButtonDown(0) && selectedEnemy == null && selectedCard != null && hit.transform.CompareTag("Enemy"))
             {
-                selectedEnemy = hit.transform.gameObject;
-                HealthSystem hs = selectedEnemy.GetComponent<HealthSystem>();
-                hs.TakeDamage(cardStats.ReturnDamage());
-                cardManager.RemoveCard(selectedCard.transform.parent.gameObject);
-                TurnManager turnMananger = FindObjectOfType<TurnManager>();
-                turnMananger.ChangeState(TurnState.PickCard);
-                selectedCard = null;
-                selectedEnemy = null;
+                DealDamage();
             }
         }
         else
@@ -72,6 +93,23 @@ public class ClickManagerPrime : MonoBehaviour
                 previousHit = null;
             }
         }
+    }
+
+    private void DealDamage()
+    {
+        selectedEnemy = hit.transform.gameObject;
+        HealthSystem hs = selectedEnemy.GetComponent<HealthSystem>();
+        hs.TakeDamage(cardStats.ReturnDamage());
+        FinishedAttacking();
+    }
+
+    private void FinishedAttacking()
+    {
+        playerStats.LoseMana(cardStats.ReturnCost());
+        cardManager.RemoveCard(selectedCard.transform.parent.gameObject);
+        turnManager.ChangeState(TurnState.PickCard);
+        selectedCard = null;
+        selectedEnemy = null;
     }
 
     public GameObject ReturnPlayerCard()

@@ -4,31 +4,27 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
-public class PlayerStats : MonoBehaviour
+public class PlayerStats : Ab_HealthManager
 {
-    public int maxHealth = 100;
-    public int currentHealth;
 
-    [SerializeField] private int currentCost;
-    private int costAmount;
-    [SerializeField, Range(8, 10)] private int totalCost;
+    private int manaCost;
+    [SerializeField] private int currentMana;
+    [SerializeField, Range(6, 10)] private int totalMana;
 
-    public int score;
-    public TextMeshProUGUI scoreText;
+    [SerializeField] private int score;
+    [SerializeField] private TextMeshProUGUI scoreText;
 
-    public GameObject gameOverScreen;
+    [SerializeField] private GameObject gameOverScreen;
 
-    CameraMovement cam;
+    private CameraMovement cam;
 
     private CardStats cardStats;
 
-    void Start()
+    public override void Start()
     {
-        cam = FindAnyObjectByType<CameraMovement>();
-
-        currentHealth = maxHealth;
-
-        currentCost = totalCost;
+        base.Start();
+        cam = FindObjectOfType<CameraMovement>();
+        RefillMana();
     }
 
     public void AddScore(int amount)
@@ -40,6 +36,17 @@ public class PlayerStats : MonoBehaviour
         StartCoroutine(Stop());
     }
 
+    public override void TakeDamage(float amount)
+    {
+        CurrentHealth -= amount;
+    }
+
+    public override void Kill()
+    {
+        base.Kill();
+        //Execute gameover screen
+    }
+
     IEnumerator Stop()
     {
         yield return new WaitForSeconds(.5f);
@@ -47,36 +54,19 @@ public class PlayerStats : MonoBehaviour
         anim.SetBool("PlayAnim", false);
     }
 
-    public void TakeDamage(int amount)
+    public void RefillMana()
     {
-        currentHealth -= amount;
-
-        cam.StartShaking();
-
-        if (currentHealth <= 0)
-        {
-            Kill();
-        }
+        currentMana = totalMana;
     }
 
-    private void Kill()
+    public void LoseMana(int cardManaCost)
     {
-        cam.gameOver = true;
-
-        gameOverScreen.SetActive(true);
+        currentMana -= cardManaCost;
+        Debug.Log("You have " + currentMana + " mana remaining");
     }
 
-    public void CheckIfUsable()
+    public int ReturnPlayerMana()
     {
-        if (cardStats.ReturnCost() > currentCost)
-        {
-            Debug.Log("You don't have enough points to use that card");
-            return;
-        }
-    }
-
-    public void ThrowCard()
-    {
-        
+        return currentMana;
     }
 }
