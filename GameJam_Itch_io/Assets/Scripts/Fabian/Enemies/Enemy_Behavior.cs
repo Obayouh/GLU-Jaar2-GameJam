@@ -20,12 +20,11 @@ public class Enemy_Behavior : MonoBehaviour
         _turnManager = FindObjectOfType<TurnManager>();
         _spawnSlot = GetComponentInParent<SpawnSlot>();
         _countdown = _resetTimer;
+
     }
 
     void Update()
     {
-
-
         if (Input.GetKeyDown(KeyCode.K))
         {
             _spawnSlot.HasChild = false;

@@ -19,7 +19,7 @@ public class CardManager : MonoBehaviour
 
     void Start()
     {
-        turnManager = FindObjectOfType<TurnManager>();
+        turnManager = FindFirstObjectByType<TurnManager>();
 
         for (int i = 0; i < maxAmountOfCards; i++)
         {

@@ -17,14 +17,6 @@ public class EnemyController : MonoBehaviour
 
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            StartEnemyActions();
-        }
-    }
-
     // Start processing enemies' actions
     public void StartEnemyActions()
     {
