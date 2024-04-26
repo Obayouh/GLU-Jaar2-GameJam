@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ReferenceInstance : MonoBehaviour
 {
-    public static ReferenceInstance refInstance { get; private set; }
+    public static ReferenceInstance refInstance;
 
     public PlayerStats playerStats;
     public TurnManager turnManager;
