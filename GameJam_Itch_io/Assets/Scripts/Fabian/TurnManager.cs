@@ -27,6 +27,11 @@ public class TurnManager : MonoBehaviour
     //[SerializeField] private CardManager cardManager;
     //[SerializeField] private PlayerStats playerStats;
 
+    private void Awake()
+    {
+        
+    }
+
     private void Start()
     {
         //if (cardManager == null)

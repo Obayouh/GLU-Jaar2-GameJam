@@ -12,31 +12,9 @@ public class ClickManagerPrime : MonoBehaviour
     private GameObject selectedEnemy;
 
     private CardStats cardStats;
-    [SerializeField] private PlayerStats playerStats;
-
-    [SerializeField] private CardManager cardManager;
-    [SerializeField] private TurnManager turnManager;
 
     void Start()
     {
-        if (cardManager == null)
-        {
-            Debug.Log("Fill in the CardManager field in the ClickManager next time!");
-            cardManager = FindFirstObjectByType<CardManager>();
-        }
-
-        if (turnManager == null)
-        {
-            Debug.Log("Fill in the TurnManager field in the ClickManager next time!");
-            turnManager = FindFirstObjectByType<TurnManager>();
-        }
-
-        if (playerStats == null)
-        {
-            Debug.Log("Fill in the PlayerStats field in the ClickManager next time!");
-            playerStats = FindFirstObjectByType<PlayerStats>();
-        }
-
         currentHitTransform = null;
         selectedCard = null;
     }
@@ -68,13 +46,13 @@ public class ClickManagerPrime : MonoBehaviour
                 cardStats = selectedCard.GetComponentInParent<CardStats>();
 
                 //Check if player has enough mana
-                if (playerStats.ReturnPlayerMana() < cardStats.ReturnCost())
+                if (ReferenceInstance.refInstance.playerStats.ReturnPlayerMana() < cardStats.ReturnCost())
                 {
                     Debug.Log("Not Enough Mana");
                 }
                 else
                 {
-                    cardManager.SelectedCard(selectedCard);
+                    ReferenceInstance.refInstance.cardManager.SelectedCard(selectedCard);
                 }
                 //Debug.Log(selectedCard);
             }
@@ -105,9 +83,9 @@ public class ClickManagerPrime : MonoBehaviour
 
     private void FinishedAttacking()
     {
-        playerStats.LoseMana(cardStats.ReturnCost());
-        cardManager.RemoveCard(selectedCard.transform.parent.gameObject);
-        turnManager.ChangeState(TurnState.PickCard);
+        ReferenceInstance.refInstance.playerStats.LoseMana(cardStats.ReturnCost());
+        ReferenceInstance.refInstance.cardManager.RemoveCard(selectedCard.transform.parent.gameObject);
+        ReferenceInstance.refInstance.turnManager.ChangeState(TurnState.PickCard);
         selectedCard = null;
         selectedEnemy = null;
     }

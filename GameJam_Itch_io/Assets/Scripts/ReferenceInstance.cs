@@ -12,8 +12,10 @@ public class ReferenceInstance : MonoBehaviour
 
     void Awake()
     {
-        playerStats = GetComponent<PlayerStats>();
-        turnManager = GetComponent<TurnManager>();
-        cardManager = GetComponent<CardManager>();
+        refInstance = this;
+
+        playerStats = FindFirstObjectByType<PlayerStats>();
+        turnManager = GetComponentInChildren<TurnManager>();
+        cardManager = GetComponentInChildren<CardManager>();
     }
 }

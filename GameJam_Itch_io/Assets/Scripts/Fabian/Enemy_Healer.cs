@@ -43,84 +43,45 @@ public class Enemy_Healer : Ab_Enemy
         Invoke(nameof(GetHealthBack), 0.26f);
     }
 
-
-    void Update()
+    protected override void OnAction()
     {
-        Transform parentPos = _spawnSlot.transform;
+        base.OnAction();
 
-        if (_turnManager.FirstEnemyGo && parentPos.position == _spawnEnemies.spawnPoints[0].transform.position)
+        FirstEnemyHealth = _spawnEnemies.spawnedEnemies[0].GetComponent<HealthSystem>();
+        SecondEnemyHealth = _spawnEnemies.spawnedEnemies[1].GetComponent<HealthSystem>();
+        ThirdEnemyHealth = _spawnEnemies.spawnedEnemies[2].GetComponent<HealthSystem>();
+
+        if (FirstEnemyHealth.CurrentHealth < HealOtherRange && SecondEnemyHealth.CurrentHealth > HealOtherRange)
         {
-            SecondEnemyHealth = _spawnEnemies.spawnedEnemies[1].GetComponent<HealthSystem>();
-            ThirdEnemyHealth = _spawnEnemies.spawnedEnemies[2].GetComponent<HealthSystem>();
-
-            if (SecondEnemyHealth.CurrentHealth < HealOtherRange && ThirdEnemyHealth.CurrentHealth > HealOtherRange)
-            {
-                HealSecond = true;
-            }
-            
-            if (ThirdEnemyHealth.CurrentHealth < HealOtherRange && SecondEnemyHealth.CurrentHealth > HealOtherRange)
-            {
-                HealThird = true;
-            }
-
-            StartCountdown();
-            if (_countdown <= 0f)
-            {
-                SwitchState();
-                _countdown = _resetTimer;
-                _turnManager.FirstEnemyGo = false;
-                _turnManager.SecondEnemyGo = true;
-            }
+            HealFirst = true;
+        }
+        else if (SecondEnemyHealth.CurrentHealth < HealOtherRange && FirstEnemyHealth.CurrentHealth > HealOtherRange)
+        {
+            HealSecond = true;
+        }
+        else if (FirstEnemyHealth.CurrentHealth < HealOtherRange && ThirdEnemyHealth.CurrentHealth > HealOtherRange)
+        {
+            HealFirst = true;
+        }
+        else if (ThirdEnemyHealth.CurrentHealth < HealOtherRange && FirstEnemyHealth.CurrentHealth > HealOtherRange)
+        {
+            HealThird = true;
+        }
+        else if (SecondEnemyHealth.CurrentHealth < HealOtherRange && ThirdEnemyHealth.CurrentHealth > HealOtherRange)
+        {
+            HealSecond = true;
+        }
+        else if (ThirdEnemyHealth.CurrentHealth < HealOtherRange && SecondEnemyHealth.CurrentHealth > HealOtherRange)
+        {
+            HealThird = true;
         }
 
-        if (_turnManager.SecondEnemyGo && parentPos.position == _spawnEnemies.spawnPoints[1].transform.position)
+        StartCountdown();
+        if (_countdown <= 0f)
         {
-            FirstEnemyHealth = _spawnEnemies.spawnedEnemies[0].GetComponent<HealthSystem>();
-            ThirdEnemyHealth = _spawnEnemies.spawnedEnemies[2].GetComponent<HealthSystem>();
+            SwitchState();
+            _countdown = _resetTimer;
 
-            if (FirstEnemyHealth.CurrentHealth < HealOtherRange && ThirdEnemyHealth.CurrentHealth > HealOtherRange)
-            {
-                HealFirst = true;
-            }
-
-            if (ThirdEnemyHealth.CurrentHealth < HealOtherRange && FirstEnemyHealth.CurrentHealth > HealOtherRange)
-            {
-                HealThird = true;
-            }
-
-            StartCountdown();
-            if (_countdown <= 0f)
-            {
-                SwitchState();
-                _countdown = _resetTimer;
-                _turnManager.SecondEnemyGo = false;
-                _turnManager.LastEnemyGo = true;
-            }
-        }
-
-        if (_turnManager.LastEnemyGo && parentPos.position == _spawnEnemies.spawnPoints[2].transform.position)
-        {
-            FirstEnemyHealth = _spawnEnemies.spawnedEnemies[0].GetComponent<HealthSystem>();
-            SecondEnemyHealth = _spawnEnemies.spawnedEnemies[1].GetComponent<HealthSystem>();
-
-            if (FirstEnemyHealth.CurrentHealth < HealOtherRange && SecondEnemyHealth.CurrentHealth > HealOtherRange)
-            {
-                HealFirst = true;
-            }
-
-            if (SecondEnemyHealth.CurrentHealth < HealOtherRange && FirstEnemyHealth.CurrentHealth > HealOtherRange)
-            {
-                HealSecond = true;
-            }
-
-            StartCountdown();
-            if (_countdown <= 0f)
-            {
-                SwitchState();
-                _countdown = _resetTimer;
-                _turnManager.LastEnemyGo = false;
-                _turnManager.ChangeState(TurnState.PlayerTurn);
-            }
         }
     }
 
@@ -145,6 +106,7 @@ public class Enemy_Healer : Ab_Enemy
     {
         HealthBack = _maxHealth * 25 / 100;
     }
+
     private void OtherLowOnHealth(HealthSystem enemyHealth)
     {
         enemyHealth.Heal(HealthBack - 1);
@@ -163,8 +125,7 @@ public class Enemy_Healer : Ab_Enemy
             State = StateOfHealer.HealOthers;
             ChooseState();
         }
-        
-        if (_healthSystem.CurrentHealth <= HealOtherRange)
+        else if (_healthSystem.CurrentHealth < HealOtherRange)
         {
             State = StateOfHealer.HealMe;
             ChooseState();

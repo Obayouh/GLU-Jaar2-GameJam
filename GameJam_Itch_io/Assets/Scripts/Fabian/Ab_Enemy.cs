@@ -43,6 +43,11 @@ public abstract class Ab_Enemy : MonoBehaviour
         _spawnEnemies = FindObjectOfType<SpawnEnemies>();
     }
 
+    protected virtual void OnAction()
+    {
+        //Perform action of Enemy script
+    }
+
     /// <summary>
     /// At the start of the battle play animation
     /// </summary>
