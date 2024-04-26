@@ -43,7 +43,7 @@ public class Enemy_Healer : Ab_Enemy
         Invoke(nameof(GetHealthBack), 0.26f);
     }
 
-    protected override void OnAction()
+    public override void OnAction()
     {
         base.OnAction();
 

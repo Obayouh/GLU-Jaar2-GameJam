@@ -47,11 +47,13 @@ public class EnemyController : MonoBehaviour
     // Coroutine to process enemy actions one at a time
     private IEnumerator ProcessEnemyActions()
     {
-            Transform currentEnemy = enemyQueue.Dequeue();
-            // Perform enemy action here (e.g., move, attack, etc.)
-            Debug.Log("Enemy " + currentEnemy.name + " is performing action.");
+        Transform currentEnemy = enemyQueue.Dequeue();
+        // Perform enemy action here (e.g., move, attack, etc.)
+        Debug.Log("Enemy " + currentEnemy.name + " is performing action.");
+        Ab_Enemy enemy = currentEnemy.GetComponent<Ab_Enemy>();
+        enemy.OnAction();
 
-            // Simulate action delay
-            yield return new WaitForSeconds(1f); // Change delay as needed
+        // Simulate action delay
+        yield return new WaitForSeconds(1f); // Change delay as needed
     }
 }

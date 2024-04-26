@@ -43,7 +43,7 @@ public abstract class Ab_Enemy : MonoBehaviour
         _spawnEnemies = FindObjectOfType<SpawnEnemies>();
     }
 
-    protected virtual void OnAction()
+    public virtual void OnAction()
     {
         //Perform action of Enemy script
     }
