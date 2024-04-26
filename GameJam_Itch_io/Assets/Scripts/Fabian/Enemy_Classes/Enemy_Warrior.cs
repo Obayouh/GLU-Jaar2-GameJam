@@ -18,7 +18,6 @@ public class Enemy_Warrior : Ab_Enemy
 
     private float _countdown;
     private float _resetTimer = 2f;
-    private float _maxHealth;
 
     protected override void Start()
     {

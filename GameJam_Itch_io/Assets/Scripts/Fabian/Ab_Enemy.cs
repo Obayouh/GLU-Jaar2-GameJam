@@ -27,7 +27,7 @@ public abstract class Ab_Enemy : MonoBehaviour
     [SerializeField]
     protected SpawnEnemies _spawnEnemies;
 
-    private float _maxHealth;
+    protected float _maxHealth;
 
     protected virtual void Start()
     {

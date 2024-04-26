@@ -29,9 +29,8 @@ public class Enemy_Healer : Ab_Enemy
 
     private float _countdown;
     private float _resetTimer = 2f;
-    private float _maxHealth;
 
-    void Start()
+    protected override void Start()
     {
         base.Start();
         
