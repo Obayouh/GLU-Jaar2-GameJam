@@ -19,12 +19,6 @@ public class Enemy_Healer : Ab_Enemy
     [HideInInspector] public float HealSelfRange;
     public float HealthBack;
 
-    private GameObject _player;
-    private TurnManager _turnManager;
-    private SpawnSlot _spawnSlot;
-    private HealthSystem _healthSystem;
-    private SpawnEnemies _spawnEnemies;
-
     private HealthSystem FirstEnemyHealth;
     private HealthSystem SecondEnemyHealth;
     private HealthSystem ThirdEnemyHealth;
@@ -39,12 +33,8 @@ public class Enemy_Healer : Ab_Enemy
 
     void Start()
     {
-        _player = FindObjectOfType<PlayerStats>().gameObject;
-        _turnManager = FindObjectOfType<TurnManager>();
-        _spawnSlot = GetComponentInParent<SpawnSlot>();
-        _healthSystem = GetComponent<HealthSystem>();
-        _spawnEnemies = FindObjectOfType<SpawnEnemies>();
-
+        base.Start();
+        
         Array arrayElement = Enum.GetValues(typeof(Element));
         Elements = (Element)arrayElement.GetValue(UnityEngine.Random.Range(0, arrayElement.Length));
         

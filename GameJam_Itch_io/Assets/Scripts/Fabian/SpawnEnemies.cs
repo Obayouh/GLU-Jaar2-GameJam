@@ -8,8 +8,12 @@ public class SpawnEnemies : MonoBehaviour
     public List<GameObject> spawnedEnemies = new();
     public Enemies Enemies;
 
+    private EnemyController enemyController;
+
     void Start()
     {
+        enemyController = GetComponent<EnemyController>();
+
         StartCoroutine(InstantiateEnemies());
     }
 
@@ -23,6 +27,7 @@ public class SpawnEnemies : MonoBehaviour
                 GameObject randoEnemy = Enemies.AllEnemies[Random.Range(0, Enemies.AllEnemies.Count)];
                 GameObject spawnEnemy = Instantiate(randoEnemy, slot.transform);
                 AddEnemy(spawnEnemy);
+                enemyController.AddEnemyToQueue(spawnEnemy.transform);
                 spawnSlot.HasChild = true;
             }
         }

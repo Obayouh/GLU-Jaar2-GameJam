@@ -16,27 +16,16 @@ public class Enemy_Warrior : Ab_Enemy
 
     public float HalfHealth;
 
-    private GameObject _player;
-    private TurnManager _turnManager;
-    private SpawnSlot _spawnSlot;
-    private HealthSystem _healthSystem;
-    private SpawnEnemies _spawnEnemies;
-
     private float _countdown;
     private float _resetTimer = 2f;
     private float _maxHealth;
 
-    void Start()
+    protected override void Start()
     {
-        //_player = FindObjectOfType<PlayerStats>().gameObject;
-        //_turnManager = FindObjectOfType<TurnManager>();
-        //_spawnSlot = GetComponentInParent<SpawnSlot>();
-        //_healthSystem = GetComponent<HealthSystem>();
-        //_spawnEnemies = FindObjectOfType<SpawnEnemies>();
-        FindAll();
+        base.Start();
 
         Array arrayElement = Enum.GetValues(typeof(Element));
-        Elements = (Element)arrayElement.GetValue(UnityEngine.Random.Range(0,arrayElement.Length));
+        Elements = (Element)arrayElement.GetValue(UnityEngine.Random.Range(0, arrayElement.Length));
 
         _countdown = _resetTimer;
         //Invoke(GetUseAbiltyRange(_healthSystem, HalfHealth), 0.25f);
@@ -58,11 +47,6 @@ public class Enemy_Warrior : Ab_Enemy
                 _turnManager.SecondEnemyGo = true;
             }
         }
-    }
-
-    public override void FindAll()
-    {
-        base.FindAll();
     }
 
     public override void BeginCountdown(Transform transform, float countdown)

@@ -241,6 +241,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6515974313701221377}
   - component: {fileID: 4335859600974271610}
+  - component: {fileID: 2368303388757844687}
   m_Layer: 0
   m_Name: EnemySlots
   m_TagString: Untagged
@@ -285,3 +286,15 @@ MonoBehaviour:
   - {fileID: 1029619685814661543}
   spawnedEnemies: []
   Enemies: {fileID: 11400000, guid: 5266b0ba5760d22459ed7b64d53ab789, type: 2}
+--- !u!114 &2368303388757844687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6864289399365567595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4ff8eae142d3c94480e9d111cdb75b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

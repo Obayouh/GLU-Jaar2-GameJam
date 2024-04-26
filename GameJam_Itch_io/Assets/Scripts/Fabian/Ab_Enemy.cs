@@ -16,15 +16,25 @@ public abstract class Ab_Enemy : MonoBehaviour
 
     public Element Elements;
 
-    private GameObject _player;
-    private TurnManager _turnManager;
-    private SpawnSlot _spawnSlot;
-    private HealthSystem _healthSystem;
-    private SpawnEnemies _spawnEnemies;
+    [SerializeField]
+    protected GameObject _player;
+    [SerializeField]
+    protected TurnManager _turnManager;
+    [SerializeField]
+    protected SpawnSlot _spawnSlot;
+    [SerializeField]
+    protected HealthSystem _healthSystem;
+    [SerializeField]
+    protected SpawnEnemies _spawnEnemies;
 
     private float _maxHealth;
 
-    public virtual void FindAll()
+    protected virtual void Start()
+    {
+        FindAll();
+    }
+
+    protected virtual void FindAll()
     {
         _player = FindObjectOfType<PlayerStats>().gameObject;
         _turnManager = FindObjectOfType<TurnManager>();
