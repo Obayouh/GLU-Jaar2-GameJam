@@ -32,6 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3708158177346236103}
+  - {fileID: 5064614741977962332}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &-6509788880126122948
@@ -76,6 +77,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Card_Lightning
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133987302005681245, guid: b411f0ed645a30f42b5c4352ab343b0a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4569724854579492130, guid: b411f0ed645a30f42b5c4352ab343b0a,
         type: 3}
@@ -137,4 +143,84 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4569724854579492130, guid: b411f0ed645a30f42b5c4352ab343b0a,
     type: 3}
   m_PrefabInstance: {fileID: 872830521075653605}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4636010289563380276
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6165712418929235456}
+    m_Modifications:
+    - target: {fileID: 441153260367560040, guid: b262a844c6f0eae4c9ea2bb2cc832c01,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.285
+      objectReference: {fileID: 0}
+    - target: {fileID: 441153260367560040, guid: b262a844c6f0eae4c9ea2bb2cc832c01,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.67500013
+      objectReference: {fileID: 0}
+    - target: {fileID: 441153260367560040, guid: b262a844c6f0eae4c9ea2bb2cc832c01,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 441153260367560040, guid: b262a844c6f0eae4c9ea2bb2cc832c01,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 441153260367560040, guid: b262a844c6f0eae4c9ea2bb2cc832c01,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 441153260367560040, guid: b262a844c6f0eae4c9ea2bb2cc832c01,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 441153260367560040, guid: b262a844c6f0eae4c9ea2bb2cc832c01,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 441153260367560040, guid: b262a844c6f0eae4c9ea2bb2cc832c01,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 441153260367560040, guid: b262a844c6f0eae4c9ea2bb2cc832c01,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 441153260367560040, guid: b262a844c6f0eae4c9ea2bb2cc832c01,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 960562087414130642, guid: b262a844c6f0eae4c9ea2bb2cc832c01,
+        type: 3}
+      propertyPath: m_Name
+      value: Card_Bliksem_ThunderousSmite
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707185598650780733, guid: b262a844c6f0eae4c9ea2bb2cc832c01,
+        type: 3}
+      propertyPath: m_TagString
+      value: PlayerCard
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2123457967971342327, guid: b262a844c6f0eae4c9ea2bb2cc832c01, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b262a844c6f0eae4c9ea2bb2cc832c01, type: 3}
+--- !u!4 &5064614741977962332 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 441153260367560040, guid: b262a844c6f0eae4c9ea2bb2cc832c01,
+    type: 3}
+  m_PrefabInstance: {fileID: 4636010289563380276}
   m_PrefabAsset: {fileID: 0}
