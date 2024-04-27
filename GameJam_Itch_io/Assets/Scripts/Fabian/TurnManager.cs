@@ -1,11 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum TurnState
+{
+    PickCard,
+    Waiting,
+    Attack,
+    EnemyTurn
+}
+
 public class TurnManager : MonoBehaviour
 {
-    public bool PlayersTurn = true;
-    public bool EnemiesTurn = false;
+    public TurnState state;
 
     public bool FirstEnemyGo;
     public bool SecondEnemyGo;
@@ -13,20 +21,52 @@ public class TurnManager : MonoBehaviour
 
     public bool AddNewCards;
 
-    [SerializeField] private CardManager cardManager;
+    public GameObject endTurnButton;
 
-    void Update()
+    private CardManager cardManager;
+    private ClickManagerPrime clickMananger;
+
+    private void Start()
     {
-        if (EnemiesTurn == true)
-        {
-            FirstEnemyGo = true;
-            EnemiesTurn = false;
-        }
+        cardManager = FindObjectOfType<CardManager>();
+        clickMananger = FindObjectOfType<ClickManagerPrime>();
 
-        if (PlayersTurn && AddNewCards)
+        StartPlayerTurn();
+    }
+
+    private void StartPlayerTurn()
+    {
+        ChangeState(TurnState.PickCard);
+        if (AddNewCards)
         {
             cardManager.AddCards();
             AddNewCards = false;
+        }
+    }
+
+    private void StartEnemyTurn()
+    {
+        ChangeState(TurnState.EnemyTurn);
+        FirstEnemyGo = true;
+    }
+
+    public void EndTurn()
+    {
+        StartEnemyTurn();
+    }
+
+    public void ChangeState(TurnState newState)
+    {
+        state = newState;
+        CameraMovement cam = FindAnyObjectByType<CameraMovement>();
+        cam.CheckState();
+        if (state == TurnState.PickCard)
+        {
+            endTurnButton.SetActive(true);
+        }
+        else
+        {
+            endTurnButton.SetActive(false);
         }
     }
 }

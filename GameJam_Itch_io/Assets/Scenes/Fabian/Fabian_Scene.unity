@@ -123,6 +123,79 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &387711060
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7307970558913192978, guid: a04602b5330eb414f9c4051c07a8af76,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7307970558913192978, guid: a04602b5330eb414f9c4051c07a8af76,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7307970558913192978, guid: a04602b5330eb414f9c4051c07a8af76,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7307970558913192978, guid: a04602b5330eb414f9c4051c07a8af76,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7307970558913192978, guid: a04602b5330eb414f9c4051c07a8af76,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7307970558913192978, guid: a04602b5330eb414f9c4051c07a8af76,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7307970558913192978, guid: a04602b5330eb414f9c4051c07a8af76,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7307970558913192978, guid: a04602b5330eb414f9c4051c07a8af76,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7307970558913192978, guid: a04602b5330eb414f9c4051c07a8af76,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 7307970558913192978, guid: a04602b5330eb414f9c4051c07a8af76,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7587874996716114024, guid: a04602b5330eb414f9c4051c07a8af76,
+        type: 3}
+      propertyPath: m_Name
+      value: Enemy_Healer
+      objectReference: {fileID: 0}
+    - target: {fileID: 7587874996716114024, guid: a04602b5330eb414f9c4051c07a8af76,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a04602b5330eb414f9c4051c07a8af76, type: 3}
 --- !u!1 &674368576
 GameObject:
   m_ObjectHideFlags: 0
@@ -680,11 +753,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1948079789}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 242535da333a6f44d8647d0bec770709, type: 3}
+  m_Script: {fileID: 11500000, guid: 69ccd9dcb5466e840bf8d086321ffe45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  currentCost: 0
+  totalCost: 8
+  score: 0
+  scoreText: {fileID: 0}
   gameOverScreen: {fileID: 0}
 --- !u!1001 &4886875121805353707
 PrefabInstance:
@@ -817,6 +894,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4852284860847216205, guid: 824543c6314646a4c98571079c15d8f6,
+        type: 3}
+      propertyPath: EnemiesTurn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4852284860847216205, guid: 824543c6314646a4c98571079c15d8f6,
+        type: 3}
+      propertyPath: PlayersTurn
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -832,3 +919,4 @@ SceneRoots:
   - {fileID: 1948079794}
   - {fileID: 4886875121805353707}
   - {fileID: 7090163237076395788}
+  - {fileID: 387711060}

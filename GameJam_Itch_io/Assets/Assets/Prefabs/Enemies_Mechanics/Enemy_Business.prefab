@@ -123,7 +123,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6790881737718223184}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e584c60b4f6e7684bbb185c8e71052ab, type: 3}
   m_Name: 
@@ -143,8 +143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e326a74c6b31043a3a05714fad54c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHealth: 10
   maxHealth: 10
-  currentHealth: 0
 --- !u!1001 &5493318112392316398
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -45,16 +45,6 @@ public class CardStats : AbCards
         costText.SetText(cost.ToString());
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            HealthSystem enemyHealth = collision.gameObject.GetComponent<HealthSystem>();
-            enemyHealth.TakeDamage(damage);
-            Destroy(this.gameObject);
-        }
-    }
-
     public int ReturnCost()
     {
         return cost;
@@ -62,6 +52,7 @@ public class CardStats : AbCards
 
     public int ReturnDamage()
     {
+        
         return damage;
     }
 }

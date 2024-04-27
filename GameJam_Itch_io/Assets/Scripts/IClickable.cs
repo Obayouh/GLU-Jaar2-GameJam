@@ -5,6 +5,5 @@ using UnityEngine;
 public interface IClickable
 {
     void IClickedOn();
-
-    void IClickedOff();
+    void IHoverOver();
 }

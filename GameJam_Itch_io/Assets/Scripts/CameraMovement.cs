@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class CameraMovement : MonoBehaviour
 {
@@ -10,27 +11,74 @@ public class CameraMovement : MonoBehaviour
     public AnimationCurve curve;
     public float durationShaking = 1f;
 
-    [Header("Move")]
-    Vector3 targetPosition;
-    Vector3 direction;
-    public float moveSpeed = 2f;
-    public float durationMoving;
+    [Header("SwitchView")]
+    public Transform cameraFollower;
+    Vector3 startPos;
+    [SerializeField] private Vector3 endPos;
+    Vector3 targetPos;
+    [SerializeField] private float speed;
+
+    public bool switchView;
+
+    TurnManager turnManager;
+    CinemachineVirtualCamera cam;
 
     void Start()
     {
-        targetPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 12f);
+        cam = GetComponentInChildren<CinemachineVirtualCamera>();
+        cam.LookAt = cameraFollower;
+
+        turnManager = FindAnyObjectByType<TurnManager>();
+
+        startPos = cameraFollower.position;
+        targetPos = endPos;
     }
 
     void Update()
     {
-        if (startShaking)
+        if (Input.GetKeyDown(KeyCode.Space) && turnManager.state == TurnState.PickCard)
         {
-            startShaking = false;
-            StartCoroutine(Shaking());
+            switchView = true;
         }
-        else if (gameOver)
+
+        if (switchView)
         {
-            StartCoroutine(Shaking());
+            SwitchView();
+        }
+    }
+
+    public void CheckState()
+    {
+        if (turnManager == null)
+            return;
+
+        if (turnManager.state == TurnState.Waiting)
+        {
+            switchView = true;
+            turnManager.ChangeState(TurnState.Attack);
+        }
+        else
+        {
+            if (cameraFollower.position != startPos)
+            {
+                switchView = true;
+                targetPos = startPos;
+            }
+        }
+    }
+
+    public void SwitchView()
+    {
+        cameraFollower.position = Vector3.MoveTowards(cameraFollower.position, targetPos, speed * Time.deltaTime);
+        if (cameraFollower.position == startPos)
+        {
+            targetPos = endPos;
+            switchView = false;
+        }
+        else if (cameraFollower.position == endPos)
+        {
+            targetPos = startPos;
+            switchView = false;
         }
     }
 
@@ -48,29 +96,5 @@ public class CameraMovement : MonoBehaviour
         }
 
         transform.position = startPostition;
-    }
-
-    public void GoToNewRoom()
-    {
-        StartCoroutine(MoveCam());
-    }
-
-    IEnumerator MoveCam()
-    {
-        float elapsedTime = 0f;
-        yield return new WaitForSeconds(1f);
-
-        while (elapsedTime < durationMoving)
-        {
-            elapsedTime += Time.deltaTime;
-            transform.position += Vector3.forward * moveSpeed * Time.deltaTime;
-            yield return null;
-        }
-
-        if (elapsedTime >= durationMoving)
-        {
-            RoomManager roomManager = FindAnyObjectByType<RoomManager>();
-            roomManager.canAddNewRoom = true;
-        }
     }
 }
