@@ -33,14 +33,13 @@ public class Enemy_Healer : Ab_Enemy
     protected override void Start()
     {
         base.Start();
-        
+
         Array arrayElement = Enum.GetValues(typeof(Element));
         Elements = (Element)arrayElement.GetValue(UnityEngine.Random.Range(0, arrayElement.Length));
-        
+
         _countdown = _resetTimer;
         Invoke(nameof(GetHealRange), 0.25f);
         Invoke(nameof(GetSelfHealRange), 0.255f);
-        Invoke(nameof(GetHealthBack), 0.26f);
     }
 
     public override void OnAction()
@@ -113,12 +112,6 @@ public class Enemy_Healer : Ab_Enemy
 
     private void SwitchState()
     {
-        //if (_healthSystem.CurrentHealth > HealOtherRange)
-        //{
-        //    State = StateOfHealer.BuffOthers;
-        //    ChooseState();
-        //}
-        
         if (_healthSystem.CurrentHealth >= HealOtherRange /*&& _healthSystem.CurrentHealth > HealSelfRange*/)
         {
             State = StateOfHealer.HealOthers;
@@ -133,12 +126,8 @@ public class Enemy_Healer : Ab_Enemy
 
     private void ChooseState()
     {
-        switch(State)
+        switch (State)
         {
-            //case StateOfHealer.BuffOthers:
-
-            //    break;
-
             case StateOfHealer.HealOthers:
                 if (HealFirst)
                 {
@@ -159,7 +148,7 @@ public class Enemy_Healer : Ab_Enemy
                 }
                 break;
 
-            case StateOfHealer.HealMe: 
+            case StateOfHealer.HealMe:
                 _healthSystem.Heal(HealthBack);
                 break;
         }
