@@ -39,11 +39,11 @@ public class Enemy_Warrior : Ab_Enemy
         {
             SwitchState();
             _countdown = _resetTimer;
-TurnManager turnManager = FindFirstObjectByType<TurnManager>();
+            TurnManager turnManager = FindFirstObjectByType<TurnManager>();
             turnManager.ChangeState(TurnState.PlayerTurn);
         }
     }
-    
+
     public override void BeginCountdown(Transform transform, float countdown)
     {
         base.BeginCountdown(transform, countdown);

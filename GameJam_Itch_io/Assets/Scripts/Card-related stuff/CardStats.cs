@@ -18,14 +18,15 @@ public class CardStats : AbCards
             {
                 if (t2.name == "DamageText")
                 {
-                    damageText = t2.GetComponent<TextMeshPro>();
+                    damageText = t2.GetComponentInChildren<TextMeshPro>();
                 }
                 else
                 {
-                    costText = t2.GetComponent<TextMeshPro>();
+                    costText = t2.GetComponentInChildren<TextMeshPro>();
                 }
             }
         }
+
         SetCardStats();
     }
 
