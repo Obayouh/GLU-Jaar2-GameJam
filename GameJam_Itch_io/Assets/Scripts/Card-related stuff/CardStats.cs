@@ -11,26 +11,10 @@ public class CardStats : MonoBehaviour
     private int cost;
     public void Start()
     {
-        //loop through card
-        foreach (Transform t in transform)
-        {
-            //loop through text components
-            foreach (Transform t2 in t)
-            {
-                if (t2.name == "DamageText")
-                {
-                    damageText = t2.GetComponent<TextMeshPro>();
-                }
-                else
-                {
-                    costText = t2.GetComponent<TextMeshPro>();
-                }
-            }
-        }
-        SetCardStats();
+        GetTextMeshPro();
     }
 
-    public  void Update()
+    public void Update()
     {
 
     }
@@ -43,6 +27,22 @@ public class CardStats : MonoBehaviour
         cost = Random.Range(1, 5);
         damageText.SetText(damage.ToString());
         costText.SetText(cost.ToString());
+    }
+
+    private void GetTextMeshPro()
+    {
+        TextMeshPro[] textComponents = GetComponentsInChildren<TextMeshPro>();
+
+        if (textComponents.Length == 2)
+        {
+            damageText = textComponents[0];
+            costText = textComponents[1];
+        }
+        else
+        {
+            Debug.Log("There are not enough TextMeshPro objects in the parent object.");
+        }
+        SetCardStats();
     }
 
     public int ReturnCost()
