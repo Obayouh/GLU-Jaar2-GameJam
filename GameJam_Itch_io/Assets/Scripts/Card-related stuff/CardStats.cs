@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class CardStats : AbCards
+public class CardStats : MonoBehaviour
 {
     private TextMeshPro damageText;
     private TextMeshPro costText;
-    public override void Start()
+    private int damage;
+    private int cost;
+    public void Start()
     {
-        base.Start();
         //loop through card
         foreach (Transform t in transform)
         {
@@ -18,28 +19,26 @@ public class CardStats : AbCards
             {
                 if (t2.name == "DamageText")
                 {
-                    damageText = t2.GetComponentInChildren<TextMeshPro>();
+                    damageText = t2.GetComponent<TextMeshPro>();
                 }
                 else
                 {
-                    costText = t2.GetComponentInChildren<TextMeshPro>();
+                    costText = t2.GetComponent<TextMeshPro>();
                 }
             }
         }
-
         SetCardStats();
     }
 
-    public override void Update()
+    public  void Update()
     {
-        base.Update();
+
     }
     /// <summary>
     /// Randomizes card damage and cost to use on creation
     /// </summary>
-    public override void SetCardStats()
+    public void SetCardStats()
     {
-        base.SetCardStats();
         damage = Random.Range(1, 9);
         cost = Random.Range(1, 5);
         damageText.SetText(damage.ToString());
