@@ -10,6 +10,7 @@ public class ImageFillSlider : MonoBehaviour
     [SerializeField] private Image manaImage;
 
     private float playerMana;
+    private float playerManaMax;
 
     //public Slider slider;
 
@@ -24,7 +25,7 @@ public class ImageFillSlider : MonoBehaviour
 
     private void Start()
     {
-        playerMana = ReferenceInstance.refInstance.playerStats.ReturnPlayerMana();
+        playerManaMax = ReferenceInstance.refInstance.playerStats.ReturnPlayerMana();
         UpdateFillAmount();
     }
     private void Update()
@@ -37,6 +38,6 @@ public class ImageFillSlider : MonoBehaviour
 
     public void UpdateFillAmount()
     {
-        manaImage.fillAmount = (float)playerMana / 100;
+        manaImage.fillAmount = playerMana / playerManaMax;
     }
 }
