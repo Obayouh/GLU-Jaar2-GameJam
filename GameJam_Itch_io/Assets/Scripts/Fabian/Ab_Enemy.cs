@@ -26,6 +26,8 @@ public abstract class Ab_Enemy : MonoBehaviour
     protected HealthSystem _healthSystem;
     [SerializeField]
     protected SpawnEnemies _spawnEnemies;
+    [SerializeField]
+    protected EnemyController _enemyController;
 
     protected float _maxHealth;
 
@@ -41,6 +43,7 @@ public abstract class Ab_Enemy : MonoBehaviour
         _spawnSlot = GetComponentInParent<SpawnSlot>();
         _healthSystem = GetComponent<HealthSystem>();
         _spawnEnemies = FindObjectOfType<SpawnEnemies>();
+        _enemyController = FindObjectOfType<EnemyController>();
     }
 
     public virtual void OnAction()

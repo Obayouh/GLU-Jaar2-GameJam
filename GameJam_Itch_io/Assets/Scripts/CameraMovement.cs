@@ -36,7 +36,7 @@ public class CameraMovement : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && turnManager.state == TurnState.PickCard)
+        if (Input.GetKeyDown(KeyCode.Space) && turnManager.ReturnState() == TurnState.PickCard)
         {
             switchView = true;
         }
@@ -52,7 +52,7 @@ public class CameraMovement : MonoBehaviour
         if (turnManager == null)
             return;
 
-        if (turnManager.state == TurnState.Waiting)
+        if (turnManager.ReturnState() == TurnState.Waiting)
         {
             switchView = true;
             turnManager.ChangeState(TurnState.Attack);

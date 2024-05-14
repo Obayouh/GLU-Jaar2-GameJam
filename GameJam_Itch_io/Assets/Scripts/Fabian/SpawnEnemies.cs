@@ -44,6 +44,7 @@ public class SpawnEnemies : MonoBehaviour
         SpawnSlot spawnSlot = enemy.GetComponentInParent<SpawnSlot>();
         spawnSlot.HasChild = false;
         spawnedEnemies.Remove(enemy);
+        enemyController.RemoveEnemyFromQueue(enemy.transform);
         Destroy(enemy);
     }
 }
