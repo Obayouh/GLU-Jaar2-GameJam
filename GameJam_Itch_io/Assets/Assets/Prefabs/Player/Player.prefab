@@ -297,10 +297,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69ccd9dcb5466e840bf8d086321ffe45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHealth: 10
   maxHealth: 100
-  currentHealth: 0
-  currentCost: 0
-  totalCost: 8
+  currentMana: 0
+  totalMana: 6
   score: 0
   scoreText: {fileID: 0}
   gameOverScreen: {fileID: 0}
@@ -316,7 +316,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c12b518a597451409eee8a51e68239c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startShaking: 0
   gameOver: 0
   curve:
     serializedVersion: 2
@@ -378,6 +377,7 @@ MonoBehaviour:
   handPrefab: {fileID: 0}
   handPositions: []
   currentCard: {fileID: 0}
+  hand: {fileID: 0}
 --- !u!135 &5664893693103337123
 SphereCollider:
   m_ObjectHideFlags: 0
