@@ -1,77 +1,72 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    private Queue<Transform> enemyQueue = new Queue<Transform>();
-    private List<GameObject> enemyList = new List<GameObject>();
+    public List<GameObject> enemies; // Array of enemy GameObjects
+    public float actionInterval = 2f; // Time interval between enemy actions
 
-    // Add enemies to the queue
-    public void AddEnemyToQueue(Transform enemy)
-    {
-        enemyQueue.Enqueue(enemy);
-    }
+    private int currentEnemyIndex = 0; // Index of the current enemy taking action
+    private bool isPerformingAction = false; // Flag to prevent simultaneous actions
 
-    public void RemoveEnemyFromQueue(Transform enemy)
-    {
-        if (enemyQueue.Contains(enemy) == true)
-        {
-
-        }
-    }
-
-    private void Update()
+    void Start()
     {
 
     }
 
-    // Start processing enemies' actions
+    public void AddEnemy(GameObject enemy)
+    {
+        enemies.Add(enemy);
+    }
+
+    public void RemoveEnemy(GameObject enemy)
+    {
+        enemies.Remove(enemy);
+    }
+
     public void StartEnemyActions()
     {
-        StartCoroutine(ProcessEnemyActions());
+        // Initialize the action sequence by performing the first action
+        StartCoroutine(PerformEnemyActions());
     }
 
-    public void NextEnemyInQueue()
+    IEnumerator PerformEnemyActions()
     {
-        if (enemyQueue.Count > 0)
+        while (currentEnemyIndex < enemies.Count)
         {
-            StartCoroutine(ProcessEnemyActions());
-        }
-        else
-        {
-            TurnManager turnManager = FindFirstObjectByType<TurnManager>();
-            turnManager.ChangeState(TurnState.PlayerTurn);
-        }
-    }
+                GameObject currentEnemy = enemies[currentEnemyIndex];
+                isPerformingAction = true;
 
-    // Coroutine to process enemy actions one at a time
-    private IEnumerator ProcessEnemyActions()
-    {
-        Transform currentEnemy = enemyQueue.Dequeue();
-        // Perform enemy action here (e.g., move, attack, etc.)
-        if (currentEnemy == null)
-        {
-            Debug.Log("WTF");
-            yield break;
-        }
-        Debug.Log("Enemy " + currentEnemy.name + " is performing action.");
-        Ab_Enemy enemy = currentEnemy.GetComponent<Ab_Enemy>();
-        enemy.OnAction();
+                // Perform the action for the current enemy
+                Debug.Log("Enemy " + (currentEnemyIndex + 1) + " performs action.");
+                //Ab_Enemy enemy = currentEnemy.GetComponent<Ab_Enemy>();
+                //enemy.OnAction();
 
-        // Simulate action delay
-        yield return new WaitForSeconds(1f); // Change delay as needed
+                // Simulate the action (e.g., moving, attacking) - Replace this with your logic
 
-        if (enemyQueue.Count <= 0)
-        {
-            TurnManager turnManager = FindAnyObjectByType<TurnManager>();
-            turnManager.ChangeState(TurnState.PlayerTurn);
+                // Wait for the action interval
+                yield return new WaitForSeconds(actionInterval);
 
-            //_enemyController.AddEnemyToQueue(this.transform);
+                // Move to the next enemy
+                currentEnemyIndex++;
         }
-        else
+
+        // If all enemies have performed their actions, switch turns
+        if (currentEnemyIndex >= enemies.Count)
         {
-            StartEnemyActions();
+            // Reset the index for the next round of actions
+            currentEnemyIndex = 0;
+            // Switch turns
+            yield return new WaitForSeconds(actionInterval); // Wait a moment before switching turns
+
+            ReferenceInstance.refInstance.turnManager.ChangeState(TurnState.PlayerTurn);
         }
+
+        yield return null;
+
     }
 }

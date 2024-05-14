@@ -27,7 +27,7 @@ public class SpawnEnemies : MonoBehaviour
                 GameObject randoEnemy = Enemies.AllEnemies[Random.Range(0, Enemies.AllEnemies.Count)];
                 GameObject spawnEnemy = Instantiate(randoEnemy, slot.transform);
                 AddEnemy(spawnEnemy);
-                enemyController.AddEnemyToQueue(spawnEnemy.transform);
+                enemyController.AddEnemy(spawnEnemy);
                 spawnSlot.HasChild = true;
             }
         }
@@ -44,7 +44,7 @@ public class SpawnEnemies : MonoBehaviour
         SpawnSlot spawnSlot = enemy.GetComponentInParent<SpawnSlot>();
         spawnSlot.HasChild = false;
         spawnedEnemies.Remove(enemy);
-        enemyController.RemoveEnemyFromQueue(enemy.transform);
+        enemyController.RemoveEnemy(enemy);
         Destroy(enemy);
     }
 }

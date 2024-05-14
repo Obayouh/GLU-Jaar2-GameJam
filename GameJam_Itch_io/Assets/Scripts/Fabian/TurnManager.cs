@@ -50,7 +50,7 @@ public class TurnManager : MonoBehaviour
         state = newState;
         ReferenceInstance.refInstance.cam.CheckState();
         if (state == TurnState.PickCard)
-        {
+        {   
             endTurnButton.SetActive(true);
         }
         else if (state == TurnState.PlayerTurn)
