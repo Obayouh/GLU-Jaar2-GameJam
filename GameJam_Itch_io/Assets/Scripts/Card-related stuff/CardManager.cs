@@ -58,7 +58,8 @@ public class CardManager : MonoBehaviour
         turnManager.ChangeState(TurnState.Attack);
         ScaleOnHover soh = chosenCard.GetComponent<ScaleOnHover>();
         Destroy(soh);
-        GameObject card = chosenCard.transform.parent.gameObject;
+        GameObject card = chosenCard.transform.parent.parent.gameObject;
+        Debug.Log(card);
         card.transform.parent = hand;
         card.transform.position = hand.position;
         card.transform.rotation = hand.rotation;

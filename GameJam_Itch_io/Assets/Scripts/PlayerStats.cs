@@ -9,7 +9,7 @@ public class PlayerStats : Ab_HealthManager
 
     private int manaCost;
     [SerializeField] private int currentMana;
-    [SerializeField, Range(6, 10)] private int totalMana;
+    [SerializeField, Range(6, 100)] private int totalMana;
 
     [SerializeField] private int score;
     [SerializeField] private TextMeshProUGUI scoreText;

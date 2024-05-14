@@ -9,6 +9,8 @@ public class ReferenceInstance : MonoBehaviour
     public PlayerStats playerStats;
     public TurnManager turnManager;
     public CardManager cardManager;
+    public EnemyController enemyController;
+    public CameraMovement cam;
 
     void Awake()
     {
@@ -17,5 +19,7 @@ public class ReferenceInstance : MonoBehaviour
         playerStats = FindFirstObjectByType<PlayerStats>();
         turnManager = GetComponentInChildren<TurnManager>();
         cardManager = GetComponentInChildren<CardManager>();
+        enemyController = GetComponentInChildren<EnemyController>();
+        cam = FindFirstObjectByType<CameraMovement>();
     }
 }

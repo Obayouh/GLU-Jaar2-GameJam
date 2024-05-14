@@ -16,25 +16,12 @@ public class TurnManager : MonoBehaviour
 {
     private TurnState state;
 
-    public bool FirstEnemyGo;
-    public bool SecondEnemyGo;
-    public bool LastEnemyGo;
-
     public bool AddNewCards;
 
     public GameObject endTurnButton;
 
-    private EnemyController enemyController;
-
-    private void Awake()
-    {
-        
-    }
-
     private void Start()
     {
-        enemyController = FindAnyObjectByType<EnemyController>();
-
         StartCoroutine(StartPlayerTurn(1f));
     }
 
@@ -43,20 +30,16 @@ public class TurnManager : MonoBehaviour
         ReferenceInstance.refInstance.playerStats.RefillMana();
         yield return new WaitForSeconds(amount);
         ChangeState(TurnState.PickCard);
-        if (AddNewCards)
-        {
-            //cardManager.AddCards();
-            ReferenceInstance.refInstance.cardManager.AddCards();
-            AddNewCards = false;
-        }
+        ReferenceInstance.refInstance.cardManager.AddCards();
     }
 
     private void StartEnemyTurn()
     {
         ChangeState(TurnState.EnemyTurn);
-        enemyController.StartEnemyActions();
+        ReferenceInstance.refInstance.enemyController.StartEnemyActions();
     }
 
+    //Button to end player turn
     public void EndTurn()
     {
         StartEnemyTurn();
@@ -65,8 +48,7 @@ public class TurnManager : MonoBehaviour
     public void ChangeState(TurnState newState)
     {
         state = newState;
-        CameraMovement cam = FindAnyObjectByType<CameraMovement>();
-        cam.CheckState();
+        ReferenceInstance.refInstance.cam.CheckState();
         if (state == TurnState.PickCard)
         {
             endTurnButton.SetActive(true);

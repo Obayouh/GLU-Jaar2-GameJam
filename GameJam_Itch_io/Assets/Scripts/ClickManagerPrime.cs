@@ -84,7 +84,7 @@ public class ClickManagerPrime : MonoBehaviour
     private void FinishedAttacking()
     {
         ReferenceInstance.refInstance.playerStats.LoseMana(cardStats.ReturnCost());
-        ReferenceInstance.refInstance.cardManager.RemoveCard(selectedCard.transform.parent.gameObject);
+        ReferenceInstance.refInstance.cardManager.RemoveCard(selectedCard.transform.parent.parent.gameObject);
         ReferenceInstance.refInstance.turnManager.ChangeState(TurnState.PickCard);
         selectedCard = null;
         selectedEnemy = null;
