@@ -49,6 +49,8 @@ public class ClickManagerPrime : MonoBehaviour
                 if (ReferenceInstance.refInstance.playerStats.ReturnPlayerMana() < cardStats.ReturnCost())
                 {
                     Debug.Log("Not Enough Mana");
+                    selectedCard = null;
+                    cardStats = null;
                 }
                 else
                 {
