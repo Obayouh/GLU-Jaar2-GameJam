@@ -39,20 +39,20 @@ public class EnemyController : MonoBehaviour
 
         while (currentEnemyIndex < enemies.Count)
         {
-                GameObject currentEnemy = enemies[currentEnemyIndex];
+            GameObject currentEnemy = enemies[currentEnemyIndex];
 
-                // Perform the action for the current enemy
-                Debug.Log("Enemy " + (currentEnemyIndex + 1) + " performs action.");
-                //Ab_Enemy enemy = currentEnemy.GetComponent<Ab_Enemy>();
-                //enemy.OnAction();
+            // Perform the action for the current enemy
+            Debug.Log("Enemy " + (currentEnemyIndex + 1) + " performs action.");
+            Ab_Enemy enemy = currentEnemy.GetComponent<Ab_Enemy>();
+            enemy.OnAction();
 
-                // Simulate the action (e.g., moving, attacking) - Replace this with your logic
+            // Simulate the action (e.g., moving, attacking) - Replace this with your logic
 
-                // Wait for the action interval
-                yield return new WaitForSeconds(actionInterval);
+            // Wait for the action interval
+            yield return new WaitForSeconds(actionInterval);
 
-                // Move to the next enemy
-                currentEnemyIndex++;
+            // Move to the next enemy
+            currentEnemyIndex++;
         }
 
         // If all enemies have performed their actions, switch turns
