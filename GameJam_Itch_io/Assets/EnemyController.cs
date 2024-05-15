@@ -36,6 +36,8 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator PerformEnemyActions()
     {
+        yield return new WaitForSeconds(actionInterval);
+
         while (currentEnemyIndex < enemies.Count)
         {
                 GameObject currentEnemy = enemies[currentEnemyIndex];
