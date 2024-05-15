@@ -571,7 +571,8 @@ MonoBehaviour:
   _healthSystem: {fileID: 0}
   _spawnEnemies: {fileID: 0}
   _enemyController: {fileID: 0}
-  healAmount: 5
+  healPercentage: 0.1
+  damageDealt: 3
 --- !u!114 &5628820672562098681
 MonoBehaviour:
   m_ObjectHideFlags: 0

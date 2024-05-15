@@ -7,7 +7,9 @@ using UnityEngine;
 public class NewHealer : Ab_Enemy
 {
     [SerializeField, Range(0.1f, 1f)] private float healPercentage;
-    [SerializeField, Range(1, 60)] private int damageDealt;
+    [SerializeField, Range(3, 60)] private int damageDealt; //Update in prefab if you change the value(s)
+
+    private PlayerStats _playerStats;
     public enum HealerState
     {
         Healing,
@@ -27,6 +29,8 @@ public class NewHealer : Ab_Enemy
         base.Start();
         Array arrayElement = Enum.GetValues(typeof(Element));
         Elements = (Element)arrayElement.GetValue(UnityEngine.Random.Range(0, arrayElement.Length));
+        _playerStats = _player.GetComponent<PlayerStats>();
+
     }
 
     void Update()
@@ -83,7 +87,7 @@ public class NewHealer : Ab_Enemy
     private void Attack()
     {
         healerState = HealerState.Attacking;
-        _player.GetComponent<PlayerStats>().TakeDamage(damageDealt);
+        _playerStats.TakeDamage(damageDealt);
         UnityEngine.Debug.Log("Should attack player and then end turn");
         healerState = HealerState.Waiting;
     }
@@ -113,8 +117,35 @@ public class NewHealer : Ab_Enemy
 
         if (targetList.Count > 0)
         {
-            targetList[0].GetComponent<HealthSystem>().Heal(_healthSystem.CurrentHealth * healPercentage);
-            UnityEngine.Debug.Log(this.gameObject.name + " healed " + targetList[0]);
+            //This will be the target the healer will heal
+            float currentLowesthealth = 0f;
+            GameObject healTarget = null; //temporary storage
+            GameObject currentHealTarget = null;// The actual target who we will be healing
+            for (int i = 0; i < targetList.Count; i++)
+            {
+                float lowestHealth = targetList[i].GetComponent<HealthSystem>().CurrentHealth;
+                healTarget = targetList[i];
+                //sets currentlowest equal to lowesthealth in the first loop, and after that compares every value after it to the current lowest health
+                if (i == 0)
+                {
+                    currentLowesthealth = lowestHealth;
+                    currentHealTarget = healTarget;
+                }
+
+                //replaces current healing target if new target has less health than the last one
+                if (lowestHealth < currentLowesthealth)
+                {
+                    currentLowesthealth = lowestHealth;
+                    currentHealTarget = healTarget;
+                }
+
+            }
+            currentHealTarget.GetComponent<HealthSystem>().Heal(_healthSystem.CurrentHealth * healPercentage);
+            UnityEngine.Debug.Log(this.gameObject.name + " healed " + currentHealTarget);
+        }
+        if (targetList.Count == 0)
+        {
+            RandomizeAction();
         }
     }
     /// <summary>
