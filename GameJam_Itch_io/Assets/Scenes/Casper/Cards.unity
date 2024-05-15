@@ -866,6 +866,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7000577551768485021, guid: ab795446a157def42932b9dfc21414da,
         type: 3}
+      propertyPath: AddNewCards
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7000577551768485021, guid: ab795446a157def42932b9dfc21414da,
+        type: 3}
       propertyPath: endTurnButton
       value: 
       objectReference: {fileID: 435111843}
