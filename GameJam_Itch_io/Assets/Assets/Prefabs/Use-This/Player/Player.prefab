@@ -571,10 +571,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69ccd9dcb5466e840bf8d086321ffe45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHealth: 10
   maxHealth: 100
-  currentHealth: 0
-  currentCost: 0
-  totalCost: 8
+  currentMana: 0
+  totalMana: 100
   score: 0
   scoreText: {fileID: 0}
   gameOverScreen: {fileID: 0}
