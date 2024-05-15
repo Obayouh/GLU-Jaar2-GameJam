@@ -12,7 +12,6 @@ public class CardManager : MonoBehaviour
 
     int maxAmountOfCards = 4;
 
-    public GameObject currentCard;
     public Transform hand;
 
     TurnManager turnManager;

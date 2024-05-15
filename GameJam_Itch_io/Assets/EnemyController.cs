@@ -11,7 +11,6 @@ public class EnemyController : MonoBehaviour
     public float actionInterval = 2f; // Time interval between enemy actions
 
     private int currentEnemyIndex = 0; // Index of the current enemy taking action
-    private bool isPerformingAction = false; // Flag to prevent simultaneous actions
 
     void Start()
     {
@@ -41,7 +40,6 @@ public class EnemyController : MonoBehaviour
         while (currentEnemyIndex < enemies.Count)
         {
                 GameObject currentEnemy = enemies[currentEnemyIndex];
-                isPerformingAction = true;
 
                 // Perform the action for the current enemy
                 Debug.Log("Enemy " + (currentEnemyIndex + 1) + " performs action.");
