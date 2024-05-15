@@ -8,7 +8,7 @@ public abstract class Ab_HealthManager : MonoBehaviour
 
     public event Action<float, float> OnHealthChanged;
 
-    [SerializeField, Range(10, 100)] protected float currentHealth;
+    [SerializeField, Range(0, 100)] protected float currentHealth;
     [SerializeField, Range(10, 100)] protected float maxHealth;
 
 
@@ -41,6 +41,7 @@ public abstract class Ab_HealthManager : MonoBehaviour
     public virtual void Heal(float amount)
     {
         CurrentHealth += Mathf.Abs(amount);
+        CurrentHealth = Mathf.RoundToInt(CurrentHealth);    
     }
 
     public virtual void TakeDamage(float amount)

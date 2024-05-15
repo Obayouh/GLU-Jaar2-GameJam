@@ -21,4 +21,9 @@ public class HealthSystem : Ab_HealthManager
         SpawnEnemies spawnEnemies = FindObjectOfType<SpawnEnemies>();
         spawnEnemies.RemoveEnemy(this.gameObject);
     }
+
+    public float GetMaxHealth()
+    {
+        return maxHealth;
+    }
 }
