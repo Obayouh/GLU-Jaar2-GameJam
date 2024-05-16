@@ -21,7 +21,7 @@ public class NewHealer : Ab_Enemy
     HealerState healerState;
 
     private float halfHealth;
-    private float maxHealth;
+    private float healTargetMaxHealth;
 
     private List<GameObject> targetList = new List<GameObject>();
     protected override void Start()
@@ -79,7 +79,7 @@ public class NewHealer : Ab_Enemy
     private void BuffOthers()
     {
         healerState = HealerState.Buffing;
-        UnityEngine.Debug.Log("Should buff and then end turn");
+        UnityEngine.Debug.Log("Should buff an enemy and then end turn");
         //logic for buffing others
         healerState = HealerState.Waiting;
     }
@@ -102,7 +102,9 @@ public class NewHealer : Ab_Enemy
         //Play Death animation
     }
 
-    //Finished working here on May 14th
+    /// <summary>
+    /// Cycles through list of current enemies that are alive, checks which has the lowest health, and then heals that enemy by a set amount
+    /// </summary>
     private void LookForOtherEnemies()
     {
         for (int i = 0; i < _spawnEnemies.spawnedEnemies.Count; i++)
@@ -117,7 +119,7 @@ public class NewHealer : Ab_Enemy
 
         if (targetList.Count > 0)
         {
-            //This will be the target the healer will heal
+            
             float currentLowesthealth = 0f;
             GameObject healTarget = null; //temporary storage
             GameObject currentHealTarget = null;// The actual target who we will be healing
@@ -125,7 +127,7 @@ public class NewHealer : Ab_Enemy
             {
                 float lowestHealth = targetList[i].GetComponent<HealthSystem>().CurrentHealth;
                 healTarget = targetList[i];
-                //sets currentlowest equal to lowesthealth in the first loop, and after that compares every value after it to the current lowest health
+                //Sets currentlowest equal to lowesthealth in the first loop, and after that compares every value after it to the current lowest health
                 if (i == 0)
                 {
                     currentLowesthealth = lowestHealth;
@@ -140,13 +142,16 @@ public class NewHealer : Ab_Enemy
                 }
 
             }
-            currentHealTarget.GetComponent<HealthSystem>().Heal(_healthSystem.CurrentHealth * healPercentage);
+            healTargetMaxHealth = currentHealTarget.GetComponent<HealthSystem>().GetMaxHealth();
+            currentHealTarget.GetComponent<HealthSystem>().Heal(healTargetMaxHealth * healPercentage); //Heals target's health based on % of maxHp
             UnityEngine.Debug.Log(this.gameObject.name + " healed " + currentHealTarget);
         }
         if (targetList.Count == 0)
         {
             RandomizeAction();
         }
+
+        targetList.Clear(); // Clears list after turn is over to prevent potentially dead enemies from remaining in the list
     }
     /// <summary>
     /// Randomizes what the enemy does in order to give a feeling of variety to every encounter and every turn
