@@ -105,11 +105,13 @@ public class ClickManagerPrime : MonoBehaviour
         }
         if (effectivenessModifier == 1) //Extra damage dealt
         {
-            return 1.5f; Debug.Log("You did extra damage due to type advantage!");
+            Debug.Log("You did extra damage due to type advantage!");
+            return 1.5f;
         }
         if (effectivenessModifier == 2) //Less damage dealt
         {
-            return 0.5f; Debug.Log("You dealt half the damage due to resistances...");
+            Debug.Log("You dealt half the damage due to resistances...");
+            return 0.5f;
         }
         else
         {

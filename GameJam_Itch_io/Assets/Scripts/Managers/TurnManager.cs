@@ -43,6 +43,11 @@ public class TurnManager : MonoBehaviour
 
     private void StartEnemyTurn()
     {
+        for (int i = 0; i < spawnEnemiesScript.spawnedEnemies.Count; i++)
+        {
+            spawnEnemiesScript.spawnedEnemies[i].GetComponent<Ab_Enemy>().CheckForStatusEffects();
+        }
+
         ChangeState(TurnState.EnemyTurn);
         ReferenceInstance.refInstance.enemyController.StartEnemyActions();
     }
