@@ -30,6 +30,8 @@ public class Tank : Ab_Enemy
 
     public override void OnAction()
     {
+        base.OnAction();
+
         RandomizeAction();
     }
 
@@ -86,7 +88,15 @@ public class Tank : Ab_Enemy
     private void ShieldSelf()
     {
         state = TankState.Shielding;
-        UnityEngine.Debug.Log(this.gameObject.name + " puts a shield on itself");
+        if (_healthSystem.GetComponent<HealthSystem>().hasShield == true)
+        {
+            RandomizeAction();
+        }
+        else
+        {
+            UnityEngine.Debug.Log(this.gameObject.name + " puts a shield on itself");
+            _healthSystem.GetComponent<HealthSystem>().hasShield = true;
+        }
         state = TankState.Shielding;
     }
 
@@ -134,9 +144,15 @@ public class Tank : Ab_Enemy
                 }
 
             }
-            //healTargetMaxHealth = currentHealTarget.GetComponent<HealthSystem>().GetMaxHealth();
-            //currentHealTarget.GetComponent<HealthSystem>().Heal(healTargetMaxHealth * healPercentage); //Heals target's health based on % of maxHp
-            UnityEngine.Debug.Log(this.gameObject.name + " puts a shield on " + currentShieldTarget);
+            if (currentShieldTarget.GetComponent<HealthSystem>().hasShield == true)
+            {
+                RandomizeAction();
+            }
+            else
+            {
+                currentShieldTarget.GetComponent<HealthSystem>().hasShield = true;
+                UnityEngine.Debug.Log(this.gameObject.name + " puts a shield on " + currentShieldTarget);
+            }
         }
         if (targetList.Count == 0)
         {

@@ -54,6 +54,12 @@ public abstract class Ab_Enemy : MonoBehaviour
     public virtual void OnAction()
     {
         //Perform action of Enemy script
+        CheckForStatusEffects();
+    }
+
+    protected virtual void CheckForStatusEffects()
+    {
+        _healthSystem.hasShield = false;
     }
 
     /// <summary>

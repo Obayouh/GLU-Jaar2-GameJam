@@ -211,6 +211,7 @@ GameObject:
   - component: {fileID: 7781664405172393941}
   - component: {fileID: 814306828394390973}
   - component: {fileID: 6981645668902848206}
+  - component: {fileID: 3213827753914109011}
   m_Layer: 0
   m_Name: Warrior
   m_TagString: Enemy
@@ -226,7 +227,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7587874996716114024}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -297,6 +298,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 10
   maxHealth: 15
+  hasShield: 0
 --- !u!114 &6981645668902848206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,16 +311,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 842f7b6dca1ee7d49aa4abd79f38df01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Elements: 0
   _player: {fileID: 0}
   _turnManager: {fileID: 0}
   _spawnSlot: {fileID: 0}
   _healthSystem: {fileID: 0}
   _spawnEnemies: {fileID: 0}
   _enemyController: {fileID: 0}
+  <elementalType>k__BackingField: 0
   _MinAttackPower: 3
   _MaxAttackPower: 5
   StateOfTheWarior: 2
+--- !u!114 &3213827753914109011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7587874996716114024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dd1b2257789294468d237c7951a6225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7606057630940390248
 GameObject:
   m_ObjectHideFlags: 0

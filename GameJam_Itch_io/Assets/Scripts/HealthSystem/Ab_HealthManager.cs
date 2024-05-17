@@ -11,6 +11,8 @@ public abstract class Ab_HealthManager : MonoBehaviour
     [SerializeField, Range(0, 100)] protected float currentHealth;
     [SerializeField, Range(10, 100)] protected float maxHealth;
 
+    public bool hasShield;
+
 
     public virtual void Start()
     {

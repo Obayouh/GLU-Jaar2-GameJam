@@ -12,6 +12,11 @@ public class HealthSystem : Ab_HealthManager
 
     public override void TakeDamage(float amount)
     {
+        if (hasShield)
+        {
+            amount *= 0.5f;
+        }
+
         CurrentHealth -= Mathf.RoundToInt(amount);
     }
 
