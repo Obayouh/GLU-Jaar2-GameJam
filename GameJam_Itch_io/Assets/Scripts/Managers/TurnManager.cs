@@ -20,9 +20,17 @@ public class TurnManager : MonoBehaviour
 
     public GameObject endTurnButton;
 
+    private SpawnEnemies spawnEnemiesScript;
+
     private void Start()
     {
         StartCoroutine(StartPlayerTurn(1f));
+        spawnEnemiesScript = FindFirstObjectByType<SpawnEnemies>();
+    }
+
+    private void Update()
+    {
+
     }
 
     private IEnumerator StartPlayerTurn(float amount)
@@ -50,12 +58,19 @@ public class TurnManager : MonoBehaviour
         state = newState;
         ReferenceInstance.refInstance.cam.CheckState();
         if (state == TurnState.PickCard)
-        {   
+        {
             endTurnButton.SetActive(true);
         }
         else if (state == TurnState.PlayerTurn)
         {
             AddNewCards = true;
+
+            //If all enemies are killed, spawn new wave
+            if (spawnEnemiesScript.spawnedEnemies.Count < 1)
+            {
+                StartCoroutine(spawnEnemiesScript.InstantiateEnemies());
+            }
+
             StartCoroutine(StartPlayerTurn(2f));
         }
         else
