@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
+public enum ViewState
+{
+    cards,
+    game
+}
+
 public class CameraMovement : MonoBehaviour
 {
     [Header("CameraShaking")]
@@ -19,6 +25,8 @@ public class CameraMovement : MonoBehaviour
 
     public bool switchView;
 
+    public ViewState state;
+
     TurnManager turnManager;
     CinemachineVirtualCamera cam;
 
@@ -32,6 +40,7 @@ public class CameraMovement : MonoBehaviour
         startPos = cameraFollower.position;
         targetPos = endPos;
 
+        state = ViewState.game;
     }
 
     void Update()
@@ -74,11 +83,13 @@ public class CameraMovement : MonoBehaviour
         {
             targetPos = endPos;
             switchView = false;
+            state = ViewState.cards;
         }
         else if (cameraFollower.position == endPos)
         {
             targetPos = startPos;
             switchView = false;
+            state = ViewState.game;
         }
     }
 
