@@ -110,6 +110,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vases+Bottles
       objectReference: {fileID: 0}
+    - target: {fileID: 8367994533120077372, guid: 12aecf1db4712a149a604a118c542bee,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 22b38beb5326ec74286bedf155dff74a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: -1571067505312180199, guid: 12aecf1db4712a149a604a118c542bee, type: 3}
