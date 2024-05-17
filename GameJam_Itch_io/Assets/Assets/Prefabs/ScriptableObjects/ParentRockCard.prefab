@@ -65,8 +65,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50a308d49b88550418a914231493d22d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  cost: 0
+  <Typing>k__BackingField: 3
 --- !u!65 &-7579379697986142316
 BoxCollider:
   m_ObjectHideFlags: 0

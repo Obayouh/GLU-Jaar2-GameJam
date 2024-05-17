@@ -564,13 +564,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f835d7523680bc4ab1069831eb79ae3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Elements: 0
   _player: {fileID: 0}
   _turnManager: {fileID: 0}
   _spawnSlot: {fileID: 0}
   _healthSystem: {fileID: 0}
   _spawnEnemies: {fileID: 0}
   _enemyController: {fileID: 0}
+  <elementalType>k__BackingField: 0
   healPercentage: 1
   damageDealt: 3
 --- !u!114 &5628820672562098681
@@ -585,13 +585,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8172c6f026d773648a4ee02d01c230b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Elements: 0
   _player: {fileID: 0}
   _turnManager: {fileID: 0}
   _spawnSlot: {fileID: 0}
   _healthSystem: {fileID: 0}
   _spawnEnemies: {fileID: 0}
   _enemyController: {fileID: 0}
+  <elementalType>k__BackingField: 0
   State: 0
   HealOtherRange: 0
   HealSelfRange: 0

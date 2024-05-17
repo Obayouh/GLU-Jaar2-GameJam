@@ -5,16 +5,17 @@ using UnityEngine;
 
 public abstract class Ab_Enemy : MonoBehaviour
 {
-    public enum Element
-    {
-        Heat,
-        Water,
-        Volt,
-        Gaia,
-        Neutral,
-    }
+    //public enum Element
+    //{
+    //    Heat,
+    //    Water,
+    //    Volt,
+    //    Gaia,
+    //    Neutral,
+    //}
 
-    public Element Elements;
+    //public Element Elements;
+
 
     [SerializeField]
     protected GameObject _player;
@@ -31,9 +32,13 @@ public abstract class Ab_Enemy : MonoBehaviour
 
     protected float _maxHealth;
 
+    [field: SerializeField] public E_ElementalTyping elementalType { get; private set; }
+
     protected virtual void Start()
     {
         FindAll();
+        Array arrayElement = Enum.GetValues(typeof(E_ElementalTyping));
+        elementalType = (E_ElementalTyping)arrayElement.GetValue(UnityEngine.Random.Range(0, arrayElement.Length));
     }
 
     protected virtual void FindAll()

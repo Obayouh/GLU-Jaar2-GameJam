@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ClickManagerPrime : MonoBehaviour
@@ -12,6 +14,12 @@ public class ClickManagerPrime : MonoBehaviour
     private GameObject selectedEnemy;
 
     private CardStats cardStats;
+
+    int effectivenessModifier;
+
+    E_ElementalTyping cardTyping;
+
+    //private TypeChart enemyTyping;
 
     void Start()
     {
@@ -44,6 +52,9 @@ public class ClickManagerPrime : MonoBehaviour
             {
                 selectedCard = hit.transform.gameObject;
                 cardStats = selectedCard.GetComponentInParent<CardStats>();
+                cardTyping = cardStats.Typing;
+
+
 
                 //Check if player has enough mana
                 if (ReferenceInstance.refInstance.playerStats.ReturnPlayerMana() < cardStats.ReturnCost())
@@ -77,10 +88,34 @@ public class ClickManagerPrime : MonoBehaviour
 
     private void DealDamage()
     {
-        selectedEnemy = hit.transform.gameObject;
-        HealthSystem hs = selectedEnemy.GetComponent<HealthSystem>();
-        hs.TakeDamage(cardStats.ReturnDamage());
-        FinishedAttacking();
+        selectedEnemy = hit.transform.gameObject; //Stores enemy in gameobject variable
+        E_ElementalTyping enemyTyping = selectedEnemy.GetComponent<Ab_Enemy>().elementalType;  //Get enemy and fill in the enemy's typing
+        HealthSystem hs = selectedEnemy.GetComponent<HealthSystem>(); //Get enemy health to deal damage to
+        effectivenessModifier = TypingDictionary.GetEffectivenessModifier(cardTyping, enemyTyping); //Checks for playercard and enemy typings  
+        hs.TakeDamage(cardStats.ReturnDamage() * CalculateDamageModifier()); //Returns appropriate damage values
+        enemyTyping = 0; //Resets calculation as fail-safe
+        FinishedAttacking(); //Empties all variables that need no longer be filled
+    }
+
+    private float CalculateDamageModifier()
+    {
+        if (effectivenessModifier == 0) //Neutral damage dealt
+        {
+            return 1f;
+        }
+        if (effectivenessModifier == 1) //Extra damage dealt
+        {
+            return 1.5f; Debug.Log("You did extra damage due to type advantage!");
+        }
+        if (effectivenessModifier == 2) //Less damage dealt
+        {
+            return 0.5f; Debug.Log("You dealt half the damage due to resistances...");
+        }
+        else
+        {
+            Debug.Log("Couldn't calculate damage modifier so returned normal damage value");
+            return 1f;
+        }
     }
 
     private void FinishedAttacking()

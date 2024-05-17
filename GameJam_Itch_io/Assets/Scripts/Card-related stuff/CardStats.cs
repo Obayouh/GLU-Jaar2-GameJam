@@ -5,19 +5,27 @@ using TMPro;
 
 public class CardStats : MonoBehaviour
 {
+    //public enum Typing
+    //{
+    //    Heat,
+    //    Water,
+    //    Volt,
+    //    Gaia,
+    //    Neutral,
+    //}
+
+    
     private TextMeshPro damageText;
     private TextMeshPro costText;
     private int damage;
     private int cost;
+
+    [field: SerializeField] public E_ElementalTyping Typing { get; private set; }
     public void Start()
     {
         GetTextMeshPro();
     }
 
-    public void Update()
-    {
-
-    }
     /// <summary>
     /// Randomizes card damage and cost to use on creation
     /// </summary>

@@ -12,7 +12,7 @@ public class HealthSystem : Ab_HealthManager
 
     public override void TakeDamage(float amount)
     {
-        CurrentHealth -= amount;
+        CurrentHealth -= Mathf.RoundToInt(amount);
     }
 
     public override void Kill()

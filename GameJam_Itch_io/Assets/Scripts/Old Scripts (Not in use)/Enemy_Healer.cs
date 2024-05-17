@@ -34,9 +34,6 @@ public class Enemy_Healer : Ab_Enemy
     {
         base.Start();
 
-        Array arrayElement = Enum.GetValues(typeof(Element));
-        Elements = (Element)arrayElement.GetValue(UnityEngine.Random.Range(0, arrayElement.Length));
-
         _countdown = _resetTimer;
         Invoke(nameof(GetHealRange), 0.25f);
         Invoke(nameof(GetSelfHealRange), 0.255f);

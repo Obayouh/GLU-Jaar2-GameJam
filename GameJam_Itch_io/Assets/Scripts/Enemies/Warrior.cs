@@ -30,8 +30,8 @@ public class Warrior : Ab_Enemy
     {
         base.Start();
 
-        Array arrayElement = Enum.GetValues(typeof(Element));
-        Elements = (Element)arrayElement.GetValue(UnityEngine.Random.Range(0, arrayElement.Length));
+        //Array arrayElement = Enum.GetValues(typeof(Typing));
+        //Typing randomType = (Typing)arrayElement.GetValue(UnityEngine.Random.Range(0, arrayElement.Length));
 
         _playerStats = _player.GetComponent<PlayerStats>();
         _maxLife = GetComponent<HealthSystem>().CurrentHealth;

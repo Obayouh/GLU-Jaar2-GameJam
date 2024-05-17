@@ -210,7 +210,6 @@ GameObject:
   - component: {fileID: 873940756454005696}
   - component: {fileID: 7781664405172393941}
   - component: {fileID: 814306828394390973}
-  - component: {fileID: 5662096963228509109}
   m_Layer: 0
   m_Name: Warrior_Enemy
   m_TagString: Enemy
@@ -297,20 +296,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 10
   maxHealth: 25
---- !u!114 &5662096963228509109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7587874996716114024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb50dafe80387304f97241896a99bb70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Elements: 0
-  WarriorsState: 0
 --- !u!1 &7606057630940390248
 GameObject:
   m_ObjectHideFlags: 0
