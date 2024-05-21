@@ -32,18 +32,29 @@ public class TurnManager : MonoBehaviour
     {
         StartCoroutine(StartPlayerTurn(1f));
         spawnEnemiesScript = FindFirstObjectByType<SpawnEnemies>();
+        UpdateWave();
+    }
+
+    private void UpdateWave()
+    {
+        if (_CurrentWaveText == null)
+            return;
+
         _CurrentWaveText.text = "Current wave:  " + _waveNumber++;
     }
 
-    private void Update()
+    private void UpdateTurn()
     {
+        if (_CurrentTurnText == null)
+            return;
 
+        _CurrentTurnText.text = "Current turn:    " + _turnNumber++;
     }
 
     private IEnumerator StartPlayerTurn(float amount)
     {
         ReferenceInstance.refInstance.playerStats.RefillMana();
-        _CurrentTurnText.text = "Current turn:    " + _turnNumber++;
+        UpdateTurn();
         yield return new WaitForSeconds(amount);
         ChangeState(TurnState.PickCard);
         ReferenceInstance.refInstance.cardManager.AddCards();
@@ -81,7 +92,7 @@ public class TurnManager : MonoBehaviour
             //If all enemies are killed, spawn new wave
             if (spawnEnemiesScript.spawnedEnemies.Count < 1)
             {
-                _CurrentWaveText.text = "Current wave:  " + _waveNumber++;
+                UpdateWave();
                 StartCoroutine(spawnEnemiesScript.InstantiateEnemies());
             }
 

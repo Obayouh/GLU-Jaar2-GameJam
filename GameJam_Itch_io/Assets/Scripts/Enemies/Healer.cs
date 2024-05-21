@@ -9,15 +9,6 @@ public class Healer : Ab_Enemy
     [SerializeField, Range(0.1f, 1f)] private float healPercentage;
     [SerializeField, Range(3, 60)] private int damageDealt; //Update in prefab if you change the value(s)
 
-    public enum HealerState
-    {
-        Healing,
-        Attacking,
-        Waiting
-    }
-
-    [SerializeField] private HealerState healerState;
-
     private float halfHealth;
     private float healTargetMaxHealth;
 
@@ -34,25 +25,19 @@ public class Healer : Ab_Enemy
 
     private void HealEnemy()
     {
-        healerState = HealerState.Healing;
         LookForOtherEnemies();
-        healerState = HealerState.Waiting;
     }
 
     private void HealSelf()
     {
-        healerState = HealerState.Healing;
         _healthSystem.Heal(_healthSystem.CurrentHealth * healPercentage);
         UnityEngine.Debug.Log(this.gameObject.name + "healed itself");
-        healerState = HealerState.Waiting;
     }
 
     private void Attack()
     {
-        healerState = HealerState.Attacking;
         _playerStats.TakeDamage(damageDealt);
         UnityEngine.Debug.Log("Should attack player and then end turn");
-        healerState = HealerState.Waiting;
     }
 
     public override void SpawnAnim()

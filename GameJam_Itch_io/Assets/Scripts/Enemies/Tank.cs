@@ -6,17 +6,7 @@ using UnityEngine;
 
 public class Tank : Ab_Enemy
 {
-    public enum TankState
-    {
-        Attacking,
-        Shielding,
-        Taunting,
-        Waiting
-    }
-
     [SerializeField, Range(3, 60)] private int damageDealt; //Update in prefab if you change the value(s)
-
-    [SerializeField] private TankState state;
 
     private List<GameObject> targetList = new List<GameObject>();
 
@@ -53,15 +43,12 @@ public class Tank : Ab_Enemy
 
     private void Attack()
     {
-        state = TankState.Attacking;
         _playerStats.TakeDamage(damageDealt);
         UnityEngine.Debug.Log("Should attack player and then end turn");
-        state = TankState.Waiting;
     }
 
     private void Taunt()
     {
-        state = TankState.Taunting;
         if (ReferenceInstance.refInstance.clickManager.HasSelectedEnemy() == true)
         {
             RandomizeAction();
@@ -69,7 +56,6 @@ public class Tank : Ab_Enemy
         }
         ReferenceInstance.refInstance.clickManager.Taunt(this.gameObject);
         UnityEngine.Debug.Log("Taunts... Player can only attack tank next turn!");
-        state = TankState.Waiting;
     }
 
     private void RandomizeShielding()
@@ -90,7 +76,6 @@ public class Tank : Ab_Enemy
 
     private void ShieldSelf()
     {
-        state = TankState.Shielding;
         if (_healthSystem.GetComponent<HealthSystem>().hasShield == true)
         {
             RandomizeAction();
@@ -100,14 +85,11 @@ public class Tank : Ab_Enemy
             UnityEngine.Debug.Log(this.gameObject.name + " puts a shield on itself");
             _healthSystem.GetComponent<HealthSystem>().hasShield = true;
         }
-        state = TankState.Shielding;
     }
 
     private void ShieldEnemy()
     {
-        state = TankState.Shielding;
         LookForOtherEnemies();
-        state = TankState.Shielding;
     }
 
     private void LookForOtherEnemies()
