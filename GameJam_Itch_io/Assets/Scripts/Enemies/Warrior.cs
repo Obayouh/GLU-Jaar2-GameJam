@@ -17,14 +17,16 @@ public class Warrior : Ab_Enemy
 
     public TheStateOfTheWarior StateOfTheWarior;
 
-    private Animator WarriorAnim;
+    private Animator _warriorAnim;
     private PlayerStats _playerStats;
+    private HealthSystem _currentHealth;
 
     private float _maxLife;
     private float _halfLife;
 
     private bool _attackBuff;
     private int _detectHalfLife;
+    private Coroutine currentCoroutine = null;
 
     protected override void Start()
     {
@@ -34,15 +36,18 @@ public class Warrior : Ab_Enemy
         //Typing randomType = (Typing)arrayElement.GetValue(UnityEngine.Random.Range(0, arrayElement.Length));
 
         _playerStats = _player.GetComponent<PlayerStats>();
+        _currentHealth = _player.GetComponent<HealthSystem>();
         _maxLife = GetComponent<HealthSystem>().CurrentHealth;
+        _warriorAnim = GetComponent<Animator>();
         _halfLife = _maxLife / 2;
     }
 
     void Update()
     {
-        if (StateOfTheWarior == TheStateOfTheWarior.Attack)
+        if (StateOfTheWarior == TheStateOfTheWarior.Attack && currentCoroutine == null)
         {
-            AttackPlayer();
+            //AttackPlayer();
+            currentCoroutine = StartCoroutine(AttackPlayer());
         }
 
         if (StateOfTheWarior == TheStateOfTheWarior.BuffThemself)
@@ -50,10 +55,10 @@ public class Warrior : Ab_Enemy
             BuffItself();
         }
 
-        //if (StateOfTheWarior == TheStateOfTheWarior.Waiting)
-        //{
-        //    CurrentlyWaiting();
-        //}
+        if (StateOfTheWarior == TheStateOfTheWarior.Waiting)
+        {
+            CurrentlyWaiting();
+        }
     }
 
     public override void OnAction()
@@ -69,11 +74,15 @@ public class Warrior : Ab_Enemy
         }
     }
 
-    private void AttackPlayer()
+    private IEnumerator AttackPlayer()
     {
+        _warriorAnim.SetInteger("SkeletonState", 1);
+        Debug.Log("Attack animation");
+        yield return new WaitForSeconds(1f);
         _playerStats.TakeDamage(UnityEngine.Random.Range(_MinAttackPower, _MaxAttackPower));
-        
+        yield return new WaitForSeconds(1f);
         StateOfTheWarior = TheStateOfTheWarior.Waiting;
+        currentCoroutine = null;
     }
 
     private void BuffItself()
@@ -84,8 +93,22 @@ public class Warrior : Ab_Enemy
         StateOfTheWarior = TheStateOfTheWarior.Waiting;
     }
 
-    //private void CurrentlyWaiting()
+    private void CurrentlyWaiting()
+    {
+        int _stateOfSkeleton = _warriorAnim.GetInteger("SkeletonState");
+
+        if (_stateOfSkeleton == 1 || _stateOfSkeleton == 2)
+        {
+            _warriorAnim.SetInteger("SkeletonState", 0);
+            Debug.Log("Idle animation");
+        }
+    }
+
+    //public override void DeadAnim()
     //{
-    //    return;
+    //    if (_currentHealth.CurrentHealth <= 0)
+    //    {
+
+    //    }
     //}
 }
