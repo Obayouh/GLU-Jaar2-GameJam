@@ -12,12 +12,11 @@ public class Healer : Ab_Enemy
     public enum HealerState
     {
         Healing,
-        Buffing,
         Attacking,
         Waiting
     }
 
-    HealerState healerState;
+    [SerializeField] private HealerState healerState;
 
     private float halfHealth;
     private float healTargetMaxHealth;
@@ -26,8 +25,6 @@ public class Healer : Ab_Enemy
     protected override void Start()
     {
         base.Start();
-        //Array arrayElement = Enum.GetValues(typeof(Typing));
-        //Typing randomType = (Typing)arrayElement.GetValue(UnityEngine.Random.Range(0, arrayElement.Length));
     }
 
     public override void OnAction()
@@ -47,14 +44,6 @@ public class Healer : Ab_Enemy
         healerState = HealerState.Healing;
         _healthSystem.Heal(_healthSystem.CurrentHealth * healPercentage);
         UnityEngine.Debug.Log(this.gameObject.name + "healed itself");
-        healerState = HealerState.Waiting;
-    }
-
-    private void BuffOthers()
-    {
-        healerState = HealerState.Buffing;
-        UnityEngine.Debug.Log("Should buff an enemy and then end turn");
-        //logic for buffing others
         healerState = HealerState.Waiting;
     }
 
@@ -138,12 +127,7 @@ public class Healer : Ab_Enemy
             RandomizeHealing();
         }
 
-        else if (randomActionNumber < 0.8333f) // 0.5 + (1/6)
-        {
-            RandomizeOffense();
-        }
-
-        else if (randomActionNumber < 1.1666f) // 0.5 + (2/6)
+        else if (randomActionNumber < 1f)
         {
             Attack();
         }
@@ -161,22 +145,6 @@ public class Healer : Ab_Enemy
 
             case 1:
                 HealEnemy();
-                break;
-        }
-    }
-
-    private void RandomizeOffense()
-    {
-        int index = UnityEngine.Random.Range(0, 2);
-
-        switch (index)
-        {
-            case 0:
-                BuffOthers();
-                break;
-
-            case 1:
-                Attack();
                 break;
         }
     }

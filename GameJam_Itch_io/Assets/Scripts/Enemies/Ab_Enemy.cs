@@ -5,29 +5,11 @@ using UnityEngine;
 
 public abstract class Ab_Enemy : MonoBehaviour
 {
-    //public enum Element
-    //{
-    //    Heat,
-    //    Water,
-    //    Volt,
-    //    Gaia,
-    //    Neutral,
-    //}
-
-    //public Element Elements;
-
-
-    //[SerializeField]
     protected GameObject _player;
-    //[SerializeField]
     protected TurnManager _turnManager;
-    //[SerializeField]
     protected SpawnSlot _spawnSlot;
-    //[SerializeField]
     protected HealthSystem _healthSystem;
-    //[SerializeField]
     protected SpawnEnemies _spawnEnemies;
-    //[SerializeField]
     protected EnemyController _enemyController;
     protected PlayerStats _playerStats;
 

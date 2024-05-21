@@ -16,8 +16,7 @@ public class Tank : Ab_Enemy
 
     [SerializeField, Range(3, 60)] private int damageDealt; //Update in prefab if you change the value(s)
 
-    public TankState state;
-
+    [SerializeField] private TankState state;
 
     private List<GameObject> targetList = new List<GameObject>();
 
@@ -41,12 +40,12 @@ public class Tank : Ab_Enemy
             Attack();
         }
 
-        else if (randomActionNumber < 0.8333f) // 0.5 + (1/6)
+        else if (randomActionNumber < 0.8f)
         {
             RandomizeShielding();
         }
 
-        else if (randomActionNumber < 1.1666f) // 0.5 + (2/6)
+        else if (randomActionNumber < 1)
         {
             Taunt();
         }

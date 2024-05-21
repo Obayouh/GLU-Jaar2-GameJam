@@ -78,7 +78,7 @@ public class ClickManagerPrime : MonoBehaviour
             {
                 DealDamage();
             }
-            //Select enemy to attack if not already defined and then empty card and enemy selections
+            //Enemy is already selected so it attacks the enemy that is probably taunting
             else if (Input.GetMouseButtonDown(0) && selectedEnemy != null && selectedCard != null && hit.transform.CompareTag("Enemy"))
             {
                 DealDamage();

@@ -12,11 +12,6 @@ public class EnemyController : MonoBehaviour
 
     private int currentEnemyIndex = 0; // Index of the current enemy taking action
 
-    void Start()
-    {
-
-    }
-
     public void AddEnemy(GameObject enemy)
     {
         enemies.Add(enemy);
@@ -67,6 +62,5 @@ public class EnemyController : MonoBehaviour
         }
 
         yield return null;
-
     }
 }
