@@ -12,7 +12,6 @@ public enum ViewState
 public class CameraMovement : MonoBehaviour
 {
     [Header("CameraShaking")]
-    public bool gameOver;
     public AnimationCurve curve;
     public float durationShaking = 1f;
 
@@ -26,6 +25,8 @@ public class CameraMovement : MonoBehaviour
     public bool switchView;
 
     public ViewState state;
+
+    private bool gameOver;
 
     TurnManager turnManager;
     CinemachineVirtualCamera cam;
