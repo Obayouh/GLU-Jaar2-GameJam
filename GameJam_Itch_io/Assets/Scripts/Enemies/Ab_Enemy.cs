@@ -17,17 +17,17 @@ public abstract class Ab_Enemy : MonoBehaviour
     //public Element Elements;
 
 
-    [SerializeField]
+    //[SerializeField]
     protected GameObject _player;
-    [SerializeField]
+    //[SerializeField]
     protected TurnManager _turnManager;
-    [SerializeField]
+    //[SerializeField]
     protected SpawnSlot _spawnSlot;
-    [SerializeField]
+    //[SerializeField]
     protected HealthSystem _healthSystem;
-    [SerializeField]
+    //[SerializeField]
     protected SpawnEnemies _spawnEnemies;
-    [SerializeField]
+    //[SerializeField]
     protected EnemyController _enemyController;
 
     protected float _maxHealth;
@@ -59,6 +59,8 @@ public abstract class Ab_Enemy : MonoBehaviour
     public virtual void CheckForStatusEffects()
     {
         _healthSystem.hasShield = false;
+
+        ReferenceInstance.refInstance.clickManager.RemoveTaunt();
     }
 
     /// <summary>

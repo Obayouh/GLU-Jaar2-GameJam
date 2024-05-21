@@ -19,6 +19,9 @@ public class ClickManagerPrime : MonoBehaviour
 
     E_ElementalTyping cardTyping;
 
+    [Header("Extra Effects")]
+    bool taunt;
+
     //private TypeChart enemyTyping;
 
     void Start()
@@ -75,6 +78,11 @@ public class ClickManagerPrime : MonoBehaviour
             {
                 DealDamage();
             }
+            //Select enemy to attack if not already defined and then empty card and enemy selections
+            else if (Input.GetMouseButtonDown(0) && selectedEnemy != null && selectedCard != null && hit.transform.CompareTag("Enemy"))
+            {
+                DealDamage();
+            }
         }
         else
         {
@@ -86,9 +94,35 @@ public class ClickManagerPrime : MonoBehaviour
         }
     }
 
+    public bool HasSelectedEnemy() //Check if an enemy is already taunting
+    {
+        if (selectedEnemy != null)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void Taunt(GameObject enemy)
+    {
+        selectedEnemy = enemy;
+        taunt = true;
+    }
+
+    public void RemoveTaunt()
+    {
+        selectedEnemy = null;
+        taunt = false;
+    }
+
     private void DealDamage()
     {
-        selectedEnemy = hit.transform.gameObject; //Stores enemy in gameobject variable
+        if (selectedEnemy == null) //Check if there is an enemy who was taunting
+            selectedEnemy = hit.transform.gameObject; //Stores enemy in gameobject variable
+
         E_ElementalTyping enemyTyping = selectedEnemy.GetComponent<Ab_Enemy>().elementalType;  //Get enemy and fill in the enemy's typing
         HealthSystem hs = selectedEnemy.GetComponent<HealthSystem>(); //Get enemy health to deal damage to
         effectivenessModifier = TypingDictionary.GetEffectivenessModifier(cardTyping, enemyTyping); //Checks for playercard and enemy typings  
@@ -126,7 +160,11 @@ public class ClickManagerPrime : MonoBehaviour
         ReferenceInstance.refInstance.cardManager.RemoveCard(selectedCard.transform.parent.parent.gameObject);
         ReferenceInstance.refInstance.turnManager.ChangeState(TurnState.PickCard);
         selectedCard = null;
-        selectedEnemy = null;
+
+        if (taunt == false)
+        {
+            selectedEnemy = null;
+        }
     }
 
     public GameObject ReturnPlayerCard()

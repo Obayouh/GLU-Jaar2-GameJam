@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 523781423421791466}
   - component: {fileID: 3604014319576251971}
   m_Layer: 0
-  m_Name: SpawnSpot (2)
+  m_Name: SpawnSpot 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 7486294642994066778}
   - component: {fileID: 3509222979698223662}
   m_Layer: 0
-  m_Name: SpawnSpot
+  m_Name: SpawnSpot 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 2306666250588045071}
   - component: {fileID: 496916460004287770}
   m_Layer: 0
-  m_Name: SpawnSpot (1)
+  m_Name: SpawnSpot 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -285,7 +285,7 @@ MonoBehaviour:
   - {fileID: 6116010915453642917}
   - {fileID: 1029619685814661543}
   spawnedEnemies: []
-  Enemies: {fileID: 11400000, guid: 5266b0ba5760d22459ed7b64d53ab789, type: 2}
+  Enemies: {fileID: 11400000, guid: 138f437e40cfa8c4db7f602c9f7d2d16, type: 2}
 --- !u!114 &2368303388757844687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,3 +298,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4ff8eae142d3c94480e9d111cdb75b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemies: []
+  actionInterval: 2

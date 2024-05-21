@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ public class Tank : Ab_Enemy
 
     [SerializeField, Range(3, 60)] private int damageDealt; //Update in prefab if you change the value(s)
 
-    private TankState state;
+    public TankState state;
 
     private PlayerStats playerStats;
 
@@ -65,6 +66,12 @@ public class Tank : Ab_Enemy
     private void Taunt()
     {
         state = TankState.Taunting;
+        if (ReferenceInstance.refInstance.clickManager.HasSelectedEnemy() == true)
+        {
+            RandomizeAction();
+            return;
+        }
+        ReferenceInstance.refInstance.clickManager.Taunt(this.gameObject);
         UnityEngine.Debug.Log("Taunts... Player can only attack tank next turn!");
         state = TankState.Waiting;
     }

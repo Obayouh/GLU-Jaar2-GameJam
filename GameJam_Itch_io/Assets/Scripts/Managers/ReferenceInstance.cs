@@ -9,6 +9,7 @@ public class ReferenceInstance : MonoBehaviour
     public PlayerStats playerStats;
     public TurnManager turnManager;
     public CardManager cardManager;
+    public ClickManagerPrime clickManager;
     public EnemyController enemyController;
     public CameraMovement cam;
 
@@ -19,6 +20,7 @@ public class ReferenceInstance : MonoBehaviour
         playerStats = FindFirstObjectByType<PlayerStats>();
         turnManager = GetComponentInChildren<TurnManager>();
         cardManager = GetComponentInChildren<CardManager>();
+        clickManager = GetComponentInChildren<ClickManagerPrime>();
         enemyController = GetComponentInChildren<EnemyController>();
         cam = FindFirstObjectByType<CameraMovement>();
     }
