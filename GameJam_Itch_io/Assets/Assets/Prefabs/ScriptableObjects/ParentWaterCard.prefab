@@ -126,6 +126,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card_Water_Whirlpool
       objectReference: {fileID: 0}
+    - target: {fileID: 5006253153094103899, guid: ae8996d4d522078479896ed7d2eb62ee,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 99f732c2f4aef7e45b66e98b7e40180f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
