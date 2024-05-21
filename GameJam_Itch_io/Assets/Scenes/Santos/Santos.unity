@@ -472,10 +472,30 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 2.41
       objectReference: {fileID: 0}
+    - target: {fileID: 4178698694248386111, guid: ca171739c2c418048ad1ce485fede2a8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f6301bd7bfeb19c41a67f14f4f16bf55, type: 2}
+    - target: {fileID: 4178698694248386111, guid: ca171739c2c418048ad1ce485fede2a8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: f6301bd7bfeb19c41a67f14f4f16bf55, type: 2}
     - target: {fileID: 4470346281316119529, guid: ca171739c2c418048ad1ce485fede2a8,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 1.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525492488632178416, guid: ca171739c2c418048ad1ce485fede2a8,
+        type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525492488632178416, guid: ca171739c2c418048ad1ce485fede2a8,
+        type: 3}
+      propertyPath: simulationSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6525492488632178416, guid: ca171739c2c418048ad1ce485fede2a8,
         type: 3}
@@ -539,6 +559,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6525492488632178416, guid: ca171739c2c418048ad1ce485fede2a8,
         type: 3}
+      propertyPath: InitialModule.gravitySource
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525492488632178416, guid: ca171739c2c418048ad1ce485fede2a8,
+        type: 3}
       propertyPath: SizeModule.curve.minMaxState
       value: 1
       objectReference: {fileID: 0}
@@ -550,7 +575,7 @@ PrefabInstance:
     - target: {fileID: 6525492488632178416, guid: ca171739c2c418048ad1ce485fede2a8,
         type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 4.87
+      value: 4.17
       objectReference: {fileID: 0}
     - target: {fileID: 6525492488632178416, guid: ca171739c2c418048ad1ce485fede2a8,
         type: 3}
@@ -559,13 +584,48 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6525492488632178416, guid: ca171739c2c418048ad1ce485fede2a8,
         type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525492488632178416, guid: ca171739c2c418048ad1ce485fede2a8,
+        type: 3}
       propertyPath: InitialModule.startColor.maxColor.a
+      value: 0.31764707
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525492488632178416, guid: ca171739c2c418048ad1ce485fede2a8,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525492488632178416, guid: ca171739c2c418048ad1ce485fede2a8,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525492488632178416, guid: ca171739c2c418048ad1ce485fede2a8,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525492488632178416, guid: ca171739c2c418048ad1ce485fede2a8,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6525492488632178416, guid: ca171739c2c418048ad1ce485fede2a8,
         type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key0.a
       value: 0.27450982
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525492488632178416, guid: ca171739c2c418048ad1ce485fede2a8,
+        type: 3}
+      propertyPath: InitialModule.randomizeRotationDirection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013686984872120681, guid: ca171739c2c418048ad1ce485fede2a8,
+        type: 3}
+      propertyPath: simulationSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7013686984872120681, guid: ca171739c2c418048ad1ce485fede2a8,
         type: 3}
@@ -576,6 +636,11 @@ PrefabInstance:
         type: 3}
       propertyPath: TrailModule.worldSpace
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013686984872120681, guid: ca171739c2c418048ad1ce485fede2a8,
+        type: 3}
+      propertyPath: InitialModule.gravitySource
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7013686984872120681, guid: ca171739c2c418048ad1ce485fede2a8,
         type: 3}
@@ -589,8 +654,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7013686984872120681, guid: ca171739c2c418048ad1ce485fede2a8,
         type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013686984872120681, guid: ca171739c2c418048ad1ce485fede2a8,
+        type: 3}
       propertyPath: InitialModule.startColor.maxColor.a
       value: 0.7607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013686984872120681, guid: ca171739c2c418048ad1ce485fede2a8,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013686984872120681, guid: ca171739c2c418048ad1ce485fede2a8,
+        type: 3}
+      propertyPath: InitialModule.randomizeRotationDirection
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7742139421611104994, guid: ca171739c2c418048ad1ce485fede2a8,
         type: 3}
@@ -604,6 +684,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8570657966052550886, guid: ca171739c2c418048ad1ce485fede2a8,
         type: 3}
+      propertyPath: simulationSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8570657966052550886, guid: ca171739c2c418048ad1ce485fede2a8,
+        type: 3}
       propertyPath: moveWithTransform
       value: 0
       objectReference: {fileID: 0}
@@ -614,13 +699,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8570657966052550886, guid: ca171739c2c418048ad1ce485fede2a8,
         type: 3}
+      propertyPath: InitialModule.gravitySource
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8570657966052550886, guid: ca171739c2c418048ad1ce485fede2a8,
+        type: 3}
       propertyPath: InitialModule.maxNumParticles
       value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8570657966052550886, guid: ca171739c2c418048ad1ce485fede2a8,
         type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8570657966052550886, guid: ca171739c2c418048ad1ce485fede2a8,
+        type: 3}
       propertyPath: InitialModule.startColor.maxColor.a
       value: 0.68235296
+      objectReference: {fileID: 0}
+    - target: {fileID: 8570657966052550886, guid: ca171739c2c418048ad1ce485fede2a8,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8570657966052550886, guid: ca171739c2c418048ad1ce485fede2a8,
+        type: 3}
+      propertyPath: InitialModule.randomizeRotationDirection
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
