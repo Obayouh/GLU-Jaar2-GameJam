@@ -18,8 +18,7 @@ public class Warrior : Ab_Enemy
     public TheStateOfTheWarior StateOfTheWarior;
 
     private Animator _warriorAnim;
-    private PlayerStats _playerStats;
-    private HealthSystem _currentHealth;
+    //private HealthSystem _currentHealth;
 
     private float _maxLife;
     private float _halfLife;
@@ -35,8 +34,7 @@ public class Warrior : Ab_Enemy
         //Array arrayElement = Enum.GetValues(typeof(Typing));
         //Typing randomType = (Typing)arrayElement.GetValue(UnityEngine.Random.Range(0, arrayElement.Length));
 
-        _playerStats = _player.GetComponent<PlayerStats>();
-        _currentHealth = _player.GetComponent<HealthSystem>();
+        //_currentHealth = _player.GetComponent<HealthSystem>();
         _maxLife = GetComponent<HealthSystem>().CurrentHealth;
         _warriorAnim = GetComponent<Animator>();
         _halfLife = _maxLife / 2;

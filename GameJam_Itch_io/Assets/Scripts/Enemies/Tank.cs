@@ -18,15 +18,12 @@ public class Tank : Ab_Enemy
 
     public TankState state;
 
-    private PlayerStats playerStats;
 
     private List<GameObject> targetList = new List<GameObject>();
 
     protected override void Start()
     {
         base.Start();
-
-        playerStats = FindFirstObjectByType<PlayerStats>();
     }
 
     public override void OnAction()
@@ -58,7 +55,7 @@ public class Tank : Ab_Enemy
     private void Attack()
     {
         state = TankState.Attacking;
-        playerStats.TakeDamage(damageDealt);
+        _playerStats.TakeDamage(damageDealt);
         UnityEngine.Debug.Log("Should attack player and then end turn");
         state = TankState.Waiting;
     }

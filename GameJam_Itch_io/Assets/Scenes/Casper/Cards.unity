@@ -543,6 +543,7 @@ MonoBehaviour:
   playerStats: {fileID: 1650082844}
   turnManager: {fileID: 1119806654}
   cardManager: {fileID: 936758865}
+  clickManager: {fileID: 0}
   enemyController: {fileID: 0}
   cam: {fileID: 0}
 --- !u!1 &1609431458
