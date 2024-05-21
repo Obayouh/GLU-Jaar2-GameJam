@@ -211,6 +211,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: PlayerCard
       objectReference: {fileID: 0}
+    - target: {fileID: 5006253153094103899, guid: b262a844c6f0eae4c9ea2bb2cc832c01,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f42fdfc4934f4c243a6b046179e80957, type: 2}
     m_RemovedComponents:
     - {fileID: 2123457967971342327, guid: b262a844c6f0eae4c9ea2bb2cc832c01, type: 3}
     m_RemovedGameObjects: []
