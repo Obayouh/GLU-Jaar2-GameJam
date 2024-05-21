@@ -39,6 +39,7 @@ public class PlayerStats : Ab_HealthManager
     public override void TakeDamage(float amount)
     {
         CurrentHealth -= amount;
+        cam.StartShaking();
     }
 
     public override void Kill()
