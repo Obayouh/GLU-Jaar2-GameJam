@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public enum TurnState
@@ -22,10 +23,16 @@ public class TurnManager : MonoBehaviour
 
     private SpawnEnemies spawnEnemiesScript;
 
+    [SerializeField] private TextMeshProUGUI _CurrentWaveText;
+    [SerializeField] private TextMeshProUGUI _CurrentTurnText;
+    private int _waveNumber = 1;
+    private int _turnNumber = 1;
+
     private void Start()
     {
         StartCoroutine(StartPlayerTurn(1f));
         spawnEnemiesScript = FindFirstObjectByType<SpawnEnemies>();
+        _CurrentWaveText.text = "Current wave:  " + _waveNumber++;
     }
 
     private void Update()
@@ -36,6 +43,7 @@ public class TurnManager : MonoBehaviour
     private IEnumerator StartPlayerTurn(float amount)
     {
         ReferenceInstance.refInstance.playerStats.RefillMana();
+        _CurrentTurnText.text = "Current turn:    " + _turnNumber++;
         yield return new WaitForSeconds(amount);
         ChangeState(TurnState.PickCard);
         ReferenceInstance.refInstance.cardManager.AddCards();
@@ -73,6 +81,7 @@ public class TurnManager : MonoBehaviour
             //If all enemies are killed, spawn new wave
             if (spawnEnemiesScript.spawnedEnemies.Count < 1)
             {
+                _CurrentWaveText.text = "Current wave:  " + _waveNumber++;
                 StartCoroutine(spawnEnemiesScript.InstantiateEnemies());
             }
 
