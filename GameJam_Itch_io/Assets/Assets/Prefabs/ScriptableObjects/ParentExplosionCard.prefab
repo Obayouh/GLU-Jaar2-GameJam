@@ -121,6 +121,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 548692865384682147, guid: 9b71280129bbd4c4c98c4a7cc9d54a13,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2180264, guid: 18b610e40af0e6b43a68087d9b94b627, type: 2}
+    - target: {fileID: 711485126069258542, guid: 9b71280129bbd4c4c98c4a7cc9d54a13,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2180264, guid: 18b610e40af0e6b43a68087d9b94b627, type: 2}
     - target: {fileID: 960562087414130642, guid: 9b71280129bbd4c4c98c4a7cc9d54a13,
         type: 3}
       propertyPath: m_Name
@@ -146,6 +156,38 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: dbda3c670d7bfa643b21bd2db08b4116, type: 2}
+    - target: {fileID: 7977449591625109155, guid: 9b71280129bbd4c4c98c4a7cc9d54a13,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 18b610e40af0e6b43a68087d9b94b627,
+        type: 2}
+    - target: {fileID: 7977449591625109155, guid: 9b71280129bbd4c4c98c4a7cc9d54a13,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 18b610e40af0e6b43a68087d9b94b627, type: 2}
+    - target: {fileID: 7977449591625109155, guid: 9b71280129bbd4c4c98c4a7cc9d54a13,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142024959121546522, guid: 9b71280129bbd4c4c98c4a7cc9d54a13,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 18b610e40af0e6b43a68087d9b94b627,
+        type: 2}
+    - target: {fileID: 9142024959121546522, guid: 9b71280129bbd4c4c98c4a7cc9d54a13,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 18b610e40af0e6b43a68087d9b94b627, type: 2}
+    - target: {fileID: 9142024959121546522, guid: 9b71280129bbd4c4c98c4a7cc9d54a13,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2123457967971342327, guid: 9b71280129bbd4c4c98c4a7cc9d54a13, type: 3}
     m_RemovedGameObjects: []

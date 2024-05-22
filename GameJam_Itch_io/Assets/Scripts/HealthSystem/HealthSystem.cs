@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class HealthSystem : Ab_HealthManager
 {
+    private HealthBar _healthBar;
     public override void Start()
     {
         base.Start();
+        _healthBar = GetComponentInChildren<HealthBar>();
     }
 
     public override void TakeDamage(float amount)
@@ -18,6 +20,12 @@ public class HealthSystem : Ab_HealthManager
         }
 
         CurrentHealth -= Mathf.RoundToInt(amount);
+        _healthBar.UpdateHealthBar(CurrentHealth, maxHealth);
+    }
+
+    public void HealthUpdate()
+    {
+        _healthBar.UpdateHealthBar(CurrentHealth, maxHealth);
     }
 
     public override void Kill()

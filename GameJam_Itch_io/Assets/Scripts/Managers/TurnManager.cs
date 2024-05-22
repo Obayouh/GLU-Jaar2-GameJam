@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public enum TurnState
@@ -19,36 +18,34 @@ public class TurnManager : MonoBehaviour
 
     public bool AddNewCards;
 
-    public GameObject endTurnButton;
-
     private SpawnEnemies spawnEnemiesScript;
 
-    [SerializeField] private TextMeshProUGUI _CurrentWaveText;
-    [SerializeField] private TextMeshProUGUI _CurrentTurnText;
-    private int _waveNumber = 1;
+    private int _floorNumber = 1;
     private int _turnNumber = 1;
+
+    [SerializeField] private CanvasCollector _CanvasCollector;
 
     private void Start()
     {
         StartCoroutine(StartPlayerTurn(1f));
         spawnEnemiesScript = FindFirstObjectByType<SpawnEnemies>();
-        UpdateWave();
+        UpdateFloor();
     }
 
-    private void UpdateWave()
+    private void UpdateFloor()
     {
-        if (_CurrentWaveText == null)
+        if (_CanvasCollector.CurrentFloor == null)
             return;
 
-        _CurrentWaveText.text = "Current wave:  " + _waveNumber++;
+        _CanvasCollector.CurrentFloor.text = "Current floor:  " + _floorNumber++;
     }
 
     private void UpdateTurn()
     {
-        if (_CurrentTurnText == null)
+        if (_CanvasCollector.CurrentTurn == null)
             return;
 
-        _CurrentTurnText.text = "Current turn:    " + _turnNumber++;
+        _CanvasCollector.CurrentTurn.text = "Current turn:   " + _turnNumber++;
     }
 
     private IEnumerator StartPlayerTurn(float amount)
@@ -83,7 +80,7 @@ public class TurnManager : MonoBehaviour
         ReferenceInstance.refInstance.cam.CheckState();
         if (state == TurnState.PickCard)
         {
-            endTurnButton.SetActive(true);
+            _CanvasCollector.EndTurnButton.SetActive(true);
         }
         else if (state == TurnState.PlayerTurn)
         {
@@ -92,20 +89,31 @@ public class TurnManager : MonoBehaviour
             //If all enemies are killed, spawn new wave
             if (spawnEnemiesScript.spawnedEnemies.Count < 1)
             {
-                UpdateWave();
-                StartCoroutine(spawnEnemiesScript.InstantiateEnemies());
+                StartCoroutine(LoadNextWave());
+                //UpdateFloor();
+                //StartCoroutine(spawnEnemiesScript.InstantiateEnemies());
             }
 
             StartCoroutine(StartPlayerTurn(1f));
         }
         else
         {
-            endTurnButton.SetActive(false);
+            _CanvasCollector.EndTurnButton.SetActive(true);
         }
     }
 
     public TurnState ReturnState()
     {
         return state;
+    }
+
+    public IEnumerator LoadNextWave()
+    {
+        _CanvasCollector.CrossfadeAnimator.SetTrigger("Start");
+        yield return new WaitForSeconds(1f);
+        _CanvasCollector.CrossfadeAnimator.SetTrigger("End");
+        yield return new WaitForSeconds(1f);
+        UpdateFloor();
+        StartCoroutine(spawnEnemiesScript.InstantiateEnemies());
     }
 }
