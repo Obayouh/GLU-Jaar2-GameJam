@@ -1,51 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4640352278999557149
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 946839624316036201}
-  - component: {fileID: 6560260728998167949}
-  m_Layer: 0
-  m_Name: TypehartContainer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &946839624316036201
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4640352278999557149}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1820.5674, y: 82.614716, z: 47.752056}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5696013071260179875}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6560260728998167949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4640352278999557149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91366bcb1f737894f925e8f42f9d8c79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 0
-  AmountOfDamage: 0
 --- !u!1 &7638380969248823761
 GameObject:
   m_ObjectHideFlags: 0
@@ -80,7 +34,6 @@ Transform:
   - {fileID: 8837191779745506762}
   - {fileID: 6020130365857728737}
   - {fileID: 7516213685101212304}
-  - {fileID: 946839624316036201}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5279559049470261907
@@ -98,8 +51,8 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   turnManager: {fileID: 7542839075685921661}
   cardManager: {fileID: 8352632048176011937}
+  clickManager: {fileID: 0}
   enemyController: {fileID: 0}
-  typeChart: {fileID: 0}
   cam: {fileID: 0}
 --- !u!1001 &687502758047780832
 PrefabInstance:
