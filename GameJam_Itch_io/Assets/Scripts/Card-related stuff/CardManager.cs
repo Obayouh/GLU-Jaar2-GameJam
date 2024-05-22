@@ -4,36 +4,37 @@ using UnityEngine;
 
 public class CardManager : MonoBehaviour
 {
-    public GameObject[] cardPrefabs;
     public List<GameObject> spawnedCards = new List<GameObject>();
-    public Transform[] cardPositions;
-    public GameObject handPrefab;
-    public Transform[] handPositions;
+
+    [Header("Positions")]
+    [SerializeField] private Transform[] cardPositions;
+    [SerializeField] private GameObject handPrefab;
+    [SerializeField] private Transform[] handPositions;
 
     int maxAmountOfCards = 4;
 
     public Transform hand;
 
     TurnManager turnManager;
+    Deck deck;
 
     void Start()
     {
         turnManager = FindFirstObjectByType<TurnManager>();
+        deck = GetComponent<Deck>();
 
         for (int i = 0; i < maxAmountOfCards; i++)
         {
-            int rdm = Random.Range(0, cardPrefabs.Length);
-            GameObject card = Instantiate(cardPrefabs[rdm], cardPositions[i]);
+            GameObject card = Instantiate(deck.DrawCard(), cardPositions[i]);
             spawnedCards.Add(card);
         }
-
         Instantiate(handPrefab, handPositions[3]);
     }
 
     public void RemoveCard(GameObject card)
     {
         spawnedCards.Remove(card);
-        Destroy(card);
+        deck.DiscardCard(card);
     }
 
     public void AddCards()
@@ -44,8 +45,7 @@ public class CardManager : MonoBehaviour
             {
                 if (cardPositions[i].childCount <= 0)
                 {
-                    int rdm = Random.Range(0, cardPrefabs.Length);
-                    GameObject card = Instantiate(cardPrefabs[rdm], cardPositions[i]);
+                    GameObject card = Instantiate(deck.DrawCard(), cardPositions[i]);
                     spawnedCards.Add(card);
                 }
             }
