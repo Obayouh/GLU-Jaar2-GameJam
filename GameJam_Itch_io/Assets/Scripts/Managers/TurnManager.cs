@@ -96,7 +96,7 @@ public class TurnManager : MonoBehaviour
                 StartCoroutine(spawnEnemiesScript.InstantiateEnemies());
             }
 
-            StartCoroutine(StartPlayerTurn(2f));
+            StartCoroutine(StartPlayerTurn(1f));
         }
         else
         {
