@@ -1,22 +1,54 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
+
+    [SerializeField] private Slider healthSlider;
+    [SerializeField] private Slider easeHealthSlider;
+    [SerializeField, Range(0.001f, 0.05f)] private float lerpSpeed = 0.05f;
+    private HealthSystem healthComponent;
     private void Start()
     {
-        HealthSystem healthComponent = GetComponent<HealthSystem>();
+        healthComponent = GetComponentInParent<HealthSystem>();
+
         if (healthComponent != null)
         {
-            healthComponent.OnHealthChanged += UpdateHealthBar;
+            InitializeHealthBar();
+            //healthComponent.OnHealthChanged += UpdateHealthBar;
+        }
+        else
+        {
+            Debug.Log("Enemy health bar component is not filled");
         }
     }
 
-    private void UpdateHealthBar(float currentHealth, float maxHealth)
+    private void Update()
+    {
+        if (easeHealthSlider.value != healthSlider.value)
+        {
+            easeHealthSlider.value = Mathf.Lerp(easeHealthSlider.value, healthSlider.value, lerpSpeed); //Visually update this over time to showcase damage taken
+        }
+    }
+
+    private void InitializeHealthBar()
+    {
+        healthSlider.maxValue = healthComponent.GetMaxHealth();
+        easeHealthSlider.maxValue = healthComponent.GetMaxHealth();
+        healthSlider.value = healthComponent.GetMaxHealth();
+        easeHealthSlider.value = healthComponent.GetMaxHealth();
+    }
+
+    //Call this function or the "HealthUpdate" function in HealthSystem anytime you need to update the healthbar visually
+    public void UpdateHealthBar(float currentHealth, float maxHealth) 
     {
         float healthPercentage = currentHealth / maxHealth;
-        // Update health bar UI based on the current health percentage
-        Debug.Log("Health Bar Updated: " + healthPercentage);
+        if (currentHealth != healthSlider.value)
+        {
+            healthSlider.value = currentHealth;
+        }
+        //Debug.Log("Health Bar Updated: " + healthPercentage);
     }
 }

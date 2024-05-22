@@ -31,6 +31,7 @@ public class Healer : Ab_Enemy
     private void HealSelf()
     {
         _healthSystem.Heal(_healthSystem.CurrentHealth * healPercentage);
+        _healthSystem.HealthUpdate();
         UnityEngine.Debug.Log(this.gameObject.name + "healed itself");
     }
 
@@ -92,6 +93,7 @@ public class Healer : Ab_Enemy
             }
             healTargetMaxHealth = currentHealTarget.GetComponent<HealthSystem>().GetMaxHealth();
             currentHealTarget.GetComponent<HealthSystem>().Heal(healTargetMaxHealth * healPercentage); //Heals target's health based on % of maxHp
+            currentHealTarget.GetComponent<HealthSystem>().HealthUpdate(); //Updates healtarget's healthbar visuals
             UnityEngine.Debug.Log(this.gameObject.name + " healed " + currentHealTarget);
         }
         if (targetList.Count == 0)
