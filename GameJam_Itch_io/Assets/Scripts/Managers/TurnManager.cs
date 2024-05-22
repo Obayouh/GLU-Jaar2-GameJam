@@ -112,7 +112,7 @@ public class TurnManager : MonoBehaviour
         _CanvasCollector.CrossfadeAnimator.SetTrigger("Start");
         yield return new WaitForSeconds(1f);
         _CanvasCollector.CrossfadeAnimator.SetTrigger("End");
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.25f);
         UpdateFloor();
         StartCoroutine(spawnEnemiesScript.InstantiateEnemies());
     }
