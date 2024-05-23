@@ -17,6 +17,7 @@ public class TurnManager : MonoBehaviour
     private TurnState state;
 
     public bool AddNewCards;
+    public bool playerTurn;
 
     private SpawnEnemies spawnEnemiesScript;
 
@@ -49,6 +50,7 @@ public class TurnManager : MonoBehaviour
 
     private IEnumerator StartPlayerTurn(float amount)
     {
+        playerTurn = true;
         ReferenceInstance.refInstance.playerStats.RefillMana();
         UpdateTurn();
         yield return new WaitForSeconds(amount);
@@ -58,6 +60,7 @@ public class TurnManager : MonoBehaviour
 
     private void StartEnemyTurn()
     {
+        playerTurn = false;
         for (int i = 0; i < spawnEnemiesScript.spawnedEnemies.Count; i++)
         {
             spawnEnemiesScript.spawnedEnemies[i].GetComponent<Ab_Enemy>().CheckForStatusEffects();

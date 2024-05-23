@@ -2,22 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Drawing;
 
 public class CardStats : MonoBehaviour
-{
-    //public enum Typing
-    //{
-    //    Heat,
-    //    Water,
-    //    Volt,
-    //    Gaia,
-    //    Neutral,
-    //}
-
-    
+{   
     private TextMeshPro damageText;
     private TextMeshPro costText;
-    private int damage;
+    private int baseDamage;
     private int cost;
 
     [field: SerializeField] public E_ElementalTyping Typing { get; private set; }
@@ -31,10 +22,13 @@ public class CardStats : MonoBehaviour
     /// </summary>
     public void SetCardStats()
     {
-        damage = Random.Range(1, 9);
+        
+        baseDamage = Random.Range(1, 9);
         cost = Random.Range(1, 5);
-        damageText.SetText(damage.ToString());
-        costText.SetText(cost.ToString());
+        damageText.fontSize = 1;
+        costText.fontSize = 1;
+        damageText.SetText("Damage:\n " + baseDamage.ToString());
+        costText.SetText("ManaCost:\n " + cost.ToString());
     }
 
     private void GetTextMeshPro()
@@ -53,6 +47,26 @@ public class CardStats : MonoBehaviour
         SetCardStats();
     }
 
+    //public void ElementalEffect()
+    //{
+    //    if (Typing == E_ElementalTyping.Fire)
+    //    {
+
+    //    }
+    //    else if (Typing == E_ElementalTyping.Lightning)
+    //    {
+    //        ReturnDoTDamage();                     
+    //    }
+    //    else if (Typing == E_ElementalTyping.Water)
+    //    {
+
+    //    }
+    //    else if (Typing == E_ElementalTyping.Rock)
+    //    {
+
+    //    }
+    //}
+
     public int ReturnCost()
     {
         return cost;
@@ -60,6 +74,12 @@ public class CardStats : MonoBehaviour
 
     public float ReturnDamage()
     {
-        return damage;
+        return baseDamage;
+    }
+
+    public int ReturnDoTDamage()
+    {
+        int DamageOverTime = Mathf.RoundToInt(baseDamage / 2);
+        return DamageOverTime;
     }
 }

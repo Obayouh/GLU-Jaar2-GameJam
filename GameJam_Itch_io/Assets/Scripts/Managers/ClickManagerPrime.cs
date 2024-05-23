@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Rendering.FilterWindow;
 
 public class ClickManagerPrime : MonoBehaviour
 {
@@ -13,14 +14,25 @@ public class ClickManagerPrime : MonoBehaviour
     private GameObject selectedCard;
     private GameObject selectedEnemy;
 
-    private CardStats cardStats;
+    private CardStats lightningCard;
+    private CardStats rockCard;
+    private CardStats waterCard;
+    private CardStats fireCard;
 
-    int effectivenessModifier;
+    public List<GameObject> storedEnemies = new();
+
+    private CardStats selectedCardStats;
+
+    private int effectivenessModifier;
+
+    private int playerActions;
 
     E_ElementalTyping cardTyping;
+    HealthSystem oldTarget;
 
     [Header("Extra Effects")]
     bool taunt;
+    //bool isLightningEffectActive = false;
 
     //private TypeChart enemyTyping;
 
@@ -28,6 +40,7 @@ public class ClickManagerPrime : MonoBehaviour
     {
         currentHitTransform = null;
         selectedCard = null;
+        playerActions = 0;
     }
 
     void Update()
@@ -54,17 +67,16 @@ public class ClickManagerPrime : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && selectedCard == null && hit.transform.CompareTag("PlayerCard"))
             {
                 selectedCard = hit.transform.gameObject;
-                cardStats = selectedCard.GetComponentInParent<CardStats>();
-                cardTyping = cardStats.Typing;
-
-
+                selectedCardStats = selectedCard.GetComponentInParent<CardStats>();
+                cardTyping = selectedCardStats.Typing;
+                StoreCardTyping(); //Save card typing for later calculations
 
                 //Check if player has enough mana
-                if (ReferenceInstance.refInstance.playerStats.ReturnPlayerMana() < cardStats.ReturnCost())
+                if (ReferenceInstance.refInstance.playerStats.ReturnPlayerMana() < selectedCardStats.ReturnCost())
                 {
                     Debug.Log("Not Enough Mana");
                     selectedCard = null;
-                    cardStats = null;
+                    selectedCardStats = null;
                 }
                 else
                 {
@@ -118,16 +130,79 @@ public class ClickManagerPrime : MonoBehaviour
         taunt = false;
     }
 
+    private void StoreCardTyping()
+    {
+        if (cardTyping == E_ElementalTyping.Lightning)
+        {
+            lightningCard = selectedCardStats;
+        }
+        else if (cardTyping == E_ElementalTyping.Fire)
+        {
+            fireCard = selectedCardStats;
+        }
+        else if (cardTyping == E_ElementalTyping.Water)
+        {
+            waterCard = selectedCardStats;
+        }
+        else if (cardTyping == E_ElementalTyping.Rock)
+        {
+            rockCard = selectedCardStats;
+        }
+        else return;
+    }
+
+    private void PlayCard(CardStats card, HealthSystem target)
+    {
+        playerActions++;
+        ApplyCardEffect(card, target);
+    }
+    //NOTE: Only lightning has an extra effect currently, rest will be added later
+    private void ApplyCardEffect(CardStats card, HealthSystem target)
+    {
+        target.TakeDamage(card.ReturnDamage() * CalculateDamageModifier());
+
+        //Currently immediately procs upon using lightning card, need to figure out how to delay it by 1 card
+        if (card.Typing == E_ElementalTyping.Lightning)
+        {
+            HealthSystem lightningTarget = target; //This will be the target for lightning DoTs, and will be overwritten if a new lightning card is used
+
+            StartCoroutine(LightningEffect(lightningTarget));
+        }
+    }
+    /// <summary>
+    /// Deals half of the lightningcard's damage to the target last hit with a lightning card every player action, until turn ends or enemy dies
+    /// </summary>
+    /// <param name="lightningTarget"></param>
+    /// <returns></returns>
+    private IEnumerator LightningEffect(HealthSystem lightningTarget)
+    {
+        while (true)
+        {
+            yield return new WaitUntil(() => playerActions > 0);
+            lightningTarget.TakeDamage(lightningCard.ReturnDoTDamage());
+            playerActions--;
+
+            if (lightningTarget.CurrentHealth <= 0 || ReferenceInstance.refInstance.turnManager.playerTurn == false)
+            {
+                lightningCard = null;
+                break;
+            }
+        }
+    }
+
     private void DealDamage()
     {
         if (selectedEnemy == null) //Check if there is an enemy who was taunting
+        {
             selectedEnemy = hit.transform.gameObject; //Stores enemy in gameobject variable
-
+            //storedEnemies.Add(selectedEnemy); //2nd variable to store enemy in order to use elemental effects on enemies
+        }
         E_ElementalTyping enemyTyping = selectedEnemy.GetComponent<Ab_Enemy>().elementalType;  //Get enemy and fill in the enemy's typing
         HealthSystem hs = selectedEnemy.GetComponent<HealthSystem>(); //Get enemy health to deal damage to
         effectivenessModifier = TypingDictionary.GetEffectivenessModifier(cardTyping, enemyTyping); //Checks for playercard and enemy typings  
-        hs.TakeDamage(cardStats.ReturnDamage() * CalculateDamageModifier()); //Returns appropriate damage values
-        enemyTyping = 0; //Resets calculation as fail-safe
+        PlayCard(selectedCardStats, hs);
+        //hs.TakeDamage(selectedCardStats.ReturnDamage() * CalculateDamageModifier()); //Returns appropriate damage values
+        //enemyTyping = 0; //Resets calculation as fail-safe
         FinishedAttacking(); //Empties all variables that need no longer be filled
     }
 
@@ -156,7 +231,7 @@ public class ClickManagerPrime : MonoBehaviour
 
     private void FinishedAttacking()
     {
-        ReferenceInstance.refInstance.playerStats.LoseMana(cardStats.ReturnCost());
+        ReferenceInstance.refInstance.playerStats.LoseMana(selectedCardStats.ReturnCost());
         ReferenceInstance.refInstance.cardManager.RemoveCard(selectedCard.transform.parent.parent.gameObject);
         ReferenceInstance.refInstance.turnManager.ChangeState(TurnState.PickCard);
         selectedCard = null;

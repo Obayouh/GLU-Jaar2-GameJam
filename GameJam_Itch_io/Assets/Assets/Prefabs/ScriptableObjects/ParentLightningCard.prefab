@@ -216,11 +216,20 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f42fdfc4934f4c243a6b046179e80957, type: 2}
+    - target: {fileID: 9142024959121546522, guid: b262a844c6f0eae4c9ea2bb2cc832c01,
+        type: 3}
+      propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2123457967971342327, guid: b262a844c6f0eae4c9ea2bb2cc832c01, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1707185598650780733, guid: b262a844c6f0eae4c9ea2bb2cc832c01,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6603597184254757729}
   m_SourcePrefab: {fileID: 100100000, guid: b262a844c6f0eae4c9ea2bb2cc832c01, type: 3}
 --- !u!4 &5064614741977962332 stripped
 Transform:
@@ -228,3 +237,23 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4636010289563380276}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6334117757432702473 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1707185598650780733, guid: b262a844c6f0eae4c9ea2bb2cc832c01,
+    type: 3}
+  m_PrefabInstance: {fileID: 4636010289563380276}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6603597184254757729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6334117757432702473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 653340e6ac0647d4895687751b34cd54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  content: Deals half of the thunder card's initial damage to the target every time
+    a new card is played, until end of turn (not stackable)
