@@ -36,15 +36,14 @@ public class TurnManager : MonoBehaviour
     {
         if (_CanvasCollector.CurrentFloor == null)
             return;
-
         _CanvasCollector.CurrentFloor.text = "Current floor:  " + _floorNumber++;
     }
 
     private void UpdateTurn()
     {
+
         if (_CanvasCollector.CurrentTurn == null)
             return;
-
         _CanvasCollector.CurrentTurn.text = "Current turn:   " + _turnNumber++;
     }
 

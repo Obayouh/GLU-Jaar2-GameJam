@@ -15,7 +15,12 @@ public class CanvasCollector : MonoBehaviour
     {
         //Searches in buttons to find the endturn gameobject
         EndTurnButton = transform.Find("Buttons/EndTurn").gameObject;
-        
+
+        if (CurrentFloor == null)
+        {
+            return;
+        }
+
         //Searches for the gameobjects where the text or animator is located
         GameObject findFloor = transform.Find("CurrentInfoText/Current_Floor").gameObject;
         GameObject findTurn = transform.Find("CurrentInfoText/Current_Turn").gameObject;

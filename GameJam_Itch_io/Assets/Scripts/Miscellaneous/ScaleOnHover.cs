@@ -5,6 +5,7 @@ using UnityEngine;
 public class ScaleOnHover : MonoBehaviour
 {
     private bool isHovering = false;
+    private bool canHover = false;
     private Vector3 originalScale;
 
     void Start()
@@ -16,7 +17,7 @@ public class ScaleOnHover : MonoBehaviour
     void Update()
     {
         // Scale the object if the mouse is hovering over it
-        if (isHovering)
+        if (isHovering && !canHover)
         {
             transform.localScale = originalScale * 1.2f; // Scale up by 20%
         }
@@ -25,6 +26,16 @@ public class ScaleOnHover : MonoBehaviour
             // Reset the scale to its original size if not hovering over
             transform.localScale = originalScale;
         }
+    }
+
+    public void StopHovering()
+    {
+        canHover = true;
+    }
+
+    public void StartHovering()
+    {
+        canHover = false;
     }
 
     void OnMouseEnter()

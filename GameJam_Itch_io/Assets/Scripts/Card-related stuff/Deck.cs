@@ -9,6 +9,8 @@ public class Deck : MonoBehaviour
     public List<GameObject> drawPile;
     public List<GameObject> discardPile;
 
+    [SerializeField] private Transform deckPos;
+
     private int startAmount = 2;
 
     private void Start()
@@ -19,7 +21,9 @@ public class Deck : MonoBehaviour
         {
             for (int y = 0; y < startAmount; y++)
             {
-                drawPile.Add(cardPrefabs[i]);
+                GameObject card = Instantiate(cardPrefabs[i], deckPos);
+                card.SetActive(false);
+                drawPile.Add(card);
             }
         }
     }
@@ -30,7 +34,7 @@ public class Deck : MonoBehaviour
         if (drawPile.Count == 0)
         {
             Debug.Log("Out of cards");
-            return null;
+            ShuffleCards();
         }
         GameObject card = drawPile[rdm];
         drawPile.Remove(card);
@@ -41,6 +45,17 @@ public class Deck : MonoBehaviour
     public void DiscardCard(GameObject card)
     {
         discardPile.Add(card);
+        card.transform.parent = deckPos;
         card.SetActive(false);
+    }
+
+    private void ShuffleCards()
+    {
+        for (int i = 0; i < discardPile.Count; i++)
+        {
+            GameObject card = discardPile[i];
+            drawPile.Add(card);
+            discardPile.Remove(card);
+        }
     }
 }

@@ -25,7 +25,13 @@ public class CardManager : MonoBehaviour
 
         for (int i = 0; i < maxAmountOfCards; i++)
         {
-            GameObject card = Instantiate(deck.DrawCard(), cardPositions[i]);
+            GameObject card = deck.DrawCard();
+            card.transform.position = cardPositions[i].position;
+            card.transform.rotation = cardPositions[i].rotation;
+            card.transform.parent = cardPositions[i];
+            card.transform.localScale = new Vector3(.5f, .5f, .5f);
+            ScaleOnHover soh = card.GetComponentInChildren<ScaleOnHover>();
+            soh.StartHovering();
             spawnedCards.Add(card);
         }
         Instantiate(handPrefab, handPositions[3]);
@@ -45,7 +51,13 @@ public class CardManager : MonoBehaviour
             {
                 if (cardPositions[i].childCount <= 0)
                 {
-                    GameObject card = Instantiate(deck.DrawCard(), cardPositions[i]);
+                    GameObject card = deck.DrawCard();
+                    card.transform.position = cardPositions[i].position;
+                    card.transform.rotation = cardPositions[i].rotation;
+                    card.transform.parent = cardPositions[i];
+                    card.transform.localScale = new Vector3(.5f, .5f, .5f);
+                    ScaleOnHover soh = card.GetComponentInChildren<ScaleOnHover>();
+                    soh.StartHovering();
                     spawnedCards.Add(card);
                 }
             }
@@ -56,7 +68,7 @@ public class CardManager : MonoBehaviour
     {
         turnManager.ChangeState(TurnState.Attack);
         ScaleOnHover soh = chosenCard.GetComponent<ScaleOnHover>();
-        Destroy(soh);
+        soh.StopHovering();
         GameObject card = chosenCard.transform.parent.parent.gameObject;
         card.transform.parent = hand;
         card.transform.position = hand.position;
