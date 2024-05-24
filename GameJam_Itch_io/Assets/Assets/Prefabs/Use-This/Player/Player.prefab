@@ -236,7 +236,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   durationShaking: 1
   cameraFollower: {fileID: 1523967400612817855}
-  endPos: {x: 0, y: -10, z: 0}
+  endPos: {x: 0, y: -9.9, z: 0}
   speed: 10
   switchView: 0
   state: 0
