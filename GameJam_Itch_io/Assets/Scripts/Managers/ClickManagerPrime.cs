@@ -28,7 +28,7 @@ public class ClickManagerPrime : MonoBehaviour
 
     E_ElementalTyping cardTyping;
     HealthSystem lightningTarget;
-    
+
 
     [Header("Extra Effects")]
     bool taunt;
@@ -186,10 +186,10 @@ public class ClickManagerPrime : MonoBehaviour
         }
     }
 
-
     public void Unsubscribe()
     {
-        ReferenceInstance.refInstance.eventManager.useCardEvent -= OnCardPlayed;
+        if (ReferenceInstance.refInstance.eventManager != null)
+            ReferenceInstance.refInstance.eventManager.useCardEvent -= OnCardPlayed;
     }
 
     private void DealDamage()
