@@ -165,6 +165,8 @@ public class ClickManagerPrime : MonoBehaviour
         {
             HealthSystem lightningTarget = target; //This will be the target for lightning DoTs, and will be overwritten if a new lightning card is used
 
+            Debug.Log(target);
+
             StartCoroutine(LightningEffect(lightningTarget));
         }
     }
