@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.Rendering.FilterWindow;
 
 public class ClickManagerPrime : MonoBehaviour
 {
