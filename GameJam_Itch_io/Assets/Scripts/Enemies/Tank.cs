@@ -10,9 +10,16 @@ public class Tank : Ab_Enemy
 
     private List<GameObject> targetList = new List<GameObject>();
 
+    private Animator _tankAnim;
+    [SerializeField] private GameObject _HipAxe;
+    [SerializeField] private GameObject _ArmAxe;
+
     protected override void Start()
     {
         base.Start();
+        _tankAnim = GetComponent<Animator>();
+        _ArmAxe.SetActive(false);
+        StartCoroutine(SwitchWeapon());
     }
 
     public override void OnAction()
@@ -43,7 +50,9 @@ public class Tank : Ab_Enemy
 
     private void Attack()
     {
+        _tankAnim.SetInteger("SkeletonState", 2);
         _playerStats.TakeDamage(damageDealt);
+        _tankAnim.SetInteger("SkeletonState", 1);
         UnityEngine.Debug.Log("Should attack player and then end turn");
     }
 
@@ -145,5 +154,18 @@ public class Tank : Ab_Enemy
         }
 
         targetList.Clear(); // Clears list after turn is over to prevent potentially dead enemies from remaining in the list
+    }
+
+    private IEnumerator SwitchWeapon()
+    {
+        int _stateOfSkeleton = _tankAnim.GetInteger("SkeletonState");
+
+        if (_stateOfSkeleton == 0)
+        {
+            yield return new WaitForSeconds(4.3f);
+            _HipAxe.SetActive(false);
+            _ArmAxe.SetActive(true);
+            _tankAnim.SetInteger("SkeletonState", 1);
+        }
     }
 }
