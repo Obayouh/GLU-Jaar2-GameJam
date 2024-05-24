@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Deck : MonoBehaviour
 {
-    [SerializeField] private GameObject[] cardPrefabs;
+    public GameObject[] cardPrefabs;
     public List<GameObject> drawPile;
     public List<GameObject> discardPile;
 
@@ -55,7 +55,7 @@ public class Deck : MonoBehaviour
         {
             GameObject card = discardPile[i];
             drawPile.Add(card);
-            discardPile.Remove(card);
         }
+        discardPile.Clear();
     }
 }
