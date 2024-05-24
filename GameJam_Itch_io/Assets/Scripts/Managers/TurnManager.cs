@@ -61,6 +61,7 @@ public class TurnManager : MonoBehaviour
     private void StartEnemyTurn()
     {
         playerTurn = false;
+        ReferenceInstance.refInstance.clickManager.Unsubscribe();
         for (int i = 0; i < spawnEnemiesScript.spawnedEnemies.Count; i++)
         {
             spawnEnemiesScript.spawnedEnemies[i].GetComponent<Ab_Enemy>().CheckForStatusEffects();
