@@ -188,7 +188,7 @@ MonoBehaviour:
   - {fileID: 6116010915453642917}
   - {fileID: 1029619685814661543}
   spawnedEnemies: []
-  Enemies: {fileID: 11400000, guid: 138f437e40cfa8c4db7f602c9f7d2d16, type: 2}
+  Enemies: {fileID: 11400000, guid: 5266b0ba5760d22459ed7b64d53ab789, type: 2}
 --- !u!114 &2368303388757844687
 MonoBehaviour:
   m_ObjectHideFlags: 0
