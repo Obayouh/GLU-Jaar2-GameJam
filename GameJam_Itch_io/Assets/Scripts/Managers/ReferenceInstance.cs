@@ -11,6 +11,7 @@ public class ReferenceInstance : MonoBehaviour
     public CardManager cardManager;
     public ClickManagerPrime clickManager;
     public EnemyController enemyController;
+    public EventManager eventManager;
     public CameraMovement cam;
 
     void Awake()
@@ -22,6 +23,7 @@ public class ReferenceInstance : MonoBehaviour
         cardManager = GetComponentInChildren<CardManager>();
         clickManager = GetComponentInChildren<ClickManagerPrime>();
         enemyController = GetComponentInChildren<EnemyController>();
+        eventManager = GetComponentInChildren<EventManager>();
         cam = FindFirstObjectByType<CameraMovement>();
     }
 }
