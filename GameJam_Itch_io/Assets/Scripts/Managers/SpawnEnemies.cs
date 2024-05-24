@@ -45,6 +45,13 @@ public class SpawnEnemies : MonoBehaviour
         spawnSlot.HasChild = false;
         spawnedEnemies.Remove(enemy);
         enemyController.RemoveEnemy(enemy);
+
+        StartCoroutine(DestroyEnemy(enemy));
+    }
+
+    private IEnumerator DestroyEnemy(GameObject enemy)
+    {
+        yield return new WaitForSeconds(.5f);
         Destroy(enemy);
     }
 }
