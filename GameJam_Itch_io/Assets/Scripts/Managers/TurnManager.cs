@@ -85,7 +85,12 @@ public class TurnManager : MonoBehaviour
         {
             _CanvasCollector.EndTurnButton.SetActive(true);
         }
-        else if (state == TurnState.PlayerTurn)
+        else
+        {
+            _CanvasCollector.EndTurnButton.SetActive(false);
+        }
+
+        if (state == TurnState.PlayerTurn)
         {
             AddNewCards = true;
 
@@ -98,10 +103,6 @@ public class TurnManager : MonoBehaviour
             }
 
             StartCoroutine(StartPlayerTurn(1f));
-        }
-        else
-        {
-            _CanvasCollector.EndTurnButton.SetActive(true);
         }
     }
 

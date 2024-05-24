@@ -13,8 +13,17 @@ public class Deck : MonoBehaviour
 
     private int startAmount = 2;
 
+    DeckUI deckUI;
+
     private void Start()
     {
+        deckUI = FindFirstObjectByType<DeckUI>();
+        if (deckUI == null)
+        {
+            Debug.LogError("Need to add DeckUI to scene!");
+            return;
+        }
+
         drawPile = new List<GameObject>();
 
         for (int i = 0; i < cardPrefabs.Length; i++)
@@ -26,6 +35,7 @@ public class Deck : MonoBehaviour
                 drawPile.Add(card);
             }
         }
+        deckUI.UpdateDrawPile(drawPile.Count);
     }
 
     public GameObject DrawCard()
@@ -38,6 +48,7 @@ public class Deck : MonoBehaviour
         }
         GameObject card = drawPile[rdm];
         drawPile.Remove(card);
+        deckUI.UpdateDrawPile(drawPile.Count);
         card.SetActive(true);
         return card;
     }
@@ -45,6 +56,7 @@ public class Deck : MonoBehaviour
     public void DiscardCard(GameObject card)
     {
         discardPile.Add(card);
+        deckUI.UpdateDiscardPile(discardPile.Count);
         card.transform.parent = deckPos;
         card.SetActive(false);
     }
@@ -55,7 +67,9 @@ public class Deck : MonoBehaviour
         {
             GameObject card = discardPile[i];
             drawPile.Add(card);
+            deckUI.UpdateDrawPile(drawPile.Count);
         }
         discardPile.Clear();
+        deckUI.UpdateDiscardPile(discardPile.Count);
     }
 }
