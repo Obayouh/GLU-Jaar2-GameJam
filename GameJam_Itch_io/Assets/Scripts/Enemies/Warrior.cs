@@ -27,6 +27,9 @@ public class Warrior : Ab_Enemy
     private int _detectHalfLife;
     private Coroutine currentCoroutine = null;
 
+    [SerializeField] private GameObject _HipAxe;
+    [SerializeField] private GameObject _ArmAxe;
+
     protected override void Start()
     {
         base.Start();
@@ -38,6 +41,8 @@ public class Warrior : Ab_Enemy
         _maxLife = GetComponent<HealthSystem>().CurrentHealth;
         _warriorAnim = GetComponent<Animator>();
         _halfLife = _maxLife / 2;
+        _ArmAxe.SetActive(false);
+        StartCoroutine(SwitchWeapon());
     }
 
     void Update()
@@ -74,7 +79,7 @@ public class Warrior : Ab_Enemy
 
     private IEnumerator AttackPlayer()
     {
-        _warriorAnim.SetInteger("SkeletonState", 1);
+        _warriorAnim.SetInteger("SkeletonState", 2);
         Debug.Log("Attack animation");
         yield return new WaitForSeconds(1f);
         _playerStats.TakeDamage(UnityEngine.Random.Range(_MinAttackPower, _MaxAttackPower));
@@ -95,9 +100,9 @@ public class Warrior : Ab_Enemy
     {
         int _stateOfSkeleton = _warriorAnim.GetInteger("SkeletonState");
 
-        if (_stateOfSkeleton == 1 || _stateOfSkeleton == 2)
+        if (_stateOfSkeleton == 2 || _stateOfSkeleton == 3)
         {
-            _warriorAnim.SetInteger("SkeletonState", 0);
+            _warriorAnim.SetInteger("SkeletonState", 1);
             Debug.Log("Idle animation");
         }
     }
@@ -109,4 +114,17 @@ public class Warrior : Ab_Enemy
 
     //    }
     //}
+
+    private IEnumerator SwitchWeapon()
+    {
+        int _stateOfSkeleton = _warriorAnim.GetInteger("SkeletonState");
+        
+        if (_stateOfSkeleton == 0)
+        {
+            yield return new WaitForSeconds(4.3f);
+            _HipAxe.SetActive(false);
+            _ArmAxe.SetActive(true);
+            _warriorAnim.SetInteger("SkeletonState", 1);
+        }
+    }
 }
