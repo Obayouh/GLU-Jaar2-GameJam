@@ -61,6 +61,7 @@ public class TurnManager : MonoBehaviour
     private void StartEnemyTurn()
     {
         playerTurn = false;
+        ReferenceInstance.refInstance.clickManager.Unsubscribe();
         for (int i = 0; i < spawnEnemiesScript.spawnedEnemies.Count; i++)
         {
             spawnEnemiesScript.spawnedEnemies[i].GetComponent<Ab_Enemy>().CheckForStatusEffects();
@@ -84,7 +85,12 @@ public class TurnManager : MonoBehaviour
         {
             _CanvasCollector.EndTurnButton.SetActive(true);
         }
-        else if (state == TurnState.PlayerTurn)
+        else
+        {
+            _CanvasCollector.EndTurnButton.SetActive(false);
+        }
+
+        if (state == TurnState.PlayerTurn)
         {
             AddNewCards = true;
 
@@ -97,10 +103,6 @@ public class TurnManager : MonoBehaviour
             }
 
             StartCoroutine(StartPlayerTurn(1f));
-        }
-        else
-        {
-            _CanvasCollector.EndTurnButton.SetActive(true);
         }
     }
 

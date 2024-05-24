@@ -27,7 +27,8 @@ public class ClickManagerPrime : MonoBehaviour
     private int playerActions;
 
     E_ElementalTyping cardTyping;
-    HealthSystem oldTarget;
+    HealthSystem lightningTarget;
+    
 
     [Header("Extra Effects")]
     bool taunt;
@@ -81,7 +82,6 @@ public class ClickManagerPrime : MonoBehaviour
                 {
                     ReferenceInstance.refInstance.cardManager.SelectedCard(selectedCard);
                 }
-                //Debug.Log(selectedCard);
             }
 
             //Select enemy to attack if not already defined and then empty card and enemy selections
@@ -153,42 +153,43 @@ public class ClickManagerPrime : MonoBehaviour
     private void PlayCard(CardStats card, HealthSystem target)
     {
         playerActions++;
+
+        ReferenceInstance.refInstance.eventManager.CardPlayed(card, target);
         ApplyCardEffect(card, target);
     }
+
     //NOTE: Only lightning has an extra effect currently, rest will be added later
     private void ApplyCardEffect(CardStats card, HealthSystem target)
     {
         target.TakeDamage(card.ReturnDamage() * CalculateDamageModifier());
 
-        //Currently immediately procs upon using lightning card, need to figure out how to delay it by 1 card
         if (card.Typing == E_ElementalTyping.Lightning)
         {
-            HealthSystem lightningTarget = target; //This will be the target for lightning DoTs, and will be overwritten if a new lightning card is used
+            lightningTarget = target; //This will be the target for lightning DoTs, and will be overwritten if a new lightning card is used
 
-            Debug.Log(target);
-
-            StartCoroutine(LightningEffect(lightningTarget));
+            //Debug.Log(target);
+            ReferenceInstance.refInstance.eventManager.useCardEvent += OnCardPlayed;
         }
     }
-    /// <summary>
-    /// Deals half of the lightningcard's damage to the target last hit with a lightning card every player action, until turn ends or enemy dies
-    /// </summary>
-    /// <param name="lightningTarget"></param>
-    /// <returns></returns>
-    private IEnumerator LightningEffect(HealthSystem lightningTarget)
-    {
-        while (true)
-        {
-            yield return new WaitUntil(() => playerActions > 0);
-            lightningTarget.TakeDamage(lightningCard.ReturnDoTDamage());
-            playerActions--;
 
-            if (lightningTarget.CurrentHealth <= 0 || ReferenceInstance.refInstance.turnManager.playerTurn == false)
+    private void OnCardPlayed(CardStats card, HealthSystem enemytarget)
+    {
+        if (lightningCard != null && lightningTarget != null)
+        {
+            lightningTarget.TakeDamage(lightningCard.ReturnDoTDamage());
+
+            if (lightningTarget.CurrentHealth <= 0)
             {
                 lightningCard = null;
-                break;
+                Unsubscribe();
             }
         }
+    }
+
+
+    public void Unsubscribe()
+    {
+        ReferenceInstance.refInstance.eventManager.useCardEvent -= OnCardPlayed;
     }
 
     private void DealDamage()
@@ -196,7 +197,6 @@ public class ClickManagerPrime : MonoBehaviour
         if (selectedEnemy == null) //Check if there is an enemy who was taunting
         {
             selectedEnemy = hit.transform.gameObject; //Stores enemy in gameobject variable
-            //storedEnemies.Add(selectedEnemy); //2nd variable to store enemy in order to use elemental effects on enemies
         }
         E_ElementalTyping enemyTyping = selectedEnemy.GetComponent<Ab_Enemy>().elementalType;  //Get enemy and fill in the enemy's typing
         HealthSystem hs = selectedEnemy.GetComponent<HealthSystem>(); //Get enemy health to deal damage to
