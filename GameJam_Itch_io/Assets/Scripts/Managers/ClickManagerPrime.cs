@@ -179,33 +179,35 @@ public class ClickManagerPrime : MonoBehaviour
 
     private void OnCardPlayed(CardStats card, HealthSystem enemytarget)
     {
+        //if (lightningCard != null && lightningTarget != null)
+        //{
+        //    lightningTarget.TakeDamage(lightningCard.ReturnDoTDamage());
+
+        //    if (lightningTarget.CurrentHealth <= 0)
+        //    {
+        //        lightningCard = null;
+        //        lightningTarget = null;
+        //        Unsubscribe();
+        //    }
+        //}
         if (lightningCard != null && lightningTarget != null)
         {
-            lightningTarget.TakeDamage(lightningCard.ReturnDoTDamage());
-
+            lightningCard.DealLightningDamage(lightningCard, lightningTarget);
             if (lightningTarget.CurrentHealth <= 0)
             {
-                lightningCard = null;
-                lightningTarget = null;
                 Unsubscribe();
             }
         }
     }
-    
+
     //Called in TurnManager to deal damage to the enemy before they get to act as a sort of burn
     //Side Nite: May be good to add these elemental functions to CardStats and have them fire off there to keep Clickmanager from being too big
-    public void DealFireDamage()
+    public void HandleFireDamage()
     {
         if (fireCard != null && fireTarget != null)
         {
-            fireTarget.TakeDamage(fireCard.ReturnDoTDamage());
-
-            if (fireTarget.CurrentHealth <= 0)
-            {
-                fireCard = null;
-                fireTarget = null;
-                Unsubscribe();
-            }
+            fireCard.DealFireDamage(fireCard, fireTarget);
+            Unsubscribe();
         }
     }
 

@@ -75,7 +75,7 @@ public class TurnManager : MonoBehaviour
     //Button to end player turn
     public void EndTurn()
     {
-        ReferenceInstance.refInstance.clickManager.DealFireDamage();
+        ReferenceInstance.refInstance.clickManager.HandleFireDamage();
         StartEnemyTurn();
     }
 
