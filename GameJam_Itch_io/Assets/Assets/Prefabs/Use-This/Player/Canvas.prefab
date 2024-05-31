@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 8964919079828953382}
   - component: {fileID: 4958425628831534513}
   m_Layer: 5
-  m_Name: Current_Wave
+  m_Name: Current_Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -798,6 +798,7 @@ GameObject:
   - component: {fileID: 885757805898792664}
   - component: {fileID: 4817313674119115319}
   - component: {fileID: 4021834415571506059}
+  - component: {fileID: 3728024385272898360}
   m_Layer: 5
   m_Name: EndTurn
   m_TagString: Untagged
@@ -930,6 +931,23 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3728024385272898360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4993388614037735577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 653340e6ac0647d4895687751b34cd54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  content: 'End your turn,
+
+    enemies will attack
+
+    after pressing this button'
 --- !u!1 &5301383027966989689
 GameObject:
   m_ObjectHideFlags: 0
@@ -1050,7 +1068,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8789498879159478954}
   m_Layer: 5
-  m_Name: WaveText
+  m_Name: CurrentInfoText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

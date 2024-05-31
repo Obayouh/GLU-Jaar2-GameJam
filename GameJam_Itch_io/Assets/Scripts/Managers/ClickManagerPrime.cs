@@ -26,9 +26,9 @@ public class ClickManagerPrime : MonoBehaviour
 
     private int playerActions;
 
-    E_ElementalTyping cardTyping;
-    HealthSystem lightningTarget;
-
+    private E_ElementalTyping cardTyping;
+    private HealthSystem lightningTarget;
+    private HealthSystem fireTarget;
 
     [Header("Extra Effects")]
     bool taunt;
@@ -167,7 +167,12 @@ public class ClickManagerPrime : MonoBehaviour
         {
             lightningTarget = target; //This will be the target for lightning DoTs, and will be overwritten if a new lightning card is used
 
-            //Debug.Log(target);
+            ReferenceInstance.refInstance.eventManager.useCardEvent += OnCardPlayed;
+        }
+        else if (card.Typing == E_ElementalTyping.Fire)
+        {
+            fireTarget = target;
+
             ReferenceInstance.refInstance.eventManager.useCardEvent += OnCardPlayed;
         }
     }
@@ -181,6 +186,24 @@ public class ClickManagerPrime : MonoBehaviour
             if (lightningTarget.CurrentHealth <= 0)
             {
                 lightningCard = null;
+                lightningTarget = null;
+                Unsubscribe();
+            }
+        }
+    }
+    
+    //Called in TurnManager to deal damage to the enemy before they get to act as a sort of burn
+    //Side Nite: May be good to add these elemental functions to CardStats and have them fire off there to keep Clickmanager from being too big
+    public void DealFireDamage()
+    {
+        if (fireCard != null && fireTarget != null)
+        {
+            fireTarget.TakeDamage(fireCard.ReturnDoTDamage());
+
+            if (fireTarget.CurrentHealth <= 0)
+            {
+                fireCard = null;
+                fireTarget = null;
                 Unsubscribe();
             }
         }
@@ -240,6 +263,16 @@ public class ClickManagerPrime : MonoBehaviour
         if (taunt == false)
         {
             selectedEnemy = null;
+        }
+
+        //Doublechecking if enemy fire target is still alive after every card used
+        if (fireTarget != null)
+        {
+            if (fireTarget.CurrentHealth <= 0)
+            {
+                fireCard = null;
+                Unsubscribe();
+            }
         }
     }
 

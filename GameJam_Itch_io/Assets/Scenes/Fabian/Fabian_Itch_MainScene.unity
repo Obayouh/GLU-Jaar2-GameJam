@@ -2271,22 +2271,22 @@ PrefabInstance:
     - target: {fileID: 2186041301708968266, guid: 94ad9f5b47269ec4ea9c346f7f7e790a,
         type: 3}
       propertyPath: m_Pivot.x
-      value: -0.40120655
+      value: 0.22824298
       objectReference: {fileID: 0}
     - target: {fileID: 2186041301708968266, guid: 94ad9f5b47269ec4ea9c346f7f7e790a,
         type: 3}
       propertyPath: m_Pivot.y
-      value: -0.039325867
+      value: 1.5027367
       objectReference: {fileID: 0}
     - target: {fileID: 2186041301708968266, guid: 94ad9f5b47269ec4ea9c346f7f7e790a,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1730.3167
+      value: -521.77344
       objectReference: {fileID: 0}
     - target: {fileID: 2186041301708968266, guid: 94ad9f5b47269ec4ea9c346f7f7e790a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -582.4719
+      value: 1082.9556
       objectReference: {fileID: 0}
     - target: {fileID: 2464632035501786643, guid: 94ad9f5b47269ec4ea9c346f7f7e790a,
         type: 3}
@@ -3729,11 +3729,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 362366740664175487, guid: 91c6c0b51fe441d44b6d8db6b391f07c,
-        type: 3}
-      propertyPath: m_Name
-      value: Current_Floor
-      objectReference: {fileID: 0}
     - target: {fileID: 2402169643386086535, guid: 91c6c0b51fe441d44b6d8db6b391f07c,
         type: 3}
       propertyPath: m_Name
@@ -3844,19 +3839,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1382867355}
-    - target: {fileID: 9129592907576199174, guid: 91c6c0b51fe441d44b6d8db6b391f07c,
-        type: 3}
-      propertyPath: m_Name
-      value: CurrentInfoText
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4993388614037735577, guid: 91c6c0b51fe441d44b6d8db6b391f07c,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1093396604}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91c6c0b51fe441d44b6d8db6b391f07c, type: 3}
 --- !u!1 &1093396602 stripped
 GameObject:
@@ -3864,23 +3850,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1093396601}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1093396604
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1093396602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 653340e6ac0647d4895687751b34cd54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  content: 'End your turn,
-
-    enemies will attack
-
-    after pressing this button'
 --- !u!95 &1134284289 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 8556762333311371551, guid: 91c6c0b51fe441d44b6d8db6b391f07c,
