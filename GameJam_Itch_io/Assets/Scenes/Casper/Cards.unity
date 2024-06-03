@@ -331,6 +331,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6020130365857728737, guid: 41c8671cc6a36d24093e59e316c3014f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020130365857728737, guid: 41c8671cc6a36d24093e59e316c3014f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 12.39
+      objectReference: {fileID: 0}
     - target: {fileID: 7542839075685921661, guid: 41c8671cc6a36d24093e59e316c3014f,
         type: 3}
       propertyPath: _CanvasCollector
@@ -432,7 +442,7 @@ RectTransform:
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: -0.41575488, y: 0.5440878}
+  m_Pivot: {x: 0.09534272, y: -0.01786765}
 --- !u!114 &720464863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -948,7 +958,7 @@ GameObject:
   - component: {fileID: 1482048305}
   - component: {fileID: 1482048304}
   m_Layer: 5
-  m_Name: Current_Wave
+  m_Name: Current_Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
