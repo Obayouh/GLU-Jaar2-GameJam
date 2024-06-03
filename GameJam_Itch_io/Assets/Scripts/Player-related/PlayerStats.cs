@@ -6,8 +6,6 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class PlayerStats : Ab_HealthManager
 {
-
-    private int manaCost;
     [SerializeField] private int currentMana;
     [SerializeField, Range(6, 100)] private int totalMana;
 
@@ -18,23 +16,12 @@ public class PlayerStats : Ab_HealthManager
 
     private CameraMovement cam;
 
-    private CardStats cardStats;
-
     public override void Start()
     {
         base.Start();
         cam = FindObjectOfType<CameraMovement>();
         RefillMana();
     }
-
-    //public void AddScore(int amount)
-    //{
-    //    score += amount;
-    //    scoreText.text = "Rooms cleared: " + score.ToString();
-    //    Animator anim = scoreText.GetComponent<Animator>();
-    //    anim.SetBool("PlayAnim", true);
-    //    StartCoroutine(Stop());
-    //}
 
     public override void TakeDamage(float amount)
     {
@@ -46,14 +33,11 @@ public class PlayerStats : Ab_HealthManager
     {
         base.Kill();
         //Execute gameover screen
+        if (gameOverScreen != null)
+        {
+            Instantiate(gameOverScreen);
+        }
     }
-
-    //IEnumerator Stop()
-    //{
-    //    yield return new WaitForSeconds(0.5f);
-    //    Animator anim = scoreText.GetComponent<Animator>();
-    //    anim.SetBool("PlayAnim", false);
-    //}
 
     public void RefillMana()
     {
