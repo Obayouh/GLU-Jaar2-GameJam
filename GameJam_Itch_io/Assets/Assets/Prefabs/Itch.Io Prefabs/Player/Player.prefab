@@ -148,13 +148,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1434950583046299908}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.033, y: -0.507, z: 1.291}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0.836, y: -0.0825, z: 1.013}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7643873521709896467}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &1877842601456946299
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,8 +235,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   durationShaking: 1
-  cameraFollower: {fileID: 1523967400612817855}
-  endPos: {x: 0, y: -9.9, z: 0}
+  cameraFollower: {fileID: 0}
+  endPos: {x: 0, y: -9.9, z: -12}
   speed: 10
   switchView: 0
   state: 0
@@ -607,7 +607,7 @@ MonoBehaviour:
   maxHealth: 100
   hasShield: 0
   currentMana: 0
-  totalMana: 100
+  totalMana: 6
   score: 0
   scoreText: {fileID: 0}
   gameOverScreen: {fileID: 0}
@@ -776,7 +776,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
