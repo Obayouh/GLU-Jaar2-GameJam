@@ -31,6 +31,7 @@ public class TurnManager : MonoBehaviour
     {
         StartCoroutine(StartPlayerTurn(1f));
         spawnEnemiesScript = FindFirstObjectByType<SpawnEnemies>();
+        _CanvasCollector = FindFirstObjectByType<CanvasCollector>();
         UpdateFloor();
     }
 
