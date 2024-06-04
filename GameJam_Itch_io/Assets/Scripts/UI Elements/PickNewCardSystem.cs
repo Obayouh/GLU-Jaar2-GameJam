@@ -19,8 +19,6 @@ public class PickNewCardSystem : MonoBehaviour
         deck = FindFirstObjectByType<Deck>();
 
         chooseNewCardsUI.SetActive(false);
-
-        PickCard();
     }
 
     public void PickCard()
@@ -63,13 +61,14 @@ public class PickNewCardSystem : MonoBehaviour
     private IEnumerator CardChoosen(GameObject card)
     {
         deck.AddNewCard(card);
-        cards.Remove(card);
 
         for (int i = 0; i < cards.Count; i++)
         {
             Destroy(cards[i]);
         }
         cards.Clear();
+
+        ReferenceInstance.refInstance.turnManager.StartNextWave();
 
         chooseNewCardsUI.SetActive(false);
 
