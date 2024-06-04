@@ -50,10 +50,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 0}
-  turnManager: {fileID: 7542839075685921661}
-  cardManager: {fileID: 8352632048176011937}
+  turnManager: {fileID: 0}
+  cardManager: {fileID: 0}
   clickManager: {fileID: 0}
   enemyController: {fileID: 0}
+  eventManager: {fileID: 0}
   cam: {fileID: 0}
 --- !u!1001 &687502758047780832
 PrefabInstance:
@@ -129,18 +130,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 687502758047780832}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7542839075685921661 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7000577551768485021, guid: ab795446a157def42932b9dfc21414da,
-    type: 3}
-  m_PrefabInstance: {fileID: 687502758047780832}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9297fb2a862fafe46b019969cca53a28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &713443092967271648
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -283,18 +272,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1d22052086c2d049b0fe06a78d9ad64, type: 3}
---- !u!114 &8352632048176011937 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5734096104589764528, guid: d1d22052086c2d049b0fe06a78d9ad64,
-    type: 3}
-  m_PrefabInstance: {fileID: 4357541126397574417}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c80a1d1f216b4fa47936f86efa5598a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &8837191779745506762 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5106267836837173467, guid: d1d22052086c2d049b0fe06a78d9ad64,

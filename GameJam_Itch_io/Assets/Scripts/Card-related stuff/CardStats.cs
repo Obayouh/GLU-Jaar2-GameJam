@@ -82,4 +82,32 @@ public class CardStats : MonoBehaviour
         int DamageOverTime = Mathf.RoundToInt(baseDamage / 2);
         return DamageOverTime;
     }
+
+    public void DealFireDamage(CardStats fireCard, HealthSystem fireTarget)
+    {
+        if (fireCard != null && fireTarget != null)
+        {
+            fireTarget.TakeDamage(fireCard.ReturnDoTDamage());
+
+            if (fireTarget.CurrentHealth <= 0)
+            {
+                fireCard = null;
+                fireTarget = null;
+                //Unsub right after
+            }
+        }
+    }
+
+    public void DealLightningDamage(CardStats lightningCard, HealthSystem lightningTarget)
+    {
+
+            lightningTarget.TakeDamage(lightningCard.ReturnDoTDamage());
+
+            if (lightningTarget.CurrentHealth <= 0)
+            {
+                lightningCard = null;
+                lightningTarget = null;
+                //Unsub right after
+            }       
+    }
 }

@@ -6,10 +6,10 @@ using UnityEngine;
 public class CanvasCollector : MonoBehaviour
 {
     //All public vars are hidden so they cant be changed in the inspector
-    [HideInInspector] public GameObject EndTurnButton;
-    [HideInInspector] public TextMeshProUGUI CurrentFloor;
-    [HideInInspector] public TextMeshProUGUI CurrentTurn;
-    [HideInInspector] public Animator CrossfadeAnimator;
+    public GameObject EndTurnButton;
+    /*[HideInInspector]*/ public TextMeshProUGUI CurrentFloor;
+    /*[HideInInspector]*/ public TextMeshProUGUI CurrentTurn;
+    /*[HideInInspector]*/ public Animator CrossfadeAnimator;
 
     void Start()
     {
