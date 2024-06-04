@@ -451,7 +451,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3805650221416467219
 RectTransform:
   m_ObjectHideFlags: 0
@@ -522,12 +522,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b17319feb9049ff41b62c082a877714f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cards:
-  - {fileID: 21300000, guid: f9ae73662f8a7b942995939c4c20934d, type: 3}
+  cardUI:
+  - {fileID: 7848487903477871877, guid: 328a35f790e7c584d8f7b0539e3c2b32, type: 3}
   cardPos:
   - {fileID: 7171276295446412883}
   - {fileID: 1258864146549035809}
   - {fileID: 8865728278612167006}
+  cards: []
   chooseNewCardsUI: {fileID: 2834433087394359322}
 --- !u!1 &9079093252406944112
 GameObject:
