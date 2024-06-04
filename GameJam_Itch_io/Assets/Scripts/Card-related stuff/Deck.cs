@@ -42,7 +42,8 @@ public class Deck : MonoBehaviour
     {
         GameObject newCard = Instantiate(card, deckPos);
         newCard.SetActive(false);
-        drawPile.Add(card);
+        drawPile.Add(newCard);
+        deckUI.UpdateDrawPile(drawPile.Count);
     }
 
     public GameObject DrawCard()

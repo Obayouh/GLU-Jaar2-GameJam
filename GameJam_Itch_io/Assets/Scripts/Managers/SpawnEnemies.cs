@@ -9,10 +9,12 @@ public class SpawnEnemies : MonoBehaviour
     public Enemies Enemies;
 
     private EnemyController enemyController;
+    private PickNewCardSystem pickNewCardSystem;
 
     void Start()
     {
         enemyController = GetComponent<EnemyController>();
+        pickNewCardSystem = FindFirstObjectByType<PickNewCardSystem>();
 
         StartCoroutine(InstantiateEnemies());
     }
@@ -53,5 +55,13 @@ public class SpawnEnemies : MonoBehaviour
     {
         yield return new WaitForSeconds(.5f);
         Destroy(enemy);
+
+        //If all enemies are killed, pick new card
+        if (spawnedEnemies.Count < 1)
+        {
+            pickNewCardSystem.PickCard();
+
+            ReferenceInstance.refInstance.turnManager.ChangeState(TurnState.Waiting);
+        }
     }
 }

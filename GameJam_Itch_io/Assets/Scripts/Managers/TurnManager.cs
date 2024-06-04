@@ -97,16 +97,13 @@ public class TurnManager : MonoBehaviour
         {
             AddNewCards = true;
 
-            //If all enemies are killed, spawn new wave
-            if (spawnEnemiesScript.spawnedEnemies.Count < 1)
-            {
-                StartCoroutine(LoadNextWave());
-                //UpdateFloor();
-                //StartCoroutine(spawnEnemiesScript.InstantiateEnemies());
-            }
-
             StartCoroutine(StartPlayerTurn(1f));
         }
+    }
+
+    public void StartNextWave()
+    {
+        StartCoroutine(LoadNextWave());
     }
 
     public TurnState ReturnState()
@@ -122,5 +119,6 @@ public class TurnManager : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
         UpdateFloor();
         StartCoroutine(spawnEnemiesScript.InstantiateEnemies());
+        ChangeState(TurnState.PlayerTurn);
     }
 }
