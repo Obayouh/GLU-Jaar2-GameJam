@@ -208,7 +208,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -400, y: 0}
-  m_SizeDelta: {x: 1620, y: 1629}
+  m_SizeDelta: {x: 760, y: 1133}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5185243207872856011
 CanvasRenderer:
@@ -340,7 +340,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1620, y: 1629}
+  m_SizeDelta: {x: 760, y: 1133}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3400698542681217167
 CanvasRenderer:
@@ -523,7 +523,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardUI:
-  - {fileID: 7848487903477871877, guid: 328a35f790e7c584d8f7b0539e3c2b32, type: 3}
+  - {fileID: 605757364036068361, guid: 9c1c2e2d859ec20498391f9d4fbb39cd, type: 3}
+  - {fileID: 4828488295828573527, guid: 4206fbcbf6439834f96c43ae728ce9cf, type: 3}
+  - {fileID: 7140643227084776696, guid: 286f932882b06c941a1244941742e812, type: 3}
+  - {fileID: 5827837809184714664, guid: 1d65b44a0ef9fd94c8f26b52f3cb4298, type: 3}
+  - {fileID: 4112279397941766170, guid: d35b2747a29254c49b5780debb7f0a02, type: 3}
   cardPos:
   - {fileID: 7171276295446412883}
   - {fileID: 1258864146549035809}
@@ -566,7 +570,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 400, y: 0}
-  m_SizeDelta: {x: 1620, y: 1629}
+  m_SizeDelta: {x: 760, y: 1133}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &458571333059431080
 CanvasRenderer:
