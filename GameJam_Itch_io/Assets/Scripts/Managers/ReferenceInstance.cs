@@ -13,6 +13,7 @@ public class ReferenceInstance : MonoBehaviour
     public EnemyController enemyController;
     public EventManager eventManager;
     public CameraMovement cam;
+    public SpawnEnemies spawnEnemiesScript;
 
     void Awake()
     {
@@ -25,5 +26,6 @@ public class ReferenceInstance : MonoBehaviour
         enemyController = GetComponentInChildren<EnemyController>();
         eventManager = GetComponentInChildren<EventManager>();
         cam = FindFirstObjectByType<CameraMovement>();
+        spawnEnemiesScript = FindFirstObjectByType<SpawnEnemies>();
     }
 }

@@ -201,7 +201,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653340e6ac0647d4895687751b34cd54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  content: 'Deals half of card''s normal damage to enemies on end of player turn
-
-    (Not
-    Stackable)'
+  content: Every second fire card used does 1.5x damage (Does not need to be consecutive)

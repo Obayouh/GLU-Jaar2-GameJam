@@ -11,10 +11,12 @@ public class CardStats : MonoBehaviour
     private int baseDamage;
     private int cost;
 
+    private SpawnEnemies spawnEnemiesScript;
+
     [field: SerializeField] public E_ElementalTyping Typing { get; private set; }
     public void Start()
     {
-        GetTextMeshPro();
+        GetTextMeshPro();       
     }
 
     /// <summary>
@@ -77,37 +79,74 @@ public class CardStats : MonoBehaviour
         return baseDamage;
     }
 
-    public int ReturnDoTDamage()
+    public int ReturnHalfDamage()
     {
         int DamageOverTime = Mathf.RoundToInt(baseDamage / 2);
         return DamageOverTime;
     }
 
-    public void DealFireDamage(CardStats fireCard, HealthSystem fireTarget)
+    public void DealFireDamage(CardStats firstFireCard, HealthSystem fireTarget)
     {
-        if (fireCard != null && fireTarget != null)
-        {
-            fireTarget.TakeDamage(fireCard.ReturnDoTDamage());
-
+        if (firstFireCard != null && fireTarget != null)
+        { 
             if (fireTarget.CurrentHealth <= 0)
             {
-                fireCard = null;
+                firstFireCard = null;
+                
                 fireTarget = null;
                 //Unsub right after
             }
         }
     }
 
+    public void DealExtraFireDamage(CardStats secondFireCard, HealthSystem fireTarget)
+    {
+        fireTarget.TakeDamage(secondFireCard.ReturnDamage() * 1.5f);
+        if (fireTarget.CurrentHealth <= 0)
+        {
+            secondFireCard = null;
+            fireTarget = null;
+            //Unsub right after
+        }
+    }
+
     public void DealLightningDamage(CardStats lightningCard, HealthSystem lightningTarget)
     {
+        lightningTarget.TakeDamage(lightningCard.ReturnHalfDamage());
 
-            lightningTarget.TakeDamage(lightningCard.ReturnDoTDamage());
+        if (lightningTarget.CurrentHealth <= 0)
+        {
+            lightningCard = null;
+            lightningTarget = null;
+            //Unsub right after
+        }
+    }
 
-            if (lightningTarget.CurrentHealth <= 0)
+    public void DealWaterDamage(CardStats waterCard, HealthSystem waterTarget)
+    {
+        SpawnEnemies spawnEnemiesList = ReferenceInstance.refInstance.spawnEnemiesScript;
+
+        if (waterTarget.CurrentHealth <= 0)
+        {
+            waterCard = null;
+            waterTarget = null;
+            //Unsub right after
+        }
+
+        
+        if (spawnEnemiesList.spawnedEnemies.Count > 1 && waterTarget != null)
+        {
+            for (int i = 0; i < spawnEnemiesList.spawnedEnemies.Count; i++)
             {
-                lightningCard = null;
-                lightningTarget = null;
-                //Unsub right after
-            }       
+                HealthSystem enemyHealth = spawnEnemiesList.spawnedEnemies[i].GetComponent<HealthSystem>();
+
+                HealthSystem splashTarget = enemyHealth;
+
+                if (waterTarget != splashTarget)
+                {
+                    splashTarget.TakeDamage(waterCard.ReturnHalfDamage());
+                }
+            }
+        }
     }
 }

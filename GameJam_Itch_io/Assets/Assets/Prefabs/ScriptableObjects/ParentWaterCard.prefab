@@ -134,7 +134,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1707185598650780733, guid: ae8996d4d522078479896ed7d2eb62ee,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7219006426954727392}
   m_SourcePrefab: {fileID: 100100000, guid: ae8996d4d522078479896ed7d2eb62ee, type: 3}
 --- !u!4 &1002166305295843028 stripped
 Transform:
@@ -142,3 +146,23 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 862195771358872508}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2037322743238528897 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1707185598650780733, guid: ae8996d4d522078479896ed7d2eb62ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 862195771358872508}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7219006426954727392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037322743238528897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 653340e6ac0647d4895687751b34cd54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  content: Does regular damage to targeted enemy and splash damage (50%) to any adjacent
+    enemies

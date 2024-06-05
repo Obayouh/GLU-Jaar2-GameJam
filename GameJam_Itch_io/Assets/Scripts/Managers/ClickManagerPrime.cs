@@ -27,11 +27,17 @@ public class ClickManagerPrime : MonoBehaviour
     private int playerActions;
 
     private E_ElementalTyping cardTyping;
+
+    //Elemental card target storage
     private HealthSystem lightningTarget;
     private HealthSystem fireTarget;
+    private HealthSystem waterTarget;
+    private HealthSystem rockTarget;
 
     [Header("Extra Effects")]
     bool taunt;
+    bool firstFireUsed;
+    bool lightningActive;
     //bool isLightningEffectActive = false;
 
     //private TypeChart enemyTyping;
@@ -40,6 +46,8 @@ public class ClickManagerPrime : MonoBehaviour
     {
         currentHitTransform = null;
         selectedCard = null;
+        firstFireUsed = false;
+        lightningActive = false;
         playerActions = 0;
     }
 
@@ -153,12 +161,18 @@ public class ClickManagerPrime : MonoBehaviour
     private void PlayCard(CardStats card, HealthSystem target)
     {
         playerActions++;
+        //Does extra lightning effect after first card is played
+        if (lightningTarget != null && lightningCard != null && lightningActive == true)
+        {
+            ReferenceInstance.refInstance.eventManager.NextCardPlayed(card, target);
+        }
 
-        ReferenceInstance.refInstance.eventManager.CardPlayed(card, target);
         ApplyCardEffect(card, target);
+        ReferenceInstance.refInstance.eventManager.CardPlayed(card, target);
+
     }
 
-    //NOTE: Only lightning has an extra effect currently, rest will be added later
+    //NOTE: Only lightning and fire have an extra effect currently, rest will be added later
     private void ApplyCardEffect(CardStats card, HealthSystem target)
     {
         target.TakeDamage(card.ReturnDamage() * CalculateDamageModifier());
@@ -168,53 +182,99 @@ public class ClickManagerPrime : MonoBehaviour
             lightningTarget = target; //This will be the target for lightning DoTs, and will be overwritten if a new lightning card is used
 
             ReferenceInstance.refInstance.eventManager.useCardEvent += OnCardPlayed;
+            lightningActive = true;
         }
         else if (card.Typing == E_ElementalTyping.Fire)
         {
-            fireTarget = target;
+            fireTarget = target; //Target for fire DoTs that take place on enemy turn, will also be overwritten if new fire card is used
 
             ReferenceInstance.refInstance.eventManager.useCardEvent += OnCardPlayed;
         }
+        else if (card.Typing == E_ElementalTyping.Water)
+        {
+            waterTarget = target;
+
+            ReferenceInstance.refInstance.eventManager.useCardEvent += OnCardPlayed;
+        }
+
+        if (lightningTarget != null && lightningCard != null && lightningActive == true)
+        {
+            ReferenceInstance.refInstance.eventManager.useNextCardEvent += OnSubsequentCardPlayed;
+        }
     }
-
-    private void OnCardPlayed(CardStats card, HealthSystem enemytarget)
+    //Function for cards that have effects that happen after they're initially played
+    private void OnSubsequentCardPlayed(CardStats card, HealthSystem enemytarget)
     {
-        //if (lightningCard != null && lightningTarget != null)
-        //{
-        //    lightningTarget.TakeDamage(lightningCard.ReturnDoTDamage());
-
-        //    if (lightningTarget.CurrentHealth <= 0)
-        //    {
-        //        lightningCard = null;
-        //        lightningTarget = null;
-        //        Unsubscribe();
-        //    }
-        //}
         if (lightningCard != null && lightningTarget != null)
         {
             lightningCard.DealLightningDamage(lightningCard, lightningTarget);
             if (lightningTarget.CurrentHealth <= 0)
             {
-                Unsubscribe();
+                lightningCard = null;
+                lightningTarget = null;
+                lightningActive = false;
+                UnsubscribeExtraCardEffects();
             }
         }
     }
 
-    //Called in TurnManager to deal damage to the enemy before they get to act as a sort of burn
-    //Side Nite: May be good to add these elemental functions to CardStats and have them fire off there to keep Clickmanager from being too big
-    public void HandleFireDamage()
+    private void OnCardPlayed(CardStats card, HealthSystem enemytarget)
+    {
+        if (waterCard != null)
+        {
+            HandleWaterDamage();
+        }
+
+        if (fireCard != null && firstFireUsed == false)
+        {
+            HandleFireDamage();
+            fireCard = null;
+        }
+
+        else if (fireCard != null && firstFireUsed == true)
+        {
+            HandleExtraFireDamage();
+            fireCard = null;
+        }
+    }
+
+    private void HandleFireDamage()
     {
         if (fireCard != null && fireTarget != null)
         {
             fireCard.DealFireDamage(fireCard, fireTarget);
-            Unsubscribe();
+            firstFireUsed = true;
+            UnsubscribeCardPlayed();
         }
     }
 
-    public void Unsubscribe()
+    private void HandleExtraFireDamage()
+    {
+        fireCard.DealExtraFireDamage(fireCard, fireTarget);
+        firstFireUsed = false;
+        fireCard = null;
+        UnsubscribeCardPlayed();
+    }
+
+    private void HandleWaterDamage()
+    {
+        if (waterCard != null && waterTarget != null)
+        {
+            waterCard.DealWaterDamage(waterCard, waterTarget);
+            UnsubscribeCardPlayed();
+        }
+    }
+
+    public void UnsubscribeCardPlayed()
     {
         if (ReferenceInstance.refInstance.eventManager != null)
             ReferenceInstance.refInstance.eventManager.useCardEvent -= OnCardPlayed;
+    }
+
+    public void UnsubscribeExtraCardEffects()
+    {
+        if (ReferenceInstance.refInstance.eventManager != null)
+            ReferenceInstance.refInstance.eventManager.useNextCardEvent -= OnSubsequentCardPlayed;
     }
 
     private void DealDamage()
@@ -227,7 +287,6 @@ public class ClickManagerPrime : MonoBehaviour
         HealthSystem hs = selectedEnemy.GetComponent<HealthSystem>(); //Get enemy health to deal damage to
         effectivenessModifier = TypingDictionary.GetEffectivenessModifier(cardTyping, enemyTyping); //Checks for playercard and enemy typings  
         PlayCard(selectedCardStats, hs);
-        //hs.TakeDamage(selectedCardStats.ReturnDamage() * CalculateDamageModifier()); //Returns appropriate damage values
         //enemyTyping = 0; //Resets calculation as fail-safe
         FinishedAttacking(); //Empties all variables that need no longer be filled
     }
@@ -265,16 +324,6 @@ public class ClickManagerPrime : MonoBehaviour
         if (taunt == false)
         {
             selectedEnemy = null;
-        }
-
-        //Doublechecking if enemy fire target is still alive after every card used
-        if (fireTarget != null)
-        {
-            if (fireTarget.CurrentHealth <= 0)
-            {
-                fireCard = null;
-                Unsubscribe();
-            }
         }
     }
 

@@ -63,7 +63,9 @@ public class TurnManager : MonoBehaviour
     private void StartEnemyTurn()
     {
         playerTurn = false;
-        ReferenceInstance.refInstance.clickManager.Unsubscribe();
+        ReferenceInstance.refInstance.clickManager.UnsubscribeCardPlayed();
+        ReferenceInstance.refInstance.clickManager.UnsubscribeExtraCardEffects();
+
         for (int i = 0; i < spawnEnemiesScript.spawnedEnemies.Count; i++)
         {
             spawnEnemiesScript.spawnedEnemies[i].GetComponent<Ab_Enemy>().CheckForStatusEffects();
@@ -76,7 +78,6 @@ public class TurnManager : MonoBehaviour
     //Button to end player turn
     public void EndTurn()
     {
-        ReferenceInstance.refInstance.clickManager.HandleFireDamage();
         StartEnemyTurn();
     }
 
