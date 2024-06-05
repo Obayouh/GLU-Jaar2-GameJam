@@ -50,9 +50,9 @@ public class Tank : Ab_Enemy
 
     private void Attack()
     {
-        _tankAnim.SetInteger("SkeletonState", 2);
+        _tankAnim.SetInteger("TankState", 2);
         _playerStats.TakeDamage(damageDealt);
-        _tankAnim.SetInteger("SkeletonState", 1);
+        _tankAnim.SetInteger("TankState", 1);
         UnityEngine.Debug.Log("Should attack player and then end turn");
     }
 
@@ -158,14 +158,14 @@ public class Tank : Ab_Enemy
 
     private IEnumerator SwitchWeapon()
     {
-        int _stateOfSkeleton = _tankAnim.GetInteger("SkeletonState");
+        int _stateOfSkeleton = _tankAnim.GetInteger("TankState");
 
         if (_stateOfSkeleton == 0)
         {
             yield return new WaitForSeconds(4.3f);
             _HipAxe.SetActive(false);
             _ArmAxe.SetActive(true);
-            _tankAnim.SetInteger("SkeletonState", 1);
+            _tankAnim.SetInteger("TankState", 1);
         }
     }
 }

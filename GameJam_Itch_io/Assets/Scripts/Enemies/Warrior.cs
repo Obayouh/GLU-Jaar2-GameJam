@@ -18,7 +18,7 @@ public class Warrior : Ab_Enemy
     public TheStateOfTheWarior StateOfTheWarior;
 
     private Animator _warriorAnim;
-    //private HealthSystem _currentHealth;
+    private HealthSystem _currentHealth;
 
     private float _maxLife;
     private float _halfLife;
@@ -34,10 +34,7 @@ public class Warrior : Ab_Enemy
     {
         base.Start();
 
-        //Array arrayElement = Enum.GetValues(typeof(Typing));
-        //Typing randomType = (Typing)arrayElement.GetValue(UnityEngine.Random.Range(0, arrayElement.Length));
-
-        //_currentHealth = _player.GetComponent<HealthSystem>();
+        _currentHealth = GetComponent<HealthSystem>();
         _maxLife = GetComponent<HealthSystem>().CurrentHealth;
         _warriorAnim = GetComponent<Animator>();
         _halfLife = _maxLife / 2;
@@ -49,7 +46,6 @@ public class Warrior : Ab_Enemy
     {
         if (StateOfTheWarior == TheStateOfTheWarior.Attack && currentCoroutine == null)
         {
-            //AttackPlayer();
             currentCoroutine = StartCoroutine(AttackPlayer());
         }
 
@@ -61,6 +57,11 @@ public class Warrior : Ab_Enemy
         if (StateOfTheWarior == TheStateOfTheWarior.Waiting)
         {
             CurrentlyWaiting();
+        }
+
+        if (_currentHealth.CurrentHealth <= 0)
+        {
+            DeadAnim();
         }
     }
 
@@ -79,8 +80,7 @@ public class Warrior : Ab_Enemy
 
     private IEnumerator AttackPlayer()
     {
-        _warriorAnim.SetInteger("SkeletonState", 2);
-        Debug.Log("Attack animation");
+        _warriorAnim.SetInteger("WarriorState", 2);
         yield return new WaitForSeconds(1f);
         _playerStats.TakeDamage(UnityEngine.Random.Range(_MinAttackPower, _MaxAttackPower));
         yield return new WaitForSeconds(1f);
@@ -98,33 +98,36 @@ public class Warrior : Ab_Enemy
 
     private void CurrentlyWaiting()
     {
-        int _stateOfSkeleton = _warriorAnim.GetInteger("SkeletonState");
+        int _stateOfWarrior = _warriorAnim.GetInteger("WarriorState");
 
-        if (_stateOfSkeleton == 2 || _stateOfSkeleton == 3)
+        if (_stateOfWarrior == 2 || _stateOfWarrior == 3)
         {
-            _warriorAnim.SetInteger("SkeletonState", 1);
-            Debug.Log("Idle animation");
+            _warriorAnim.SetInteger("WarriorState", 1);
         }
     }
 
-    //public override void DeadAnim()
-    //{
-    //    if (_currentHealth.CurrentHealth <= 0)
-    //    {
+    public override void DeadAnim()
+    {
+        StartCoroutine(DeadAnimation());
+        _currentHealth.Kill();
+    }
 
-    //    }
-    //}
+    private IEnumerator DeadAnimation()
+    {
+        _warriorAnim.SetInteger("WarriorState", 4);
+        yield return new WaitForSeconds(1f);
+    }
 
     private IEnumerator SwitchWeapon()
     {
-        int _stateOfSkeleton = _warriorAnim.GetInteger("SkeletonState");
+        int _stateOfWarrior = _warriorAnim.GetInteger("WarriorState");
         
-        if (_stateOfSkeleton == 0)
+        if (_stateOfWarrior == 0)
         {
             yield return new WaitForSeconds(4.3f);
             _HipAxe.SetActive(false);
             _ArmAxe.SetActive(true);
-            _warriorAnim.SetInteger("SkeletonState", 1);
+            _warriorAnim.SetInteger("WarriorState", 1);
         }
     }
 }
