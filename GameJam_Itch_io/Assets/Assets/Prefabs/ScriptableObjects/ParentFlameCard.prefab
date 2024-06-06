@@ -63,8 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50a308d49b88550418a914231493d22d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  cost: 0
+  <Typing>k__BackingField: 0
 --- !u!65 &7707656947956847631
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -172,7 +171,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1707185598650780733, guid: af748bad9d7051841801b369a6cda182,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3404800018384397703}
   m_SourcePrefab: {fileID: 100100000, guid: af748bad9d7051841801b369a6cda182, type: 3}
 --- !u!4 &5425799002467005599 stripped
 Transform:
@@ -180,3 +183,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5571803759362722295}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6548833909658764746 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1707185598650780733, guid: af748bad9d7051841801b369a6cda182,
+    type: 3}
+  m_PrefabInstance: {fileID: 5571803759362722295}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3404800018384397703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6548833909658764746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 653340e6ac0647d4895687751b34cd54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  content: 'Deals half of card''s normal damage to enemies on end of player turn
+
+    (Not
+    Stackable)'

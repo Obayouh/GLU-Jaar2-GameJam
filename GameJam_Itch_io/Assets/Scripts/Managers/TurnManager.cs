@@ -31,6 +31,7 @@ public class TurnManager : MonoBehaviour
     {
         StartCoroutine(StartPlayerTurn(1f));
         spawnEnemiesScript = FindFirstObjectByType<SpawnEnemies>();
+        _CanvasCollector = FindFirstObjectByType<CanvasCollector>();
         UpdateFloor();
     }
 
@@ -75,6 +76,7 @@ public class TurnManager : MonoBehaviour
     //Button to end player turn
     public void EndTurn()
     {
+        ReferenceInstance.refInstance.clickManager.HandleFireDamage();
         StartEnemyTurn();
     }
 

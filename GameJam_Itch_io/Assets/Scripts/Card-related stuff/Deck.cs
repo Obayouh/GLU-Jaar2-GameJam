@@ -38,6 +38,13 @@ public class Deck : MonoBehaviour
         deckUI.UpdateDrawPile(drawPile.Count);
     }
 
+    public void AddNewCard(GameObject card)
+    {
+        GameObject newCard = Instantiate(card, deckPos);
+        newCard.SetActive(false);
+        drawPile.Add(card);
+    }
+
     public GameObject DrawCard()
     {
         int rdm = Random.Range(0, drawPile.Count);

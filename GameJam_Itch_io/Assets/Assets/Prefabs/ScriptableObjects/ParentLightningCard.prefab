@@ -255,5 +255,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653340e6ac0647d4895687751b34cd54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  content: Deals half of the thunder card's initial damage to the target every time
-    a new card is played, until end of turn (not stackable)
+  content: "Deals half of the thunder card's initial damage to the target every time
+    a new card is played, until end of turn \n(not stackable)"
