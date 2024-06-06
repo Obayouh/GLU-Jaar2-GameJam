@@ -61,7 +61,7 @@ public class SpawnEnemies : MonoBehaviour
         {
             pickNewCardSystem.PickCard();
 
-            ReferenceInstance.refInstance.turnManager.ChangeState(TurnState.Waiting);
+            ReferenceInstance.refInstance.turnManager.ChangeState(TurnState.PickNewCard);
         }
     }
 }

@@ -10,7 +10,8 @@ public enum TurnState
     PickCard,
     Waiting,
     Attack,
-    EnemyTurn
+    EnemyTurn,
+    PickNewCard
 }
 
 public class TurnManager : MonoBehaviour

@@ -5,7 +5,7 @@ using TMPro;
 using System.Drawing;
 
 public class CardStats : MonoBehaviour
-{   
+{
     private TextMeshPro damageText;
     private TextMeshPro costText;
     private int baseDamage;
@@ -16,7 +16,7 @@ public class CardStats : MonoBehaviour
     [field: SerializeField] public E_ElementalTyping Typing { get; private set; }
     public void Start()
     {
-        GetTextMeshPro();       
+        GetTextMeshPro();
     }
 
     /// <summary>
@@ -24,9 +24,61 @@ public class CardStats : MonoBehaviour
     /// </summary>
     public void SetCardStats()
     {
-        
-        baseDamage = Random.Range(1, 9);
-        cost = Random.Range(1, 5);
+        #region Test Random Nummers Kaarten
+        //float rdm = Random.value;
+        //if (rdm < .05f)
+        //{
+        //    baseDamage = Random.Range(1, 1);
+        //    cost = Random.Range(1, 5);
+        //}
+        //else if (rdm < .4f)
+        //{
+        //    baseDamage = Random.Range(2, 4);
+        //    cost = Random.Range(1, 2);
+        //}
+        //else if (rdm < .8f)
+        //{
+        //    baseDamage = Random.Range(4, 6);
+        //    cost = Random.Range(2, 4);
+        //}
+        //else if (rdm < 1f)
+        //{
+        //    baseDamage = Random.Range(7, 9);
+        //    cost = Random.Range(4, 5);
+        //}
+        //else
+        //{
+        //baseDamage = Random.Range(1, 9);
+        //cost = Random.Range(1, 5);
+        //}
+        #endregion
+
+        if (Typing == E_ElementalTyping.Fire)
+        {
+            baseDamage = Random.Range(4, 9);
+            cost = Random.Range(3, 5);
+        }
+        else if (Typing == E_ElementalTyping.Lightning)
+        {
+            baseDamage = Random.Range(2, 5);
+            cost = Random.Range(1, 3);
+        }
+        else if (Typing == E_ElementalTyping.Water)
+        {
+            baseDamage = Random.Range(1, 5);
+            cost = Random.Range(2, 4);
+        }
+        else if (Typing == E_ElementalTyping.Rock)
+        {
+            baseDamage = Random.Range(4, 7);
+            cost = Random.Range(2, 4);
+        }
+        else if (Typing == E_ElementalTyping.Exlosion)
+        {
+            baseDamage = Random.Range(5, 9);
+            cost = Random.Range(5, 8);
+        }
+
         damageText.fontSize = 1;
         costText.fontSize = 1;
         damageText.SetText("Damage:\n " + baseDamage.ToString());
@@ -88,11 +140,11 @@ public class CardStats : MonoBehaviour
     public void DealFireDamage(CardStats firstFireCard, HealthSystem fireTarget)
     {
         if (firstFireCard != null && fireTarget != null)
-        { 
+        {
             if (fireTarget.CurrentHealth <= 0)
             {
                 firstFireCard = null;
-                
+
                 fireTarget = null;
                 //Unsub right after
             }
@@ -133,7 +185,7 @@ public class CardStats : MonoBehaviour
             //Unsub right after
         }
 
-        
+
         if (spawnEnemiesList.spawnedEnemies.Count > 1 && waterTarget != null)
         {
             for (int i = 0; i < spawnEnemiesList.spawnedEnemies.Count; i++)
