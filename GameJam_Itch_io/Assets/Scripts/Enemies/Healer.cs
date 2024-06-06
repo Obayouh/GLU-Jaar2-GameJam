@@ -8,6 +8,8 @@ public class Healer : Ab_Enemy
 {
     [SerializeField, Range(0.1f, 1f)] private float healPercentage;
     [SerializeField, Range(3, 60)] private int damageDealt; //Update in prefab if you change the value(s)
+    [SerializeField] private GameObject healEffect1;
+    //[SerializeField] private ParticleSystem healEffect2;
 
     private float halfHealth;
     private float healTargetMaxHealth;
@@ -16,6 +18,10 @@ public class Healer : Ab_Enemy
     protected override void Start()
     {
         base.Start();
+        if (healEffect1 == null  /*|| healEffect2 == null*/)
+        {
+            UnityEngine.Debug.Log("Fill in healEffect on Healer please!");
+        }
     }
 
     public override void OnAction()
@@ -30,7 +36,9 @@ public class Healer : Ab_Enemy
 
     private void HealSelf()
     {
-        _healthSystem.Heal(_healthSystem.CurrentHealth * healPercentage);
+        _healthSystem.Heal(_healthSystem.GetMaxHealth() * healPercentage);
+        Instantiate(healEffect1, transform.position, Quaternion.identity);
+        StartCoroutine(ActivateHealEffect(transform.position));
         _healthSystem.HealthUpdate();
         UnityEngine.Debug.Log(this.gameObject.name + "healed itself");
     }
@@ -49,6 +57,14 @@ public class Healer : Ab_Enemy
     public override void DeadAnim()
     {
         //Play Death animation
+    }
+
+    IEnumerator ActivateHealEffect(Vector3 healPosition)
+    {
+        healEffect1.SetActive(true);
+        healEffect1.transform.position = healPosition;
+        yield return new WaitForSeconds(2f);
+        healEffect1.SetActive(false);
     }
 
     /// <summary>
@@ -93,6 +109,7 @@ public class Healer : Ab_Enemy
             }
             healTargetMaxHealth = currentHealTarget.GetComponent<HealthSystem>().GetMaxHealth();
             currentHealTarget.GetComponent<HealthSystem>().Heal(healTargetMaxHealth * healPercentage); //Heals target's health based on % of maxHp
+            StartCoroutine(ActivateHealEffect(currentHealTarget.transform.position));
             currentHealTarget.GetComponent<HealthSystem>().HealthUpdate(); //Updates healtarget's healthbar visuals
             UnityEngine.Debug.Log(this.gameObject.name + " healed " + currentHealTarget);
         }
