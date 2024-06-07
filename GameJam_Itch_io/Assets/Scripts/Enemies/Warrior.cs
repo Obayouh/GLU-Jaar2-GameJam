@@ -63,6 +63,8 @@ public class Warrior : Ab_Enemy
         {
             DeadAnim();
         }
+
+        
     }
 
     public override void OnAction()
@@ -116,6 +118,21 @@ public class Warrior : Ab_Enemy
     {
         _warriorAnim.SetInteger("WarriorState", 4);
         yield return new WaitForSeconds(1f);
+    }
+
+    public override void HitAnim()
+    {
+        StartCoroutine(HitAnimation());
+    }
+
+    private IEnumerator HitAnimation()
+    {
+        //_warriorAnim.SetInteger("WarriorState", 3);
+        _warriorAnim.SetTrigger("Hit");
+        Debug.Log(_warriorAnim.GetInteger("WarriorState"));
+        //Debug.Log("state change");
+        yield return new WaitForSeconds(2.1f);
+        _warriorAnim.SetInteger("WarriorState", 1);
     }
 
     private IEnumerator SwitchWeapon()

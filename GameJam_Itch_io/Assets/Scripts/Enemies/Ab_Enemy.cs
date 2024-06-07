@@ -57,6 +57,8 @@ public abstract class Ab_Enemy : MonoBehaviour
     /// </summary>
     public virtual void DeadAnim() { }
 
+    public virtual void HitAnim() { }
+
     /// <summary>
     /// Give specifics on when to do an action
     /// </summary>
