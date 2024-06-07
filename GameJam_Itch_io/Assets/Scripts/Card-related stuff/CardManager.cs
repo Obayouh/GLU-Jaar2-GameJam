@@ -33,6 +33,7 @@ public class CardManager : MonoBehaviour
             ScaleOnHover soh = card.GetComponentInChildren<ScaleOnHover>();
             soh.StartHovering();
             spawnedCards.Add(card);
+            AudioManager.Instance.Play("Add Card");
         }
         Instantiate(handPrefab, handPositions[3]);
     }
@@ -59,6 +60,7 @@ public class CardManager : MonoBehaviour
                     ScaleOnHover soh = card.GetComponentInChildren<ScaleOnHover>();
                     soh.StartHovering();
                     spawnedCards.Add(card);
+                    AudioManager.Instance.Play("Add Card");
                 }
             }
         }

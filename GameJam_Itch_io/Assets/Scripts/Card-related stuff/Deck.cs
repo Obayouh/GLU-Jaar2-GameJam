@@ -17,6 +17,8 @@ public class Deck : MonoBehaviour
 
     private void Start()
     {
+        //AudioManager.Instance.Play("Healing test");
+
         deckUI = FindFirstObjectByType<DeckUI>();
         if (deckUI == null)
         {

@@ -95,6 +95,11 @@ public class TurnManager : MonoBehaviour
             _CanvasCollector.EndTurnButton.SetActive(false);
         }
 
+        if (state != TurnState.Attack)
+        {
+            //canHover false for ScaleOnHover for all enemies 
+        }
+
         if (state == TurnState.PlayerTurn)
         {
             AddNewCards = true;
