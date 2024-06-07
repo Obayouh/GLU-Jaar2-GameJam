@@ -41,6 +41,24 @@ public class SpawnEnemies : MonoBehaviour
         spawnedEnemies.Add(enemy);
     }
 
+    public void StartEnemiesSOH()
+    {
+        for (int i = 0; i < spawnedEnemies.Count; i++)
+        {
+            ScaleOnHover soh = spawnedEnemies[i].GetComponent<ScaleOnHover>();
+            soh.StartHovering();
+        }
+    }
+
+    public void StopEnemiesSOH()
+    {
+        for (int i = 0; i < spawnedEnemies.Count; i++)
+        {
+            ScaleOnHover soh = spawnedEnemies[i].GetComponent<ScaleOnHover>();
+            soh.StopHovering();
+        }
+    }
+
     public void RemoveEnemy(GameObject enemy)
     {
         SpawnSlot spawnSlot = enemy.GetComponentInParent<SpawnSlot>();

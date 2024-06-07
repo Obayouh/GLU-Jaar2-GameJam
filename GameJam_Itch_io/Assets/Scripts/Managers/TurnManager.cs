@@ -95,9 +95,13 @@ public class TurnManager : MonoBehaviour
             _CanvasCollector.EndTurnButton.SetActive(false);
         }
 
-        if (state != TurnState.Attack)
+        if (state == TurnState.Attack)
         {
-            //canHover false for ScaleOnHover for all enemies 
+            ReferenceInstance.refInstance.spawnEnemiesScript.StartEnemiesSOH();
+        }
+        else
+        {
+            ReferenceInstance.refInstance.spawnEnemiesScript.StopEnemiesSOH();
         }
 
         if (state == TurnState.PlayerTurn)
