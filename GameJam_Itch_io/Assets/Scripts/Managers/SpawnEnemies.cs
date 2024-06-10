@@ -64,15 +64,7 @@ public class SpawnEnemies : MonoBehaviour
         SpawnSlot spawnSlot = enemy.GetComponentInParent<SpawnSlot>();
         spawnSlot.HasChild = false;
         spawnedEnemies.Remove(enemy);
-        enemyController.RemoveEnemy(enemy);
-
-        StartCoroutine(DestroyEnemy(enemy));
-    }
-
-    private IEnumerator DestroyEnemy(GameObject enemy)
-    {
-        yield return new WaitForSeconds(.5f);
-        Destroy(enemy);
+        enemyController.RemoveEnemy(enemy); StartCoroutine(DestroyEnemy(enemy));
 
         //If all enemies are killed, pick new card
         if (spawnedEnemies.Count < 1)
@@ -81,5 +73,13 @@ public class SpawnEnemies : MonoBehaviour
 
             ReferenceInstance.refInstance.turnManager.ChangeState(TurnState.PickNewCard);
         }
+
+        StartCoroutine(DestroyEnemy(enemy));
     }
-}
+
+    private IEnumerator DestroyEnemy(GameObject enemy)
+    {
+        yield return new WaitForSeconds(.5f);
+        Destroy(enemy);
+    }
+}

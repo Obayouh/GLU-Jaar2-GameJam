@@ -44,4 +44,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25a50a23a46e86e4a80ad03b21307d92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - name: Select Card
+    clip: {fileID: 8300000, guid: 0b21669b49ddffb4faaa1ba69973e706, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Fire Card Throw
+    clip: {fileID: 8300000, guid: 6920963d5d292e849ac8348fccfe8027, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Fire Card Hit
+    clip: {fileID: 8300000, guid: da84f24db9dbcdd48a43034a906e4676, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Water Card Hit
+    clip: {fileID: 8300000, guid: 520d07873d3c33a41a047c1704937c5d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Explosion Card Hit
+    clip: {fileID: 8300000, guid: 520d07873d3c33a41a047c1704937c5d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Explosion Card Hit
+    clip: {fileID: 8300000, guid: 520d07873d3c33a41a047c1704937c5d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Rock Card Hit
+    clip: {fileID: 8300000, guid: 4c0e8ab51bf71e94687c937930e63121, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Axe Swing
+    clip: {fileID: 8300000, guid: b6c2bd51c6d326247b93b4656edaea62, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Healing
+    clip: {fileID: 8300000, guid: 9947a7e64e820384b81da254e3512769, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Add Card
+    clip: {fileID: 8300000, guid: 5e13237f67ba2fa4481b3bb30b34b4cb, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}

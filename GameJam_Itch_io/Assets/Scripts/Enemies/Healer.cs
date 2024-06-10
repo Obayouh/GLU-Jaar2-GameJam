@@ -7,7 +7,6 @@ using UnityEngine;
 public class Healer : Ab_Enemy
 {
     [SerializeField, Range(0.1f, 1f)] private float healPercentage;
-    [SerializeField, Range(3, 60)] private int damageDealt; //Update in prefab if you change the value(s)
     [SerializeField] private GameObject healEffect1;
     //[SerializeField] private ParticleSystem healEffect2;
 
@@ -36,6 +35,12 @@ public class Healer : Ab_Enemy
 
     private void HealSelf()
     {
+        if (_healthSystem.CanHeal() == false)
+        {
+            RandomizeAction();
+            return;
+        }
+
         _healthSystem.Heal(_healthSystem.GetMaxHealth() * healPercentage);
         Instantiate(healEffect1, transform.position, Quaternion.identity);
         StartCoroutine(ActivateHealEffect(transform.position));
@@ -45,7 +50,7 @@ public class Healer : Ab_Enemy
 
     private void Attack()
     {
-        _playerStats.TakeDamage(damageDealt);
+        _playerStats.TakeDamage(damage);
         UnityEngine.Debug.Log("Should attack player and then end turn");
     }
 
@@ -108,7 +113,15 @@ public class Healer : Ab_Enemy
 
             }
             healTargetMaxHealth = currentHealTarget.GetComponent<HealthSystem>().GetMaxHealth();
-            currentHealTarget.GetComponent<HealthSystem>().Heal(healTargetMaxHealth * healPercentage); //Heals target's health based on % of maxHp
+            HealthSystem currentTargetHS = currentHealTarget.GetComponent<HealthSystem>();
+
+            if (currentTargetHS.CanHeal() == false)
+            {
+                RandomizeAction();
+                return;
+            }
+
+            currentTargetHS.Heal(healTargetMaxHealth * healPercentage); //Heals target's health based on % of maxHp
             StartCoroutine(ActivateHealEffect(currentHealTarget.transform.position));
             currentHealTarget.GetComponent<HealthSystem>().HealthUpdate(); //Updates healtarget's healthbar visuals
             UnityEngine.Debug.Log(this.gameObject.name + " healed " + currentHealTarget);

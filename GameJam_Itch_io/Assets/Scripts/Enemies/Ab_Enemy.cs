@@ -13,6 +13,7 @@ public abstract class Ab_Enemy : MonoBehaviour
     protected EnemyController _enemyController;
     protected PlayerStats _playerStats;
 
+    [SerializeField, Range(1, 60)] protected int damage;
     protected float _maxHealth;
 
     [field: SerializeField] public E_ElementalTyping elementalType { get; private set; }
@@ -57,17 +58,18 @@ public abstract class Ab_Enemy : MonoBehaviour
     /// </summary>
     public virtual void DeadAnim() { }
 
+    /// <summary>
+    /// If enemy gets hit play HitAnim()
+    /// </summary>
     public virtual void HitAnim() { }
 
-    /// <summary>
-    /// Give specifics on when to do an action
-    /// </summary>
-    //public virtual void TurnToAct() { }
 
-    /// <summary>
-    /// Give out an reward to the player, currency for instance
-    /// </summary>
-    //public virtual void Reward() { }
+    public virtual void LookAtPlayer() { }
+
+    public virtual void UpdateDamage()
+    {
+        damage++;
+    }
 
     public virtual void BeginCountdown(Transform transform, float countdown) 
     {

@@ -40,6 +40,18 @@ public abstract class Ab_HealthManager : MonoBehaviour
         }
     }
 
+    public virtual bool CanHeal()
+    {
+        if (currentHealth >= maxHealth)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
     public virtual void Heal(float amount)
     {
         CurrentHealth += Mathf.Abs(amount);

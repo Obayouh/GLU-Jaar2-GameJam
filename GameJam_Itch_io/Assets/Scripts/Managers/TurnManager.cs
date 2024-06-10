@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static EventManager;
 
@@ -21,11 +22,12 @@ public class TurnManager : MonoBehaviour
     public bool AddNewCards;
     public bool playerTurn;
 
-    private SpawnEnemies spawnEnemiesScript;
 
     private int _floorNumber = 1;
     private int _turnNumber = 1;
 
+    private SpawnEnemies spawnEnemiesScript;
+    private Ab_Enemy enemyStats;
     [SerializeField] private CanvasCollector _CanvasCollector;
 
     private void Start()
@@ -33,11 +35,14 @@ public class TurnManager : MonoBehaviour
         StartCoroutine(StartPlayerTurn(1f));
         spawnEnemiesScript = FindFirstObjectByType<SpawnEnemies>();
         _CanvasCollector = FindFirstObjectByType<CanvasCollector>();
+        enemyStats = spawnEnemiesScript.spawnedEnemies[0].GetComponent<Ab_Enemy>();
         UpdateFloor();
     }
 
     private void UpdateFloor()
     {
+        enemyStats.UpdateDamage();
+
         if (_CanvasCollector.CurrentFloor == null)
             return;
         _CanvasCollector.CurrentFloor.text = "Current floor:  " + _floorNumber++;
