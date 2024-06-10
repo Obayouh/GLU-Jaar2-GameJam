@@ -590,9 +590,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f835d7523680bc4ab1069831eb79ae3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 1
   <elementalType>k__BackingField: 0
   healPercentage: 1
-  damageDealt: 3
   healEffect1: {fileID: 6826555750135529829}
 --- !u!114 &5628820672562098681
 MonoBehaviour:
@@ -606,6 +606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8172c6f026d773648a4ee02d01c230b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 1
   <elementalType>k__BackingField: 0
   State: 0
   HealOtherRange: 0
@@ -944,6 +945,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3908726227186555405, guid: 5d926e3fd9efb2249a5064110a6bbdab,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

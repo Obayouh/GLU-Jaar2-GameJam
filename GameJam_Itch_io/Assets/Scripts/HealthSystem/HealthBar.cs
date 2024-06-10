@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,8 @@ public class HealthBar : MonoBehaviour
     [SerializeField] private Slider easeHealthSlider;
     [SerializeField, Range(0.001f, 0.05f)] private float lerpSpeed = 0.05f;
     private HealthSystem healthComponent;
+    [SerializeField] private TextMeshProUGUI healthText;
+
     private void Start()
     {
         healthComponent = GetComponentInParent<HealthSystem>();
@@ -39,6 +42,7 @@ public class HealthBar : MonoBehaviour
         easeHealthSlider.maxValue = healthComponent.GetMaxHealth();
         healthSlider.value = healthComponent.GetMaxHealth();
         easeHealthSlider.value = healthComponent.GetMaxHealth();
+        healthText.text = healthComponent.GetMaxHealth() + " / " + healthComponent.GetMaxHealth();
     }
 
     //Call this function or the "HealthUpdate" function in HealthSystem anytime you need to update the healthbar visually
@@ -49,6 +53,7 @@ public class HealthBar : MonoBehaviour
         {
             healthSlider.value = currentHealth;
         }
+        healthText.text = currentHealth + " / " + maxHealth;
         //Debug.Log("Health Bar Updated: " + healthPercentage);
     }
 }
