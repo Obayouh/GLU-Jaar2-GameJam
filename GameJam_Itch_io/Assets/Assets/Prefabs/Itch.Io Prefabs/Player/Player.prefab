@@ -249,8 +249,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   durationShaking: 1
   cameraFollower: {fileID: 1523967400612817855}
-  endPos: {x: 0, y: -10, z: -11.9}
-  speed: 10
+  endPos: {x: 0, y: -5, z: -1.5}
+  speed: 20
   switchView: 0
   state: 0
 --- !u!1 &2496229570974035249
@@ -278,8 +278,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2496229570974035249}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.583, z: 0}
+  m_LocalRotation: {x: -0.53729963, y: -0, z: -0, w: 0.8433914}
+  m_LocalPosition: {x: 0, y: -0.65, z: 0.4499998}
   m_LocalScale: {x: 0.7837264, y: 0.7837264, z: 0.7837264}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -327,7 +327,7 @@ Transform:
   m_GameObject: {fileID: 2684138088156472654}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
