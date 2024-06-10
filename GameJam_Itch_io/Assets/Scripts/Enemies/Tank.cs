@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Warrior;
 
 public class Tank : Ab_Enemy
 {
@@ -11,14 +12,20 @@ public class Tank : Ab_Enemy
     private List<GameObject> targetList = new List<GameObject>();
 
     private Animator _tankAnim;
+    private Coroutine _currentCoroutine = null;
+
     [SerializeField] private GameObject _HipAxe;
     [SerializeField] private GameObject _ArmAxe;
+    [SerializeField] private GameObject _BowlHelmet;
+    [SerializeField] private GameObject _DiscHelmet;
+    [SerializeField] private GameObject _SpaceHelmet;
 
     protected override void Start()
     {
         base.Start();
         _tankAnim = GetComponent<Animator>();
         _ArmAxe.SetActive(false);
+        HelmetRandomizer();
         StartCoroutine(SwitchWeapon());
     }
 
@@ -50,10 +57,24 @@ public class Tank : Ab_Enemy
 
     private void Attack()
     {
+        if (_currentCoroutine == null)
+        {
+            _currentCoroutine = StartCoroutine(AttackPlayer());
+            Debug.Log("Should attack player and then end turn");
+        }
+        else
+        {
+            Debug.Log("Current coroutine was already filled");
+        }
+    }
+
+    private IEnumerator AttackPlayer()
+    {
         _tankAnim.SetInteger("TankState", 2);
+        yield return new WaitForSeconds(1f);
         _playerStats.TakeDamage(damageDealt);
-        _tankAnim.SetInteger("TankState", 1);
-        UnityEngine.Debug.Log("Should attack player and then end turn");
+        yield return new WaitForSeconds(1f);
+        _currentCoroutine = null;
     }
 
     private void Taunt()
@@ -166,6 +187,30 @@ public class Tank : Ab_Enemy
             _HipAxe.SetActive(false);
             _ArmAxe.SetActive(true);
             _tankAnim.SetInteger("TankState", 1);
+        }
+    }
+
+    private void HelmetRandomizer()
+    {
+        float randomActionNumber = UnityEngine.Random.value;
+        
+        if (randomActionNumber >= 0.0f && randomActionNumber <= 0.4f)
+        {
+            _BowlHelmet.SetActive(true);
+            _DiscHelmet.SetActive(false);
+            _SpaceHelmet.SetActive(false);
+        }
+        else if (randomActionNumber > 0.4f && randomActionNumber <= 0.8f)
+        {
+            _BowlHelmet.SetActive(false);
+            _DiscHelmet.SetActive(true);
+            _SpaceHelmet.SetActive(false);
+        }
+        else if (randomActionNumber > 0.8f)
+        {
+            _BowlHelmet.SetActive(false);
+            _DiscHelmet.SetActive(false);
+            _SpaceHelmet.SetActive(true);
         }
     }
 }

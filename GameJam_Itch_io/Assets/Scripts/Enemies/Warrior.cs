@@ -25,7 +25,7 @@ public class Warrior : Ab_Enemy
 
     private bool _attackBuff;
     private int _detectHalfLife;
-    private Coroutine currentCoroutine = null;
+    private Coroutine _currentCoroutine = null;
 
     [SerializeField] private GameObject _HipAxe;
     [SerializeField] private GameObject _ArmAxe;
@@ -44,9 +44,9 @@ public class Warrior : Ab_Enemy
 
     void Update()
     {
-        if (StateOfTheWarior == TheStateOfTheWarior.Attack && currentCoroutine == null)
+        if (StateOfTheWarior == TheStateOfTheWarior.Attack && _currentCoroutine == null)
         {
-            currentCoroutine = StartCoroutine(AttackPlayer());
+            _currentCoroutine = StartCoroutine(AttackPlayer());
         }
 
         if (StateOfTheWarior == TheStateOfTheWarior.BuffThemself)
@@ -87,7 +87,7 @@ public class Warrior : Ab_Enemy
         _playerStats.TakeDamage(UnityEngine.Random.Range(_MinAttackPower, _MaxAttackPower));
         yield return new WaitForSeconds(1f);
         StateOfTheWarior = TheStateOfTheWarior.Waiting;
-        currentCoroutine = null;
+        _currentCoroutine = null;
     }
 
     private void BuffItself()
@@ -127,10 +127,7 @@ public class Warrior : Ab_Enemy
 
     private IEnumerator HitAnimation()
     {
-        //_warriorAnim.SetInteger("WarriorState", 3);
         _warriorAnim.SetTrigger("Hit");
-        Debug.Log(_warriorAnim.GetInteger("WarriorState"));
-        //Debug.Log("state change");
         yield return new WaitForSeconds(2.1f);
         _warriorAnim.SetInteger("WarriorState", 1);
     }
