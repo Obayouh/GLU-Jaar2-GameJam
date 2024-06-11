@@ -14,12 +14,27 @@ public class Healer : Ab_Enemy
     private float healTargetMaxHealth;
 
     private List<GameObject> targetList = new List<GameObject>();
+
+    private Animator _healerAnim;
+    private Coroutine _currentCoroutine = null;
+    private HealthSystem _currentHealth;
+
     protected override void Start()
     {
         base.Start();
         if (healEffect1 == null  /*|| healEffect2 == null*/)
         {
             UnityEngine.Debug.Log("Fill in healEffect on Healer please!");
+        }
+        _currentHealth = GetComponent<HealthSystem>();
+        _healerAnim = GetComponentInChildren<Animator>();
+    }
+
+    private void Update()
+    {
+        if (_currentHealth.CurrentHealth <= 0)
+        {
+            DeadAnim();
         }
     }
 
@@ -50,8 +65,24 @@ public class Healer : Ab_Enemy
 
     private void Attack()
     {
+        if (_currentCoroutine == null)
+        {
+            _currentCoroutine = StartCoroutine(AttackPlayer());
+        }
+    }
+
+    private IEnumerator AttackPlayer()
+    {
+        _healerAnim.SetInteger("HealerState", 1);
+        yield return new WaitForSeconds(0.8f);
         _playerStats.TakeDamage(damage);
         UnityEngine.Debug.Log("Should attack player and then end turn");
+        yield return new WaitForSeconds(0.2f);
+        _currentCoroutine = null;
+        if (_currentCoroutine == null)
+        {
+            _healerAnim.SetInteger("HealerState", 0);
+        }
     }
 
     public override void SpawnAnim()
@@ -61,7 +92,26 @@ public class Healer : Ab_Enemy
 
     public override void DeadAnim()
     {
-        //Play Death animation
+        StartCoroutine(DeadAnimation());
+        _currentHealth.Kill();
+    }
+
+    private IEnumerator DeadAnimation()
+    {
+        _healerAnim.SetInteger("HealerState", 2);
+        yield return new WaitForSeconds(1f);
+    }
+
+    public override void HitAnim()
+    {
+        StartCoroutine(HitAnimation());
+    }
+
+    private IEnumerator HitAnimation()
+    {
+        _healerAnim.SetTrigger("Hit");
+        yield return new WaitForSeconds(2.1f);
+        _healerAnim.SetInteger("HealerState", 0);
     }
 
     IEnumerator ActivateHealEffect(Vector3 healPosition)
