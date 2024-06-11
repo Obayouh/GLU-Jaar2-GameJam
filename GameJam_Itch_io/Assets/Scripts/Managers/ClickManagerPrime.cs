@@ -344,7 +344,7 @@ public class ClickManagerPrime : MonoBehaviour
 
     private IEnumerator WaitForAnim()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.1f);
         FinishedAttacking();
     }
 }
