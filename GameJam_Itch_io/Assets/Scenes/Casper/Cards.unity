@@ -153,12 +153,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6965235428600010806}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &680268808 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1523967400612817855, guid: 84503a9c1d2d88644b4a807a9c6ec369,
-    type: 3}
-  m_PrefabInstance: {fileID: 6965235428600010806}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &698738959
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -478,22 +472,22 @@ PrefabInstance:
     - target: {fileID: 2186041301708968266, guid: 94ad9f5b47269ec4ea9c346f7f7e790a,
         type: 3}
       propertyPath: m_Pivot.x
-      value: -1.1289092
+      value: 0.4749561
       objectReference: {fileID: 0}
     - target: {fileID: 2186041301708968266, guid: 94ad9f5b47269ec4ea9c346f7f7e790a,
         type: 3}
       propertyPath: m_Pivot.y
-      value: 0.59221125
+      value: 1.085823
       objectReference: {fileID: 0}
     - target: {fileID: 2186041301708968266, guid: 94ad9f5b47269ec4ea9c346f7f7e790a,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -3127.5056
+      value: -48.08429
       objectReference: {fileID: 0}
     - target: {fileID: 2186041301708968266, guid: 94ad9f5b47269ec4ea9c346f7f7e790a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 99.588135
+      value: 632.68896
       objectReference: {fileID: 0}
     - target: {fileID: 2464632035501786643, guid: 94ad9f5b47269ec4ea9c346f7f7e790a,
         type: 3}
@@ -2029,7 +2023,7 @@ PrefabInstance:
     - target: {fileID: 943718685030371417, guid: 84503a9c1d2d88644b4a807a9c6ec369,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -12
       objectReference: {fileID: 0}
     - target: {fileID: 943718685030371417, guid: 84503a9c1d2d88644b4a807a9c6ec369,
         type: 3}
@@ -2104,13 +2098,8 @@ PrefabInstance:
     - target: {fileID: 8368408440665741768, guid: 84503a9c1d2d88644b4a807a9c6ec369,
         type: 3}
       propertyPath: endPos.z
-      value: 0
+      value: -1.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8368408440665741768, guid: 84503a9c1d2d88644b4a807a9c6ec369,
-        type: 3}
-      propertyPath: cameraFollower
-      value: 
-      objectReference: {fileID: 680268808}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

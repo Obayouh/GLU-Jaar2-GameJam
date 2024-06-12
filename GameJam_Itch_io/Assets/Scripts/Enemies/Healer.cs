@@ -215,4 +215,9 @@ public class Healer : Ab_Enemy
                 break;
         }
     }
+
+    public override void UpdateDamage()
+    {
+        base.UpdateDamage();
+    }
 }

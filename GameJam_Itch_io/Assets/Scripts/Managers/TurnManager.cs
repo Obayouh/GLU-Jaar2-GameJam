@@ -23,7 +23,7 @@ public class TurnManager : MonoBehaviour
     public bool playerTurn;
 
 
-    private int _floorNumber = 1;
+    public int _floorNumber = 1;
     private int _turnNumber = 1;
 
     private SpawnEnemies spawnEnemiesScript;

@@ -68,7 +68,7 @@ public abstract class Ab_Enemy : MonoBehaviour
 
     public virtual void UpdateDamage()
     {
-        damage++;
+        damage = ReferenceInstance.refInstance.turnManager._floorNumber;
     }
 
     public virtual void BeginCountdown(Transform transform, float countdown) 

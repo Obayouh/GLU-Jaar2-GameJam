@@ -7,8 +7,6 @@ using static Warrior;
 
 public class Tank : Ab_Enemy
 {
-    [SerializeField, Range(3, 60)] private int damageDealt; //Update in prefab if you change the value(s)
-
     private List<GameObject> targetList = new List<GameObject>();
 
     private Animator _tankAnim;
@@ -72,7 +70,7 @@ public class Tank : Ab_Enemy
     {
         _tankAnim.SetInteger("TankState", 2);
         yield return new WaitForSeconds(1f);
-        _playerStats.TakeDamage(damageDealt);
+        _playerStats.TakeDamage(damage);
         yield return new WaitForSeconds(1f);
         _currentCoroutine = null;
     }
@@ -212,5 +210,10 @@ public class Tank : Ab_Enemy
             _DiscHelmet.SetActive(false);
             _SpaceHelmet.SetActive(true);
         }
+    }
+
+    public override void UpdateDamage()
+    {
+        base.UpdateDamage();
     }
 }
