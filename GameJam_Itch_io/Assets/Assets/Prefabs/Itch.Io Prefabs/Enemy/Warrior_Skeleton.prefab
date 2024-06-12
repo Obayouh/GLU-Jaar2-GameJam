@@ -830,7 +830,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b8d091e4f054ea949a84d38c3177eb54,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3799995109422700591}
+      addedObject: {fileID: 6093187483074647943}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b8d091e4f054ea949a84d38c3177eb54,
         type: 3}
       insertIndex: -1
@@ -933,7 +933,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3799995109422700591
+--- !u!114 &6093187483074647943
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -942,11 +942,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7880691215053067273}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1e326a74c6b31043a3a05714fad54c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 93384ef11b22c8a4887a8028e9086785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 10
-  maxHealth: 15
+  currentHealth: 0
+  maxHealth: 10
   hasShield: 0
 --- !u!114 &-5712332974420350811
 MonoBehaviour:
@@ -960,6 +960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 842f7b6dca1ee7d49aa4abd79f38df01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 1
   <elementalType>k__BackingField: 0
   _MinAttackPower: 3
   _MaxAttackPower: 5
