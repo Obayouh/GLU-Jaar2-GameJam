@@ -22,35 +22,35 @@ public class TypingDictionary : MonoBehaviour
         {new Effectiveness( E_ElementalTyping.Fire,  E_ElementalTyping.Water), 2 },
         {new Effectiveness( E_ElementalTyping.Fire,  E_ElementalTyping.Lightning), 0 },
         {new Effectiveness( E_ElementalTyping.Fire,  E_ElementalTyping.Rock), 1 },
-        {new Effectiveness( E_ElementalTyping.Fire,  E_ElementalTyping.Exlosion), 0 },
+        {new Effectiveness( E_ElementalTyping.Fire,  E_ElementalTyping.Neutral), 0 },
 
         //Water combinations:
         {new Effectiveness( E_ElementalTyping.Water,  E_ElementalTyping.Fire), 1 },
         {new Effectiveness( E_ElementalTyping.Water,  E_ElementalTyping.Water), 0 },
         {new Effectiveness( E_ElementalTyping.Water,  E_ElementalTyping.Lightning), 2 },
         {new Effectiveness( E_ElementalTyping.Water,  E_ElementalTyping.Rock), 0 },
-        {new Effectiveness( E_ElementalTyping.Water,  E_ElementalTyping.Exlosion), 0 },
+        {new Effectiveness( E_ElementalTyping.Water,  E_ElementalTyping.Neutral), 0 },
 
         //Lightning combinations:
         {new Effectiveness( E_ElementalTyping.Lightning,  E_ElementalTyping.Fire), 0 },
         {new Effectiveness( E_ElementalTyping.Lightning,  E_ElementalTyping.Water), 1 },
         {new Effectiveness( E_ElementalTyping.Lightning,  E_ElementalTyping.Lightning), 0 },
         {new Effectiveness( E_ElementalTyping.Lightning,  E_ElementalTyping.Rock), 2 },
-        {new Effectiveness( E_ElementalTyping.Lightning,  E_ElementalTyping.Exlosion), 0 },
+        {new Effectiveness( E_ElementalTyping.Lightning,  E_ElementalTyping.Neutral), 0 },
 
         //Rock combinations:
         {new Effectiveness( E_ElementalTyping.Rock,  E_ElementalTyping.Fire), 2 },
         {new Effectiveness( E_ElementalTyping.Rock,  E_ElementalTyping.Water), 0 },
         {new Effectiveness( E_ElementalTyping.Rock,  E_ElementalTyping.Lightning), 1 },
         {new Effectiveness( E_ElementalTyping.Rock,  E_ElementalTyping.Rock), 0 },
-        {new Effectiveness( E_ElementalTyping.Rock,  E_ElementalTyping.Exlosion), 0 },
+        {new Effectiveness( E_ElementalTyping.Rock,  E_ElementalTyping.Neutral), 0 },
 
         //Neutral combinations:
-        {new Effectiveness( E_ElementalTyping.Exlosion,  E_ElementalTyping.Fire), 0 },
-        {new Effectiveness( E_ElementalTyping.Exlosion,  E_ElementalTyping.Water), 0 },
-        {new Effectiveness( E_ElementalTyping.Exlosion,  E_ElementalTyping.Lightning), 0 },
-        {new Effectiveness( E_ElementalTyping.Exlosion,  E_ElementalTyping.Rock), 0 },
-        {new Effectiveness( E_ElementalTyping.Exlosion,  E_ElementalTyping.Exlosion), 0 },
+        {new Effectiveness( E_ElementalTyping.Neutral,  E_ElementalTyping.Fire), 0 },
+        {new Effectiveness( E_ElementalTyping.Neutral,  E_ElementalTyping.Water), 0 },
+        {new Effectiveness( E_ElementalTyping.Neutral,  E_ElementalTyping.Lightning), 0 },
+        {new Effectiveness( E_ElementalTyping.Neutral,  E_ElementalTyping.Rock), 0 },
+        {new Effectiveness( E_ElementalTyping.Neutral,  E_ElementalTyping.Neutral), 0 },
     };
 
     /// <summary>

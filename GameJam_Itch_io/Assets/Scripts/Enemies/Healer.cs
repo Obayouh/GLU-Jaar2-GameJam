@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Healer : Ab_Enemy
 {
     [SerializeField, Range(0.1f, 1f)] private float healPercentage;
     [SerializeField] private GameObject healEffect1;
     //[SerializeField] private ParticleSystem healEffect2;
+    [SerializeField] private GameObject[] ElementalIcons;
 
     private float halfHealth;
     private float healTargetMaxHealth;
@@ -26,6 +28,8 @@ public class Healer : Ab_Enemy
         {
             UnityEngine.Debug.Log("Fill in healEffect on Healer please!");
         }
+
+        CheckForELementalIcon();
         _currentHealth = GetComponent<HealthSystem>();
         _healerAnim = GetComponentInChildren<Animator>();
     }
@@ -56,11 +60,26 @@ public class Healer : Ab_Enemy
             return;
         }
 
+        if (_currentCoroutine == null)
+        {
+            _currentCoroutine = StartCoroutine(HealItselfCoroutine());
+        }
+    }
+
+    private IEnumerator HealItselfCoroutine()
+    {
+        _healerAnim.SetInteger("HealerState", 2);
         _healthSystem.Heal(_healthSystem.GetMaxHealth() * healPercentage);
         Instantiate(healEffect1, transform.position, Quaternion.identity);
         StartCoroutine(ActivateHealEffect(transform.position));
         _healthSystem.HealthUpdate();
         UnityEngine.Debug.Log(this.gameObject.name + "healed itself");
+        yield return new WaitForSeconds(1f);
+        _currentCoroutine = null;
+        if (_currentCoroutine == null)
+        {
+            _healerAnim.SetInteger("HealerState", 0);
+        }
     }
 
     private void Attack()
@@ -85,11 +104,6 @@ public class Healer : Ab_Enemy
         }
     }
 
-    public override void SpawnAnim()
-    {
-        //Play intro animation
-    }
-
     public override void DeadAnim()
     {
         StartCoroutine(DeadAnimation());
@@ -98,7 +112,7 @@ public class Healer : Ab_Enemy
 
     private IEnumerator DeadAnimation()
     {
-        _healerAnim.SetInteger("HealerState", 2);
+        _healerAnim.SetInteger("HealerState", 3);
         yield return new WaitForSeconds(1f);
     }
 
@@ -171,10 +185,10 @@ public class Healer : Ab_Enemy
                 return;
             }
 
-            currentTargetHS.Heal(healTargetMaxHealth * healPercentage); //Heals target's health based on % of maxHp
-            StartCoroutine(ActivateHealEffect(currentHealTarget.transform.position));
-            currentHealTarget.GetComponent<HealthSystem>().HealthUpdate(); //Updates healtarget's healthbar visuals
-            UnityEngine.Debug.Log(this.gameObject.name + " healed " + currentHealTarget);
+            if (_currentCoroutine == null)
+            {
+                _currentCoroutine = StartCoroutine(HealOthersCoroutine(currentTargetHS, currentHealTarget));
+            }
         }
         if (targetList.Count == 0)
         {
@@ -182,6 +196,21 @@ public class Healer : Ab_Enemy
         }
 
         targetList.Clear(); // Clears list after turn is over to prevent potentially dead enemies from remaining in the list
+    }
+
+    private IEnumerator HealOthersCoroutine(HealthSystem currentTargetHS, GameObject currentHealTarget)
+    {
+        _healerAnim.SetInteger("HealerState", 2);
+        currentTargetHS.Heal(healTargetMaxHealth * healPercentage); //Heals target's health based on % of maxHp
+        StartCoroutine(ActivateHealEffect(currentHealTarget.transform.position));
+        currentHealTarget.GetComponent<HealthSystem>().HealthUpdate(); //Updates healtarget's healthbar visuals
+        UnityEngine.Debug.Log(this.gameObject.name + " healed " + currentHealTarget);
+        yield return new WaitForSeconds(1f);
+        _currentCoroutine = null;
+        if (_currentCoroutine == null)
+        {
+            _healerAnim.SetInteger("HealerState", 0);
+        }
     }
     /// <summary>
     /// Randomizes what the enemy does in order to give a feeling of variety to every encounter and every turn
@@ -213,6 +242,54 @@ public class Healer : Ab_Enemy
             case 1:
                 HealEnemy();
                 break;
+        }
+    }
+
+    private void CheckForELementalIcon()
+    {
+        if (elementalType == E_ElementalTyping.Neutral)
+        {
+            ElementalIcons[0].SetActive(true);
+            ElementalIcons[1].SetActive(false);
+            ElementalIcons[2].SetActive(false);
+            ElementalIcons[3].SetActive(false);
+            ElementalIcons[4].SetActive(false);
+        }
+
+        if (elementalType == E_ElementalTyping.Fire)
+        {
+            ElementalIcons[0].SetActive(false);
+            ElementalIcons[1].SetActive(true);
+            ElementalIcons[2].SetActive(false);
+            ElementalIcons[3].SetActive(false);
+            ElementalIcons[4].SetActive(false);
+        }
+
+        if (elementalType == E_ElementalTyping.Lightning)
+        {
+            ElementalIcons[0].SetActive(false);
+            ElementalIcons[1].SetActive(false);
+            ElementalIcons[2].SetActive(true);
+            ElementalIcons[3].SetActive(false);
+            ElementalIcons[4].SetActive(false);
+        }
+
+        if (elementalType == E_ElementalTyping.Rock)
+        {
+            ElementalIcons[0].SetActive(false);
+            ElementalIcons[1].SetActive(false);
+            ElementalIcons[2].SetActive(false);
+            ElementalIcons[3].SetActive(true);
+            ElementalIcons[4].SetActive(false);
+        }
+
+        if (elementalType == E_ElementalTyping.Water)
+        {
+            ElementalIcons[0].SetActive(false);
+            ElementalIcons[1].SetActive(false);
+            ElementalIcons[2].SetActive(false);
+            ElementalIcons[3].SetActive(false);
+            ElementalIcons[4].SetActive(true);
         }
     }
 }

@@ -4826,7 +4826,7 @@ GameObject:
   - component: {fileID: 4118499408675843621}
   - component: {fileID: 2396822323344508871}
   m_Layer: 0
-  m_Name: Tank
+  m_Name: Old_Tank
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

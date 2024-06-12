@@ -20,9 +20,12 @@ public class Tank : Ab_Enemy
     [SerializeField] private GameObject _DiscHelmet;
     [SerializeField] private GameObject _SpaceHelmet;
 
+    [SerializeField] private GameObject[] ElementalIcons;
+
     protected override void Start()
     {
         base.Start();
+        CheckForELementalIcon();
         _tankAnim = GetComponent<Animator>();
         _ArmAxe.SetActive(false);
         HelmetRandomizer();
@@ -211,6 +214,54 @@ public class Tank : Ab_Enemy
             _BowlHelmet.SetActive(false);
             _DiscHelmet.SetActive(false);
             _SpaceHelmet.SetActive(true);
+        }
+    }
+
+    private void CheckForELementalIcon()
+    {
+        if (elementalType == E_ElementalTyping.Neutral)
+        {
+            ElementalIcons[0].SetActive(true);
+            ElementalIcons[1].SetActive(false);
+            ElementalIcons[2].SetActive(false);
+            ElementalIcons[3].SetActive(false);
+            ElementalIcons[4].SetActive(false);
+        }
+
+        if (elementalType == E_ElementalTyping.Fire)
+        {
+            ElementalIcons[0].SetActive(false);
+            ElementalIcons[1].SetActive(true);
+            ElementalIcons[2].SetActive(false);
+            ElementalIcons[3].SetActive(false);
+            ElementalIcons[4].SetActive(false);
+        }
+
+        if (elementalType == E_ElementalTyping.Lightning)
+        {
+            ElementalIcons[0].SetActive(false);
+            ElementalIcons[1].SetActive(false);
+            ElementalIcons[2].SetActive(true);
+            ElementalIcons[3].SetActive(false);
+            ElementalIcons[4].SetActive(false);
+        }
+
+        if (elementalType == E_ElementalTyping.Rock)
+        {
+            ElementalIcons[0].SetActive(false);
+            ElementalIcons[1].SetActive(false);
+            ElementalIcons[2].SetActive(false);
+            ElementalIcons[3].SetActive(true);
+            ElementalIcons[4].SetActive(false);
+        }
+
+        if (elementalType == E_ElementalTyping.Water)
+        {
+            ElementalIcons[0].SetActive(false);
+            ElementalIcons[1].SetActive(false);
+            ElementalIcons[2].SetActive(false);
+            ElementalIcons[3].SetActive(false);
+            ElementalIcons[4].SetActive(true);
         }
     }
 }

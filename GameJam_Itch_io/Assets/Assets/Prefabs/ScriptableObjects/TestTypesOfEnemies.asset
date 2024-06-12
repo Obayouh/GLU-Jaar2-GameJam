@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: TestTypesOfEnemies
   m_EditorClassIdentifier: 
   AllEnemies:
-  - {fileID: 8255797348655919072, guid: 3771e323af4c9ac4fbed700e64341ccf, type: 3}
+  - {fileID: 6790801997734317112, guid: cfe1cf2042f512f46aa09c0aaa942ccf, type: 3}

@@ -73,7 +73,7 @@ public class CardStats : MonoBehaviour
             baseDamage = Random.Range(4, 7);
             cost = Random.Range(2, 4);
         }
-        else if (Typing == E_ElementalTyping.Exlosion)
+        else if (Typing == E_ElementalTyping.Neutral)
         {
             baseDamage = Random.Range(5, 9);
             cost = Random.Range(5, 8);
