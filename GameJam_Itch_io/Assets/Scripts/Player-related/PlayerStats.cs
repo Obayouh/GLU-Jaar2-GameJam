@@ -16,17 +16,25 @@ public class PlayerStats : Ab_HealthManager
 
     private CameraMovement cam;
 
+    [SerializeField] private PlayerHealthBar healthBar;
+
     public override void Start()
     {
         base.Start();
         cam = FindObjectOfType<CameraMovement>();
         RefillMana();
+
+        if (healthBar == null)
+        {
+            Debug.Log("Fill playerhealthbar in on Player");
+        }
     }
 
     public override void TakeDamage(float amount)
     {
         CurrentHealth -= amount;
         cam.StartShaking();
+        healthBar.UpdateHealthBar(CurrentHealth, maxHealth);
     }
 
     public override void Kill()
