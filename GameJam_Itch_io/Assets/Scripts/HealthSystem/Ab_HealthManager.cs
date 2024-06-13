@@ -60,6 +60,11 @@ public abstract class Ab_HealthManager : MonoBehaviour
 
     public virtual void TakeDamage(float amount)
     {
+        if (hasShield)
+        {
+            amount *= 0.5f;
+        }
+
         CurrentHealth -= Mathf.Abs(amount);
     }
 

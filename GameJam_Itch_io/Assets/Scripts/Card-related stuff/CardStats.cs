@@ -55,17 +55,17 @@ public class CardStats : MonoBehaviour
 
         if (Typing == E_ElementalTyping.Fire)
         {
-            baseDamage = Random.Range(4, 9);
+            baseDamage = Random.Range(4, 7);
             cost = Random.Range(3, 5);
         }
         else if (Typing == E_ElementalTyping.Lightning)
         {
-            baseDamage = Random.Range(2, 5);
+            baseDamage = Random.Range(3, 5);
             cost = Random.Range(1, 3);
         }
         else if (Typing == E_ElementalTyping.Water)
         {
-            baseDamage = Random.Range(1, 5);
+            baseDamage = Random.Range(4, 6);
             cost = Random.Range(2, 4);
         }
         else if (Typing == E_ElementalTyping.Rock)
@@ -75,8 +75,8 @@ public class CardStats : MonoBehaviour
         }
         else if (Typing == E_ElementalTyping.Neutral)
         {
-            baseDamage = Random.Range(5, 9);
-            cost = Random.Range(5, 8);
+            baseDamage = Random.Range(5, 8);
+            cost = Random.Range(5, 7);
         }
 
         damageText.fontSize = 1;
@@ -185,7 +185,6 @@ public class CardStats : MonoBehaviour
             //Unsub right after
         }
 
-
         if (spawnEnemiesList.spawnedEnemies.Count > 1 && waterTarget != null)
         {
             for (int i = 0; i < spawnEnemiesList.spawnedEnemies.Count; i++)
@@ -197,6 +196,46 @@ public class CardStats : MonoBehaviour
                 if (waterTarget != splashTarget)
                 {
                     splashTarget.TakeDamage(waterCard.ReturnHalfDamage());
+                }
+            }
+        }
+    }
+
+    public void DealRockDamage(CardStats rockCard, HealthSystem rockTarget)
+    {
+        if (rockTarget.CurrentHealth <= 0)
+        {
+            rockCard = null;
+        }
+
+        if (rockCard != null && rockTarget != null)
+        {
+            rockTarget.hasShield = false;
+        }
+    }
+
+    public void DealExplosionDamage(CardStats explosionCard, HealthSystem explosionTarget)
+    {
+        SpawnEnemies spawnEnemiesList = ReferenceInstance.refInstance.spawnEnemiesScript;
+
+        if (explosionTarget.CurrentHealth <= 0)
+        {
+            explosionCard = null;
+            explosionTarget = null;
+            //Unsub right after
+        }
+
+        if (spawnEnemiesList.spawnedEnemies.Count > 1 && explosionTarget != null)
+        {
+            for (int i = 0; i < spawnEnemiesList.spawnedEnemies.Count; i++)
+            {
+                HealthSystem enemyHealth = spawnEnemiesList.spawnedEnemies[i].GetComponent<HealthSystem>();
+
+                HealthSystem splashTarget = enemyHealth;
+
+                if (splashTarget != explosionTarget)
+                {
+                    splashTarget.TakeDamage(explosionCard.ReturnDamage());
                 }
             }
         }

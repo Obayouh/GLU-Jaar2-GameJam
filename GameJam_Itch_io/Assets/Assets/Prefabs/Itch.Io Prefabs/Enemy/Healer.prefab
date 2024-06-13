@@ -149,7 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   <elementalType>k__BackingField: 0
-  healPercentage: 1
+  healPercentage: 0.5
   healEffect1: {fileID: 6826555750135529829}
   ElementalIcons:
   - {fileID: 5564962396305436815}

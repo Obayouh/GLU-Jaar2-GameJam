@@ -60,6 +60,7 @@ public class TurnManager : MonoBehaviour
     {
         playerTurn = true;
         ReferenceInstance.refInstance.playerStats.RefillMana();
+        ReferenceInstance.refInstance.playerStats.hasShield = false;
         UpdateTurn();
         yield return new WaitForSeconds(amount);
         ChangeState(TurnState.PickCard);
