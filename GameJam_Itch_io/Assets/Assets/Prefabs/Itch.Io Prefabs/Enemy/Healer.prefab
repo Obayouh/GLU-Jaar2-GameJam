@@ -177,15 +177,50 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7307970558913192978}
     m_Modifications:
+    - target: {fileID: 63442546553976296, guid: 08de4e4497db038469ed1a4698d2e6ee,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1027025755129209048, guid: 08de4e4497db038469ed1a4698d2e6ee,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1262476483199228330, guid: 08de4e4497db038469ed1a4698d2e6ee,
         type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3761819097320793596, guid: 08de4e4497db038469ed1a4698d2e6ee,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4180463820786892064, guid: 08de4e4497db038469ed1a4698d2e6ee,
         type: 3}
       propertyPath: m_Name
       value: ElementCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4582443221230695652, guid: 08de4e4497db038469ed1a4698d2e6ee,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4891039958974239986, guid: 08de4e4497db038469ed1a4698d2e6ee,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5072426972474911656, guid: 08de4e4497db038469ed1a4698d2e6ee,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6360559196377746963, guid: 08de4e4497db038469ed1a4698d2e6ee,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6573115479018757842, guid: 08de4e4497db038469ed1a4698d2e6ee,
         type: 3}
@@ -286,6 +321,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7154535854524895170, guid: 08de4e4497db038469ed1a4698d2e6ee,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7663375756776280876, guid: 08de4e4497db038469ed1a4698d2e6ee,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8340112041541537732, guid: 08de4e4497db038469ed1a4698d2e6ee,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

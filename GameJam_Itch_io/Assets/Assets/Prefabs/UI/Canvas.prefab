@@ -1485,9 +1485,9 @@ MonoBehaviour:
   healthComponent: {fileID: 0}
   healthText: {fileID: 8872618765043757819}
   healthFillImage: {fileID: 8415082566510005639}
-  fullHealth: {r: 0.058050156, g: 1, b: 0, a: 0}
-  halfHealth: {r: 0.98722816, g: 1, b: 0, a: 0}
-  nearDeath: {r: 1, g: 0.03423411, b: 0, a: 0}
+  fullHealth: {r: 0.058050156, g: 1, b: 0, a: 1}
+  halfHealth: {r: 0.98722816, g: 1, b: 0, a: 1}
+  nearDeath: {r: 1, g: 0.03423411, b: 0, a: 1}
 --- !u!1 &6969023324662291099
 GameObject:
   m_ObjectHideFlags: 0

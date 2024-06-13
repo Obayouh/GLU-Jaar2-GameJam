@@ -6248,6 +6248,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1027025755129209048, guid: 08de4e4497db038469ed1a4698d2e6ee,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1048273763900891871, guid: 08de4e4497db038469ed1a4698d2e6ee,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -6378,6 +6383,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6360559196377746963, guid: 08de4e4497db038469ed1a4698d2e6ee,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6573115479018757842, guid: 08de4e4497db038469ed1a4698d2e6ee,
         type: 3}
       propertyPath: m_Pivot.x
@@ -6502,6 +6512,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 7154535854524895170, guid: 08de4e4497db038469ed1a4698d2e6ee,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7663375756776280876, guid: 08de4e4497db038469ed1a4698d2e6ee,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8340112041541537732, guid: 08de4e4497db038469ed1a4698d2e6ee,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

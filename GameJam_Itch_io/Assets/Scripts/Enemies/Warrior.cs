@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Warrior : Ab_Enemy
@@ -23,18 +24,22 @@ public class Warrior : Ab_Enemy
     private float _maxLife;
     private float _halfLife;
 
-    private bool _attackBuff;
     private int _detectHalfLife;
     private Coroutine _currentCoroutine = null;
 
     [SerializeField] private GameObject _HipAxe;
     [SerializeField] private GameObject _ArmAxe;
+    [SerializeField] private GameObject _BuffVFX;
 
     [SerializeField] private GameObject[] ElementalIcons;
 
     protected override void Start()
     {
         base.Start();
+        if (_BuffVFX == null)
+        {
+            Debug.Log("Fill in BuffVFX on Warrior please!");
+        }
         CheckForELementalIcon();
         _currentHealth = GetComponent<HealthSystem>();
         _maxLife = GetComponent<HealthSystem>().CurrentHealth;
@@ -94,10 +99,26 @@ public class Warrior : Ab_Enemy
 
     private void BuffItself()
     {
+        Debug.Log("Warrior buff");
         _MinAttackPower *= 2;
         _MaxAttackPower *= 2;
-
+        //Instantiate(_BuffVFX, transform.position, Quaternion.identity);
+        StartCoroutine(WaitForVFX());
         StateOfTheWarior = TheStateOfTheWarior.Waiting;
+    }
+
+    private IEnumerator WaitForVFX()
+    {
+        Instantiate(_BuffVFX, transform.position, Quaternion.identity);
+        StartCoroutine(BuffEffectActivation());
+        yield return new WaitForSeconds(0.1f);
+    }
+
+    private IEnumerator BuffEffectActivation()
+    {
+        _BuffVFX.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        _BuffVFX.SetActive(false);
     }
 
     private void CurrentlyWaiting()
