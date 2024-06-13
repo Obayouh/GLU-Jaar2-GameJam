@@ -78,9 +78,6 @@ public class ClickManagerPrime : MonoBehaviour
             {
                 selectedCard = hit.transform.gameObject;
                 selectedCardStats = selectedCard.GetComponentInParent<CardStats>();
-                cardTyping = selectedCardStats.Typing;
-                StoreCardTyping(); //Save card typing for later calculations
-
                 //Check if player has enough mana
                 if (ReferenceInstance.refInstance.playerStats.ReturnPlayerMana() < selectedCardStats.ReturnCost())
                 {
@@ -90,6 +87,8 @@ public class ClickManagerPrime : MonoBehaviour
                 }
                 else
                 {
+                    cardTyping = selectedCardStats.Typing;
+                    StoreCardTyping(); //Save card typing for later calculations
                     ReferenceInstance.refInstance.cardManager.SelectedCard(selectedCard);
                 }
             }
@@ -311,11 +310,11 @@ public class ClickManagerPrime : MonoBehaviour
 
     private void HandleExplosionDamage()
     {
-        if (explosionCard != null)
+        if (explosionCard != null && explosionTarget != null)
         {
             explosionCard.DealExplosionDamage(explosionCard, explosionTarget);
-            explosionCard = null;
             explosionTarget = null;
+            explosionCard = null;
             UnsubscribeCardPlayed();
         }
     }

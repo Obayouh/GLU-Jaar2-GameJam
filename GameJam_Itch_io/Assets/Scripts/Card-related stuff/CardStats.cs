@@ -206,6 +206,7 @@ public class CardStats : MonoBehaviour
         if (rockTarget.CurrentHealth <= 0)
         {
             rockCard = null;
+            rockTarget = null;
         }
 
         if (rockCard != null && rockTarget != null)

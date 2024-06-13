@@ -13,6 +13,8 @@ public class PlayerHealthBar : MonoBehaviour
     [SerializeField] private PlayerStats healthComponent;
     [SerializeField] private TextMeshProUGUI healthText;
 
+    [SerializeField] private Image shieldIcon;
+
     [SerializeField] private Image healthFillImage;
 
     [SerializeField] private Color fullHealth;
@@ -53,6 +55,15 @@ public class PlayerHealthBar : MonoBehaviour
         else if ((healthSlider.value / healthSlider.maxValue) * 100 <= 50)
         {
             healthFillImage.color = nearDeath;
+        }
+
+        if (ReferenceInstance.refInstance.playerStats.hasShield == true)
+        {
+            shieldIcon.gameObject.SetActive(true);
+        }
+        else
+        {
+            shieldIcon.gameObject.SetActive(false);
         }
     }
 
