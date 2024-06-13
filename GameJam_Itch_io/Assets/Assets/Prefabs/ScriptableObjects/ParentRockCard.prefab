@@ -202,7 +202,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1707185598650780733, guid: 5f68786806273b846925497c117ba982,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4422055433353567188}
   m_SourcePrefab: {fileID: 100100000, guid: 5f68786806273b846925497c117ba982, type: 3}
 --- !u!4 &7479906360850821869 stripped
 Transform:
@@ -210,3 +214,23 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7048904973215862661}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8530831410628002744 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1707185598650780733, guid: 5f68786806273b846925497c117ba982,
+    type: 3}
+  m_PrefabInstance: {fileID: 7048904973215862661}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4422055433353567188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8530831410628002744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 653340e6ac0647d4895687751b34cd54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  content: Grants the player 50% damage reduction shield until the next turn and
+    strips target of their shield
