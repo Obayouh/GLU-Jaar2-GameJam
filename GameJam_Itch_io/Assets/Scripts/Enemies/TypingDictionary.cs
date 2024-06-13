@@ -14,7 +14,7 @@ public class TypingDictionary : MonoBehaviour
             enemyTyping = enemy;
         }
     }
-    //Returning a 0 = neutral damage, 1 is effective damage, and 2 is resisted damage
+    //Returning a 0 = neutral damage, 1 is effective damage, and 2 is resistant damage
     private static Dictionary<Effectiveness, int> _checkPotency = new()
     {
         //Fire combinations:
