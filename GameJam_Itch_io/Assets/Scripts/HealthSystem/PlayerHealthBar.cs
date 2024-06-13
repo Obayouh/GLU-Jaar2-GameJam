@@ -26,7 +26,7 @@ public class PlayerHealthBar : MonoBehaviour
 
         if (healthComponent != null)
         {
-            InitializeHealthBar();
+            StartCoroutine(IniPlayerHealth());
             //healthComponent.OnHealthChanged += UpdateHealthBar;
         }
         else
@@ -63,6 +63,14 @@ public class PlayerHealthBar : MonoBehaviour
         healthSlider.value = healthComponent.CurrentHealth;
         easeHealthSlider.value = healthComponent.CurrentHealth;
         healthText.text = "Player: " + healthComponent.CurrentHealth + " / " + healthComponent.CurrentHealth;
+    }
+
+    //Has minor delay to avoid having wrong amount of health on startup due to currnthealth vs maxhealth calculations
+    IEnumerator IniPlayerHealth()
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        InitializeHealthBar();
     }
 
     //Call this function or the "HealthUpdate" function in HealthSystem anytime you need to update the healthbar visually
