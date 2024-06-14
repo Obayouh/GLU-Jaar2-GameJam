@@ -126,6 +126,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card_Water_Whirlpool
       objectReference: {fileID: 0}
+    - target: {fileID: 3205114478748009654, guid: ae8996d4d522078479896ed7d2eb62ee,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3205114478748009654, guid: ae8996d4d522078479896ed7d2eb62ee,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.071
+      objectReference: {fileID: 0}
     - target: {fileID: 5006253153094103899, guid: ae8996d4d522078479896ed7d2eb62ee,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

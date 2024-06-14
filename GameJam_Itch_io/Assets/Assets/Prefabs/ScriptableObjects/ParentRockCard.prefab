@@ -194,6 +194,16 @@ PrefabInstance:
       propertyPath: m_TagString
       value: PlayerCard
       objectReference: {fileID: 0}
+    - target: {fileID: 3205114478748009654, guid: 5f68786806273b846925497c117ba982,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3205114478748009654, guid: 5f68786806273b846925497c117ba982,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.071
+      objectReference: {fileID: 0}
     - target: {fileID: 5006253153094103899, guid: 5f68786806273b846925497c117ba982,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
