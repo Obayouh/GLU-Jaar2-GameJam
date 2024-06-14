@@ -213,7 +213,7 @@ PrefabInstance:
     - target: {fileID: 7096375904727305259, guid: a643d9f071667a34e983eadfd4836361,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.5040817
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 7096375904727305259, guid: a643d9f071667a34e983eadfd4836361,
         type: 3}
@@ -690,6 +690,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Torch
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077818990236823835, guid: 80c1a5f61c684654cb8ba065f772cd6b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
