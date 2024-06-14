@@ -70,7 +70,7 @@ public class Healer : Ab_Enemy
     {
         _healerAnim.SetInteger("HealerState", 2);
         _healthSystem.Heal(_healthSystem.GetMaxHealth() * healPercentage);
-        Instantiate(healEffect1, transform.position, Quaternion.identity);
+        //Instantiate(healEffect1, transform.position, Quaternion.identity);
         StartCoroutine(ActivateHealEffect(transform.position));
         _healthSystem.HealthUpdate();
         UnityEngine.Debug.Log(this.gameObject.name + "healed itself");

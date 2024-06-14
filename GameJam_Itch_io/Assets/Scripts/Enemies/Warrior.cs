@@ -102,14 +102,12 @@ public class Warrior : Ab_Enemy
         Debug.Log("Warrior buff");
         _MinAttackPower *= 2;
         _MaxAttackPower *= 2;
-        //Instantiate(_BuffVFX, transform.position, Quaternion.identity);
         StartCoroutine(WaitForVFX());
-        StateOfTheWarior = TheStateOfTheWarior.Waiting;
     }
 
     private IEnumerator WaitForVFX()
     {
-        Instantiate(_BuffVFX, transform.position, Quaternion.identity);
+        _warriorAnim.SetInteger("WarriorState", 3);
         StartCoroutine(BuffEffectActivation());
         yield return new WaitForSeconds(0.1f);
     }
@@ -119,6 +117,7 @@ public class Warrior : Ab_Enemy
         _BuffVFX.SetActive(true);
         yield return new WaitForSeconds(2f);
         _BuffVFX.SetActive(false);
+        StateOfTheWarior = TheStateOfTheWarior.Waiting;
     }
 
     private void CurrentlyWaiting()
