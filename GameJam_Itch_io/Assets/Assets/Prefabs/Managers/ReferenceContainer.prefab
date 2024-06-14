@@ -627,11 +627,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4655878171791946148, guid: 87cc2c09c72ed9f4a86cb6aa296d899d,
+        type: 3}
+      propertyPath: lightningEffect
+      value: 
+      objectReference: {fileID: 7190647466747459258}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87cc2c09c72ed9f4a86cb6aa296d899d, type: 3}
+--- !u!1 &7190647466747459258 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4195814230795575213, guid: 87cc2c09c72ed9f4a86cb6aa296d899d,
+    type: 3}
+  m_PrefabInstance: {fileID: 6480900960021522711}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7516213685101212304 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3584370058743323527, guid: 87cc2c09c72ed9f4a86cb6aa296d899d,

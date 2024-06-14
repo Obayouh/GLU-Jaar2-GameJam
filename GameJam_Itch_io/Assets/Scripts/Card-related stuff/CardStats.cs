@@ -178,13 +178,6 @@ public class CardStats : MonoBehaviour
     {
         SpawnEnemies spawnEnemiesList = ReferenceInstance.refInstance.spawnEnemiesScript;
 
-        if (waterTarget.CurrentHealth <= 0)
-        {
-            waterCard = null;
-            waterTarget = null;
-            //Unsub right after
-        }
-
         if (spawnEnemiesList.spawnedEnemies.Count > 1 && waterTarget != null)
         {
             for (int i = 0; i < spawnEnemiesList.spawnedEnemies.Count; i++)
@@ -199,32 +192,32 @@ public class CardStats : MonoBehaviour
                 }
             }
         }
+
+        if (waterTarget.CurrentHealth <= 0)
+        {
+            waterCard = null;
+            waterTarget = null;
+            //Unsub right after
+        }
     }
 
     public void DealRockDamage(CardStats rockCard, HealthSystem rockTarget)
     {
+        if (rockCard != null && rockTarget != null)
+        {
+            rockTarget.hasShield = false;
+        }
+
         if (rockTarget.CurrentHealth <= 0)
         {
             rockCard = null;
             rockTarget = null;
-        }
-
-        if (rockCard != null && rockTarget != null)
-        {
-            rockTarget.hasShield = false;
         }
     }
 
     public void DealExplosionDamage(CardStats explosionCard, HealthSystem explosionTarget)
     {
         SpawnEnemies spawnEnemiesList = ReferenceInstance.refInstance.spawnEnemiesScript;
-
-        if (explosionTarget.CurrentHealth <= 0)
-        {
-            explosionCard = null;
-            explosionTarget = null;
-            //Unsub right after
-        }
 
         if (spawnEnemiesList.spawnedEnemies.Count > 1 && explosionTarget != null)
         {
@@ -240,5 +233,13 @@ public class CardStats : MonoBehaviour
                 }
             }
         }
+
+        if (explosionTarget.CurrentHealth <= 0)
+        {
+            explosionCard = null;
+            explosionTarget = null;
+            //Unsub right after
+        }
+
     }
 }

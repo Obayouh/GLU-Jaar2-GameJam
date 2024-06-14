@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class ClickManagerPrime : MonoBehaviour
 {
+    [SerializeField] private GameObject lightningEffect;
+
     private RaycastHit hit;
     private Transform previousHit;
     private Transform currentHitTransform;
@@ -51,6 +53,7 @@ public class ClickManagerPrime : MonoBehaviour
         firstFireUsed = false;
         lightningActive = false;
         playerActions = 0;
+        lightningEffect.gameObject.SetActive(false);
     }
 
     void Update()
@@ -185,8 +188,9 @@ public class ClickManagerPrime : MonoBehaviour
         if (card.Typing == E_ElementalTyping.Lightning)
         {
             lightningTarget = target; //This will be the target for lightning DoTs, and will be overwritten if a new lightning card is used
-
+            StartCoroutine(PlayLightningEffect(target));
             ReferenceInstance.refInstance.eventManager.useCardEvent += OnCardPlayed;
+
             lightningActive = true;
         }
         else if (card.Typing == E_ElementalTyping.Fire)
@@ -290,6 +294,7 @@ public class ClickManagerPrime : MonoBehaviour
     private void HandleLightningDamage()
     {
         lightningCard.DealLightningDamage(lightningCard, lightningTarget);
+        StartCoroutine(PlayLightningEffect(lightningTarget));
         if (lightningTarget.CurrentHealth <= 0)
         {
             lightningCard = null;
@@ -297,6 +302,14 @@ public class ClickManagerPrime : MonoBehaviour
             lightningActive = false;
             UnsubscribeExtraCardEffects();
         }
+    }
+
+    private IEnumerator PlayLightningEffect(HealthSystem enemyTarget)
+    {
+        lightningEffect.transform.position = enemyTarget.transform.position + new Vector3(0, 5, 0);
+        lightningEffect.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        lightningEffect.gameObject.SetActive(false);
     }
 
     private void HandleWaterDamage()
