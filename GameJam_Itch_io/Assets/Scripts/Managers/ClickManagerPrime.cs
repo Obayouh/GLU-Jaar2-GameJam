@@ -269,6 +269,7 @@ public class ClickManagerPrime : MonoBehaviour
         if (fireCard != null && fireTarget != null)
         {
             fireCard.DealFireDamage(fireCard, fireTarget);
+            AudioManager.Instance.Play("Fire Card Hit");
             firstFireUsed = true;
             UnsubscribeCardPlayed();
         }
@@ -277,6 +278,7 @@ public class ClickManagerPrime : MonoBehaviour
     private void HandleExtraFireDamage()
     {
         fireCard.DealExtraFireDamage(fireCard, fireTarget);
+        AudioManager.Instance.Play("Fire Card Hit");
         firstFireUsed = false;
         fireCard = null;
         UnsubscribeCardPlayed();
@@ -317,6 +319,7 @@ public class ClickManagerPrime : MonoBehaviour
         if (waterCard != null && waterTarget != null)
         {
             waterCard.DealWaterDamage(waterCard, waterTarget);
+            AudioManager.Instance.Play("Water Card Hit");
             UnsubscribeCardPlayed();
         }
     }
