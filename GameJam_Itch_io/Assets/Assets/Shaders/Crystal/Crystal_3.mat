@@ -51,12 +51,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BottomLine: 0.73
-    - _Metallic: 0.56
+    - _BottomLine: 0.61
+    - _Metallic: 0.54
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Smoothness: 0.33
-    - _TopLine: 0.65
+    - _Smoothness: 0.4
+    - _TopLine: 0.54
     m_Colors:
     - _BaseColor: {r: 0.08164917, g: 0.3509434, b: 0, a: 1}
     - _BottomColor: {r: 31.626799, g: 0, b: 0, a: 1}
