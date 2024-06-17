@@ -4,5 +4,5 @@ public enum E_ElementalTyping
     Water,
     Lightning,
     Rock,
-    Exlosion,
+    Neutral,
 }

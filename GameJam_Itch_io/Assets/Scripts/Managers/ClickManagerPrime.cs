@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class ClickManagerPrime : MonoBehaviour
 {
+    [SerializeField] private GameObject lightningEffect;
+
     private RaycastHit hit;
     private Transform previousHit;
     private Transform currentHitTransform;
@@ -17,6 +19,7 @@ public class ClickManagerPrime : MonoBehaviour
     private CardStats rockCard;
     private CardStats waterCard;
     private CardStats fireCard;
+    private CardStats explosionCard;
 
     public List<GameObject> storedEnemies = new();
 
@@ -33,9 +36,10 @@ public class ClickManagerPrime : MonoBehaviour
     private HealthSystem fireTarget;
     private HealthSystem waterTarget;
     private HealthSystem rockTarget;
+    private HealthSystem explosionTarget;
 
     [Header("Extra Effects")]
-    bool taunt;
+    bool enemyTauntActive;
     bool firstFireUsed;
     bool lightningActive;
     //bool isLightningEffectActive = false;
@@ -49,6 +53,7 @@ public class ClickManagerPrime : MonoBehaviour
         firstFireUsed = false;
         lightningActive = false;
         playerActions = 0;
+        lightningEffect.gameObject.SetActive(false);
     }
 
     void Update()
@@ -76,9 +81,6 @@ public class ClickManagerPrime : MonoBehaviour
             {
                 selectedCard = hit.transform.gameObject;
                 selectedCardStats = selectedCard.GetComponentInParent<CardStats>();
-                cardTyping = selectedCardStats.Typing;
-                StoreCardTyping(); //Save card typing for later calculations
-
                 //Check if player has enough mana
                 if (ReferenceInstance.refInstance.playerStats.ReturnPlayerMana() < selectedCardStats.ReturnCost())
                 {
@@ -88,6 +90,8 @@ public class ClickManagerPrime : MonoBehaviour
                 }
                 else
                 {
+                    cardTyping = selectedCardStats.Typing;
+                    StoreCardTyping(); //Save card typing for later calculations
                     ReferenceInstance.refInstance.cardManager.SelectedCard(selectedCard);
                 }
             }
@@ -128,13 +132,13 @@ public class ClickManagerPrime : MonoBehaviour
     public void Taunt(GameObject enemy)
     {
         selectedEnemy = enemy;
-        taunt = true;
+        enemyTauntActive = true;
     }
 
     public void RemoveTaunt()
     {
         selectedEnemy = null;
-        taunt = false;
+        enemyTauntActive = false;
     }
 
     private void StoreCardTyping()
@@ -154,6 +158,10 @@ public class ClickManagerPrime : MonoBehaviour
         else if (cardTyping == E_ElementalTyping.Rock)
         {
             rockCard = selectedCardStats;
+        }
+        else if (cardTyping == E_ElementalTyping.Neutral)
+        {
+            explosionCard = selectedCardStats;
         }
         else return;
     }
@@ -180,8 +188,9 @@ public class ClickManagerPrime : MonoBehaviour
         if (card.Typing == E_ElementalTyping.Lightning)
         {
             lightningTarget = target; //This will be the target for lightning DoTs, and will be overwritten if a new lightning card is used
-
+            StartCoroutine(PlayLightningEffect(target));
             ReferenceInstance.refInstance.eventManager.useCardEvent += OnCardPlayed;
+
             lightningActive = true;
         }
         else if (card.Typing == E_ElementalTyping.Fire)
@@ -196,6 +205,19 @@ public class ClickManagerPrime : MonoBehaviour
 
             ReferenceInstance.refInstance.eventManager.useCardEvent += OnCardPlayed;
         }
+        else if (card.Typing == E_ElementalTyping.Rock)
+        {
+            rockTarget = target;
+
+            ReferenceInstance.refInstance.eventManager.useCardEvent += OnCardPlayed;
+
+        }
+        else if (card.Typing == E_ElementalTyping.Neutral)
+        {
+            explosionTarget = target;
+
+            ReferenceInstance.refInstance.eventManager.useCardEvent += OnCardPlayed;
+        }
 
         if (lightningTarget != null && lightningCard != null && lightningActive == true)
         {
@@ -205,16 +227,9 @@ public class ClickManagerPrime : MonoBehaviour
     //Function for cards that have effects that happen after they're initially played
     private void OnSubsequentCardPlayed(CardStats card, HealthSystem enemytarget)
     {
-        if (lightningCard != null && lightningTarget != null)
+        if (lightningCard != null && lightningTarget != null && lightningActive == true)
         {
-            lightningCard.DealLightningDamage(lightningCard, lightningTarget);
-            if (lightningTarget.CurrentHealth <= 0)
-            {
-                lightningCard = null;
-                lightningTarget = null;
-                lightningActive = false;
-                UnsubscribeExtraCardEffects();
-            }
+            HandleLightningDamage();
         }
     }
 
@@ -223,6 +238,12 @@ public class ClickManagerPrime : MonoBehaviour
         if (waterCard != null)
         {
             HandleWaterDamage();
+            waterCard = null;
+        }
+
+        if (rockCard != null)
+        {
+            HandleRockDamage();
         }
 
         if (fireCard != null && firstFireUsed == false)
@@ -236,6 +257,11 @@ public class ClickManagerPrime : MonoBehaviour
             HandleExtraFireDamage();
             fireCard = null;
         }
+
+        if (explosionCard != null)
+        {
+            HandleExplosionDamage();
+        }
     }
 
     private void HandleFireDamage()
@@ -243,6 +269,7 @@ public class ClickManagerPrime : MonoBehaviour
         if (fireCard != null && fireTarget != null)
         {
             fireCard.DealFireDamage(fireCard, fireTarget);
+            AudioManager.Instance.Play("Fire Card Hit");
             firstFireUsed = true;
             UnsubscribeCardPlayed();
         }
@@ -251,9 +278,40 @@ public class ClickManagerPrime : MonoBehaviour
     private void HandleExtraFireDamage()
     {
         fireCard.DealExtraFireDamage(fireCard, fireTarget);
+        AudioManager.Instance.Play("Fire Card Hit");
         firstFireUsed = false;
         fireCard = null;
         UnsubscribeCardPlayed();
+    }
+
+    private void HandleRockDamage()
+    {
+        rockCard.DealRockDamage(rockCard, rockTarget);
+        ReferenceInstance.refInstance.playerStats.hasShield = true;
+        rockCard = null;
+        rockTarget = null;
+        UnsubscribeCardPlayed();
+    }
+
+    private void HandleLightningDamage()
+    {
+        lightningCard.DealLightningDamage(lightningCard, lightningTarget);
+        StartCoroutine(PlayLightningEffect(lightningTarget));
+        if (lightningTarget.CurrentHealth <= 0)
+        {
+            lightningCard = null;
+            lightningTarget = null;
+            lightningActive = false;
+            UnsubscribeExtraCardEffects();
+        }
+    }
+
+    private IEnumerator PlayLightningEffect(HealthSystem enemyTarget)
+    {
+        lightningEffect.transform.position = enemyTarget.transform.position + new Vector3(0, 5, 0);
+        lightningEffect.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        lightningEffect.gameObject.SetActive(false);
     }
 
     private void HandleWaterDamage()
@@ -261,6 +319,18 @@ public class ClickManagerPrime : MonoBehaviour
         if (waterCard != null && waterTarget != null)
         {
             waterCard.DealWaterDamage(waterCard, waterTarget);
+            AudioManager.Instance.Play("Water Card Hit");
+            UnsubscribeCardPlayed();
+        }
+    }
+
+    private void HandleExplosionDamage()
+    {
+        if (explosionCard != null && explosionTarget != null)
+        {
+            explosionCard.DealExplosionDamage(explosionCard, explosionTarget);
+            explosionTarget = null;
+            explosionCard = null;
             UnsubscribeCardPlayed();
         }
     }
@@ -274,7 +344,11 @@ public class ClickManagerPrime : MonoBehaviour
     public void UnsubscribeExtraCardEffects()
     {
         if (ReferenceInstance.refInstance.eventManager != null)
+        {
+            lightningCard = null;
+            lightningTarget = null;
             ReferenceInstance.refInstance.eventManager.useNextCardEvent -= OnSubsequentCardPlayed;
+        }
     }
 
     private void DealDamage()
@@ -324,7 +398,7 @@ public class ClickManagerPrime : MonoBehaviour
         ReferenceInstance.refInstance.turnManager.ChangeState(TurnState.PickCard);
         selectedCard = null;
 
-        if (taunt == false)
+        if (enemyTauntActive == false)
         {
             selectedEnemy = null;
         }

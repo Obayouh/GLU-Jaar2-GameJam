@@ -1,30 +1,53 @@
-using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static Warrior;
 
 public class Tank : Ab_Enemy
 {
+    [SerializeField, Range(3, 60)] private int damageDealt; //Update in prefab if you change the value(s)
+
     private List<GameObject> targetList = new List<GameObject>();
 
     private Animator _tankAnim;
+    private HealthSystem _currentHealth;
     private Coroutine _currentCoroutine = null;
 
-    [SerializeField] private GameObject _HipAxe;
-    [SerializeField] private GameObject _ArmAxe;
+    [SerializeField] private GameObject _HipSword;
+    [SerializeField] private GameObject _ArmSword;
+    [SerializeField] private GameObject _BackShield;
+    [SerializeField] private GameObject _ArmShield;
+
     [SerializeField] private GameObject _BowlHelmet;
     [SerializeField] private GameObject _DiscHelmet;
     [SerializeField] private GameObject _SpaceHelmet;
 
+    [SerializeField] private GameObject _ShieldVFX;
+
+    [SerializeField] private GameObject[] ElementalIcons;
+
     protected override void Start()
     {
         base.Start();
-        _tankAnim = GetComponent<Animator>();
-        _ArmAxe.SetActive(false);
+        if (_ShieldVFX == null)
+        {
+            Debug.Log("Fill in ShieldVFX on Tank prefab please!");
+        }
+        CheckForELementalIcon();
+        _currentHealth = GetComponent<HealthSystem>();
+        _tankAnim = GetComponentInChildren<Animator>();
+        _ArmSword.SetActive(false);
+        _ArmShield.SetActive(false);
         HelmetRandomizer();
         StartCoroutine(SwitchWeapon());
+    }
+
+    private void Update()
+    {
+        if (_currentHealth.CurrentHealth <= 0)
+        {
+            DeadAnim();
+        }
     }
 
     public override void OnAction()
@@ -62,7 +85,7 @@ public class Tank : Ab_Enemy
         }
         else
         {
-            Debug.Log("Current coroutine was already filled");
+            Debug.Log("The current coroutine was already filled");
         }
     }
 
@@ -70,9 +93,13 @@ public class Tank : Ab_Enemy
     {
         _tankAnim.SetInteger("TankState", 2);
         yield return new WaitForSeconds(1f);
-        _playerStats.TakeDamage(damage);
+        _playerStats.TakeDamage(damageDealt);
         yield return new WaitForSeconds(1f);
         _currentCoroutine = null;
+        if (_currentCoroutine == null)
+        {
+            _tankAnim.SetInteger("TankState", 1);
+        }
     }
 
     private void Taunt()
@@ -82,8 +109,24 @@ public class Tank : Ab_Enemy
             RandomizeAction();
             return;
         }
+
+        if (_currentCoroutine == null)
+        {
+            StartCoroutine(PlayTauntAnim());
+        }
+    }
+
+    private IEnumerator PlayTauntAnim()
+    {
+        _tankAnim.SetInteger("TankState", 5);
         ReferenceInstance.refInstance.clickManager.Taunt(this.gameObject);
-        UnityEngine.Debug.Log("Taunts... Player can only attack tank next turn!");
+        Debug.Log("Taunts... Player can only attack tank next turn!");
+        yield return new WaitForSeconds(3f);
+        _currentCoroutine = null;
+        if (_currentCoroutine == null)
+        {
+            _tankAnim.SetInteger("TankState", 1);
+        }
     }
 
     private void RandomizeShielding()
@@ -110,8 +153,28 @@ public class Tank : Ab_Enemy
         }
         else
         {
-            UnityEngine.Debug.Log(this.gameObject.name + " puts a shield on itself");
-            _healthSystem.GetComponent<HealthSystem>().hasShield = true;
+            //_tankAnim.SetInteger("TankState", 3);
+            //Debug.Log(this.gameObject.name + " puts a shield on itself");
+            //StartCoroutine(ActivateShieldEffect(this.transform.position));
+            //_healthSystem.GetComponent<HealthSystem>().hasShield = true;
+            if (_currentCoroutine == null)
+            {
+                StartCoroutine(PlayShieldAnim());
+            }
+        }
+    }
+
+    private IEnumerator PlayShieldAnim()
+    {
+        Debug.Log(this.gameObject.name + " puts a shield on itself");
+        _tankAnim.SetInteger("TankState", 3);
+        StartCoroutine(ActivateShieldEffect(this.transform.position));
+        _healthSystem.GetComponent<HealthSystem>().hasShield = true;
+        yield return new WaitForSeconds(1f);
+        _currentCoroutine = null;
+        if (_currentCoroutine == null)
+        {
+            _tankAnim.SetInteger("TankState", 1);
         }
     }
 
@@ -164,7 +227,8 @@ public class Tank : Ab_Enemy
             else
             {
                 currentShieldTarget.GetComponent<HealthSystem>().hasShield = true;
-                UnityEngine.Debug.Log(this.gameObject.name + " puts a shield on " + currentShieldTarget);
+                StartCoroutine(ActivateShieldEffect(currentShieldTarget.transform.position));
+                Debug.Log(this.gameObject.name + " puts a shield on " + currentShieldTarget);
             }
         }
         if (targetList.Count == 0)
@@ -175,6 +239,38 @@ public class Tank : Ab_Enemy
         targetList.Clear(); // Clears list after turn is over to prevent potentially dead enemies from remaining in the list
     }
 
+    IEnumerator ActivateShieldEffect(Vector3 shieldPosition)
+    {
+        _ShieldVFX.SetActive(true);
+        _ShieldVFX.transform.position = shieldPosition;
+        yield return new WaitForSeconds(2f);
+        _ShieldVFX.SetActive(false);
+    }
+
+    public override void DeadAnim()
+    {
+        StartCoroutine(DeadAnimation());
+        _currentHealth.Kill();
+    }
+
+    private IEnumerator DeadAnimation()
+    {
+        _tankAnim.SetInteger("TankState", 4);
+        yield return new WaitForSeconds(1f);
+    }
+
+    public override void HitAnim()
+    {
+        StartCoroutine(HitAnimation());
+    }
+
+    private IEnumerator HitAnimation()
+    {
+        _tankAnim.SetTrigger("Hit");
+        yield return new WaitForSeconds(2.1f);
+        _tankAnim.SetInteger("TankState", 1);
+    }
+
     private IEnumerator SwitchWeapon()
     {
         int _stateOfSkeleton = _tankAnim.GetInteger("TankState");
@@ -182,8 +278,10 @@ public class Tank : Ab_Enemy
         if (_stateOfSkeleton == 0)
         {
             yield return new WaitForSeconds(4.3f);
-            _HipAxe.SetActive(false);
-            _ArmAxe.SetActive(true);
+            _HipSword.SetActive(false);
+            _BackShield.SetActive(false);
+            _ArmSword.SetActive(true);
+            _ArmShield.SetActive(true);
             _tankAnim.SetInteger("TankState", 1);
         }
     }
@@ -212,8 +310,51 @@ public class Tank : Ab_Enemy
         }
     }
 
-    public override void UpdateDamage()
+    private void CheckForELementalIcon()
     {
-        base.UpdateDamage();
+        if (elementalType == E_ElementalTyping.Neutral)
+        {
+            ElementalIcons[0].SetActive(true);
+            ElementalIcons[1].SetActive(false);
+            ElementalIcons[2].SetActive(false);
+            ElementalIcons[3].SetActive(false);
+            ElementalIcons[4].SetActive(false);
+        }
+
+        if (elementalType == E_ElementalTyping.Fire)
+        {
+            ElementalIcons[0].SetActive(false);
+            ElementalIcons[1].SetActive(true);
+            ElementalIcons[2].SetActive(false);
+            ElementalIcons[3].SetActive(false);
+            ElementalIcons[4].SetActive(false);
+        }
+
+        if (elementalType == E_ElementalTyping.Lightning)
+        {
+            ElementalIcons[0].SetActive(false);
+            ElementalIcons[1].SetActive(false);
+            ElementalIcons[2].SetActive(true);
+            ElementalIcons[3].SetActive(false);
+            ElementalIcons[4].SetActive(false);
+        }
+
+        if (elementalType == E_ElementalTyping.Rock)
+        {
+            ElementalIcons[0].SetActive(false);
+            ElementalIcons[1].SetActive(false);
+            ElementalIcons[2].SetActive(false);
+            ElementalIcons[3].SetActive(true);
+            ElementalIcons[4].SetActive(false);
+        }
+
+        if (elementalType == E_ElementalTyping.Water)
+        {
+            ElementalIcons[0].SetActive(false);
+            ElementalIcons[1].SetActive(false);
+            ElementalIcons[2].SetActive(false);
+            ElementalIcons[3].SetActive(false);
+            ElementalIcons[4].SetActive(true);
+        }
     }
 }

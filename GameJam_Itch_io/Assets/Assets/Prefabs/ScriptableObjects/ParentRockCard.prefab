@@ -83,7 +83,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1.23, z: 0.01}
   m_Center: {x: 0, y: 0, z: 0}
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7787204045916663752}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4dd1b2257789294468d237c7951a6225, type: 3}
   m_Name: 
@@ -194,6 +194,16 @@ PrefabInstance:
       propertyPath: m_TagString
       value: PlayerCard
       objectReference: {fileID: 0}
+    - target: {fileID: 3205114478748009654, guid: 5f68786806273b846925497c117ba982,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3205114478748009654, guid: 5f68786806273b846925497c117ba982,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.071
+      objectReference: {fileID: 0}
     - target: {fileID: 5006253153094103899, guid: 5f68786806273b846925497c117ba982,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -202,7 +212,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1707185598650780733, guid: 5f68786806273b846925497c117ba982,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4422055433353567188}
   m_SourcePrefab: {fileID: 100100000, guid: 5f68786806273b846925497c117ba982, type: 3}
 --- !u!4 &7479906360850821869 stripped
 Transform:
@@ -210,3 +224,23 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7048904973215862661}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8530831410628002744 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1707185598650780733, guid: 5f68786806273b846925497c117ba982,
+    type: 3}
+  m_PrefabInstance: {fileID: 7048904973215862661}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4422055433353567188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8530831410628002744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 653340e6ac0647d4895687751b34cd54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  content: Grants the player 50% damage reduction shield until the next turn and
+    strips target of their shield

@@ -143,8 +143,18 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 78aae05273e76b54eb5578efc98d86d1, type: 2}
     - target: {fileID: 3205114478748009654, guid: 9b71280129bbd4c4c98c4a7cc9d54a13,
         type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3205114478748009654, guid: 9b71280129bbd4c4c98c4a7cc9d54a13,
+        type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.051
+      objectReference: {fileID: 0}
+    - target: {fileID: 3205114478748009654, guid: 9b71280129bbd4c4c98c4a7cc9d54a13,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.071
       objectReference: {fileID: 0}
     - target: {fileID: 3810070134131774482, guid: 9b71280129bbd4c4c98c4a7cc9d54a13,
         type: 3}
@@ -192,7 +202,11 @@ PrefabInstance:
     - {fileID: 2123457967971342327, guid: 9b71280129bbd4c4c98c4a7cc9d54a13, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1707185598650780733, guid: 9b71280129bbd4c4c98c4a7cc9d54a13,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8353318553570976068}
   m_SourcePrefab: {fileID: 100100000, guid: 9b71280129bbd4c4c98c4a7cc9d54a13, type: 3}
 --- !u!4 &1124773635147459850 stripped
 Transform:
@@ -200,3 +214,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 685872213249151074}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2176805858505710687 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1707185598650780733, guid: 9b71280129bbd4c4c98c4a7cc9d54a13,
+    type: 3}
+  m_PrefabInstance: {fileID: 685872213249151074}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8353318553570976068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2176805858505710687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 653340e6ac0647d4895687751b34cd54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  content: Hits all enemies for full damage in exchange for a high cost
