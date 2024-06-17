@@ -826,6 +826,7 @@ MonoBehaviour:
   healthSlider: {fileID: 6516973765387460560}
   easeHealthSlider: {fileID: 1811982928840261287}
   lerpSpeed: 0.02
+  healthText: {fileID: 0}
 --- !u!1 &1098496381493595893
 GameObject:
   m_ObjectHideFlags: 0
@@ -3520,7 +3521,6 @@ GameObject:
   - component: {fileID: 390201330218123320}
   - component: {fileID: 7335287527730217963}
   - component: {fileID: 7055095641899171046}
-  - component: {fileID: 1314104602595694371}
   - component: {fileID: 5509421511937354618}
   - component: {fileID: 8475681481677563858}
   m_Layer: 0
@@ -3616,21 +3616,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1314104602595694371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5466594445379443461}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1e326a74c6b31043a3a05714fad54c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentHealth: 10
-  maxHealth: 10
-  hasShield: 0
 --- !u!114 &5509421511937354618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3643,10 +3628,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a2be1285090a814ea0e21b3e1378546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 1
   <elementalType>k__BackingField: 0
   damageDealt: 3
-  _HipAxe: {fileID: 7985665989469224463}
-  _ArmAxe: {fileID: 6922624559573864136}
+  _HipSword: {fileID: 0}
+  _ArmSword: {fileID: 0}
+  _BackShield: {fileID: 0}
+  _ArmShield: {fileID: 0}
+  _BowlHelmet: {fileID: 0}
+  _DiscHelmet: {fileID: 0}
+  _SpaceHelmet: {fileID: 0}
+  _ShieldVFX: {fileID: 0}
+  ElementalIcons: []
 --- !u!114 &8475681481677563858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4822,7 +4815,6 @@ GameObject:
   - component: {fileID: 699592296167559786}
   - component: {fileID: 3212343931118306863}
   - component: {fileID: 4376645715402638441}
-  - component: {fileID: 9123520611585417578}
   - component: {fileID: 4118499408675843621}
   - component: {fileID: 2396822323344508871}
   m_Layer: 0
@@ -4899,21 +4891,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &9123520611585417578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6790801997734317112}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1e326a74c6b31043a3a05714fad54c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentHealth: 10
-  maxHealth: 10
-  hasShield: 0
 --- !u!114 &4118499408675843621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4926,10 +4903,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a2be1285090a814ea0e21b3e1378546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 1
   <elementalType>k__BackingField: 0
   damageDealt: 3
-  _HipAxe: {fileID: 0}
-  _ArmAxe: {fileID: 0}
+  _HipSword: {fileID: 0}
+  _ArmSword: {fileID: 0}
+  _BackShield: {fileID: 0}
+  _ArmShield: {fileID: 0}
+  _BowlHelmet: {fileID: 0}
+  _DiscHelmet: {fileID: 0}
+  _SpaceHelmet: {fileID: 0}
+  _ShieldVFX: {fileID: 0}
+  ElementalIcons: []
 --- !u!114 &2396822323344508871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5152,7 +5137,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8973391808696772593, guid: b8d091e4f054ea949a84d38c3177eb54, type: 3}
+  - {fileID: 2100000, guid: ba5adf4a5ffd5034a9708926f1bc52c1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6036,7 +6021,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4612162990109294230, guid: b8d091e4f054ea949a84d38c3177eb54, type: 3}
+  - {fileID: 2100000, guid: ba5adf4a5ffd5034a9708926f1bc52c1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
