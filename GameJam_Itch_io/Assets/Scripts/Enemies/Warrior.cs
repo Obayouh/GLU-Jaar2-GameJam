@@ -66,9 +66,11 @@ public class Warrior : Ab_Enemy
             CurrentlyWaiting();
         }
 
-        if (_currentHealth.CurrentHealth <= 0)
+        if (_currentHealth.CurrentHealth <= 0 && !dead)
         {
             DeadAnim();
+
+            dead = true;
         }
 
         

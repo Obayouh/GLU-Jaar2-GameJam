@@ -8,10 +8,10 @@ public class CardStats : MonoBehaviour
 {
     private TextMeshPro damageText;
     private TextMeshPro costText;
-    private int baseDamage;
-    private int cost;
+    [SerializeField] private int baseDamage;
+    [SerializeField] private int cost;
 
-    private SpawnEnemies spawnEnemiesScript;
+    [SerializeField] private bool startCard;
 
     [field: SerializeField] public E_ElementalTyping Typing { get; private set; }
     public void Start()
@@ -81,8 +81,8 @@ public class CardStats : MonoBehaviour
 
         damageText.fontSize = 1;
         costText.fontSize = 1;
-        damageText.SetText("Damage:\n " + baseDamage.ToString());
-        costText.SetText("ManaCost:\n " + cost.ToString());
+        damageText.SetText(baseDamage.ToString());
+        costText.SetText(cost.ToString());
     }
 
     private void GetTextMeshPro()
@@ -98,7 +98,18 @@ public class CardStats : MonoBehaviour
         {
             Debug.Log("There are not enough TextMeshPro objects in the parent object.");
         }
-        SetCardStats();
+
+        if (startCard)
+        {
+            damageText.fontSize = 1;
+            costText.fontSize = 1;
+            damageText.SetText(baseDamage.ToString());
+            costText.SetText(cost.ToString());
+        }
+        else
+        {
+            SetCardStats();
+        }
     }
 
     //public void ElementalEffect()

@@ -36,9 +36,10 @@ public class Healer : Ab_Enemy
 
     private void Update()
     {
-        if (_currentHealth.CurrentHealth <= 0)
+        if (_currentHealth.CurrentHealth <= 0 && !dead)
         {
             DeadAnim();
+            dead = true;
         }
     }
 
@@ -132,6 +133,7 @@ public class Healer : Ab_Enemy
     {
         healEffect1.SetActive(true);
         healEffect1.transform.position = healPosition;
+        AudioManager.Instance.Play("Healing");
         yield return new WaitForSeconds(2f);
         healEffect1.SetActive(false);
     }

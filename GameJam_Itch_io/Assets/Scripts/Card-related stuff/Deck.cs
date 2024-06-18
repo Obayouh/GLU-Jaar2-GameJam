@@ -11,7 +11,7 @@ public class Deck : MonoBehaviour
 
     [SerializeField] private Transform deckPos;
 
-    private int startAmount = 2;
+    private int startAmount = 9;
 
     DeckUI deckUI;
 
@@ -28,14 +28,11 @@ public class Deck : MonoBehaviour
 
         drawPile = new List<GameObject>();
 
-        for (int i = 0; i < cardPrefabs.Length; i++)
+        for (int i = 0; i < startAmount; i++)
         {
-            for (int y = 0; y < startAmount; y++)
-            {
-                GameObject card = Instantiate(cardPrefabs[i], deckPos);
-                card.SetActive(false);
-                drawPile.Add(card);
-            }
+            GameObject card = Instantiate(cardPrefabs[i], deckPos);
+            card.SetActive(false);
+            drawPile.Add(card);
         }
         deckUI.UpdateDrawPile(drawPile.Count);
     }

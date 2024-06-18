@@ -12,7 +12,8 @@ public enum TurnState
     Waiting,
     Attack,
     EnemyTurn,
-    PickNewCard
+    PickNewCard,
+    GameOver
 }
 
 public class TurnManager : MonoBehaviour
@@ -23,7 +24,7 @@ public class TurnManager : MonoBehaviour
     public bool playerTurn;
 
 
-    private int _floorNumber = 1;
+    public int _floorNumber = 1;
     private int _turnNumber = 1;
 
     private SpawnEnemies spawnEnemiesScript;
@@ -91,6 +92,12 @@ public class TurnManager : MonoBehaviour
     public void ChangeState(TurnState newState)
     {
         state = newState;
+
+        CheckForTurnState();
+    }
+
+    private void CheckForTurnState()
+    {
         ReferenceInstance.refInstance.cam.CheckState();
         if (state == TurnState.PickCard)
         {
@@ -115,6 +122,17 @@ public class TurnManager : MonoBehaviour
             AddNewCards = true;
 
             StartCoroutine(StartPlayerTurn(1f));
+        }
+        else if (state == TurnState.PickNewCard)
+        {
+            PickNewCardSystem pickNewCard = FindFirstObjectByType<PickNewCardSystem>();
+            pickNewCard.PickCard();
+        }
+
+        if (state == TurnState.GameOver)
+        {
+            GameOver gameOver = FindFirstObjectByType<GameOver>();
+            gameOver.ShowGameOver();
         }
     }
 

@@ -5,21 +5,36 @@ using UnityEngine;
 
 public class GameOver : MonoBehaviour
 {
+    [SerializeField] private GameObject gameOverScreen;
+
     public TextMeshProUGUI scoreText;
 
-    RoomManager roomManager;
+    TurnManager turnManager;
 
-    private void OnEnable()
+    private void Start()
     {
-        roomManager = FindAnyObjectByType<RoomManager>();
+        gameOverScreen.SetActive(false);
 
-        if (roomManager.score == 1)
+        turnManager = ReferenceInstance.refInstance.turnManager;
+    }
+
+    public void ShowGameOver()
+    {
+        gameOverScreen.SetActive(true);
+
+        if (turnManager._floorNumber == 1)
         {
-            scoreText.text = "You Cleared " + roomManager.score + " Room";
+            scoreText.text = "You Cleared " + (turnManager._floorNumber - 1) + " Floors";
         }
         else
         {
-            scoreText.text = "You Cleared " + roomManager.score + " Rooms";
+            scoreText.text = "You Cleared " + (turnManager._floorNumber - 1) + " Floors";
         }
+    }
+
+    //Restart button
+    public void Restart()
+    {
+        //Code om naar het main menu te gaan
     }
 }
