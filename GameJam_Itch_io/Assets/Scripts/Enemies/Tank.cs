@@ -94,7 +94,7 @@ public class Tank : Ab_Enemy
     private IEnumerator AttackPlayer()
     {
         _tankAnim.SetInteger("TankState", 2);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.3f);
         _playerStats.TakeDamage(damageDealt);
         yield return new WaitForSeconds(1f);
         _currentCoroutine = null;
@@ -123,7 +123,7 @@ public class Tank : Ab_Enemy
         _tankAnim.SetInteger("TankState", 5);
         ReferenceInstance.refInstance.clickManager.Taunt(this.gameObject);
         Debug.Log("Taunts... Player can only attack tank next turn!");
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         _currentCoroutine = null;
         if (_currentCoroutine == null)
         {
