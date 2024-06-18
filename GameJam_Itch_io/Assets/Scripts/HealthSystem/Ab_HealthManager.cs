@@ -27,10 +27,6 @@ public abstract class Ab_HealthManager : MonoBehaviour
             currentHealth = Mathf.Clamp(value, 0f, maxHealth);
             // Trigger the OnHealthChanged event with the new and max health values
             OnHealthChanged?.Invoke(currentHealth, maxHealth);
-            if (currentHealth <= 0f)
-            {
-                Kill();
-            }
         }
     }
 

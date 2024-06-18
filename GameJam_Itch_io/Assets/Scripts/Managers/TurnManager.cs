@@ -123,6 +123,11 @@ public class TurnManager : MonoBehaviour
 
             StartCoroutine(StartPlayerTurn(1f));
         }
+        else if (state == TurnState.PickNewCard)
+        {
+            PickNewCardSystem pickNewCard = FindFirstObjectByType<PickNewCardSystem>();
+            pickNewCard.PickCard();
+        }
 
         if (state == TurnState.GameOver)
         {

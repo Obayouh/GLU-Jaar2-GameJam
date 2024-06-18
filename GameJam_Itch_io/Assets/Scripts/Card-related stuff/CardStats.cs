@@ -204,7 +204,7 @@ public class CardStats : MonoBehaviour
             }
         }
 
-            if (waterTarget.CurrentHealth <= 0)
+        if (waterTarget.CurrentHealth <= 0)
         {
             waterCard = null;
             waterTarget = null;

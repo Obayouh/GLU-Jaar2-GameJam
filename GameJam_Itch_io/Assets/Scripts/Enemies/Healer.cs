@@ -36,9 +36,10 @@ public class Healer : Ab_Enemy
 
     private void Update()
     {
-        if (_currentHealth.CurrentHealth <= 0)
+        if (_currentHealth.CurrentHealth <= 0 && !dead)
         {
             DeadAnim();
+            dead = true;
         }
     }
 

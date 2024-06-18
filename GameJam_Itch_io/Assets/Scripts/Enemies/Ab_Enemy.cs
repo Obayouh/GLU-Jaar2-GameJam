@@ -12,9 +12,11 @@ public abstract class Ab_Enemy : MonoBehaviour
     protected SpawnEnemies _spawnEnemies;
     protected EnemyController _enemyController;
     protected PlayerStats _playerStats;
-
+    
     [SerializeField, Range(1, 60)] protected int damage;
     protected float _maxHealth;
+
+    protected bool dead;
 
     [field: SerializeField] public E_ElementalTyping elementalType { get; private set; }
 
