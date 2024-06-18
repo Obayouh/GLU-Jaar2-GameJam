@@ -132,6 +132,7 @@ public class Healer : Ab_Enemy
     {
         healEffect1.SetActive(true);
         healEffect1.transform.position = healPosition;
+        AudioManager.Instance.Play("Healing");
         yield return new WaitForSeconds(2f);
         healEffect1.SetActive(false);
     }

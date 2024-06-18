@@ -321,21 +321,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
         type: 3}
-      propertyPath: sounds.Array.data[4].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 520d07873d3c33a41a047c1704937c5d, type: 3}
-    - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
-        type: 3}
-      propertyPath: sounds.Array.data[4].name
-      value: Explosion Card Hit
-      objectReference: {fileID: 0}
-    - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
-        type: 3}
-      propertyPath: sounds.Array.data[5].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 520d07873d3c33a41a047c1704937c5d, type: 3}
-    - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
-        type: 3}
       propertyPath: sounds.Array.data[5].name
       value: Explosion Card Hit
       objectReference: {fileID: 0}

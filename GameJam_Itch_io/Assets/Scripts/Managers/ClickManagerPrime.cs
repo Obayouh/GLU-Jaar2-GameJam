@@ -296,6 +296,7 @@ public class ClickManagerPrime : MonoBehaviour
     private void HandleLightningDamage()
     {
         lightningCard.DealLightningDamage(lightningCard, lightningTarget);
+        AudioManager.Instance.Play("Lightning Card Hit");
         StartCoroutine(PlayLightningEffect(lightningTarget));
         if (lightningTarget.CurrentHealth <= 0)
         {
