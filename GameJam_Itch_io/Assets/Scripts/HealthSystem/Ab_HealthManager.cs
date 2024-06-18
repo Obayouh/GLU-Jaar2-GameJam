@@ -13,15 +13,9 @@ public abstract class Ab_HealthManager : MonoBehaviour
 
     public bool hasShield;
 
-
     public virtual void Start()
     {
         currentHealth = maxHealth;
-    }
-
-    public virtual void Update()
-    {
-
     }
 
     //public float that manages the currenthealth, maxhealth, and prevents health from exceeding the max value given

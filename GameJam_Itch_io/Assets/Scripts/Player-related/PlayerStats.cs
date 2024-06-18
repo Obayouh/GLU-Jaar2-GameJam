@@ -16,6 +16,8 @@ public class PlayerStats : Ab_HealthManager
 
     private CameraMovement cam;
 
+    bool dead;
+
     [SerializeField] private PlayerHealthBar healthBar;
 
     public override void Start()
@@ -32,6 +34,7 @@ public class PlayerStats : Ab_HealthManager
 
     public override void TakeDamage(float amount)
     {
+        if (dead) return;
         CurrentHealth -= amount;
         cam.StartShaking();
         healthBar.UpdateHealthBar(CurrentHealth, maxHealth);
@@ -40,11 +43,10 @@ public class PlayerStats : Ab_HealthManager
     public override void Kill()
     {
         base.Kill();
-        //Execute gameover screen
-        if (gameOverScreen != null)
-        {
-            Instantiate(gameOverScreen);
-        }
+
+        dead = true;
+
+        ReferenceInstance.refInstance.turnManager.ChangeState(TurnState.GameOver);
     }
 
     public void RefillMana()
