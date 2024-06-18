@@ -352,8 +352,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50a308d49b88550418a914231493d22d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDamage: 4
-  cost: 6
+  baseDamage: 6
+  cost: 4
   startCard: 1
   <Typing>k__BackingField: 3
 --- !u!65 &5057797292302184819

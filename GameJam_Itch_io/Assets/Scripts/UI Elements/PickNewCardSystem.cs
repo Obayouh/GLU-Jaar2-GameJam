@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,9 @@ public class PickNewCardSystem : MonoBehaviour
 {
     [SerializeField] private GameObject[] cardUI;
     [SerializeField] private Image[] cardPos;
+
+    [SerializeField] private TextMeshProUGUI[] costText;
+    [SerializeField] private TextMeshProUGUI[] damageText;
 
     [SerializeField] private List<GameObject> cards;
 
@@ -29,8 +33,24 @@ public class PickNewCardSystem : MonoBehaviour
         {
             GameObject newCard = Instantiate(cardUI[Random.Range(0, cardUI.Length)], cardPos[i].transform);
             Sprite card = newCard.GetComponent<SpriteRenderer>().sprite;
+
             cardPos[i].sprite = card;
             cards.Add(newCard);
+        }
+
+        StartCoroutine(SetStats());
+    }
+
+    private IEnumerator SetStats()
+    {
+        yield return new WaitForSeconds(.2f);
+        for (int i = 0; i < cardPos.Length; i++)
+        {
+            Transform cardUI = cardPos[i].transform.GetChild(0);
+            Transform card = cardUI.GetChild(0);
+            CardStats cardStats = card.GetComponent<CardStats>();
+            costText[i].text = cardStats.ReturnCost().ToString();
+            damageText[i].text = cardStats.ReturnDamage().ToString();
         }
     }
 
@@ -39,6 +59,7 @@ public class PickNewCardSystem : MonoBehaviour
         Transform cardUI = cardPos[0].transform.GetChild(0);
         Transform card = cardUI.GetChild(0);
 
+
         StartCoroutine(CardChoosen(card.gameObject));
     }
 
@@ -46,6 +67,8 @@ public class PickNewCardSystem : MonoBehaviour
     {
         Transform cardUI = cardPos[1].transform.GetChild(0);
         Transform card = cardUI.GetChild(0);
+        CardStats cardStats = card.GetComponent<CardStats>();
+
 
         StartCoroutine(CardChoosen(card.gameObject));
     }
@@ -54,6 +77,8 @@ public class PickNewCardSystem : MonoBehaviour
     {
         Transform cardUI = cardPos[2].transform.GetChild(0);
         Transform card = cardUI.GetChild(0);
+        CardStats cardStats = card.GetComponent<CardStats>();
+
 
         StartCoroutine(CardChoosen(card.gameObject));
     }
