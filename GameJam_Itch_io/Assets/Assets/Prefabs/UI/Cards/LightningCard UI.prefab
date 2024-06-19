@@ -93,11 +93,53 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4333363791579064034}
     m_Modifications:
+    - target: {fileID: 3378811226222847127, guid: 53f8c23924eb1614c8f55ed265436f79,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 415fa803872d4bd4cb088d472cd94991,
+        type: 2}
+    - target: {fileID: 3378811226222847127, guid: 53f8c23924eb1614c8f55ed265436f79,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 415fa803872d4bd4cb088d472cd94991, type: 2}
+    - target: {fileID: 3378811226222847127, guid: 53f8c23924eb1614c8f55ed265436f79,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506015839543818030, guid: 53f8c23924eb1614c8f55ed265436f79,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 415fa803872d4bd4cb088d472cd94991,
+        type: 2}
+    - target: {fileID: 4506015839543818030, guid: 53f8c23924eb1614c8f55ed265436f79,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 415fa803872d4bd4cb088d472cd94991, type: 2}
+    - target: {fileID: 4506015839543818030, guid: 53f8c23924eb1614c8f55ed265436f79,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5037045838545631640, guid: 53f8c23924eb1614c8f55ed265436f79,
         type: 3}
       propertyPath: m_Name
       value: ParentLightningCard
       objectReference: {fileID: 0}
+    - target: {fileID: 5173285267723827351, guid: 53f8c23924eb1614c8f55ed265436f79,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2180264, guid: 415fa803872d4bd4cb088d472cd94991, type: 2}
+    - target: {fileID: 5299005272968012570, guid: 53f8c23924eb1614c8f55ed265436f79,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2180264, guid: 415fa803872d4bd4cb088d472cd94991, type: 2}
     - target: {fileID: 6165712418929235456, guid: 53f8c23924eb1614c8f55ed265436f79,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -149,7 +191,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2838044453161629624, guid: 53f8c23924eb1614c8f55ed265436f79, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53f8c23924eb1614c8f55ed265436f79, type: 3}

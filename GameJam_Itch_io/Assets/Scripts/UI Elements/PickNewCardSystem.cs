@@ -46,7 +46,7 @@ public class PickNewCardSystem : MonoBehaviour
         yield return new WaitForSeconds(.2f);
         for (int i = 0; i < cardPos.Length; i++)
         {
-            Transform cardUI = cardPos[i].transform.GetChild(0);
+            Transform cardUI = cardPos[i].transform.GetChild(1);
             Transform card = cardUI.GetChild(0);
             CardStats cardStats = card.GetComponent<CardStats>();
             costText[i].text = cardStats.ReturnCost().ToString();
@@ -56,29 +56,24 @@ public class PickNewCardSystem : MonoBehaviour
 
     public void Card1()
     {
-        Transform cardUI = cardPos[0].transform.GetChild(0);
+        Transform cardUI = cardPos[0].transform.GetChild(1);
         Transform card = cardUI.GetChild(0);
-
 
         StartCoroutine(CardChoosen(card.gameObject));
     }
 
     public void Card2()
     {
-        Transform cardUI = cardPos[1].transform.GetChild(0);
+        Transform cardUI = cardPos[1].transform.GetChild(1);
         Transform card = cardUI.GetChild(0);
-        CardStats cardStats = card.GetComponent<CardStats>();
-
 
         StartCoroutine(CardChoosen(card.gameObject));
     }
 
     public void Card3()
     {
-        Transform cardUI = cardPos[2].transform.GetChild(0);
+        Transform cardUI = cardPos[2].transform.GetChild(1);
         Transform card = cardUI.GetChild(0);
-        CardStats cardStats = card.GetComponent<CardStats>();
-
 
         StartCoroutine(CardChoosen(card.gameObject));
     }

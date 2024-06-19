@@ -93,6 +93,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7089191156588096954}
     m_Modifications:
+    - target: {fileID: 1109897180189180198, guid: 499572d423babc540b4e6d587f6dd898,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 415fa803872d4bd4cb088d472cd94991,
+        type: 2}
+    - target: {fileID: 1109897180189180198, guid: 499572d423babc540b4e6d587f6dd898,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 415fa803872d4bd4cb088d472cd94991, type: 2}
+    - target: {fileID: 1109897180189180198, guid: 499572d423babc540b4e6d587f6dd898,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2237236758288126623, guid: 499572d423babc540b4e6d587f6dd898,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 415fa803872d4bd4cb088d472cd94991,
+        type: 2}
+    - target: {fileID: 2237236758288126623, guid: 499572d423babc540b4e6d587f6dd898,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 415fa803872d4bd4cb088d472cd94991, type: 2}
+    - target: {fileID: 2237236758288126623, guid: 499572d423babc540b4e6d587f6dd898,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5186253839988478035, guid: 499572d423babc540b4e6d587f6dd898,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -143,6 +175,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7372362873060695334, guid: 499572d423babc540b4e6d587f6dd898,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2180264, guid: 415fa803872d4bd4cb088d472cd94991, type: 2}
+    - target: {fileID: 7497664666207848107, guid: 499572d423babc540b4e6d587f6dd898,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2180264, guid: 415fa803872d4bd4cb088d472cd94991, type: 2}
     - target: {fileID: 7787204045916663752, guid: 499572d423babc540b4e6d587f6dd898,
         type: 3}
       propertyPath: m_Name

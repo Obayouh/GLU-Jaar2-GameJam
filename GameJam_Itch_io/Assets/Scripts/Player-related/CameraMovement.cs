@@ -26,8 +26,6 @@ public class CameraMovement : MonoBehaviour
 
     public ViewState state;
 
-    private bool gameOver;
-
     TurnManager turnManager;
     CinemachineVirtualCamera cam;
 
@@ -59,13 +57,14 @@ public class CameraMovement : MonoBehaviour
 
     public void CheckState()
     {
-        if (turnManager == null)
-            return;
-
         if (turnManager.ReturnState() == TurnState.Waiting)
         {
             switchView = true;
             turnManager.ChangeState(TurnState.Attack);
+        }
+        else if (turnManager.ReturnState() == TurnState.PickNewCard)
+        {
+            //Nothing
         }
         else
         {
