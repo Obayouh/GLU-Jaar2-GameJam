@@ -396,7 +396,11 @@ public class ClickManagerPrime : MonoBehaviour
     {
         ReferenceInstance.refInstance.playerStats.LoseMana(selectedCardStats.ReturnCost());
         ReferenceInstance.refInstance.cardManager.RemoveCard(selectedCard.transform.parent.parent.gameObject);
-        ReferenceInstance.refInstance.turnManager.ChangeState(TurnState.PickCard);
+        if (ReferenceInstance.refInstance.turnManager.ReturnState() != TurnState.PickNewCard)
+        {
+            ReferenceInstance.refInstance.turnManager.ChangeState(TurnState.PickCard);
+        }
+
         selectedCard = null;
 
         if (enemyTauntActive == false)
