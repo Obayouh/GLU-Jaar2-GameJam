@@ -9,10 +9,7 @@ public class Healer : Ab_Enemy
 {
     [SerializeField, Range(0.1f, 1f)] private float healPercentage;
     [SerializeField] private GameObject healEffect1;
-    //[SerializeField] private ParticleSystem healEffect2;
-    [SerializeField] private GameObject[] ElementalIcons;
 
-    private float halfHealth;
     private float healTargetMaxHealth;
 
     private List<GameObject> targetList = new List<GameObject>();

@@ -31,8 +31,6 @@ public class Warrior : Ab_Enemy
     [SerializeField] private GameObject _ArmAxe;
     [SerializeField] private GameObject _BuffVFX;
 
-    [SerializeField] private GameObject[] ElementalIcons;
-
     protected override void Start()
     {
         base.Start();
@@ -104,6 +102,7 @@ public class Warrior : Ab_Enemy
         Debug.Log("Warrior buff");
         _MinAttackPower *= 2;
         _MaxAttackPower *= 2;
+        BuffIcons[0].SetActive(true);
         StartCoroutine(WaitForVFX());
     }
 

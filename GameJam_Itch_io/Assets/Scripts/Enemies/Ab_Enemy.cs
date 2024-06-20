@@ -19,6 +19,8 @@ public abstract class Ab_Enemy : MonoBehaviour
     protected bool dead;
 
     [field: SerializeField] public E_ElementalTyping elementalType { get; private set; }
+    [SerializeField] protected GameObject[] ElementalIcons;
+    [SerializeField] protected GameObject[] BuffIcons;
 
     protected virtual void Start()
     {
@@ -48,6 +50,14 @@ public abstract class Ab_Enemy : MonoBehaviour
         _healthSystem.hasShield = false;
 
         ReferenceInstance.refInstance.clickManager.RemoveTaunt();
+
+        BuffIcons[1].SetActive(false);
+        BuffIcons[2].SetActive(false);
+    }
+
+    public void SetShieldIcon()
+    {
+        BuffIcons[2].SetActive(true);
     }
 
     /// <summary>

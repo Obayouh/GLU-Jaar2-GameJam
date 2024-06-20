@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Tank : Ab_Enemy
 {
@@ -23,8 +24,6 @@ public class Tank : Ab_Enemy
     [SerializeField] private GameObject _SpaceHelmet;
 
     [SerializeField] private GameObject _ShieldVFX;
-
-    [SerializeField] private GameObject[] ElementalIcons;
 
     protected override void Start()
     {
@@ -115,6 +114,7 @@ public class Tank : Ab_Enemy
         if (_currentCoroutine == null)
         {
             StartCoroutine(PlayTauntAnim());
+            BuffIcons[1].SetActive(true);
         }
     }
 
@@ -162,6 +162,7 @@ public class Tank : Ab_Enemy
             if (_currentCoroutine == null)
             {
                 StartCoroutine(PlayShieldAnim());
+                BuffIcons[2].SetActive(true);
             }
         }
     }
@@ -229,6 +230,7 @@ public class Tank : Ab_Enemy
             else
             {
                 currentShieldTarget.GetComponent<HealthSystem>().hasShield = true;
+                currentShieldTarget.GetComponent<Ab_Enemy>().SetShieldIcon();
                 StartCoroutine(ActivateShieldEffect(currentShieldTarget.transform.position));
                 Debug.Log(this.gameObject.name + " puts a shield on " + currentShieldTarget);
             }
