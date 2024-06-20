@@ -617,13 +617,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 10
-  maxHealth: 100
+  maxHealth: 50
   hasShield: 0
   currentMana: 0
-  totalMana: 6
+  totalMana: 10
   score: 0
   scoreText: {fileID: 0}
   gameOverScreen: {fileID: 0}
+  healthBar: {fileID: 0}
 --- !u!65 &5606498225598069014
 BoxCollider:
   m_ObjectHideFlags: 0
