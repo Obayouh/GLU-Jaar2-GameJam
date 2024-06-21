@@ -53,7 +53,7 @@ public class HealthBar : MonoBehaviour
         float healthPercentage = currentHealth / maxHealth;
         if (currentHealth != /*healthSlider.value*/ HealthFill.fillAmount)
         {
-            /*healthSlider.value*/ HealthFill.fillAmount = currentHealth;
+            /*healthSlider.value*/ HealthFill.fillAmount = currentHealth / 10;
         }
         healthText.text = currentHealth + " / " + maxHealth;
         //Debug.Log("Health Bar Updated: " + healthPercentage);

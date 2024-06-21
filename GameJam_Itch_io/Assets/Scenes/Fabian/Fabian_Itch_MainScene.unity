@@ -2826,22 +2826,22 @@ PrefabInstance:
     - target: {fileID: 2186041301708968266, guid: 94ad9f5b47269ec4ea9c346f7f7e790a,
         type: 3}
       propertyPath: m_Pivot.x
-      value: 0.47100174
+      value: 0.51227796
       objectReference: {fileID: 0}
     - target: {fileID: 2186041301708968266, guid: 94ad9f5b47269ec4ea9c346f7f7e790a,
         type: 3}
       propertyPath: m_Pivot.y
-      value: 1.0705917
+      value: 1.1406091
       objectReference: {fileID: 0}
     - target: {fileID: 2186041301708968266, guid: 94ad9f5b47269ec4ea9c346f7f7e790a,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -55.676636
+      value: 23.57367
       objectReference: {fileID: 0}
     - target: {fileID: 2186041301708968266, guid: 94ad9f5b47269ec4ea9c346f7f7e790a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 616.239
+      value: 691.8579
       objectReference: {fileID: 0}
     - target: {fileID: 2464632035501786643, guid: 94ad9f5b47269ec4ea9c346f7f7e790a,
         type: 3}
