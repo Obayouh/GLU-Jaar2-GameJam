@@ -839,16 +839,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653340e6ac0647d4895687751b34cd54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  content: 'Fire element:
+  content: 'Fire, Lightning & Neutral deal normal damage (x1)
 
-    Fire -> Fire = Neutral damage
+    Water deals super
+    effective damage (x1.5)
 
-    Fire -> Water =
-    Resistant damage
-
-    Fire -> Lightning = Neutral damage
-
-    Fire -> Rock =
-    Super effective damage
-
-    Fire -> Neutral = Neutral damage'
+    Rock deals resistant damage (x0.5)'
