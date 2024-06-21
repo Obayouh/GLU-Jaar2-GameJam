@@ -25,7 +25,6 @@ public class TurnManager : MonoBehaviour
 
 
     public int _floorNumber = 1;
-    private int _turnNumber = 1;
 
     private SpawnEnemies spawnEnemiesScript;
     private Ab_Enemy enemyStats;
@@ -51,20 +50,11 @@ public class TurnManager : MonoBehaviour
         _CanvasCollector.CurrentFloor.text = "Current floor:  " + _floorNumber++;
     }
 
-    private void UpdateTurn()
-    {
-
-        if (_CanvasCollector.CurrentTurn == null)
-            return;
-        _CanvasCollector.CurrentTurn.text = "Current turn:   " + _turnNumber++;
-    }
-
     private IEnumerator StartPlayerTurn(float amount)
     {
         playerTurn = true;
         ReferenceInstance.refInstance.playerStats.RefillMana();
         ReferenceInstance.refInstance.playerStats.hasShield = false;
-        UpdateTurn();
         yield return new WaitForSeconds(amount);
         ChangeState(TurnState.PickCard);
         ReferenceInstance.refInstance.cardManager.AddCards();

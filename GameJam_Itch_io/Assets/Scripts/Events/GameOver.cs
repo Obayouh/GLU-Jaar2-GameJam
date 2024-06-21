@@ -22,7 +22,7 @@ public class GameOver : MonoBehaviour
     {
         gameOverScreen.SetActive(true);
 
-        scoreText.text = "You Cleared " + (turnManager._floorNumber - 1) + " Floor(s)";
+        scoreText.text = "You Cleared " + (turnManager._floorNumber - 2) + " Floor(s)";
     }
 
     //Restart button
