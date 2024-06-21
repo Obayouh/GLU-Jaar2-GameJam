@@ -45,18 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentRoomCheck: 0
-  _rooms:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  _randomRooms:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  _rooms: []
 --- !u!1 &7638380969248823761
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,6 +105,7 @@ MonoBehaviour:
   eventManager: {fileID: 0}
   cam: {fileID: 0}
   spawnEnemiesScript: {fileID: 0}
+  floorManager: {fileID: 0}
 --- !u!1001 &687502758047780832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -330,7 +320,7 @@ PrefabInstance:
     - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
         type: 3}
       propertyPath: sounds.Array.size
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
         type: 3}
@@ -386,7 +376,7 @@ PrefabInstance:
         type: 3}
       propertyPath: sounds.Array.data[6].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 4c0e8ab51bf71e94687c937930e63121, type: 3}
+      objectReference: {fileID: 8300000, guid: b71c450e333fe09498129b21e58ff73a, type: 3}
     - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
         type: 3}
       propertyPath: sounds.Array.data[6].name
@@ -396,36 +386,86 @@ PrefabInstance:
         type: 3}
       propertyPath: sounds.Array.data[7].clip
       value: 
-      objectReference: {fileID: 8300000, guid: b6c2bd51c6d326247b93b4656edaea62, type: 3}
+      objectReference: {fileID: 8300000, guid: 9947a7e64e820384b81da254e3512769, type: 3}
     - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
         type: 3}
       propertyPath: sounds.Array.data[7].name
-      value: Axe Swing
+      value: Healing
       objectReference: {fileID: 0}
     - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
         type: 3}
       propertyPath: sounds.Array.data[8].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 9947a7e64e820384b81da254e3512769, type: 3}
+      objectReference: {fileID: 8300000, guid: 5e13237f67ba2fa4481b3bb30b34b4cb, type: 3}
     - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
         type: 3}
       propertyPath: sounds.Array.data[8].name
-      value: Healing
+      value: Add Card
       objectReference: {fileID: 0}
     - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
         type: 3}
       propertyPath: sounds.Array.data[9].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 5e13237f67ba2fa4481b3bb30b34b4cb, type: 3}
+      objectReference: {fileID: 8300000, guid: 47d9abf19d6736b448feb190938da42c, type: 3}
     - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
         type: 3}
       propertyPath: sounds.Array.data[9].name
-      value: Add Card
+      value: Axe Attack
       objectReference: {fileID: 0}
     - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
         type: 3}
       propertyPath: sounds.Array.data[0].pitch
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
+        type: 3}
+      propertyPath: sounds.Array.data[10].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 170e4a3f30532994d8750bddf4d5d4ff, type: 3}
+    - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
+        type: 3}
+      propertyPath: sounds.Array.data[10].name
+      value: Sword Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
+        type: 3}
+      propertyPath: sounds.Array.data[11].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: b6c2bd51c6d326247b93b4656edaea62, type: 3}
+    - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
+        type: 3}
+      propertyPath: sounds.Array.data[11].name
+      value: Healer Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
+        type: 3}
+      propertyPath: sounds.Array.data[12].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6d9c59f3455494e439d49ec044c8f04f, type: 3}
+    - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
+        type: 3}
+      propertyPath: sounds.Array.data[12].name
+      value: Healer Hit
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
+        type: 3}
+      propertyPath: sounds.Array.data[13].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 57a7fbf8947455644ad77f57c2b58626, type: 3}
+    - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
+        type: 3}
+      propertyPath: sounds.Array.data[13].name
+      value: Shielding
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
+        type: 3}
+      propertyPath: sounds.Array.data[14].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1054bef421f16f940aa24eda2a0d8a7b, type: 3}
+    - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
+        type: 3}
+      propertyPath: sounds.Array.data[14].name
+      value: Buff
       objectReference: {fileID: 0}
     - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
         type: 3}
@@ -479,6 +519,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
         type: 3}
+      propertyPath: sounds.Array.data[10].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
+        type: 3}
+      propertyPath: sounds.Array.data[11].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
+        type: 3}
+      propertyPath: sounds.Array.data[12].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
+        type: 3}
+      propertyPath: sounds.Array.data[13].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
+        type: 3}
+      propertyPath: sounds.Array.data[14].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
+        type: 3}
       propertyPath: sounds.Array.data[1].volume
       value: 1
       objectReference: {fileID: 0}
@@ -520,6 +585,31 @@ PrefabInstance:
     - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
         type: 3}
       propertyPath: sounds.Array.data[9].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
+        type: 3}
+      propertyPath: sounds.Array.data[10].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
+        type: 3}
+      propertyPath: sounds.Array.data[11].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
+        type: 3}
+      propertyPath: sounds.Array.data[12].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
+        type: 3}
+      propertyPath: sounds.Array.data[13].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
+        type: 3}
+      propertyPath: sounds.Array.data[14].volume
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
