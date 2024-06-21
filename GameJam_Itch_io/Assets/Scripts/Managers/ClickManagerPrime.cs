@@ -7,6 +7,10 @@ using UnityEngine;
 public class ClickManagerPrime : MonoBehaviour
 {
     [SerializeField] private GameObject lightningEffect;
+    [SerializeField] private GameObject rockEffect;
+    [SerializeField] private GameObject fireEffect;
+    [SerializeField] private List<GameObject> waterEffect;
+    [SerializeField] private List<GameObject> explosionEffect;
 
     private RaycastHit hit;
     private Transform previousHit;
@@ -54,6 +58,14 @@ public class ClickManagerPrime : MonoBehaviour
         lightningActive = false;
         playerActions = 0;
         lightningEffect.gameObject.SetActive(false);
+        rockEffect.gameObject.SetActive(false);
+        fireEffect.gameObject.SetActive(false);
+        waterEffect[0].gameObject.SetActive(false);
+        waterEffect[1].gameObject.SetActive(false);
+        waterEffect[2].gameObject.SetActive(false);
+        explosionEffect[0].gameObject.SetActive(false);
+        explosionEffect[1].gameObject.SetActive(false);
+        explosionEffect[2].gameObject.SetActive(false);
     }
 
     void Update()
@@ -180,7 +192,6 @@ public class ClickManagerPrime : MonoBehaviour
 
     }
 
-    //NOTE: Only lightning and fire have an extra effect currently, rest will be added later
     private void ApplyCardEffect(CardStats card, HealthSystem target)
     {
         target.TakeDamage(card.ReturnDamage() * CalculateDamageModifier());
@@ -270,6 +281,7 @@ public class ClickManagerPrime : MonoBehaviour
         {
             fireCard.DealFireDamage(fireCard, fireTarget);
             AudioManager.Instance.Play("Fire Card Hit");
+            StartCoroutine(PlayFireEffect(fireTarget));
             firstFireUsed = true;
             UnsubscribeCardPlayed();
         }
@@ -279,6 +291,7 @@ public class ClickManagerPrime : MonoBehaviour
     {
         fireCard.DealExtraFireDamage(fireCard, fireTarget);
         AudioManager.Instance.Play("Fire Card Hit");
+        StartCoroutine(PlayFireEffect(fireTarget));
         firstFireUsed = false;
         fireCard = null;
         UnsubscribeCardPlayed();
@@ -288,6 +301,7 @@ public class ClickManagerPrime : MonoBehaviour
     {
         rockCard.DealRockDamage(rockCard, rockTarget);
         AudioManager.Instance.Play("Rock Card Hit");
+        StartCoroutine(PlayRockEffect(rockTarget));
         ReferenceInstance.refInstance.playerStats.hasShield = true;
         rockCard = null;
         rockTarget = null;
@@ -310,10 +324,57 @@ public class ClickManagerPrime : MonoBehaviour
 
     private IEnumerator PlayLightningEffect(HealthSystem enemyTarget)
     {
-        lightningEffect.transform.position = enemyTarget.transform.position + new Vector3(0, 5, 0);
+        Vector3 lightningSpacing = new Vector3(0, 5, 0);
+        lightningEffect.transform.position = enemyTarget.transform.position + lightningSpacing;
         lightningEffect.gameObject.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         lightningEffect.gameObject.SetActive(false);
+    }
+
+    private IEnumerator PlayRockEffect(HealthSystem enemyTarget)
+    {
+        Vector3 rockSpacing = new Vector3(0, 2, 0);
+        rockEffect.transform.position = enemyTarget.transform.position + rockSpacing;
+        rockEffect.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        rockEffect.gameObject.SetActive(false);
+    }
+
+    private IEnumerator PlayFireEffect(HealthSystem enemyTarget)
+    {
+        fireEffect.transform.position = enemyTarget.transform.position;
+        fireEffect.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        fireEffect.gameObject.SetActive(false);
+    }
+
+    private IEnumerator PlayWaterEffect(HealthSystem enemyTarget)
+    {
+        Vector3 waterSpacing = new Vector3(0, 3, 0);
+        for (int i = 0; i < ReferenceInstance.refInstance.spawnEnemiesScript.spawnedEnemies.Count; i++)
+        {
+            enemyTarget = ReferenceInstance.refInstance.spawnEnemiesScript.spawnedEnemies[i].GetComponent<HealthSystem>();
+            waterEffect[i].transform.position = enemyTarget.transform.position + waterSpacing;
+            waterEffect[i].gameObject.SetActive(true);
+        }
+        yield return new WaitForSeconds(0.5f);
+        waterEffect[0].gameObject.SetActive(false);
+        waterEffect[1].gameObject.SetActive(false);
+        waterEffect[2].gameObject.SetActive(false);
+    }
+
+    private IEnumerator PlayExplosionEffect(HealthSystem enemyTarget)
+    {
+        for (int i = 0; i < ReferenceInstance.refInstance.spawnEnemiesScript.spawnedEnemies.Count; i++)
+        {
+            enemyTarget = ReferenceInstance.refInstance.spawnEnemiesScript.spawnedEnemies[i].GetComponent<HealthSystem>();
+            explosionEffect[i].transform.position = enemyTarget.transform.position;
+            explosionEffect[i].gameObject.SetActive(true);
+        }
+        yield return new WaitForSeconds(0.5f);
+        explosionEffect[0].gameObject.SetActive(false);
+        explosionEffect[1].gameObject.SetActive(false);
+        explosionEffect[2].gameObject.SetActive(false);
     }
 
     private void HandleWaterDamage()
@@ -322,6 +383,7 @@ public class ClickManagerPrime : MonoBehaviour
         {
             waterCard.DealWaterDamage(waterCard, waterTarget);
             AudioManager.Instance.Play("Water Card Hit");
+            StartCoroutine(PlayWaterEffect(waterTarget));
             UnsubscribeCardPlayed();
         }
     }
@@ -332,6 +394,7 @@ public class ClickManagerPrime : MonoBehaviour
         {
             explosionCard.DealExplosionDamage(explosionCard, explosionTarget);
             AudioManager.Instance.Play("Explosion Card Hit");
+            StartCoroutine(PlayExplosionEffect(explosionTarget));
             explosionTarget = null;
             explosionCard = null;
             UnsubscribeCardPlayed();
