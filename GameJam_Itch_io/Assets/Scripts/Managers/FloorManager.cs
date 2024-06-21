@@ -27,33 +27,13 @@ public class FloorManager : MonoBehaviour
         _currentRoomCheck = 0;
     }
 
-    public void NewRoom()
+    public void ChangeRoom()
     {
-        if (_rooms == null)
+        if (_rooms.Length == 0)
         {
             return;
         }
 
-        if (_turnManager._floorNumber == _increaseRoomInt)
-        {
-            int randoNumber = Random.Range(0, 5);
-            if (randoNumber == _currentRoomCheck)
-            {
-                randoNumber = Random.Range(0, 5);
-            }
-            else
-            {
-                _randomNumber = randoNumber;
-            }
-
-            _increaseRoomInt += 2;
-        }
-
-        StartCoroutine(ChangeRoom());
-    }
-
-    private IEnumerator ChangeRoom()
-    {
         for (int i = 0; i < _rooms.Length; i++)
         {
             _rooms[i].SetActive(false);
@@ -88,6 +68,19 @@ public class FloorManager : MonoBehaviour
             _currentRoomCheck = 4;
         }
 
-        yield return null;
+        if (_turnManager._floorNumber == _increaseRoomInt)
+        {
+            int randoNumber = Random.Range(0, 5);
+            if (randoNumber == _currentRoomCheck)
+            {
+                randoNumber = Random.Range(0, 5);
+            }
+            else
+            {
+                _randomNumber = randoNumber;
+            }
+
+            _increaseRoomInt += 2;
+        }
     }
 }
