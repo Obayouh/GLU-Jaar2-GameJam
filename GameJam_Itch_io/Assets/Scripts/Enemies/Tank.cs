@@ -95,7 +95,7 @@ public class Tank : Ab_Enemy
         _tankAnim.SetInteger("TankState", 2);
         yield return new WaitForSeconds(.3f);
         AudioManager.Instance.Play("Sword Attack");
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.5f);
         _playerStats.TakeDamage(damageDealt);
         yield return new WaitForSeconds(1f);
         _currentCoroutine = null;
@@ -123,6 +123,7 @@ public class Tank : Ab_Enemy
     private IEnumerator PlayTauntAnim()
     {
         _tankAnim.SetInteger("TankState", 5);
+        AudioManager.Instance.Play("Taunt");
         ReferenceInstance.refInstance.clickManager.Taunt(this.gameObject);
         Debug.Log("Taunts... Player can only attack tank next turn!");
         yield return new WaitForSeconds(1f);

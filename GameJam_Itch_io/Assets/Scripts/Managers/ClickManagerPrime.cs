@@ -324,6 +324,7 @@ public class ClickManagerPrime : MonoBehaviour
 
     private IEnumerator PlayLightningEffect(HealthSystem enemyTarget)
     {
+        AudioManager.Instance.Play("Lightning Card Hit");
         Vector3 lightningSpacing = new Vector3(0, 5, 0);
         lightningEffect.transform.position = enemyTarget.transform.position + lightningSpacing;
         lightningEffect.gameObject.SetActive(true);
