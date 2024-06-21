@@ -228,6 +228,7 @@ public class Tank : Ab_Enemy
             {
                 currentShieldTarget.GetComponent<HealthSystem>().hasShield = true;
                 currentShieldTarget.GetComponent<Ab_Enemy>().SetShieldIcon();
+                AudioManager.Instance.Play("Shielding Others");
                 StartCoroutine(ActivateShieldEffect(currentShieldTarget.transform.position));
                 Debug.Log(this.gameObject.name + " puts a shield on " + currentShieldTarget);
             }

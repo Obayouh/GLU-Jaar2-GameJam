@@ -11,6 +11,7 @@ public class Warrior : Ab_Enemy
         Attack,
         BuffThemself,
         Waiting,
+        Nothing
     }
 
     [SerializeField, Range(1, 50)] private int _MinAttackPower;
@@ -99,8 +100,8 @@ public class Warrior : Ab_Enemy
 
     private void BuffItself()
     {
+        StateOfTheWarior = TheStateOfTheWarior.Nothing;
         Debug.Log("Warrior buff");
-        AudioManager.Instance.Play("Buff");
         _MinAttackPower *= 2;
         _MaxAttackPower *= 2;
         BuffIcons[0].SetActive(true);
@@ -109,6 +110,7 @@ public class Warrior : Ab_Enemy
 
     private IEnumerator WaitForVFX()
     {
+        AudioManager.Instance.Play("Buff");
         _warriorAnim.SetInteger("WarriorState", 3);
         StartCoroutine(BuffEffectActivation());
         yield return new WaitForSeconds(0.1f);
