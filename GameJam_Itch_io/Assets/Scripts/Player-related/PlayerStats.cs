@@ -9,11 +9,6 @@ public class PlayerStats : Ab_HealthManager
     [SerializeField] private int currentMana;
     [SerializeField, Range(6, 100)] private int totalMana;
 
-    [SerializeField] private int score;
-    [SerializeField] private TextMeshProUGUI scoreText;
-
-    [SerializeField] private GameObject gameOverScreen;
-
     private CameraMovement cam;
 
     bool dead;
@@ -38,6 +33,11 @@ public class PlayerStats : Ab_HealthManager
         CurrentHealth -= amount;
         cam.StartShaking();
         healthBar.UpdateHealthBar(CurrentHealth, maxHealth);
+
+        if (CurrentHealth <= 0)
+        {
+            Kill();
+        }
     }
 
     public override void Kill()
@@ -57,7 +57,6 @@ public class PlayerStats : Ab_HealthManager
     public void LoseMana(int cardManaCost)
     {
         currentMana -= cardManaCost;
-        //Debug.Log("You have " + currentMana + " mana remaining");
     }
 
     public int ReturnPlayerMana()
