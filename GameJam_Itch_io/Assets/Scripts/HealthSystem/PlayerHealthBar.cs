@@ -73,7 +73,7 @@ public class PlayerHealthBar : MonoBehaviour
         easeHealthSlider.maxValue = healthComponent.CurrentHealth;
         healthSlider.value = healthComponent.CurrentHealth;
         easeHealthSlider.value = healthComponent.CurrentHealth;
-        healthText.text = "Player: " + healthComponent.CurrentHealth + " / " + healthComponent.CurrentHealth;
+        healthText.text = healthComponent.CurrentHealth + " / " + healthComponent.CurrentHealth;
     }
 
     //Has minor delay to avoid having wrong amount of health on startup due to currnthealth vs maxhealth calculations
