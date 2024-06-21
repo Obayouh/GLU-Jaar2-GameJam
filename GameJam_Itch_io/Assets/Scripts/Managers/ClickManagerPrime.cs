@@ -287,6 +287,7 @@ public class ClickManagerPrime : MonoBehaviour
     private void HandleRockDamage()
     {
         rockCard.DealRockDamage(rockCard, rockTarget);
+        AudioManager.Instance.Play("Rock Card Hit");
         ReferenceInstance.refInstance.playerStats.hasShield = true;
         rockCard = null;
         rockTarget = null;
@@ -330,6 +331,7 @@ public class ClickManagerPrime : MonoBehaviour
         if (explosionCard != null && explosionTarget != null)
         {
             explosionCard.DealExplosionDamage(explosionCard, explosionTarget);
+            AudioManager.Instance.Play("Explosion Card Hit");
             explosionTarget = null;
             explosionCard = null;
             UnsubscribeCardPlayed();
@@ -360,10 +362,9 @@ public class ClickManagerPrime : MonoBehaviour
         }
         E_ElementalTyping enemyTyping = selectedEnemy.GetComponent<Ab_Enemy>().elementalType;  //Get enemy and fill in the enemy's typing
         HealthSystem hs = selectedEnemy.GetComponent<HealthSystem>(); //Get enemy health to deal damage to
-        Ab_Enemy enemy = selectedEnemy.GetComponent<Ab_Enemy>();
         effectivenessModifier = TypingDictionary.GetEffectivenessModifier(cardTyping, enemyTyping); //Checks for playercard and enemy typings  
         PlayCard(selectedCardStats, hs);
-        enemy.HitAnim();
+
         //enemyTyping = 0; //Resets calculation as fail-safe
         /*FinishedAttacking();*/ //Empties all variables that need no longer be filled
         StartCoroutine(WaitForAnim());

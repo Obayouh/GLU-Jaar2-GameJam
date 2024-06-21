@@ -27,6 +27,13 @@ public class PickNewCardSystem : MonoBehaviour
 
     public void PickCard()
     {
+        StartCoroutine(SetStats());
+    }
+
+    private IEnumerator SetStats()
+    {
+        yield return new WaitForSeconds(1f);
+
         chooseNewCardsUI.SetActive(true);
 
         for (int i = 0; i < cardPos.Length; i++)
@@ -38,12 +45,8 @@ public class PickNewCardSystem : MonoBehaviour
             cards.Add(newCard);
         }
 
-        StartCoroutine(SetStats());
-    }
+        yield return new WaitForSeconds(.1f);
 
-    private IEnumerator SetStats()
-    {
-        yield return new WaitForSeconds(.2f);
         for (int i = 0; i < cardPos.Length; i++)
         {
             Transform cardUI = cardPos[i].transform.GetChild(1);

@@ -17,6 +17,9 @@ public class HealthSystem : Ab_HealthManager
     {
         CurrentHealth -= Mathf.RoundToInt(amount);
         _healthBar.UpdateHealthBar(CurrentHealth, maxHealth);
+
+        Ab_Enemy enemy = GetComponent<Ab_Enemy>();
+        enemy.HitAnim();
     }
 
     public void HealthUpdate()

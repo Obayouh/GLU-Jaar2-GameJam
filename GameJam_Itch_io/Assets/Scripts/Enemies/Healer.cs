@@ -26,7 +26,7 @@ public class Healer : Ab_Enemy
             UnityEngine.Debug.Log("Fill in healEffect on Healer please!");
         }
 
-        CheckForELementalIcon();
+        CheckForElementalIcon();
         _currentHealth = GetComponent<HealthSystem>();
         _healerAnim = GetComponentInChildren<Animator>();
     }
@@ -91,7 +91,9 @@ public class Healer : Ab_Enemy
     private IEnumerator AttackPlayer()
     {
         _healerAnim.SetInteger("HealerState", 1);
+        AudioManager.Instance.Play("Healer Attack");
         yield return new WaitForSeconds(0.8f);
+        AudioManager.Instance.Play("Healer Hit");
         _playerStats.TakeDamage(damage);
         UnityEngine.Debug.Log("Should attack player and then end turn");
         yield return new WaitForSeconds(0.2f);
@@ -244,51 +246,8 @@ public class Healer : Ab_Enemy
         }
     }
 
-    private void CheckForELementalIcon()
+    protected override void CheckForElementalIcon()
     {
-        if (elementalType == E_ElementalTyping.Neutral)
-        {
-            ElementalIcons[0].SetActive(true);
-            ElementalIcons[1].SetActive(false);
-            ElementalIcons[2].SetActive(false);
-            ElementalIcons[3].SetActive(false);
-            ElementalIcons[4].SetActive(false);
-        }
-
-        if (elementalType == E_ElementalTyping.Fire)
-        {
-            ElementalIcons[0].SetActive(false);
-            ElementalIcons[1].SetActive(true);
-            ElementalIcons[2].SetActive(false);
-            ElementalIcons[3].SetActive(false);
-            ElementalIcons[4].SetActive(false);
-        }
-
-        if (elementalType == E_ElementalTyping.Lightning)
-        {
-            ElementalIcons[0].SetActive(false);
-            ElementalIcons[1].SetActive(false);
-            ElementalIcons[2].SetActive(true);
-            ElementalIcons[3].SetActive(false);
-            ElementalIcons[4].SetActive(false);
-        }
-
-        if (elementalType == E_ElementalTyping.Rock)
-        {
-            ElementalIcons[0].SetActive(false);
-            ElementalIcons[1].SetActive(false);
-            ElementalIcons[2].SetActive(false);
-            ElementalIcons[3].SetActive(true);
-            ElementalIcons[4].SetActive(false);
-        }
-
-        if (elementalType == E_ElementalTyping.Water)
-        {
-            ElementalIcons[0].SetActive(false);
-            ElementalIcons[1].SetActive(false);
-            ElementalIcons[2].SetActive(false);
-            ElementalIcons[3].SetActive(false);
-            ElementalIcons[4].SetActive(true);
-        }
+        base.CheckForElementalIcon();
     }
 }

@@ -32,7 +32,7 @@ public class Tank : Ab_Enemy
         {
             Debug.Log("Fill in ShieldVFX on Tank prefab please!");
         }
-        CheckForELementalIcon();
+        CheckForElementalIcon();
         _currentHealth = GetComponent<HealthSystem>();
         _tankAnim = GetComponentInChildren<Animator>();
         _ArmSword.SetActive(false);
@@ -93,7 +93,9 @@ public class Tank : Ab_Enemy
     private IEnumerator AttackPlayer()
     {
         _tankAnim.SetInteger("TankState", 2);
-        yield return new WaitForSeconds(1.3f);
+        yield return new WaitForSeconds(.3f);
+        AudioManager.Instance.Play("Sword Attack");
+        yield return new WaitForSeconds(1f);
         _playerStats.TakeDamage(damageDealt);
         yield return new WaitForSeconds(1f);
         _currentCoroutine = null;
@@ -155,15 +157,8 @@ public class Tank : Ab_Enemy
         }
         else
         {
-            //_tankAnim.SetInteger("TankState", 3);
-            //Debug.Log(this.gameObject.name + " puts a shield on itself");
-            //StartCoroutine(ActivateShieldEffect(this.transform.position));
-            //_healthSystem.GetComponent<HealthSystem>().hasShield = true;
-            if (_currentCoroutine == null)
-            {
-                StartCoroutine(PlayShieldAnim());
-                BuffIcons[2].SetActive(true);
-            }
+            StartCoroutine(PlayShieldAnim());
+            BuffIcons[2].SetActive(true);
         }
     }
 
@@ -173,6 +168,8 @@ public class Tank : Ab_Enemy
         _tankAnim.SetInteger("TankState", 3);
         StartCoroutine(ActivateShieldEffect(this.transform.position));
         _healthSystem.GetComponent<HealthSystem>().hasShield = true;
+        yield return new WaitForSeconds(.1f);
+        AudioManager.Instance.Play("Shielding");
         yield return new WaitForSeconds(1f);
         _currentCoroutine = null;
         if (_currentCoroutine == null)
@@ -200,7 +197,6 @@ public class Tank : Ab_Enemy
 
         if (targetList.Count > 0)
         {
-
             float currentLowesthealth = 0f;
             GameObject shieldTarget = null; //temporary storage
             GameObject currentShieldTarget = null;// The actual target who we will put a shield on
@@ -293,7 +289,7 @@ public class Tank : Ab_Enemy
     private void HelmetRandomizer()
     {
         float randomActionNumber = UnityEngine.Random.value;
-        
+
         if (randomActionNumber >= 0.0f && randomActionNumber <= 0.4f)
         {
             _BowlHelmet.SetActive(true);
@@ -314,51 +310,8 @@ public class Tank : Ab_Enemy
         }
     }
 
-    private void CheckForELementalIcon()
+    protected override void CheckForElementalIcon()
     {
-        if (elementalType == E_ElementalTyping.Neutral)
-        {
-            ElementalIcons[0].SetActive(true);
-            ElementalIcons[1].SetActive(false);
-            ElementalIcons[2].SetActive(false);
-            ElementalIcons[3].SetActive(false);
-            ElementalIcons[4].SetActive(false);
-        }
-
-        if (elementalType == E_ElementalTyping.Fire)
-        {
-            ElementalIcons[0].SetActive(false);
-            ElementalIcons[1].SetActive(true);
-            ElementalIcons[2].SetActive(false);
-            ElementalIcons[3].SetActive(false);
-            ElementalIcons[4].SetActive(false);
-        }
-
-        if (elementalType == E_ElementalTyping.Lightning)
-        {
-            ElementalIcons[0].SetActive(false);
-            ElementalIcons[1].SetActive(false);
-            ElementalIcons[2].SetActive(true);
-            ElementalIcons[3].SetActive(false);
-            ElementalIcons[4].SetActive(false);
-        }
-
-        if (elementalType == E_ElementalTyping.Rock)
-        {
-            ElementalIcons[0].SetActive(false);
-            ElementalIcons[1].SetActive(false);
-            ElementalIcons[2].SetActive(false);
-            ElementalIcons[3].SetActive(true);
-            ElementalIcons[4].SetActive(false);
-        }
-
-        if (elementalType == E_ElementalTyping.Water)
-        {
-            ElementalIcons[0].SetActive(false);
-            ElementalIcons[1].SetActive(false);
-            ElementalIcons[2].SetActive(false);
-            ElementalIcons[3].SetActive(false);
-            ElementalIcons[4].SetActive(true);
-        }
+        base.CheckForElementalIcon();
     }
 }

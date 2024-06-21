@@ -38,7 +38,7 @@ public class Warrior : Ab_Enemy
         {
             Debug.Log("Fill in BuffVFX on Warrior please!");
         }
-        CheckForELementalIcon();
+        CheckForElementalIcon();
         _currentHealth = GetComponent<HealthSystem>();
         _maxLife = GetComponent<HealthSystem>().CurrentHealth;
         _warriorAnim = GetComponent<Animator>();
@@ -70,8 +70,6 @@ public class Warrior : Ab_Enemy
 
             dead = true;
         }
-
-        
     }
 
     public override void OnAction()
@@ -90,7 +88,9 @@ public class Warrior : Ab_Enemy
     private IEnumerator AttackPlayer()
     {
         _warriorAnim.SetInteger("WarriorState", 2);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.5f);
+        AudioManager.Instance.Play("Axe Attack");
+        yield return new WaitForSeconds(.5f);
         _playerStats.TakeDamage(UnityEngine.Random.Range(_MinAttackPower, _MaxAttackPower));
         yield return new WaitForSeconds(1f);
         StateOfTheWarior = TheStateOfTheWarior.Waiting;
@@ -100,6 +100,7 @@ public class Warrior : Ab_Enemy
     private void BuffItself()
     {
         Debug.Log("Warrior buff");
+        AudioManager.Instance.Play("Buff");
         _MinAttackPower *= 2;
         _MaxAttackPower *= 2;
         BuffIcons[0].SetActive(true);
@@ -168,51 +169,8 @@ public class Warrior : Ab_Enemy
         }
     }
 
-    private void CheckForELementalIcon()
+    protected override void CheckForElementalIcon()
     {
-        if (elementalType == E_ElementalTyping.Neutral)
-        {
-            ElementalIcons[0].SetActive(true);
-            ElementalIcons[1].SetActive(false);
-            ElementalIcons[2].SetActive(false);
-            ElementalIcons[3].SetActive(false);
-            ElementalIcons[4].SetActive(false);
-        }
-
-        if (elementalType == E_ElementalTyping.Fire)
-        {
-            ElementalIcons[0].SetActive(false);
-            ElementalIcons[1].SetActive(true);
-            ElementalIcons[2].SetActive(false);
-            ElementalIcons[3].SetActive(false);
-            ElementalIcons[4].SetActive(false);
-        }
-
-        if (elementalType == E_ElementalTyping.Lightning)
-        {
-            ElementalIcons[0].SetActive(false);
-            ElementalIcons[1].SetActive(false);
-            ElementalIcons[2].SetActive(true);
-            ElementalIcons[3].SetActive(false);
-            ElementalIcons[4].SetActive(false);
-        }
-
-        if (elementalType == E_ElementalTyping.Rock)
-        {
-            ElementalIcons[0].SetActive(false);
-            ElementalIcons[1].SetActive(false);
-            ElementalIcons[2].SetActive(false);
-            ElementalIcons[3].SetActive(true);
-            ElementalIcons[4].SetActive(false);
-        }
-
-        if (elementalType == E_ElementalTyping.Water)
-        {
-            ElementalIcons[0].SetActive(false);
-            ElementalIcons[1].SetActive(false);
-            ElementalIcons[2].SetActive(false);
-            ElementalIcons[3].SetActive(false);
-            ElementalIcons[4].SetActive(true);
-        }
+        base.CheckForElementalIcon();
     }
 }

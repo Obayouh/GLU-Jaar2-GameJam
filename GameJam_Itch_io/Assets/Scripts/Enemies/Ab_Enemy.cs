@@ -78,6 +78,39 @@ public abstract class Ab_Enemy : MonoBehaviour
 
     public virtual void LookAtPlayer() { }
 
+    protected virtual void CheckForElementalIcon()
+    {
+        for (int i = 0; i < ElementalIcons.Length; i++)
+        {
+            ElementalIcons[i].SetActive(false);
+        }
+
+        if (elementalType == E_ElementalTyping.Neutral)
+        {
+            ElementalIcons[0].SetActive(true);
+        }
+
+        else if (elementalType == E_ElementalTyping.Fire)
+        {
+            ElementalIcons[1].SetActive(true);
+        }
+
+        else if (elementalType == E_ElementalTyping.Lightning)
+        {
+            ElementalIcons[2].SetActive(true);
+        }
+
+        else if (elementalType == E_ElementalTyping.Rock)
+        {
+            ElementalIcons[3].SetActive(true);
+        }
+
+        else if (elementalType == E_ElementalTyping.Water)
+        {
+            ElementalIcons[4].SetActive(true);
+        }
+    }
+
     public virtual void UpdateDamage()
     {
         damage = ReferenceInstance.refInstance.turnManager._floorNumber;
