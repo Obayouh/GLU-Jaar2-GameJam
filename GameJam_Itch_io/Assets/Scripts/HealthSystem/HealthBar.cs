@@ -7,8 +7,9 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
 
-    [SerializeField] private Slider healthSlider;
-    [SerializeField] private Slider easeHealthSlider;
+    //[SerializeField] private Slider healthSlider;
+    //[SerializeField] private Slider easeHealthSlider;
+    [SerializeField] private Image HealthFill;
     [SerializeField, Range(0.001f, 0.05f)] private float lerpSpeed = 0.05f;
     private HealthSystem healthComponent;
     [SerializeField] private TextMeshProUGUI healthText;
@@ -30,18 +31,19 @@ public class HealthBar : MonoBehaviour
 
     private void Update()
     {
-        if (easeHealthSlider.value != healthSlider.value)
-        {
-            easeHealthSlider.value = Mathf.Lerp(easeHealthSlider.value, healthSlider.value, lerpSpeed); //Visually update this over time to showcase damage taken
-        }
+        //if (easeHealthSlider.value != /*healthSlider.value*/ HealthFill.fillAmount)
+        //{
+        //    easeHealthSlider.value = Mathf.Lerp(easeHealthSlider.value, /*healthSlider.value*/ HealthFill.fillAmount, lerpSpeed); //Visually update this over time to showcase damage taken
+        //}
     }
 
     private void InitializeHealthBar()
     {
-        healthSlider.maxValue = healthComponent.GetMaxHealth();
-        easeHealthSlider.maxValue = healthComponent.GetMaxHealth();
-        healthSlider.value = healthComponent.GetMaxHealth();
-        easeHealthSlider.value = healthComponent.GetMaxHealth();
+        //healthSlider.maxValue = healthComponent.GetMaxHealth();
+        HealthFill.fillAmount = healthComponent.GetMaxHealth();
+        //easeHealthSlider.maxValue = healthComponent.GetMaxHealth();
+        //healthSlider.value = healthComponent.GetMaxHealth();
+        //easeHealthSlider.value = healthComponent.GetMaxHealth();
         healthText.text = healthComponent.GetMaxHealth() + " / " + healthComponent.GetMaxHealth();
     }
 
@@ -49,9 +51,9 @@ public class HealthBar : MonoBehaviour
     public void UpdateHealthBar(float currentHealth, float maxHealth) 
     {
         float healthPercentage = currentHealth / maxHealth;
-        if (currentHealth != healthSlider.value)
+        if (currentHealth != /*healthSlider.value*/ HealthFill.fillAmount)
         {
-            healthSlider.value = currentHealth;
+            /*healthSlider.value*/ HealthFill.fillAmount = currentHealth;
         }
         healthText.text = currentHealth + " / " + maxHealth;
         //Debug.Log("Health Bar Updated: " + healthPercentage);
