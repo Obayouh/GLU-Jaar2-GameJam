@@ -154,6 +154,7 @@ public class TurnManager : MonoBehaviour
         _CanvasCollector.CrossfadeAnimator.SetTrigger("End");
         yield return new WaitForSeconds(0.25f);
         UpdateFloor();
+        ReferenceInstance.refInstance.floorManager.NewRoom();
         StartCoroutine(spawnEnemiesScript.InstantiateEnemies());
         ChangeState(TurnState.PlayerTurn);
     }
