@@ -138,19 +138,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653340e6ac0647d4895687751b34cd54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  content: 'Rock element:
+  content: 'Resistance: Lightning
 
-    Rock -> Fire = Resistant damage
-
-    Rock -> Water
-    = Neutral damage
-
-    Rock -> Lightning = Super effective damage
-
-    Rock ->
-    Rock = Neutral damage
-
-    Rock -> Neutral = Neutral damage'
+    Weakness: Fire'
 --- !u!1 &3761819097320793596
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,19 +279,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653340e6ac0647d4895687751b34cd54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  content: 'Lightning element:
+  content: 'Resistance: Water
 
-    Lightning -> Fire = Neutral damage
-
-    Lightning
-    -> Water = Super effective damage
-
-    Lightning -> Lightning = Neutral damage
-
-    Lightning
-    -> Rock = Resistant damage
-
-    Lightning -> Neutral = Neutral damage'
+    Weakness: Rock'
 --- !u!1 &4180463820786892064
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,19 +526,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653340e6ac0647d4895687751b34cd54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  content: 'Water element:
+  content: 'Resistance: Fire
 
-    Water -> Fire = Super effective damage
-
-    Water
-    -> Water = Neutral damage
-
-    Water -> Lightning = Resistant damage
-
-    Water
-    -> Rock = Neutral damage
-
-    Water -> Neutral = Neutral damage'
+    Weakness: Lightning'
 --- !u!1 &4891039958974239986
 GameObject:
   m_ObjectHideFlags: 0
@@ -697,10 +667,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653340e6ac0647d4895687751b34cd54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  content: 'Neutral element:
+  content: 'Resistance: None
 
-    No element is very effective or resistant against
-    this type'
+    Weakness: None'
 --- !u!1 &5072426972474911656
 GameObject:
   m_ObjectHideFlags: 0
@@ -839,9 +808,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653340e6ac0647d4895687751b34cd54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  content: 'Fire, Lightning & Neutral deal normal damage (x1)
+  content: 'Resistance: Rock
 
-    Water deals super
-    effective damage (x1.5)
-
-    Rock deals resistant damage (x0.5)'
+    Weakness: Water '

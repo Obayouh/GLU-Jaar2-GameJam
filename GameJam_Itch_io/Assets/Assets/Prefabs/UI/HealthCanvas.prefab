@@ -227,12 +227,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653340e6ac0647d4895687751b34cd54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  content: 'Lightning, Fire & Neutral deal x1 damage
+  content: 'Resistance: Water
 
-    Rock deals super effective
-    damage (x1.5)
-
-    Water deals resistant damage (x0.5)'
+    Weakness: Rock'
 --- !u!1 &1106204828112688610
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,12 +368,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653340e6ac0647d4895687751b34cd54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  content: 'Water, Rock & Neutral deal x1 damage
+  content: 'Resistance: Fire
 
-    Lightning deals super effective
-    damage (x1.5)
-
-    Fire deals resistant damage (x0.5)'
+    Weakness: Lightning'
 --- !u!1 &1117831998040785353
 GameObject:
   m_ObjectHideFlags: 0
@@ -938,7 +932,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653340e6ac0647d4895687751b34cd54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  content: Always do 1x damage
+  content: 'Resistance: None
+
+    Weakness: None'
 --- !u!1 &5089295728517052194
 GameObject:
   m_ObjectHideFlags: 0
@@ -1077,8 +1073,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653340e6ac0647d4895687751b34cd54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  content: "Fire, Lightning & Neutral deal x1 damage \nWater deals super effective
-    damage (x1.5)\nRock deals resistant damage (x0.5)"
+  content: 'Resistance: Rock
+
+    Weakness: Water '
 --- !u!1 &5906475185910572511
 GameObject:
   m_ObjectHideFlags: 0
@@ -1502,12 +1499,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653340e6ac0647d4895687751b34cd54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  content: 'Rock, Water & Neutral deal x1 damage
+  content: 'Resistance: Lightning
 
-    Fire deals super effective
-    damage (x1.5)
-
-    Lightning deals resistant damage (x0.5)'
+    Weakness: Fire'
 --- !u!1 &7916164368165792458
 GameObject:
   m_ObjectHideFlags: 0
