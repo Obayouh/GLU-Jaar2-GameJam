@@ -10,6 +10,7 @@ public class HealthBar : MonoBehaviour
     //[SerializeField] private Slider healthSlider;
     //[SerializeField] private Slider easeHealthSlider;
     [SerializeField] private Image HealthFill;
+    [SerializeField] private Image HealthFull;
     [SerializeField, Range(0.001f, 0.05f)] private float lerpSpeed = 0.05f;
     private HealthSystem healthComponent;
     [SerializeField] private TextMeshProUGUI healthText;
@@ -21,7 +22,6 @@ public class HealthBar : MonoBehaviour
         if (healthComponent != null)
         {
             InitializeHealthBar();
-            //healthComponent.OnHealthChanged += UpdateHealthBar;
         }
         else
         {
@@ -31,19 +31,16 @@ public class HealthBar : MonoBehaviour
 
     private void Update()
     {
-        //if (easeHealthSlider.value != /*healthSlider.value*/ HealthFill.fillAmount)
-        //{
-        //    easeHealthSlider.value = Mathf.Lerp(easeHealthSlider.value, /*healthSlider.value*/ HealthFill.fillAmount, lerpSpeed); //Visually update this over time to showcase damage taken
-        //}
+        if (HealthFull.fillAmount != HealthFill.fillAmount)
+        {
+            HealthFull.fillAmount = Mathf.Lerp(HealthFull.fillAmount,HealthFill.fillAmount, lerpSpeed); //Visually update this over time to showcase damage taken
+        }
     }
 
     private void InitializeHealthBar()
     {
-        //healthSlider.maxValue = healthComponent.GetMaxHealth();
         HealthFill.fillAmount = healthComponent.GetMaxHealth();
-        //easeHealthSlider.maxValue = healthComponent.GetMaxHealth();
-        //healthSlider.value = healthComponent.GetMaxHealth();
-        //easeHealthSlider.value = healthComponent.GetMaxHealth();
+        HealthFull.fillAmount = healthComponent.GetMaxHealth();
         healthText.text = healthComponent.GetMaxHealth() + " / " + healthComponent.GetMaxHealth();
     }
 
@@ -51,11 +48,10 @@ public class HealthBar : MonoBehaviour
     public void UpdateHealthBar(float currentHealth, float maxHealth) 
     {
         float healthPercentage = currentHealth / maxHealth;
-        if (currentHealth != /*healthSlider.value*/ HealthFill.fillAmount)
+        if (currentHealth != HealthFill.fillAmount)
         {
-            /*healthSlider.value*/ HealthFill.fillAmount = currentHealth / 10;
+            HealthFill.fillAmount = currentHealth / 15;
         }
         healthText.text = currentHealth + " / " + maxHealth;
-        //Debug.Log("Health Bar Updated: " + healthPercentage);
     }
 }
