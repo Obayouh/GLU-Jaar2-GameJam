@@ -22,11 +22,8 @@ public class NewTooltip : MonoBehaviour
     public void SetText(string content)
     {
         contentField.text = content;
-
-        //int contentLength = contentField.text.Length;
-
-        //layoutElement.enabled = contentLength > characterWrapLimit ? true : false;
     }
+
     void Update()
     {
         if (Application.isEditor)

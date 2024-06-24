@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class TooltipUI : MonoBehaviour
 {
-
     public static TooltipUI Instance { get; private set; }
     [SerializeField] private NewTooltip tooltip;
+
     private void Awake()
     {
         Instance = this;

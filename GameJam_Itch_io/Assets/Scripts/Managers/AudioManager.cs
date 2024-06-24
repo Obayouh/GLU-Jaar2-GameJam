@@ -44,6 +44,8 @@ public class AudioManager : MonoBehaviour
             s.source.loop = s.loop;
             s.source.playOnAwake = false;
         }
+
+        Play("Music");
     }
 
     public void Play(string name)
