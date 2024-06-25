@@ -120,9 +120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: Text_White
   m_EditorClassIdentifier: 
-  hashCode: 1126349543
+  hashCode: 152078725
   material: {fileID: -6208110828075072409}
-  materialHashCode: 686750951
+  materialHashCode: 125818885
   m_Version: 1.1.0
   m_SourceFontFileGUID: 7efb1ea26efa76f4faaae47228db9da8
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 7efb1ea26efa76f4faaae47228db9da8,
