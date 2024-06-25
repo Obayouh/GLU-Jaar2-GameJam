@@ -320,7 +320,7 @@ PrefabInstance:
     - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
         type: 3}
       propertyPath: sounds.Array.size
-      value: 18
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
         type: 3}
@@ -506,11 +506,21 @@ PrefabInstance:
         type: 3}
       propertyPath: sounds.Array.data[17].clip
       value: 
-      objectReference: {fileID: 8300000, guid: abc4d02f77a763246ab790825d10f16f, type: 3}
+      objectReference: {fileID: 8300000, guid: d1e34d004b477884da2b916f28662a6d, type: 3}
     - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
         type: 3}
       propertyPath: sounds.Array.data[17].name
       value: Taunt
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
+        type: 3}
+      propertyPath: sounds.Array.data[18].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8dfff99cbcd170a46bab80c2b12a78a0, type: 3}
+    - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
+        type: 3}
+      propertyPath: sounds.Array.data[18].name
+      value: Player Died
       objectReference: {fileID: 0}
     - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
         type: 3}
@@ -560,7 +570,7 @@ PrefabInstance:
     - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
         type: 3}
       propertyPath: sounds.Array.data[0].volume
-      value: 1
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
         type: 3}
@@ -600,6 +610,11 @@ PrefabInstance:
     - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
         type: 3}
       propertyPath: sounds.Array.data[17].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
+        type: 3}
+      propertyPath: sounds.Array.data[18].pitch
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
@@ -685,6 +700,11 @@ PrefabInstance:
     - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
         type: 3}
       propertyPath: sounds.Array.data[17].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077546792133087260, guid: 31896c52bbeed854e867809d7563ebff,
+        type: 3}
+      propertyPath: sounds.Array.data[18].volume
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class GameOver : MonoBehaviour
     //Restart button
     public void Restart()
     {
-        //Code om naar het main menu te gaan
+        Debug.Log("Restart Game");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

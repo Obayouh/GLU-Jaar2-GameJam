@@ -276,8 +276,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Current floor:  0'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 18b610e40af0e6b43a68087d9b94b627, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 18b610e40af0e6b43a68087d9b94b627, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3caccfd83496b454b9cc163909c9ca1f, type: 2}
+  m_sharedMaterial: {fileID: -6208110828075072409, guid: 3caccfd83496b454b9cc163909c9ca1f,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3085,13 +3086,13 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 3caccfd83496b454b9cc163909c9ca1f,
+      objectReference: {fileID: 11400000, guid: 5d2c6354043d4124f94e68ff2004baf3,
         type: 2}
     - target: {fileID: 8070815086142558730, guid: abc8640c88527584ead9ee6314c67452,
         type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: -6208110828075072409, guid: 3caccfd83496b454b9cc163909c9ca1f,
+      objectReference: {fileID: -6208110828075072409, guid: 5d2c6354043d4124f94e68ff2004baf3,
         type: 2}
     - target: {fileID: 8070815086142558730, guid: abc8640c88527584ead9ee6314c67452,
         type: 3}

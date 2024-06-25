@@ -292,19 +292,19 @@ public class Tank : Ab_Enemy
     {
         float randomActionNumber = UnityEngine.Random.value;
 
-        if (randomActionNumber >= 0.0f && randomActionNumber <= 0.4f)
+        if (randomActionNumber >= 0.0f && randomActionNumber <= 0.45f)
         {
             _BowlHelmet.SetActive(true);
             _DiscHelmet.SetActive(false);
             _SpaceHelmet.SetActive(false);
         }
-        else if (randomActionNumber > 0.4f && randomActionNumber <= 0.8f)
+        else if (randomActionNumber > 0.45f && randomActionNumber <= 0.9f)
         {
             _BowlHelmet.SetActive(false);
             _DiscHelmet.SetActive(true);
             _SpaceHelmet.SetActive(false);
         }
-        else if (randomActionNumber > 0.8f)
+        else if (randomActionNumber > 0.9f)
         {
             _BowlHelmet.SetActive(false);
             _DiscHelmet.SetActive(false);

@@ -46,6 +46,8 @@ public class PlayerStats : Ab_HealthManager
 
         dead = true;
 
+        AudioManager.Instance.Play("Player Died");
+
         ReferenceInstance.refInstance.turnManager.ChangeState(TurnState.GameOver);
     }
 
