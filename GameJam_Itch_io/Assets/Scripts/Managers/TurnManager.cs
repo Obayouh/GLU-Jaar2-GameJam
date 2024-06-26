@@ -29,6 +29,7 @@ public class TurnManager : MonoBehaviour
     private SpawnEnemies spawnEnemiesScript;
     private Ab_Enemy enemyStats;
     PickNewCardSystem pickNewCard;
+    BattleText battleText;
     [SerializeField] private CanvasCollector _CanvasCollector;
 
     private void Start()
@@ -37,6 +38,7 @@ public class TurnManager : MonoBehaviour
         spawnEnemiesScript = FindFirstObjectByType<SpawnEnemies>();
         _CanvasCollector = FindFirstObjectByType<CanvasCollector>();
         pickNewCard = FindFirstObjectByType<PickNewCardSystem>();
+        battleText = FindFirstObjectByType<BattleText>();
         enemyStats = spawnEnemiesScript.spawnedEnemies[0].GetComponent<Ab_Enemy>();
         UpdateFloor();
     }
@@ -84,6 +86,8 @@ public class TurnManager : MonoBehaviour
     public void ChangeState(TurnState newState)
     {
         state = newState;
+
+        battleText.ChangeText(state);
 
         CheckForTurnState();
     }
