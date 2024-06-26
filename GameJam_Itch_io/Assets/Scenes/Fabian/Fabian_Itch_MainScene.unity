@@ -411,18 +411,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1888602229}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &248659895 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4958425628831534513, guid: 91c6c0b51fe441d44b6d8db6b391f07c,
-    type: 3}
-  m_PrefabInstance: {fileID: 1093396601}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &259089868
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -753,34 +741,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7542839075685921661, guid: 41c8671cc6a36d24093e59e316c3014f,
         type: 3}
-      propertyPath: _Crossfade
-      value: 
-      objectReference: {fileID: 1134284289}
-    - target: {fileID: 7542839075685921661, guid: 41c8671cc6a36d24093e59e316c3014f,
-        type: 3}
-      propertyPath: _CurrentWave
-      value: 
-      objectReference: {fileID: 248659895}
-    - target: {fileID: 7542839075685921661, guid: 41c8671cc6a36d24093e59e316c3014f,
-        type: 3}
-      propertyPath: endTurnButton
-      value: 
-      objectReference: {fileID: 1093396602}
-    - target: {fileID: 7542839075685921661, guid: 41c8671cc6a36d24093e59e316c3014f,
-        type: 3}
       propertyPath: _CanvasCollector
       value: 
       objectReference: {fileID: 707105863}
-    - target: {fileID: 7542839075685921661, guid: 41c8671cc6a36d24093e59e316c3014f,
-        type: 3}
-      propertyPath: _CurrentTurnText
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7542839075685921661, guid: 41c8671cc6a36d24093e59e316c3014f,
-        type: 3}
-      propertyPath: _CurrentWaveText
-      value: 
-      objectReference: {fileID: 248659895}
     - target: {fileID: 7638380969248823761, guid: 41c8671cc6a36d24093e59e316c3014f,
         type: 3}
       propertyPath: m_Name
@@ -922,22 +885,22 @@ PrefabInstance:
     - target: {fileID: 2186041301708968266, guid: 94ad9f5b47269ec4ea9c346f7f7e790a,
         type: 3}
       propertyPath: m_Pivot.x
-      value: 0.5099937
+      value: 0.51913077
       objectReference: {fileID: 0}
     - target: {fileID: 2186041301708968266, guid: 94ad9f5b47269ec4ea9c346f7f7e790a,
         type: 3}
       propertyPath: m_Pivot.y
-      value: 1.1324873
+      value: 1.1426396
       objectReference: {fileID: 0}
     - target: {fileID: 2186041301708968266, guid: 94ad9f5b47269ec4ea9c346f7f7e790a,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 19.187866
+      value: 36.73108
       objectReference: {fileID: 0}
     - target: {fileID: 2186041301708968266, guid: 94ad9f5b47269ec4ea9c346f7f7e790a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 683.0863
+      value: 694.0508
       objectReference: {fileID: 0}
     - target: {fileID: 2464632035501786643, guid: 94ad9f5b47269ec4ea9c346f7f7e790a,
         type: 3}
@@ -1686,18 +1649,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91c6c0b51fe441d44b6d8db6b391f07c, type: 3}
---- !u!1 &1093396602 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4993388614037735577, guid: 91c6c0b51fe441d44b6d8db6b391f07c,
-    type: 3}
-  m_PrefabInstance: {fileID: 1093396601}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1134284289 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8556762333311371551, guid: 91c6c0b51fe441d44b6d8db6b391f07c,
-    type: 3}
-  m_PrefabInstance: {fileID: 1093396601}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1160970877
 GameObject:
   m_ObjectHideFlags: 0

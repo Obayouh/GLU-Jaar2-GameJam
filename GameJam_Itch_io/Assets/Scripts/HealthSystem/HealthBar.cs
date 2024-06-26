@@ -50,7 +50,15 @@ public class HealthBar : MonoBehaviour
         float healthPercentage = currentHealth / maxHealth;
         if (currentHealth != HealthFill.fillAmount)
         {
-            HealthFill.fillAmount = currentHealth / 15;
+            if (healthComponent.GetMaxHealth() == 10)
+            {
+                HealthFill.fillAmount = currentHealth / 10;
+            }
+
+            if (healthComponent.GetMaxHealth() == 15)
+            {
+                HealthFill.fillAmount = currentHealth / 15;
+            }
         }
         healthText.text = currentHealth + " / " + maxHealth;
     }
