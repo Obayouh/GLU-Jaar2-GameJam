@@ -35,10 +35,10 @@ public class TurnManager : MonoBehaviour
     {
         StartCoroutine(StartPlayerTurn(1f));
         spawnEnemiesScript = FindFirstObjectByType<SpawnEnemies>();
-        _CanvasCollector = FindFirstObjectByType<CanvasCollector>();
         pickNewCard = FindFirstObjectByType<PickNewCardSystem>();
         enemyStats = spawnEnemiesScript.spawnedEnemies[0].GetComponent<Ab_Enemy>();
         UpdateFloor();
+        _CanvasCollector = FindFirstObjectByType<CanvasCollector>();
     }
 
     private void UpdateFloor()
