@@ -49,7 +49,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 0b21669b49ddffb4faaa1ba69973e706, type: 3}
     volume: 1
     pitch: 1
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - name: Fire Card Throw
     clip: {fileID: 8300000, guid: 6920963d5d292e849ac8348fccfe8027, type: 3}
