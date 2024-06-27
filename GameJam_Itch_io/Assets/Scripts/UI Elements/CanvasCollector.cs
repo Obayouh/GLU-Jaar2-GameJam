@@ -7,8 +7,9 @@ public class CanvasCollector : MonoBehaviour
 {
     //All public vars are hidden so they cant be changed in the inspector
     public GameObject EndTurnButton;
-    /*[HideInInspector]*/ public TextMeshProUGUI CurrentFloor;
-    /*[HideInInspector]*/ public Animator CrossfadeAnimator;
+    public TextMeshProUGUI CurrentFloor;
+    public Animator CrossfadeAnimator;
+    public AudioSource StairSFX;
 
     void Start()
     {
@@ -27,5 +28,6 @@ public class CanvasCollector : MonoBehaviour
         //Gets the text or animator component from the the found gameobject and puts it in the public var
         CurrentFloor = findFloor.GetComponent<TextMeshProUGUI>();
         CrossfadeAnimator = findCrossfade.GetComponent<Animator>();
+        StairSFX = findCrossfade.GetComponent<AudioSource>();
     }
 }

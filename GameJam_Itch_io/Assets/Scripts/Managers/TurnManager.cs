@@ -23,7 +23,6 @@ public class TurnManager : MonoBehaviour
     public bool AddNewCards;
     public bool playerTurn;
 
-
     public int _floorNumber = 1;
 
     private SpawnEnemies spawnEnemiesScript;
@@ -144,7 +143,8 @@ public class TurnManager : MonoBehaviour
     public IEnumerator LoadNextWave()
     {
         _CanvasCollector.CrossfadeAnimator.SetTrigger("Start");
-        yield return new WaitForSeconds(1f);
+        _CanvasCollector.StairSFX.Play();
+        yield return new WaitForSeconds(3f);
         _CanvasCollector.CrossfadeAnimator.SetTrigger("End");
         yield return new WaitForSeconds(0.25f);
         UpdateFloor();
