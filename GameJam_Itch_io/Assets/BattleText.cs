@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BattleText : MonoBehaviour
 {
@@ -20,8 +21,11 @@ public class BattleText : MonoBehaviour
             battleText.text = "";
     }
 
-    public void OutOfManaText()
+    public void OutOfManaText(int number)
     {
-        battleText.text = "Out of Mana!";
+        if (number == 1)
+            battleText.text = "Not Enough Mana!";
+        else if (number == 2)
+            battleText.text = "Out of Mana!";
     }
 }

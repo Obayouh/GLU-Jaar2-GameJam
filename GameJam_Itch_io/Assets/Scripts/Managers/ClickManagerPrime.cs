@@ -98,7 +98,7 @@ public class ClickManagerPrime : MonoBehaviour
                 {
                     Debug.Log("Not Enough Mana");
                     BattleText battleText = FindFirstObjectByType<BattleText>();
-                    battleText.OutOfManaText();
+                    battleText.OutOfManaText(1);
                     selectedCard = null;
                     selectedCardStats = null;
                 }

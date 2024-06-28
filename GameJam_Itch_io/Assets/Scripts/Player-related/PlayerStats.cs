@@ -63,7 +63,7 @@ public class PlayerStats : Ab_HealthManager
         if (currentMana <= 0)
         {
             BattleText battleText = FindFirstObjectByType<BattleText>();
-            battleText.OutOfManaText();
+            battleText.OutOfManaText(2);
         }
     }
 
