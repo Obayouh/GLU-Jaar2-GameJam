@@ -19,4 +19,9 @@ public class BattleText : MonoBehaviour
         else
             battleText.text = "";
     }
+
+    public void OutOfManaText()
+    {
+        battleText.text = "Out of Mana!";
+    }
 }

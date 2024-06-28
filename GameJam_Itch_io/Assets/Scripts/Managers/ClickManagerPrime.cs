@@ -97,6 +97,8 @@ public class ClickManagerPrime : MonoBehaviour
                 if (ReferenceInstance.refInstance.playerStats.ReturnPlayerMana() < selectedCardStats.ReturnCost())
                 {
                     Debug.Log("Not Enough Mana");
+                    BattleText battleText = FindFirstObjectByType<BattleText>();
+                    battleText.OutOfManaText();
                     selectedCard = null;
                     selectedCardStats = null;
                 }

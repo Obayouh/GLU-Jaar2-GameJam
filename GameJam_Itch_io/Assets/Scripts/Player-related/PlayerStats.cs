@@ -59,6 +59,12 @@ public class PlayerStats : Ab_HealthManager
     public void LoseMana(int cardManaCost)
     {
         currentMana -= cardManaCost;
+
+        if (currentMana <= 0)
+        {
+            BattleText battleText = FindFirstObjectByType<BattleText>();
+            battleText.OutOfManaText();
+        }
     }
 
     public int ReturnPlayerMana()

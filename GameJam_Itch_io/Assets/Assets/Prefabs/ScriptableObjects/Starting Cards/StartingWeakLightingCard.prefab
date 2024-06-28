@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseDamage: 3
-  cost: 1
+  cost: 2
   startCard: 1
   <Typing>k__BackingField: 2
 --- !u!1 &2645821731765075262
