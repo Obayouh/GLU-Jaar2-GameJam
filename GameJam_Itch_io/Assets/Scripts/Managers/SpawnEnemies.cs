@@ -10,11 +10,16 @@ public class SpawnEnemies : MonoBehaviour
 
     private EnemyController enemyController;
 
-    void Start()
+    private void Awake()
     {
         enemyController = GetComponent<EnemyController>();
 
         StartCoroutine(InstantiateEnemies());
+    }
+
+    void Start()
+    {
+
     }
 
     public IEnumerator InstantiateEnemies()
